@@ -5,7 +5,7 @@ exports:
    template: https://github.com/myst-templates/plain_typst_book.git
    articles:
      - index.md
-   output: ../../exports/00_intro/00_intro.pdf
+   output: book/exports/chapter/00_intro/00_intro.pdf
    # show_ToC: true
 
 downloads:
