@@ -1,0 +1,86 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: fa6c6ca1-98b8-4b2e-ba39-cabf6f1631d2
+  title: Spatial Data Analytics
+  # copyright: '2026'
+  # github: HendrikWulf/sd320-jb  # https://github.com/HendrikWulf/SDS320
+  # authors:
+  #  - name: Hendrik Wulf
+  #    affiliation: University of Zurich
+
+  exports:
+    - id: book-pdf
+      format: typst # pdf
+      template: https://github.com/myst-templates/plain_typst_book.git 
+      articles: 
+       - index.md
+      # - book/16_glossary.md
+      # toc: _toc.yml
+      output: book/exports/sds320-book.pdf
+      # show_ToC: false
+
+  binder: https://mybinder.org
+
+  exclude:
+    - _build
+    - Thumbs.db
+    - .DS_Store
+    - '**.ipynb_checkpoints'
+  
+  # enable in-page execution (Thebe-like)
+  jupyter:
+    binder:
+      repo: HendrikWulf/sds320-jb
+      provider: github
+      url: https://mybinder.org
+      ref: main
+
+  license: CC-BY-SA-4.0
+  open_access: true
+
+  bibliography:
+  #  - book/references.bib
+  toc:
+    - file: index.md
+  #  - title: About
+  #    file: book/01_about.md
+  #    children:
+  #      - file: book/01_about/1_welcome.md
+  #      - file: book/01_about/2_team.md
+  #      - file: book/01_about/3_syllabus.md
+  #      - file: book/01_about/4_schedule.md
+  #      - file: book/01_about/5_error_culture.md
+  #      - file: book/01_about/6_ai.md
+  #      - file: book/01_about/7_resources.md
+  #      - file: book/01_about/8_acknowledgments.md
+  
+  #  - title: Projects
+  #    file: book/15_projects.md
+  #    children:
+  #      - file: book/15_projects/01_topics.md
+  #      - file: book/15_projects/02_workflow.md
+  #      - file: book/15_projects/03_repository.md
+  #      - file: book/15_projects/04_assessment.md
+  #      - file: book/15_projects/05_reports.md
+  #      - file: book/15_projects/06_presentation.md
+  #  - title: Glossary
+  #    file: book/16_glossary.md
+  #  - title: Feedback
+  #    file: book/17_feedback.md
+      # children:
+      #  - file: book/17_feedback/1_get_started.md  
+ #   - file: book/markdown.md
+ #   - file: book/introduction.md
+ #   - file: book/notebooks.ipynb
+ #   - file: book/references.bib
+site:
+  template: book-theme
+  options:
+    logo: logo.png
+    favicon: fav.ico
+    folders: true
+    outline_maxdepth: 2
+    allowDangerousHtml: true
+    style: _static/custom.css
+  
