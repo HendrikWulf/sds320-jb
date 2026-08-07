@@ -43,39 +43,167 @@ project:
   #  - book/references.bib
   toc:
     - file: index.md
-  #  - title: About
-  #    file: book/01_about.md
-  #    children:
-  #      - file: book/01_about/1_welcome.md
-  #      - file: book/01_about/2_team.md
-  #      - file: book/01_about/3_syllabus.md
-  #      - file: book/01_about/4_schedule.md
-  #      - file: book/01_about/5_error_culture.md
-  #      - file: book/01_about/6_ai.md
-  #      - file: book/01_about/7_resources.md
-  #      - file: book/01_about/8_acknowledgments.md
-  
-  #  - title: Projects
-  #    file: book/15_projects.md
-  #    children:
-  #      - file: book/15_projects/01_topics.md
-  #      - file: book/15_projects/02_workflow.md
-  #      - file: book/15_projects/03_repository.md
-  #      - file: book/15_projects/04_assessment.md
-  #      - file: book/15_projects/05_reports.md
-  #      - file: book/15_projects/06_presentation.md
-  #  - title: Glossary
-  #    file: book/16_glossary.md
-  #  - title: Feedback
-  #    file: book/17_feedback.md
-      # children:
-      #  - file: book/17_feedback/1_get_started.md  
- #   - file: book/markdown.md
- #   - file: book/introduction.md
- #   - file: book/notebooks.ipynb
- #   - file: book/references.bib
+
+    - title: Start here
+      children:
+        - file: course/welcome.md
+        - file: course/how-to-use-this-book.md
+        - file: course/schedule.md
+        - file: course/assessment.md
+        - file: course/ai-integrity.md
+
+    - title: Python & project setup
+      children:
+        - file: setup/software.md
+        - file: setup/python-reactivation.md
+        - file: setup/notebooks-scripts.md
+        - file: setup/git-basics.md
+        - file: setup/troubleshooting.md
+
+    - title: Project handbook
+      children:
+        - file: project/lifecycle.md
+        - file: project/milestones.md
+        - file: project/research-question.md
+        - file: project/workflow-design.md
+        - file: project/data-methods-scope.md
+        - file: project/reproducibility.md
+        - file: project/repository.md
+        - file: project/figures-and-maps.md
+        - file: project/report-writing.md
+        - file: project/presentation-guide.md
+
+    - title: L01 — Course introduction
+      children:
+        - file: lessons/L01/01_spatial-data-analytics.md
+        - file: lessons/L01/02_project-framework.md
+        - file: lessons/L01/03_project-idea-inventory.md
+
+    - title: L02 — Project planning
+      children:
+        - file: lessons/L02/01_research-questions.md
+        - file: lessons/L02/02_feasibility.md
+        - file: lessons/L02/03_project-canvas.md
+
+    - title: L03 — Data acquisition
+      children:
+        - file: lessons/L03/01_data-search.md
+        - file: lessons/L03/02_remote-sensing-data.md
+        - file: lessons/L03/03_vector-context-data.md
+        - file: lessons/L03/04_data-citation.md
+        - file: lessons/L03/05_project-transfer.md
+
+    - title: L04 — Data preprocessing
+      children:
+        - file: lessons/L04/01_preprocessing-overview.md
+        - file: lessons/L04/02_raster-preprocessing.md
+        - file: lessons/L04/03_vector-preprocessing.md
+        - file: lessons/L04/04_quality-checks.md
+        - file: lessons/L04/05_project-transfer.md
+
+    - title: L05 — Training data
+      children:
+        - file: lessons/L05/01_training-data-pipeline.md
+        - file: lessons/L05/02_annotations-labels-and-masks.md
+        - file: lessons/L05/03_tiling-and-batch-workflows.md
+        - file: lessons/L05/04_quality-control-and-splits.md
+        - file: lessons/L05/05_project-transfer.md
+
+    - title: L06 — Object detection
+      children:
+        - file: lessons/L06/01_when-to-use-object-detection.md
+        - file: lessons/L06/02_core-concepts.md
+        - file: lessons/L06/03_workflow.md
+        - file: lessons/L06/04_project-transfer.md
+
+    - title: L07 — Semantic segment.
+      children:
+        - file: lessons/L07/01_when-to-use-semantic-segmentation.md
+        - file: lessons/L07/02_core-concepts.md
+        - file: lessons/L07/03_workflow.md
+        - file: lessons/L07/04_project-transfer.md
+
+    - title: L08 — Instance segment.
+      children:
+        - file: lessons/L08/01_semantic-vs-instance.md
+        - file: lessons/L08/02_core-concepts.md
+        - file: lessons/L08/03_workflow.md
+        - file: lessons/L08/04_project-transfer.md
+
+    - title: L09 — Image translation
+      children:
+        - file: lessons/L09/01_image-translation-overview.md
+        - file: lessons/L09/02_super-resolution.md
+        - file: lessons/L09/03_workflow.md
+        - file: lessons/L09/04_limitations.md
+
+    - title: L10 — Change detection
+      children:
+        - file: lessons/L10/01_change-detection-question.md
+        - file: lessons/L10/02_methods.md
+        - file: lessons/L10/03_workflow.md
+        - file: lessons/L10/04_interpretation.md
+
+    - title: L11 — Regression
+      children:
+        - file: lessons/L11/01_spatial-regression.md
+        - file: lessons/L11/02_evaluation.md
+        - file: lessons/L11/03_workflow.md
+        - file: lessons/L11/04_uncertainty.md
+
+    - title: L12 — Segment Anything
+      children:
+        - file: lessons/L12/01_foundation-models.md
+        - file: lessons/L12/02_segment-anything.md
+        - file: lessons/L12/03_workflow.md
+        - file: lessons/L12/04_project-use-cases.md
+
+    - title: L13 — Satellite embeddings
+      children:
+        - file: lessons/L13/01_satellite-embeddings.md
+        - file: lessons/L13/02_similarity-and-clustering.md
+        - file: lessons/L13/03_workflow.md
+        - file: lessons/L13/04_project-transfer.md
+
+    - title: Project gallery
+      children:
+        - file: projects/index.md
+        - file: projects/2026.md
+
+    - title: Reference
+      children:
+        - file: reference/glossary.md
+        - file: reference/python-cheatsheet.md
+        - file: reference/geopandas-cheatsheet.md
+        - file: reference/raster-cheatsheet.md
+        - file: reference/model-evaluation.md
+        - file: reference/common-errors.md
+        - file: reference/datasets.md
+        - file: reference/further-reading.md
+
+
 site:
   template: book-theme
+  title: SDS320 Spatial Data Analytics
+  
+  nav:
+    - title: Course
+      url: /course/welcome
+    - title: Project
+      url: /project/lifecycle
+    - title: Assessment
+      url: /course/assessment
+    - title: Setup
+      url: /setup/software
+    - title: Glossary
+      url: /reference/glossary
+    - title: SDS210
+      url: https://hendrikwulf.github.io/sds210-jb/
+  
+  actions:
+    - title: GitHub
+      url: https://github.com/HendrikWulf/sds320-jb
+
   options:
     logo: logo.png
     favicon: fav.ico
