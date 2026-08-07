@@ -9,9 +9,7 @@ exports:
    # show_ToC: true
 
 downloads:
- - file: 00_intro.md
-   title: Markdown File  # Jupyter Notebook
- - id: intro-pdf
+ - file: book/exports/chapter/00_intro/00_intro.pdf
    title: Download PDF
 ---
 

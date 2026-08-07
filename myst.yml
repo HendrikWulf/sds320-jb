@@ -44,162 +44,180 @@ project:
   toc:
     - file: index.md
 
-    - title: Start here
+    - title: Course
+      file: book/01_course.md
       children:
-        - file: course/welcome.md
-        - file: course/how-to-use-this-book.md
-        - file: course/schedule.md
-        - file: course/assessment.md
-        - file: course/ai-integrity.md
+        - file: book/01_course/welcome.md
+        - file: book/01_course/how-to-use-this-book.md
+        - file: book/01_course/schedule.md
+        - file: book/01_course/assessment.md
+        - file: book/01_course/ai-integrity.md
+        - file: book/01_course/resources.md
+        - file: book/01_course/feedback.md
 
     - title: Python & project setup
+      file: book/02_setup.md
       children:
-        - file: setup/software.md
-        - file: setup/python-reactivation.md
-        - file: setup/notebooks-scripts.md
-        - file: setup/git-basics.md
-        - file: setup/troubleshooting.md
+        - file: book/02_setup/software.md
+        - file: book/02_setup/python-reactivation.md
+        - file: book/02_setup/notebooks-scripts.md
+        - file: book/02_setup/git-basics.md
+        - file: book/02_setup/troubleshooting.md
 
     - title: Project handbook
+      file: book/03_project.md
       children:
-        - file: project/lifecycle.md
-        - file: project/milestones.md
-        - file: project/research-question.md
-        - file: project/workflow-design.md
-        - file: project/data-methods-scope.md
-        - file: project/reproducibility.md
-        - file: project/repository.md
-        - file: project/figures-and-maps.md
-        - file: project/report-writing.md
-        - file: project/presentation-guide.md
+        - file: book/03_project/lifecycle.md
+        - file: book/03_project/milestones.md
+        - file: book/03_project/research-question.md
+        - file: book/03_project/workflow-design.md
+        - file: book/03_project/data-methods-scope.md
+        - file: book/03_project/reproducibility.md
+        - file: book/03_project/repository.md
+        - file: book/03_project/figures-and-maps.md
+        - file: book/03_project/report-writing.md
+        - file: book/03_project/presentation-guide.md
 
-    - title: L01 — Course introduction
+    - title: L01 – Course intro
+      file: book/04_lessons/01_course-introduction.md
       children:
-        - file: lessons/L01/01_spatial-data-analytics.md
-        - file: lessons/L01/02_project-framework.md
-        - file: lessons/L01/03_project-idea-inventory.md
+        - file: book/04_lessons/L01/01_spatial-data-analytics.md
+        - file: book/04_lessons/L01/02_project-framework.md
+        - file: book/04_lessons/L01/03_project-idea-inventory.md
 
-    - title: L02 — Project planning
+    - title: L02 – Project planning
+      file: book/04_lessons/02_project-planning.md
       children:
-        - file: lessons/L02/01_research-questions.md
-        - file: lessons/L02/02_feasibility.md
-        - file: lessons/L02/03_project-canvas.md
+        - file: book/04_lessons/L02/01_research-questions.md
+        - file: book/04_lessons/L02/02_feasibility.md
+        - file: book/04_lessons/L02/03_project-canvas.md
 
-    - title: L03 — Data acquisition
+    - title: L03 – Data acquisition
+      file: book/04_lessons/03_data-acquisition.md
       children:
-        - file: lessons/L03/01_data-search.md
-        - file: lessons/L03/02_remote-sensing-data.md
-        - file: lessons/L03/03_vector-context-data.md
-        - file: lessons/L03/04_data-citation.md
-        - file: lessons/L03/05_project-transfer.md
+        - file: book/04_lessons/L03/01_data-search.md
+        - file: book/04_lessons/L03/02_remote-sensing-data.md
+        - file: book/04_lessons/L03/03_vector-context-data.md
+        - file: book/04_lessons/L03/04_data-citation.md
+        - file: book/04_lessons/L03/05_project-transfer.md
 
-    - title: L04 — Data preprocessing
+    - title: L04 – Data preprocess.
+      file: book/04_lessons/04_data-preprocessing.md
       children:
-        - file: lessons/L04/01_preprocessing-overview.md
-        - file: lessons/L04/02_raster-preprocessing.md
-        - file: lessons/L04/03_vector-preprocessing.md
-        - file: lessons/L04/04_quality-checks.md
-        - file: lessons/L04/05_project-transfer.md
+        - file: book/04_lessons/L04/01_preprocessing-overview.md
+        - file: book/04_lessons/L04/02_raster-preprocessing.md
+        - file: book/04_lessons/L04/03_vector-preprocessing.md
+        - file: book/04_lessons/L04/04_quality-checks.md
+        - file: book/04_lessons/L04/05_project-transfer.md
 
-    - title: L05 — Training data
+    - title: L05 – Training data
+      file: book/04_lessons/05_training-data.md
       children:
-        - file: lessons/L05/01_training-data-pipeline.md
-        - file: lessons/L05/02_annotations-labels-and-masks.md
-        - file: lessons/L05/03_tiling-and-batch-workflows.md
-        - file: lessons/L05/04_quality-control-and-splits.md
-        - file: lessons/L05/05_project-transfer.md
+        - file: book/04_lessons/L05/01_training-data-pipeline.md
+        - file: book/04_lessons/L05/02_annotations-labels-and-masks.md
+        - file: book/04_lessons/L05/03_tiling-and-batch-workflows.md
+        - file: book/04_lessons/L05/04_quality-control-and-splits.md
+        - file: book/04_lessons/L05/05_project-transfer.md
 
-    - title: L06 — Object detection
+    - title: L06 – Object detection
+      file: book/04_lessons/06_object-detection.md
       children:
-        - file: lessons/L06/01_when-to-use-object-detection.md
-        - file: lessons/L06/02_core-concepts.md
-        - file: lessons/L06/03_workflow.md
-        - file: lessons/L06/04_project-transfer.md
+        - file: book/04_lessons/L06/01_when-to-use-object-detection.md
+        - file: book/04_lessons/L06/02_core-concepts.md
+        - file: book/04_lessons/L06/03_workflow.md
+        - file: book/04_lessons/L06/04_project-transfer.md
 
-    - title: L07 — Semantic segment.
+    - title: L07 – Semantic seg.
+      file: book/04_lessons/07_semantic-segmentation.md
       children:
-        - file: lessons/L07/01_when-to-use-semantic-segmentation.md
-        - file: lessons/L07/02_core-concepts.md
-        - file: lessons/L07/03_workflow.md
-        - file: lessons/L07/04_project-transfer.md
+        - file: book/04_lessons/L07/01_when-to-use-semantic-segmentation.md
+        - file: book/04_lessons/L07/02_core-concepts.md
+        - file: book/04_lessons/L07/03_workflow.md
+        - file: book/04_lessons/L07/04_project-transfer.md
 
-    - title: L08 — Instance segment.
+    - title: L08 – Instance seg.
+      file: book/04_lessons/08_instance-segmentation.md
       children:
-        - file: lessons/L08/01_semantic-vs-instance.md
-        - file: lessons/L08/02_core-concepts.md
-        - file: lessons/L08/03_workflow.md
-        - file: lessons/L08/04_project-transfer.md
+        - file: book/04_lessons/L08/01_semantic-vs-instance.md
+        - file: book/04_lessons/L08/02_core-concepts.md
+        - file: book/04_lessons/L08/03_workflow.md
+        - file: book/04_lessons/L08/04_project-transfer.md
 
-    - title: L09 — Image translation
+    - title: L09 – Image translation
+      file: book/04_lessons/09_image-translation.md
       children:
-        - file: lessons/L09/01_image-translation-overview.md
-        - file: lessons/L09/02_super-resolution.md
-        - file: lessons/L09/03_workflow.md
-        - file: lessons/L09/04_limitations.md
+        - file: book/04_lessons/L09/01_image-translation-overview.md
+        - file: book/04_lessons/L09/02_super-resolution.md
+        - file: book/04_lessons/L09/03_workflow.md
+        - file: book/04_lessons/L09/04_limitations.md
 
-    - title: L10 — Change detection
+    - title: L10 – Change detection
+      file: book/04_lessons/10_change-detection.md
       children:
-        - file: lessons/L10/01_change-detection-question.md
-        - file: lessons/L10/02_methods.md
-        - file: lessons/L10/03_workflow.md
-        - file: lessons/L10/04_interpretation.md
+        - file: book/04_lessons/L10/01_change-detection-question.md
+        - file: book/04_lessons/L10/02_methods.md
+        - file: book/04_lessons/L10/03_workflow.md
+        - file: book/04_lessons/L10/04_interpretation.md
 
-    - title: L11 — Regression
+    - title: L11 – Regression
+      file: book/04_lessons/11_regression.md
       children:
-        - file: lessons/L11/01_spatial-regression.md
-        - file: lessons/L11/02_evaluation.md
-        - file: lessons/L11/03_workflow.md
-        - file: lessons/L11/04_uncertainty.md
+        - file: book/04_lessons/L11/01_spatial-regression.md
+        - file: book/04_lessons/L11/02_evaluation.md
+        - file: book/04_lessons/L11/03_workflow.md
+        - file: book/04_lessons/L11/04_uncertainty.md
 
-    - title: L12 — Segment Anything
+    - title: L12 – Segment Anything
+      file: book/04_lessons/12_segment-anything.md
       children:
-        - file: lessons/L12/01_foundation-models.md
-        - file: lessons/L12/02_segment-anything.md
-        - file: lessons/L12/03_workflow.md
-        - file: lessons/L12/04_project-use-cases.md
+        - file: book/04_lessons/L12/01_foundation-models.md
+        - file: book/04_lessons/L12/02_segment-anything.md
+        - file: book/04_lessons/L12/03_workflow.md
+        - file: book/04_lessons/L12/04_project-use-cases.md
 
-    - title: L13 — Satellite embeddings
+    - title: L13 – Embeddings
+      file: book/04_lessons/13_satellite-embeddings.md
       children:
-        - file: lessons/L13/01_satellite-embeddings.md
-        - file: lessons/L13/02_similarity-and-clustering.md
-        - file: lessons/L13/03_workflow.md
-        - file: lessons/L13/04_project-transfer.md
+        - file: book/04_lessons/L13/01_satellite-embeddings.md
+        - file: book/04_lessons/L13/02_similarity-and-clustering.md
+        - file: book/04_lessons/L13/03_workflow.md
+        - file: book/04_lessons/L13/04_project-transfer.md
 
     - title: Project gallery
+      file: book/05_gallery.md
       children:
-        - file: projects/index.md
-        - file: projects/2026.md
+        - file: book/05_gallery/index.md
+        - file: book/05_gallery/2026.md
 
     - title: Reference
+      file: book/06_reference.md
       children:
-        - file: reference/glossary.md
-        - file: reference/python-cheatsheet.md
-        - file: reference/geopandas-cheatsheet.md
-        - file: reference/raster-cheatsheet.md
-        - file: reference/model-evaluation.md
-        - file: reference/common-errors.md
-        - file: reference/datasets.md
-        - file: reference/further-reading.md
+        - file: book/06_reference/glossary.md
+        - file: book/06_reference/cheatsheets.md
+        - file: book/06_reference/model-evaluation.md
+        - file: book/06_reference/common-errors.md
+        - file: book/06_reference/datasets.md
+        - file: book/06_reference/further-reading.md
 
 
 site:
   template: book-theme
   title: SDS320 Spatial Data Analytics
-  
+
   nav:
     - title: Course
-      url: /course/welcome
+      url: /book/course
     - title: Project
-      url: /project/lifecycle
+      url: /book/project
     - title: Assessment
-      url: /course/assessment
+      url: /book/course/assessment
     - title: Setup
-      url: /setup/software
+      url: /book/setup
     - title: Glossary
-      url: /reference/glossary
+      url: /book/reference/glossary
     - title: SDS210
       url: https://hendrikwulf.github.io/sds210-jb/
-  
+
   actions:
     - title: GitHub
       url: https://github.com/HendrikWulf/sds320-jb
