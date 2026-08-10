@@ -4,7 +4,7 @@ project:
   id: fa6c6ca1-98b8-4b2e-ba39-cabf6f1631d2
   title: Spatial Data Analytics
   # copyright: '2026'
-  # github: HendrikWulf/sd320-jb  # https://github.com/HendrikWulf/SDS320
+  github: HendrikWulf/sd320-jb  # https://github.com/HendrikWulf/SDS320
   # authors:
   #  - name: Hendrik Wulf
   #    affiliation: University of Zurich
@@ -47,36 +47,37 @@ project:
     - title: Course
       file: book/01_course.md
       children:
-        - file: book/01_course/welcome.md
-        - file: book/01_course/how-to-use-this-book.md
-        - file: book/01_course/schedule.md
-        - file: book/01_course/assessment.md
-        - file: book/01_course/ai-integrity.md
-        - file: book/01_course/resources.md
-        - file: book/01_course/feedback.md
+        - file: book/01_course/01_welcome.md
+        - file: book/01_course/02_how-to-use-this-book.md
+        - file: book/01_course/03_schedule.md
+        - file: book/01_course/04_assessment.md
+        - file: book/01_course/05_ai-integrity.md
+        - file: book/01_course/06_resources.md
+        - file: book/01_course/07_feedback.md
+        - file: book/01_course/08_syllabus.md
 
     - title: Python & project setup
       file: book/02_setup.md
       children:
-        - file: book/02_setup/software.md
-        - file: book/02_setup/python-reactivation.md
-        - file: book/02_setup/notebooks-scripts.md
-        - file: book/02_setup/git-basics.md
-        - file: book/02_setup/troubleshooting.md
+        - file: book/02_setup/01_software.md
+        - file: book/02_setup/02_python-reactivation.md
+        - file: book/02_setup/03_notebooks-scripts.md
+        - file: book/02_setup/04_git-basics.md
+        - file: book/02_setup/05_troubleshooting.md
 
     - title: Project handbook
       file: book/03_project.md
       children:
-        - file: book/03_project/lifecycle.md
-        - file: book/03_project/milestones.md
-        - file: book/03_project/research-question.md
-        - file: book/03_project/workflow-design.md
-        - file: book/03_project/data-methods-scope.md
-        - file: book/03_project/reproducibility.md
-        - file: book/03_project/repository.md
-        - file: book/03_project/figures-and-maps.md
-        - file: book/03_project/report-writing.md
-        - file: book/03_project/presentation-guide.md
+        - file: book/03_project/01_lifecycle.md
+        - file: book/03_project/02_milestones.md
+        - file: book/03_project/03_research-question.md
+        - file: book/03_project/04_workflow-design.md
+        - file: book/03_project/05_data-methods-scope.md
+        - file: book/03_project/06_reproducibility.md
+        - file: book/03_project/07_repository.md
+        - file: book/03_project/08_figures-and-maps.md
+        - file: book/03_project/09_report-writing.md
+        - file: book/03_project/10_presentation-guide.md
 
     - title: L01 – Course intro
       file: book/04_lessons/01_course-introduction.md
@@ -186,18 +187,18 @@ project:
     - title: Project gallery
       file: book/05_gallery.md
       children:
-        - file: book/05_gallery/index.md
-        - file: book/05_gallery/2026.md
+        - file: book/05_gallery/01_index.md
+        - file: book/05_gallery/02_2026.md
 
     - title: Reference
       file: book/06_reference.md
       children:
-        - file: book/06_reference/glossary.md
-        - file: book/06_reference/cheatsheets.md
-        - file: book/06_reference/model-evaluation.md
-        - file: book/06_reference/common-errors.md
-        - file: book/06_reference/datasets.md
-        - file: book/06_reference/further-reading.md
+        - file: book/06_reference/01_glossary.md
+        - file: book/06_reference/02_cheatsheets.md
+        - file: book/06_reference/03_model-evaluation.md
+        - file: book/06_reference/04_common-errors.md
+        - file: book/06_reference/05_datasets.md
+        - file: book/06_reference/06_further-reading.md
 
 
 site:
