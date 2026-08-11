@@ -1,6 +1,6 @@
 ---
 site:
- outline_maxdepth: 1
+ outline_maxdepth: 2
 ---
 
 # Course

@@ -71,7 +71,7 @@ Our weekly in-person sessions partly comprise lectures on a given topic. However
 
 ## What success looks like
 
-A successful SDS320 project is one that makes you proud of your achievements. It does not have to be technically perfect. What matters more is that your project interests you and provides learning opportunities.
+A successful SDS320 project is one that makes you proud of your achievements. It does not have to be technically perfect. What matters more is that your project motivates you and provides multiple learning opportunities.
 
 Success in this course also means that you work steadily, make thoughtful decisions, document your workflow, respond to feedback and communicate both your results and limitations honestly.
 
