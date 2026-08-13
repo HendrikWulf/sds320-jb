@@ -133,7 +133,7 @@ These examples are illustrative.
 
 ---
 
-## Red flags
+## Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -161,7 +161,7 @@ Before implementation, decide:
 
 ---
 
-## Mini task: alignment statement
+## Mini task
 
 Write one alignment statement for your project:
 

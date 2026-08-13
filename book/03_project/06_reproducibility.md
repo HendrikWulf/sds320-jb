@@ -134,7 +134,7 @@ Typical reproducibility problems include:
 
 ---
 
-## Red flags and first checks
+## Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -162,7 +162,7 @@ Decide early:
 
 ---
 
-## Mini task: reproducibility gap
+## Mini task
 
 Identify one part of your current workflow that someone else could not yet reproduce.
 

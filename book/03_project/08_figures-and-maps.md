@@ -158,7 +158,7 @@ For your final presentation, one strong key-result figure is often more effectiv
 
 ---
 
-## Mini task: choose one key figure
+## Mini task
 
 Choose one figure or map that could become central to your SDS320 project.
 

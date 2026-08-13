@@ -198,7 +198,7 @@ Failed attempts can be mentioned briefly if they explain an important project de
 
 ---
 
-## Mini task: five-sentence outline
+## Mini task
 
 Draft a five-sentence report outline:
 

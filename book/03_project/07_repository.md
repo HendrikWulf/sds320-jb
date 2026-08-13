@@ -205,7 +205,7 @@ For code organisation, see [Notebooks and scripts](../02_setup/03_notebooks-scri
 
 ---
 
-## Red flags and first checks
+## Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -220,7 +220,7 @@ For code organisation, see [Notebooks and scripts](../02_setup/03_notebooks-scri
 
 ---
 
-## Mini task: README checkpoint
+## Mini task
 
 Open your project repository and improve the README.
 

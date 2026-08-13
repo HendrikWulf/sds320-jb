@@ -191,7 +191,7 @@ Typical workflow problems include:
 
 ---
 
-## Red flags
+## Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -204,7 +204,7 @@ Typical workflow problems include:
 
 ---
 
-## Mini task: write your workflow
+## Mini task
 
 Write your project workflow in 6–8 steps.
 

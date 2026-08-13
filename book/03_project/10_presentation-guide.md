@@ -197,7 +197,7 @@ With more time, I would improve ...
 
 ---
 
-## Mini task: one-minute explanation
+## Mini task
 
 Write a one-minute explanation of your project.
 

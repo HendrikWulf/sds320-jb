@@ -46,7 +46,7 @@ A topic is not yet a project. A project begins when you can connect a question t
 
 ---
 
-## What makes a good SDS320 research question?
+## What makes a good research question?
 
 A good SDS320 research question is usually:
 
@@ -60,7 +60,7 @@ A good SDS320 research question is usually:
 - **open enough** — it requires analysis, not only a yes/no answer,
 - **narrow enough** — it can be implemented and communicated clearly.
 
-The SDS110 project-planning material used the FINER criteria: feasible, interesting, novel, ethical and relevant. For SDS320, add one more practical test: can you imagine the main map, figure, metric or model output that would answer the question?
+The SDS110 project-planning material (lecture 4) used the FINER criteria: feasible, interesting, novel, ethical and relevant. For SDS320, add one more practical test: can you imagine the main map, figure, metric or model output that would answer the question?
 
 ---
 
@@ -162,9 +162,9 @@ Ask yourself:
 
 ---
 
-## Mini task: improve your question
+## Mini task
 
-Write three versions:
+Write three versions that show the evolution of your question:
 
 ```text
 Broad topic:

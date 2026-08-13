@@ -85,7 +85,7 @@ Good scope reductions include:
 
 ---
 
-## Red flags
+## Flags & Checks
 
 Watch for these warning signs:
 
@@ -101,7 +101,7 @@ Watch for these warning signs:
 
 ---
 
-## Mini task: milestone check
+## Mini task
 
 Compare your current project status with the table above.
 
