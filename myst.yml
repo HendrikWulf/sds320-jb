@@ -208,12 +208,12 @@ site:
   nav:
     - title: Course
       url: /book/course
+    - title: Setup
+      url: /book/setup/software
     - title: Project
       url: /book/project
     - title: Assessment
       url: /book/course/assessment
-    - title: Setup
-      url: /book/setup
     - title: Glossary
       url: /book/reference/glossary
     - title: SDS210

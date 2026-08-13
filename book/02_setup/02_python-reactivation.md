@@ -1,7 +1,6 @@
 ---
 site:
- outline_maxdepth: 1
- 
+  outline_maxdepth: 2
 ---
 
 # Python reactivation
@@ -18,15 +17,91 @@ A short refresher for getting back into Python
 
 You have already used Python in SDS210. Still, it is normal to feel rusty after a break.
 
-This page is a short reactivation. It does not replace a full Python course. It reminds you of patterns that are especially useful in SDS320: paths, lists, dictionaries, functions, imports, loops, DataFrames and small reusable workflow steps.
+This page helps you reactivate the Python patterns that matter most for SDS320 project work: paths, variables, lists, dictionaries, functions, imports, loops, tables and small workflow checks.
 
-The goal is to help you write code that supports your project, not isolated code fragments that are difficult to rerun later.
+The goal is not to repeat a full Python course. The goal is to help you write code that supports a clear spatial data science workflow instead of isolated code fragments that are difficult to rerun later.
 
 ---
 
-## What you should remember from SDS210
+## Before you start
 
-### Variables
+Before working through this page, check that you have:
+
+- created the recommended `sds320/` folder structure,
+- created and activated the `sds320` {term}`Conda Environment`,
+- opened VS Code,
+- selected the correct {term}`Jupyter Kernel`,
+- created a notebook for this refresher, for example `sds320/course/notebooks/python_reactivation.ipynb`.
+
+```{tip}
+Use this page actively. Run the examples, adapt variable names, and connect the patterns to your (upcoming) own project idea (if already applicable).
+```
+
+---
+
+## The project coding pathway
+
+A useful SDS320 coding workflow often follows this pathway:
+
+```text
+define paths and project settings
+→ load or create input data
+→ check what you loaded
+→ process one small example
+→ turn repeated logic into a function
+→ apply the function to several files or cases
+→ save outputs clearly
+→ document what the code does
+```
+
+You do not need to write perfect code from the beginning. Start with readable code that you understand, then improve the structure when patterns repeat.
+
+---
+
+### 1. Start with project settings
+
+A good project notebook usually begins with a small setup block. This keeps important project settings visible in one place.
+
+Run this example from a notebook inside a course or project folder.
+
+```{code-cell} python
+from pathlib import Path
+
+PROJECT_DIR = Path.cwd()
+
+DATA_DIR = PROJECT_DIR / "data"
+RAW_DATA_DIR = DATA_DIR / "raw"
+PROCESSED_DATA_DIR = DATA_DIR / "processed"
+RESULTS_DIR = PROJECT_DIR / "results"
+FIGURES_DIR = RESULTS_DIR / "figures"
+
+STUDY_AREA = "Zurich"
+TARGET_CRS = "EPSG:2056"
+
+print(f"Project directory: {PROJECT_DIR}")
+print(f"Study area: {STUDY_AREA}")
+print(f"Target CRS: {TARGET_CRS}")
+```
+
+If you already know your {term}`Coordinate Reference System (CRS)`, storing it as a variable helps you use it consistently later.
+
+Create folders only when your workflow needs to write outputs:
+
+```{code-cell} python
+PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
+FIGURES_DIR.mkdir(parents=True, exist_ok=True)
+
+print(PROCESSED_DATA_DIR.exists())
+print(FIGURES_DIR.exists())
+```
+
+```{warning}
+Check what `PROJECT_DIR` prints. If it points to an unexpected folder, your code may save outputs in the wrong place.
+```
+
+---
+
+### 2. Variables and strings
 
 Variables store values so that you can reuse them.
 
@@ -40,7 +115,19 @@ print(study_area, year, buffer_distance_m)
 
 Use meaningful names. A variable called `input_path` is easier to understand than `x`.
 
-### Lists
+Strings are text values. File paths, dataset names, CRS codes and column names are often stored as strings.
+
+```{code-cell} python
+dataset_name = "sentinel2"
+output_suffix = "ndvi"
+
+output_name = f"{study_area.lower()}_{year}_{dataset_name}_{output_suffix}.tif"
+print(output_name)
+```
+
+---
+
+### 3. Lists
 
 Lists store multiple values in order.
 
@@ -51,11 +138,20 @@ for band in bands:
     print(f"Processing {band}")
 ```
 
-Lists are useful when you want to process several files, bands, classes or years.
+Lists are useful when you want to process several files, years, classes, image {term}`bands <Band>` or raster {term}`tiles <Tile>`.
 
-### Dictionaries
+```{code-cell} python
+years = [2020, 2021, 2022, 2023]
 
-Dictionaries store named values.
+for year in years:
+    print(f"Prepare analysis for {year}")
+```
+
+---
+
+### 4. Dictionaries
+
+Dictionaries store named values. They are useful for project parameters because they keep related settings together.
 
 ```{code-cell} python
 project_config = {
@@ -63,166 +159,44 @@ project_config = {
     "start_year": 2020,
     "end_year": 2026,
     "target_crs": "EPSG:2056",
+    "data_source": "Sentinel-2",
 }
 
+print(project_config["study_area"])
 print(project_config["target_crs"])
 ```
 
-Dictionaries are useful for project parameters because they keep related settings together.
-
-### Functions
-
-Functions make code reusable.
+A dictionary can make your code easier to adapt when you change study area, year range or data source.
 
 ```{code-cell} python
-def build_output_name(study_area, year, suffix):
+for key, value in project_config.items():
+    print(f"{key}: {value}")
+```
+
+---
+
+### 5. Functions
+
+Functions make code reusable. They are useful when the same logic appears more than once.
+
+```{code-cell} python
+def build_output_name(study_area, year, suffix, file_extension="tif"):
     """Create a consistent output file name."""
     clean_name = study_area.lower().replace(" ", "_")
-    return f"{clean_name}_{year}_{suffix}.tif"
+    return f"{clean_name}_{year}_{suffix}.{file_extension}"
 
 
 filename = build_output_name("Zurich", 2026, "ndvi")
 print(filename)
 ```
 
-If you repeat the same logic several times, consider turning it into a function.
+Functions help you follow the {abbr}`DRY (Don't Repeat Yourself)` principle: avoid copying the same code again and again when one reusable function would be clearer.
 
-### Imports
-
-Imports load packages or modules.
+A small helper function can also make file checks more readable:
 
 ```{code-cell} python
-from pathlib import Path
-
-import pandas as pd
-import geopandas as gpd
-```
-
-Keep imports near the top of notebooks and scripts. This makes dependencies visible.
-
-### Paths
-
-Paths are central in project work. Use `pathlib` to make paths clearer and more portable.
-
-```{code-cell} python
-from pathlib import Path
-
-project_dir = Path.cwd()
-data_dir = project_dir / "data"
-output_dir = project_dir / "outputs"
-
-print(data_dir)
-print(output_dir)
-```
-
-Create folders when needed:
-
-```{code-cell} python
-output_dir.mkdir(exist_ok=True)
-```
-
-```{warning}
-Avoid hard-coded absolute paths such as `/Users/name/Desktop/project/data/file.tif`. They usually break on another computer.
-```
-
-### Loops
-
-Loops repeat an action.
-
-```{code-cell} python
-years = [2020, 2021, 2022, 2023]
-
-for year in years:
-    output_name = build_output_name("Zurich", year, "summary")
-    print(output_name)
-```
-
-Loops are useful for processing multiple years, tiles, images or administrative units.
-
-### Conditionals
-
-Conditionals let your code react to situations.
-
-```{code-cell} python
-file_exists = True
-
-if file_exists:
-    print("Continue with processing.")
-else:
-    print("Download or create the missing file first.")
-```
-
-You will often use conditionals for checks, such as whether a file exists or whether a dataset has the expected columns.
-
-### DataFrames
-
-A DataFrame is a table-like data structure.
-
-```{code-cell} python
-import pandas as pd
-
-data = {
-    "dataset": ["Landsat", "OpenStreetMap", "SwissBOUNDARIES3D"],
-    "type": ["raster", "vector", "vector"],
-}
-
-df = pd.DataFrame(data)
-df
-```
-
-You can inspect rows, columns and basic information:
-
-```{code-cell} python
-print(df.columns)
-print(df.head())
-```
-
-### GeoDataFrames
-
-A GeoDataFrame is like a DataFrame, but with a geometry column.
-
-```python
-import geopandas as gpd
-
-gdf = gpd.read_file("data/study_area.gpkg")
-gdf.head()
-```
-
-This example is not executable unless the file exists in your project.
-
----
-
-## Small examples
-
-### A small project parameter block
-
-At the beginning of a notebook, define key project settings in one place.
-
-```python
-from pathlib import Path
-
-PROJECT_DIR = Path.cwd()
-DATA_DIR = PROJECT_DIR / "data"
-OUTPUT_DIR = PROJECT_DIR / "outputs"
-
-STUDY_AREA = "Zurich"
-TARGET_CRS = "EPSG:2056"
-
-OUTPUT_DIR.mkdir(exist_ok=True)
-
-print(f"Project directory: {PROJECT_DIR}")
-print(f"Study area: {STUDY_AREA}")
-```
-
-This makes your notebook easier to adapt and review.
-
-### A helper function for checking files
-
-```python
-from pathlib import Path
-
-def check_file(path):
-    """Print whether a file exists."""
+def check_path(path):
+    """Print whether a file or folder exists."""
     path = Path(path)
 
     if path.exists():
@@ -231,33 +205,183 @@ def check_file(path):
         print(f"Missing: {path}")
 
 
-check_file("data/example_file.tif")
+check_path(DATA_DIR)
+check_path(RAW_DATA_DIR)
 ```
-
-This small function does not solve all file problems, but it encourages a useful habit: check inputs before running long workflows.
-
-### Looping through possible input files
-
-```python
-input_files = [
-    "data/image_2020.tif",
-    "data/image_2021.tif",
-    "data/image_2022.tif",
-]
-
-for input_file in input_files:
-    check_file(input_file)
-```
-
-This pattern becomes useful when working with multiple scenes, years or tiles.
 
 ---
 
-## Thinking in project workflows
+### 6. Imports
 
-In SDS320, Python should help you build repeatable project steps.
+Imports load packages or modules.
 
-A project workflow might look like this:
+```{code-cell} python
+from pathlib import Path
+
+import pandas as pd
+```
+
+Keep imports near the top of notebooks and scripts. This makes dependencies visible.
+
+For spatial projects, you will often import packages such as {term}`GeoPandas`, Rasterio, Leafmap or PyTorch. Only import them when you need them.
+
+```python
+import geopandas as gpd
+import rasterio
+import leafmap
+import torch
+```
+
+This example is illustrative. It assumes that the packages are installed in the active environment.
+
+---
+
+### 7. Paths and working directories
+
+Paths are central in project work. Use `pathlib` to make paths clearer and more portable.
+
+```{code-cell} python
+example_path = DATA_DIR / "raw" / "example_file.tif"
+
+print(example_path)
+print(example_path.exists())
+```
+
+Your {term}`Working Directory` is the folder from which Python currently runs. Many file errors happen because the working directory is different from what you expect.
+
+```{code-cell} python
+print(Path.cwd())
+```
+
+```{warning}
+Avoid hard-coded absolute paths such as `/Users/name/Desktop/project/data/file.tif` or `C:\Users\name\Desktop\project\data\file.tif`. They usually break on another computer.
+```
+
+Prefer paths that are relative to your project folder.
+
+---
+
+### 8. Conditionals
+
+Conditionals let your code react to situations.
+
+```{code-cell} python
+if RAW_DATA_DIR.exists():
+    print("Raw data folder exists.")
+else:
+    print("Raw data folder is missing.")
+```
+
+You will often use conditionals for checks, such as whether a file exists, whether a dataset has the expected columns, or whether an output should be created.
+
+```{code-cell} python
+required_columns = ["dataset", "type"]
+available_columns = ["dataset", "type", "provider"]
+
+for column in required_columns:
+    if column in available_columns:
+        print(f"Found column: {column}")
+    else:
+        print(f"Missing column: {column}")
+```
+
+---
+
+### 9. DataFrames
+
+A DataFrame is a table-like data structure. It is useful for organising dataset inventories, project parameters, evaluation results or summary statistics.
+
+```{code-cell} python
+import pandas as pd
+
+data = {
+    "dataset": ["Landsat", "OpenStreetMap", "SwissBOUNDARIES3D"],
+    "type": ["raster", "vector", "vector"],
+    "status": ["possible", "possible", "check licence"],
+}
+
+df = pd.DataFrame(data)
+df
+```
+
+Inspect the table before using it in a longer workflow:
+
+```{code-cell} python
+print(df.columns)
+print(df.head())
+```
+
+You can filter rows to focus on a subset:
+
+```{code-cell} python
+vector_data = df[df["type"] == "vector"]
+vector_data
+```
+
+---
+
+### 10. GeoDataFrames
+
+A {term}`GeoDataFrame` is like a DataFrame, but with a geometry column. It is used for {term}`Vector Data`, such as points, lines or polygons.
+
+```python
+import geopandas as gpd
+
+gdf = gpd.read_file("data/raw/vectors/study_area.gpkg")
+gdf.head()
+```
+
+This example is not executable unless the file exists in your project.
+
+When working with a GeoDataFrame, useful first checks include:
+
+```python
+print(gdf.crs)
+print(gdf.shape)
+print(gdf.columns)
+gdf.plot()
+```
+
+These checks help you understand the spatial reference, number of features, attributes and approximate geometry.
+
+---
+
+### 11. Raster data reminders
+
+{term}`Raster Data` are stored as grids of pixels or cells. Satellite images, elevation models, masks and prediction maps are common raster datasets.
+
+A typical raster workflow includes:
+
+```text
+open raster
+→ inspect metadata
+→ read selected band or window
+→ check values and nodata
+→ process array
+→ save output with spatial metadata
+```
+
+This page does not introduce raster processing in detail. The important reactivation idea is: do not trust a raster just because it loads. Check shape, CRS, bounds, resolution and value range before using it in analysis or modelling.
+
+```python
+import rasterio
+
+with rasterio.open("data/raw/raster/example.tif") as src:
+    print(src.crs)
+    print(src.bounds)
+    print(src.width, src.height)
+    print(src.count)
+```
+
+This example is illustrative and requires an existing raster file.
+
+---
+
+### 12. From fragments to a pipeline
+
+In SDS320, Python should help you build a repeatable {term}`Data Pipeline`.
+
+A simple project pipeline might look like this:
 
 ```text
 define paths
@@ -276,65 +400,71 @@ Try to make these steps visible in your notebooks and scripts. Clear sections, m
 Before writing more code, ask: “Would I understand this workflow again in two weeks?” If the answer is no, add structure now.
 ```
 
-```{admonition} Reminder
-:class: tip
-The course environment file provided for SDS320 is the main reference for package installation. It uses the environment name `sds320` and Python 3.12.
-
-```
+For the next step, see [Notebooks and scripts](03_notebooks-scripts.md), where you decide which parts of your workflow should remain in notebooks and which parts could become reusable scripts.
 
 ---
 
-## Common pitfalls
+## Flags & checks
 
-### Forgetting which environment is active
+Use this table when your Python workflow becomes confusing.
 
-A notebook may use a different Python environment than your terminal. If imports fail unexpectedly, check the selected kernel.
+| Red flag | First check |
+| --- | --- |
+| A package imports in the terminal but not in the notebook | Check the selected Jupyter kernel. |
+| Python cannot find a file | Print `Path.cwd()` and check whether the path exists. |
+| Output files appear in an unexpected folder | Check `PROJECT_DIR` and your working directory. |
+| The same code appears in many cells | Turn repeated logic into a function. |
+| A notebook only works when cells are run in a special order | Restart the kernel and run all cells from top to bottom. |
+| A file path includes your personal user folder | Replace it with a project-relative path. |
+| A GeoDataFrame plots in the wrong location | Check the CRS before further processing. |
+| A raster loads but looks strange | Check band order, nodata values, CRS, shape and value range. |
+| Your notebook is difficult to understand after a week | Add Markdown headings, comments and clearer variable names. |
 
-### Confusing strings and variables
-
-```{code-cell} python
-data_dir = "data"
-print(data_dir)      # prints the value of the variable
-print("data_dir")    # prints the text data_dir
-```
-
-This small difference can cause path and file-name confusion.
-
-### Hard-coding paths
-
-Hard-coded paths work on one machine but usually fail elsewhere. Prefer project-relative paths with `pathlib`.
-
-### Writing very long notebooks without functions
-
-Long notebooks can become difficult to rerun. If a cell becomes too long or repeated, consider writing a function. Mind the {abbr}`DRY (Don't Repeat Yourself)` principle.
-
-### Not checking intermediate outputs
-
-Spatial workflows can run without obvious errors but still produce wrong results. Check maps, tables, shapes, coordinate reference systems and value ranges regularly.
+For more help, see [Troubleshooting](05_troubleshooting.md).
 
 ---
 
 ## Mini task
 
-Create a small project setup block for your own SDS320 project.
+Create or update a notebook called:
 
-It should include:
+```text
+sds320/course/notebooks/python_reactivation.ipynb
+```
 
-- project directory,
-- data directory,
-- output directory,
-- study area,
-- target coordinate reference system, if known,
-- one helper function that checks whether a file exists.
+Complete the following steps:
 
-Use this as the first draft of the setup section in your project notebook.
+- [ ] Define `PROJECT_DIR`, `DATA_DIR`, `RAW_DATA_DIR`, `PROCESSED_DATA_DIR`, `RESULTS_DIR` and `FIGURES_DIR`.
+- [ ] Print the current working directory.
+- [ ] Create a `project_config` dictionary with study area, target CRS, data source and year range.
+- [ ] Write a function called `check_path()` that reports whether a file or folder exists.
+- [ ] Use a loop to check at least three project folders.
+- [ ] Create a small DataFrame that lists three possible datasets for your project.
+- [ ] Add one Markdown cell explaining which part of your current project workflow is still unclear.
+
+```{tip}
+The goal is not to produce final project code. The goal is to reactivate the habits you will need later: define paths, check inputs, organise settings, write small functions and document decisions.
+```
 
 ---
 
 ## Key takeaways
 
 - You do not need to remember every Python detail immediately.
-- Focus on patterns that support project work: paths, imports, functions, loops and checks.
-- Use meaningful variable names and small reusable functions.
+- Focus on patterns that support project work: paths, imports, functions, loops, checks and small tables.
 - Keep project settings visible near the top of notebooks and scripts.
+- Use project-relative paths instead of personal absolute paths.
+- Turn repeated code into small functions.
 - Check intermediate outputs before trusting final results.
+- Clear Python habits support {term}`Reproducibility`.
+
+---
+
+### What to do next
+
+After this refresher:
+
+- use [Notebooks and scripts](03_notebooks-scripts.md) to decide how to organise your code,
+- use [Git basics](04_git-basics.md) to start tracking meaningful changes,
+- use [Workflow design](../03_project/04_workflow-design.md) to connect code steps to your project question,
+- use [Reproducibility](../03_project/06_reproducibility.md) to check whether someone else could rerun your work.
