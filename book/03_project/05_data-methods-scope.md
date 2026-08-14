@@ -17,9 +17,7 @@ Keeping your project feasible and methodologically coherent
 
 A good SDS320 project does not simply combine an interesting dataset with an impressive method. The research question, available data and analytical method need to fit together.
 
-A project can fail even when each part sounds good individually. A strong GeoAI method will not help if the data do not contain the target feature. A detailed dataset will not help if the question is too broad. A good research question will not work if the data cannot be accessed, processed or evaluated in time.
-
-This page helps you check project fit before the workflow becomes too complex.
+A project can fail even when each part sounds good individually. A strong GeoAI method will not help if the data do not contain the target feature. A detailed dataset will not help if the question is too broad. A good question will not work if the data cannot be accessed, processed or evaluated in time.
 
 ---
 
@@ -27,23 +25,13 @@ This page helps you check project fit before the workflow becomes too complex.
 
 Think of your project as a triangle:
 
-```text
-Research question
-↔ Available data
-↔ Analytical method
-```
+:::{figure} images/01_alignment_triangle.png
+:alt: Conceptual diagram between Research question ↔ Available data ↔ Analytical method.
+:width: 600px
+:align: center
 
-Each side needs to support the others.
-
-```{mermaid}
-flowchart TD
-    Q[Research question] --- D[Available data]
-    D --- M[Analytical method]
-    M --- Q
-    Q --> O[Meaningful output]
-    D --> O
-    M --> O
-```
+*The alignment triangle: Research question ↔ Available data ↔ Analytical method. Each side needs to support the others.*
+:::
 
 A coherent project can complete this sentence:
 
@@ -59,17 +47,17 @@ When choosing data, check the following criteria.
 
 | Criterion | Questions to ask |
 | --- | --- |
-| Spatial resolution | Are features visible at the scale of the data? |
-| Temporal coverage | Does the dataset cover the relevant date, season or time period? |
+| Spatial resolution | Are the relevant features visible at this scale? |
+| Temporal coverage | Does the dataset cover the relevant dates or seasons? |
 | Study area | Does the dataset cover the full {term}`Area of Interest (AOI)`? |
-| Data format | Can you open, process and document the format? |
+| Format | Can you open, process and document it? |
 | Licence | Are you allowed to use and share the data or derived outputs? |
-| Accessibility | Can you download or access the data reliably? |
-| Size | Can you process the data with your available time and hardware? |
+| Accessibility | Can you access the data reliably? |
+| Size | Can you process it with your available time and hardware? |
 | Quality | Are there clouds, gaps, noise, missing values or uncertain labels? |
 | Documentation | Are metadata, methods and limitations described clearly? |
 
-For GeoAI projects, data suitability also depends on the task. For example, object detection needs objects that are visible and separable in the imagery. Segmentation needs labels or masks if you train or evaluate a model. Change detection needs comparable observations across time.
+For GeoAI projects, data suitability depends on the task. Object detection needs objects that are visible and separable. Segmentation needs labels or masks if you train or evaluate a model. Change detection needs comparable observations across time.
 
 ---
 
@@ -137,27 +125,14 @@ These examples are illustrative.
 
 | Red flag | First check |
 | --- | --- |
-| The research question does not mention where or when | Add study area and time period. |
-| The method is chosen before the question is clear | Return to [Research question](03_research-question.md). |
+| The question does not mention where or when | Add study area and time period. |
+| The method was chosen before the question was clear | Return to [Research question](03_research-question.md). |
 | The data are interesting but do not answer the question | Revise the question or find better data. |
 | The target feature is not visible in the imagery | Use different data, reduce expectations or change the task. |
-| The project needs labels but none are available | Create a small labelled dataset, use a pre-trained model or change scope. |
-| The dataset is too large to process | Reduce study area, time period, resolution or number of files. |
-| There is no evaluation strategy | Identify reference data, visual checks or meaningful comparison. |
+| The project needs labels but none are available | Create a small labelled dataset, use a pre-trained model or reduce scope. |
+| The dataset is too large to process | Reduce area, time period, resolution or number of files. |
+| There is no evaluation strategy | Identify reference data, visual checks or a meaningful comparison. |
 | The project has many outputs but no main result | Choose one key output and build the workflow around it. |
-
----
-
-## Decision points
-
-Before implementation, decide:
-
-- What is the smallest version of the project that can answer the question?
-- Which dataset is essential, and which is optional?
-- Which method is necessary, and which is only interesting?
-- What output will show whether the project worked?
-- How will you discuss uncertainty or limitations?
-- What will you simplify if the first prototype fails?
 
 ---
 

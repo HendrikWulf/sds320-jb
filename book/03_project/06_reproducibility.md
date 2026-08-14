@@ -21,9 +21,7 @@ In SDS320, reproducibility matters because your final project includes a report 
 
 Reproducibility also helps you. A project that is documented and organised is easier to debug, revise, present and finish.
 
-This page builds on the SDS210 reproducibility material and adapts it to SDS320 project work.
-
-<!-- TODO: link directly to the relevant SDS210 reproducibility pages once the final cross-course link structure is confirmed. -->
+This page builds on the [SDS210 reproducibility material](https://hendrikwulf.github.io/sds210-jb/book/l12-reproducibility/) and adapts it to SDS320 project work.
 
 ---
 
@@ -49,39 +47,31 @@ Another student should be able to answer:
 
 Use this checklist throughout the semester.
 
-### Project structure
+### Structure and paths
 
 - [ ] The repository has a clear folder structure.
 - [ ] Files and folders have meaningful names.
-- [ ] Course material and project material are not mixed unnecessarily.
-- [ ] Large raw data are not committed unless this is allowed and practical.
-
-### Paths and data
-
 - [ ] Paths are relative where possible.
+- [ ] Course material and project material are not mixed unnecessarily.
+
+### Data and environment
+
 - [ ] Data sources are documented in `data/README.md` or the main README.
-- [ ] Original data and processed data are separated.
+- [ ] Original and processed data are separated.
 - [ ] Manual download or preprocessing steps are described.
 - [ ] Sensitive or restricted data are not shared publicly.
-
-### Environment
-
 - [ ] The repository includes an environment file or setup instructions.
-- [ ] Package versions are documented where relevant.
-- [ ] The active environment is named clearly.
-- [ ] Unusual installation steps are described.
 
-### Code workflow
+### Code and outputs
 
 - [ ] Notebooks or scripts have a clear run order.
 - [ ] Important notebooks can be restarted and run from top to bottom.
 - [ ] Repeated code is moved into functions or scripts where useful.
-- [ ] Intermediate outputs are saved when they help rerun the workflow.
-- [ ] Code comments explain non-obvious decisions.
+- [ ] Important intermediate outputs are saved and named clearly.
+- [ ] Figures, maps and evaluation outputs are saved in predictable folders.
 
-### Outputs and interpretation
+### Interpretation and responsibility
 
-- [ ] Figures and maps are saved in predictable folders.
 - [ ] Results are connected to the research question.
 - [ ] Evaluation steps are documented.
 - [ ] Limitations and uncertainties are stated clearly.
@@ -118,47 +108,17 @@ Your future self is also a user of your project. Write instructions so that you 
 
 ---
 
-## Common pitfalls
-
-Typical reproducibility problems include:
-
-- local absolute paths,
-- undocumented manual steps,
-- hidden notebook state,
-- missing data instructions,
-- unclear package versions,
-- notebooks that only run when cells are executed in a special order,
-- outputs that were created manually but not explained,
-- figures without information about input data or processing steps,
-- AI-generated code that was not checked or documented.
-
----
-
 ## Flags & checks
 
 | Red flag | First check |
 | --- | --- |
 | The project works only on your computer | Replace absolute paths and document setup steps. |
-| You cannot remember how an output was produced | Add workflow notes and link output to notebook/script. |
+| You cannot remember how an output was produced | Link the output to the notebook or script that created it. |
 | A notebook fails after restarting the kernel | Check imports, paths, variables and run order. |
 | Data are missing from the repository | Document how to access or recreate them. |
-| A package import works on one machine but not another | Check the environment file and selected kernel. |
-| The README does not explain how to run the project | Add a short run order and setup section. |
+| The README does not explain how to run the project | Add setup instructions and notebook/script order. |
 | A result depends on manual editing | Describe the manual step or replace it with code. |
 | AI helped debug important code | Add an honest AI-use note if relevant. |
-
----
-
-## Decision points
-
-Decide early:
-
-- Which data can be shared publicly?
-- Which data must be downloaded separately?
-- Which outputs should be saved?
-- Which notebooks are exploratory and which are part of the main workflow?
-- Which scripts are essential?
-- What does another student need to know before running the project?
 
 ---
 
@@ -180,8 +140,8 @@ Then make one small change: update a README, rename a file, add a path check, sa
 
 ## Key takeaways
 
-- Reproducibility is a practical project habit, not a final decoration.
+- Reproducibility is a practical project habit.
 - Another student should be able to understand and rerun your main workflow.
 - Relative paths, environment information, data documentation and run order matter.
 - Build reproducibility gradually throughout the semester.
-- Clear limitations are part of reproducible and responsible project work.
+- Clear limitations are part of responsible project work.

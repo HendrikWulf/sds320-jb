@@ -71,7 +71,7 @@ my-sds320-project/
 └── report/
 ```
 
-You may use a different structure if it is clearer for your project. The important part is that another person can understand where to start, which files are essential and which outputs belong to the final project.
+Adapt the structure if another organisation is clearer for your project. The important part is that another person can understand where to start, which files are essential and which outputs belong to the final project.
 
 ---
 
@@ -211,7 +211,7 @@ For code organisation, see [Notebooks and scripts](../02_setup/03_notebooks-scri
 | --- | --- |
 | The README is empty | Add title, summary, question, data, method and run order. |
 | The repository has many files but no structure | Group files into notebooks, scripts, data, results and report folders. |
-| The project only runs on your computer | Check for absolute paths and missing environment information. |
+| The project only runs on your computer | Check paths and environment information. |
 | Data are uploaded but licence is unclear | Remove or restrict data and document access instead. |
 | The main workflow is hidden in several notebooks | Add a run order to the README. |
 | Notebooks fail after restarting the kernel | Fix hidden-state problems before final submission. |

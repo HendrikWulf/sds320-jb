@@ -15,82 +15,78 @@ From first idea to final spatial analytics project
 
 ## Why a project lifecycle helps
 
-Spatial data science projects become easier to manage when you see them as a sequence of decisions and revisions.
+Spatial data science projects become easier to manage when you treat them as a sequence of decisions, tests and revisions.
 
-At the start, your project may feel like a broad idea: urban heat, land-cover change, flood risk, vegetation monitoring, object detection or satellite embeddings. A project lifecycle helps you turn that idea into a concrete workflow with data, methods, outputs and interpretation.
+At the start, your project may feel like a broad idea: urban heat, land-cover change, flood risk, vegetation monitoring, object detection or satellite embeddings. The lifecycle helps you turn that idea into a feasible workflow with a question, data, method, output and interpretation.
 
-The lifecycle also reminds you that project progress is not only “working code”. Progress can mean a clearer research question, a rejected dataset, a smaller study area, a better folder structure, a documented limitation or a figure that reveals a problem.
+Progress is not only “working code”. Progress can also mean a clearer question, a rejected dataset, a smaller study area, a documented limitation or a figure that reveals a problem.
 
 ---
 
 ## The SDS320 project lifecycle
 
-A useful SDS320 project lifecycle looks like this:
+A useful SDS320 lifecycle looks like this:
 
 ```text
-Explore topic
+→ Explore topic
 → formulate question
 → check data
 → choose method
 → design workflow
 → build prototype
 → evaluate output
-→ improve and document
+→ document and improve
 → prepare repository, report and presentation
-→ reflect on limitations and next steps
+→ reflect on limitations
 ```
 
 ### 1. Explore possible topics
 
-Start with broad interests. Which spatial patterns, changes, objects or relationships would you like to analyse? What kind of problem is meaningful for environmental monitoring, urban analysis, public administration or research?
+Start with several broad interests. Which spatial patterns, changes, objects or relationships would you like to analyse? Which applied problem could your project help explain?
 
-At this stage, quantity matters. Collect several ideas before choosing one.
+Collect options before choosing one. Early variety makes it easier to find a feasible project.
 
 ### 2. Formulate a spatial research question
 
-Turn your topic into a question that can guide data, methods and evaluation. A good question is specific enough to implement, but open enough to require analysis.
+Turn the topic into a question that guides data, methods and evaluation. A good question is specific enough to implement, but open enough to require analysis.
 
-For support, see [Research question](03_research-question.md).
+See [Research question](03_research-question.md).
 
 ### 3. Check data availability
 
-A project idea becomes realistic only when suitable data exist and can be accessed in time. Check spatial coverage, time period, format, size, quality, licence and documentation.
-
-Do this early. Data problems discovered late are difficult to fix.
+A project becomes realistic only when suitable data exist and can be accessed in time. Check spatial coverage, time period, format, size, quality, licence and documentation early.
 
 ### 4. Choose suitable methods
 
-Choose methods because they fit the question and data, not only because they are technically interesting.
+Choose methods because they fit your question and data. Complex methods are not automatically better. A simpler baseline can make your project more robust and easier to interpret.
 
-For example, {term}`Object Detection` fits questions about locating discrete objects, while {term}`Semantic Segmentation` fits questions about mapping classes for every pixel. Simpler baselines can also be useful, especially when they make the project more feasible.
+See [Data, methods and scope](05_data-methods-scope.md).
 
 ### 5. Design the workflow
 
-Plan the steps from raw data to final output. Include preprocessing, analysis, evaluation, visualisation and documentation.
+Plan how raw data become results. Include preprocessing, analysis, evaluation, visualisation and documentation.
 
-For support, see [Workflow design](04_workflow-design.md).
+See [Workflow design](04_workflow-design.md).
 
-### 6. Implement a first prototype
+### 6. Build a first prototype
 
 Start small. Test one file, one year, one tile, one class or one area before scaling up.
 
-A prototype should answer: Can this workflow work in principle?
+A prototype answers one question: can this workflow work in principle?
 
-### 7. Evaluate outputs
+### 7. Evaluate the output
 
-Check whether your output is meaningful. Evaluation may include metrics, visual inspection, comparison with reference data, error analysis or a discussion of uncertainty.
+Check whether the output is useful and trustworthy. Depending on your project, this may involve metrics, visual inspection, comparison with reference data, error analysis or uncertainty discussion.
 
-The right evaluation depends on your project question and method.
+### 8. Document and improve
 
-### 8. Improve and document the workflow
-
-Revise your project based on what you learn. Save important outputs, record decisions and keep your notebooks, scripts and README readable.
+Revise the project based on what you learn. Save important outputs, record decisions and keep notebooks, scripts and README files readable.
 
 ### 9. Prepare repository, report and Präsi
 
-Your final submission includes a short report and a public GitHub or GitLab repository. You also present your project twice during the semester: first as a concept, later as an implemented workflow.
+Your final project includes a short report and a public GitHub or GitLab {term}`Repository`. You also present your project twice: first as a concept, later as an implemented workflow.
 
-### 10. Reflect on limitations and next steps
+### 10. Reflect on limitations
 
 A good project does not hide limitations. It explains what worked, what did not work, where uncertainty remains and what could be improved with more time.
 
@@ -98,55 +94,48 @@ A good project does not hide limitations. It explains what worked, what did not 
 
 ## Iteration is expected
 
-Project work is rarely linear. You may need to revise your question after checking data, simplify a method after testing code, reduce the study area because processing is too slow, or change the expected output after feedback.
-
-This is normal. Iteration is not failure. It is how projects become feasible.
+Project work is rarely linear. You may revise your question after checking data, simplify a method after testing code, reduce the study area because processing is too slow, or change the expected output after feedback.
 
 ```{tip}
-When something does not work, document what you tested and why you changed direction. Failed tests can be useful evidence for project decisions.
+When something does not work, document what you tested and why you changed direction. A well-explained failed test can support a good project decision.
 ```
 
 ---
 
 ## What progress looks like
 
-Progress can look like:
+Progress can mean:
 
 - a narrower research question,
 - a confirmed data source,
-- a smaller but realistic study area,
 - a first data inventory,
+- a working prototype on a small example,
 - a workflow diagram,
-- a prototype that works on one tile,
-- an output that reveals a data problem,
-- a figure that clarifies the project story,
-- a README that explains how to run your code,
-- a limitation that is clearly documented.
+- a draft figure,
+- a documented limitation,
+- a README that explains the current run order,
+- a clear next decision.
 
 Do not wait for perfect results before documenting your work.
 
 ---
 
-## Common pitfalls
+## Flags & checks
 
-Typical project lifecycle problems include:
-
-- starting with a method instead of a question,
-- choosing data too late,
-- aiming for too much in one semester,
-- postponing documentation,
-- ignoring failed intermediate results,
-- trying to make all code work only at the end,
-- leaving repository cleanup until submission week,
-- producing figures without a clear project argument.
+| Red flag | First check |
+| --- | --- |
+| You started with a method but no question | Return to [Research question](03_research-question.md). |
+| You have not checked data availability | Find one candidate dataset and test whether you can open it. |
+| The project has too many goals | Define the smallest version that could still produce a meaningful result. |
+| Documentation is postponed | Add one short note after each important decision or test. |
+| You ignore failed intermediate results | Record what failed and what this means for your next step. |
+| Repository cleanup is left until the end | Start the README and folder structure now. |
 
 ---
 
 ## Mini task
 
-Create a short project lifecycle sketch for your current idea.
-
-Use this template:
+Create a short lifecycle sketch for your current idea.
 
 ```text
 Topic:
@@ -160,7 +149,7 @@ Possible limitation:
 Next decision point:
 ```
 
-Then add one sentence:
+Then add:
 
 ```text
 The first thing I need to test is ...
@@ -171,7 +160,7 @@ The first thing I need to test is ...
 ## Key takeaways
 
 - A project lifecycle helps you manage decisions, not only tasks.
-- Iteration is expected in spatial data science projects.
-- Progress includes clearer decisions, better documentation and useful failed tests.
+- Iteration is expected.
 - Start small, test early and revise when needed.
+- Document decisions while they happen.
 - Your final project should show how your idea developed into an implemented workflow.

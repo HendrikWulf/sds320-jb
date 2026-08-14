@@ -19,29 +19,11 @@ A workflow turns your research question into an implementable project. It shows 
 
 Without a workflow, it is easy to jump between notebooks, tools and ideas without knowing what depends on what. With a workflow, you can implement the project step by step, debug problems more easily, explain your decisions and improve {term}`Reproducibility`.
 
-A good workflow also helps you identify what can be simplified when time, data or computing power become limiting.
-
 ---
 
 ## What is a spatial analytics workflow?
 
 A spatial analytics workflow connects:
-
-- input data,
-- preprocessing,
-- analysis or model,
-- evaluation,
-- visualisation,
-- interpretation,
-- documentation.
-
-In SDS320, the workflow should show both technical steps and project logic. It should answer not only “What code do I run?” but also “Why does this step belong in the project?”
-
----
-
-## A simple workflow template
-
-A general project workflow can be written as:
 
 ```text
 Question
@@ -67,6 +49,8 @@ Define study area
 → interpret pattern and limitations
 ```
 
+The workflow should show both technical steps and project logic. It should answer not only “What code do I run?” but also “Why does this step belong in the project?”
+
 ---
 
 ## Workflow diagram
@@ -74,44 +58,52 @@ Define study area
 A simple diagram can make your project easier to discuss during feedback sessions.
 
 ```{mermaid}
-flowchart LR
-    A[Research question] --> B[Input data]
-    B --> C[Preprocessing]
-    C --> D[Analysis or model]
-    D --> E[Output]
-    E --> F[Evaluation]
-    F --> G[Interpretation]
-    G --> H[Report and presentation]
+%%{init: {"flowchart": {"htmlLabels": true, "nodeSpacing": 60, "rankSpacing": 45}} }%%
+
+flowchart TB
+    A["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Research question</b><br/><em>What do I want to find out?</em></div>"]
+    B["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Input data</b><br/><em>Which data can answer the question?</em></div>"]
+    C["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Preprocessing</b><br/><em>How do I prepare the data?</em></div>"]
+    D["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Analysis or model</b><br/><em>Which method fits the task?</em></div>"]
+    E["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Output</b><br/><em>What does the workflow produce?</em></div>"]
+    F["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Evaluation</b><br/><em>How do I check the result?</em></div>"]
+    G["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Interpretation</b><br/><em>What does the result mean?</em></div>"]
+    H["<div style='width: 320px; text-align: center; line-height: 1.25;'><b>Report and presentation</b><br/><em>How do I communicate it?</em></div>"]
+
+    A --> B --> C --> D --> E --> F --> G --> H
+
+    classDef workflowBox fill:#f8f9fa,stroke:#6c757d,stroke-width:1px,color:#111;
+    class A,B,C,D,E,F,G,H workflowBox;
 ```
 
-You can adapt this diagram to your project. The goal is clarity, not decorative complexity.
+Adapt the diagram to your project. The goal is clarity, not decorative complexity.
 
 ---
 
-## Designing your workflow backwards
+## Design your workflow backwards
 
-One useful strategy is to start from the end.
+Start from the result you want to communicate.
 
 Ask:
 
-1. What is the main figure, map, metric or result I want to show?
-2. What output do I need to create that figure or metric?
+1. What is the main figure, map, metric or result?
+2. What output is needed to create it?
 3. Which method can produce that output?
 4. Which input data are required?
-5. Which preprocessing steps are needed before the method works?
-6. Which checks are needed to trust the output?
+5. Which preprocessing steps are needed?
+6. Which checks are needed before I trust the output?
 
 This prevents workflows that collect many data and methods without a clear final purpose.
 
 ```{tip}
-Design at least one “minimum viable workflow”: the smallest version of your project that can produce a meaningful result.
+Design a minimum viable workflow: the smallest version of your project that can produce a meaningful result.
 ```
 
 ---
 
-## Example: minimum viable workflow
+## Minimum viable workflow
 
-A minimum viable workflow is a reduced version of your project that works on a small example.
+A minimum viable workflow might be:
 
 ```text
 One study area
@@ -127,88 +119,37 @@ Once this works, you can decide whether to expand.
 
 ---
 
-## What to include in a workflow diagram
-
-A useful workflow diagram usually includes:
-
-- input datasets,
-- main preprocessing steps,
-- analysis or model step,
-- important intermediate outputs,
-- evaluation step,
-- final outputs,
-- software or notebooks where helpful,
-- decision points or possible fallback options.
-
-Avoid making the diagram too detailed. If every minor operation appears, the main logic becomes hard to see.
-
----
-
-## Intermediate outputs
-
-Save important {term}`Intermediate Outputs <Intermediate Output>` when they help you debug or rerun the project.
-
-Examples include:
-
-- clipped study-area data,
-- reprojected layers,
-- training tiles,
-- cleaned attribute tables,
-- first model predictions,
-- evaluation tables,
-- draft figures.
-
-Do not save every temporary file forever. Keep outputs that support reproducibility, evaluation or communication.
-
----
-
 ## Decision points
-
-Your workflow should show where decisions may be needed:
 
 | Decision | Example question |
 | --- | --- |
 | Data choice | Is the spatial or temporal resolution suitable? |
-| Study area | Can the project be completed for the full area or should it be smaller? |
+| Study area | Can the full area be processed, or should it be smaller? |
 | Method | Is a complex model needed, or is a simpler baseline enough? |
 | Evaluation | Do I have reference data or another way to assess output quality? |
 | Output | Which figure or map best supports the research question? |
 
 ---
 
-## Common pitfalls
-
-Typical workflow problems include:
-
-- hidden preprocessing steps,
-- unclear intermediate outputs,
-- trying to do everything in one notebook,
-- not saving important intermediate results,
-- no evaluation step,
-- no link between method and question,
-- workflows that depend on manual clicks but are not documented,
-- final figures that are not connected to the research question.
-
----
-
 ## Flags & checks
+
+Use this table when your workflow becomes difficult to explain, rerun or connect to the research question.
 
 | Red flag | First check |
 | --- | --- |
 | You cannot explain your project in 6–8 steps | Write the workflow as plain text before coding more. |
 | Your method is clear but your question is not | Return to [Research question](03_research-question.md). |
-| You have many datasets but no output plan | Design backwards from the final figure or map. |
-| Your workflow only works after manual steps | Document those steps or replace them with code where possible. |
-| You have no evaluation step | Decide how you will judge whether the output is useful. |
-| Your notebook order is unclear | Use numbered notebooks and document the run order in the README. |
+| You have many datasets but no output plan | Design backwards from the final figure, map, metric or result. |
+| Preprocessing is hidden or scattered | Make the sequence explicit and save important intermediate outputs. |
+| Everything happens in one large notebook | Split exploration, preprocessing, analysis and results into clearer notebooks or scripts. |
+| You have no evaluation step | Decide how you will judge whether the output is useful or trustworthy. |
+| The workflow feels too complex to finish | Define a minimum viable workflow with one dataset, one method, one output and one check. |
 
 ---
 
 ## Mini task
 
 Write your project workflow in 6–8 steps.
-
-Use this template:
 
 ```text
 1. ...
@@ -233,7 +174,7 @@ Fallback if this step fails:
 ## Key takeaways
 
 - A workflow connects your question, data, method, output and interpretation.
-- Designing backwards helps keep the project focused.
+- Designing backwards keeps the project focused.
 - A minimum viable workflow is better than an ambitious workflow that never runs.
 - Workflow diagrams support feedback and reproducibility.
 - Every project should include an evaluation or plausibility-check step.

@@ -41,9 +41,7 @@ It should explain:
 
 The goal is to receive feedback early enough to improve the project before most implementation work is completed.
 
-### Useful concept-presentation structure
-
-A possible structure is:
+A useful structure is:
 
 ```text
 1. Project title and motivation
@@ -79,11 +77,7 @@ The final presentation should show development from idea to implemented spatial 
 
 ---
 
-## How the final presentation should differ from the concept presentation
-
-The final presentation should not simply repeat the concept presentation.
-
-Use this comparison:
+## Concept vs. final presentation
 
 | Concept presentation | Final presentation |
 | --- | --- |
@@ -110,7 +104,7 @@ Suitable formats include:
 - focused discussion of limitations,
 - comparison between planned and final implementation.
 
-Do not use a live demo for everything. Live demos can be useful, but they can also fail or take too long. If you use one, keep it short and have screenshots or figures as backup.
+Live demos can be useful, but they can also fail or take too long. Keep them short and have screenshots or figures as backup.
 
 ---
 
@@ -168,9 +162,9 @@ One clear key-result slide is often more convincing than five crowded result sli
 
 ## Explaining limitations
 
-Limitations are not a sign that the project failed. They show that you understand your data, method and result.
+Limitations show that you understand your data, method and result.
 
-Useful limitation language:
+Useful phrasing:
 
 ```text
 This result should be interpreted carefully because ...
@@ -181,13 +175,13 @@ With more time, I would improve ...
 
 ---
 
-## Common pitfalls
+## Flags & checks
 
-| Pitfall | Better approach |
+| Red flag | First check |
 | --- | --- |
 | Too much background | Move quickly to the project question. |
-| Unclear research question | State the question early and return to it at the end. |
-| Too many figures | Select the figures that support the main story. |
+| The research question is unclear | State it early and return to it at the end. |
+| Too many figures | Select only visuals that support the main story. |
 | No workflow explanation | Include a simple workflow diagram. |
 | Method and result are disconnected | Explain how the method produced the output. |
 | No limitations | Discuss uncertainty, data limits or implementation limits. |
@@ -200,8 +194,6 @@ With more time, I would improve ...
 ## Mini task
 
 Write a one-minute explanation of your project.
-
-Use this structure:
 
 ```text
 My project investigates ...
@@ -219,7 +211,7 @@ Read it aloud. If it takes too long or feels unclear, simplify the project story
 ## Key takeaways
 
 - The concept presentation is for feedback on the plan.
-- The final presentation is for explaining implementation, results and learning.
+- The final presentation explains implementation, results and learning.
 - The final presentation should show development, not repetition.
 - Clear figures, a workflow diagram and honest limitations make the presentation stronger.
 - Your audience should understand what you asked, what you did, what you found and what remains uncertain.

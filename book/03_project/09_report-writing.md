@@ -42,59 +42,25 @@ The report must be submitted as a PDF via the corresponding MS Teams assignment.
 
 The report should not exceed **6500 characters including spaces**, excluding figures and references.
 
-Do not invent extra requirements beyond the syllabus. Follow updated course instructions if they are announced through the official course channels.
-
-<!-- TODO: add final submission link or Teams assignment name once available. -->
-
 ---
 
 ## Suggested report structure
 
-Use the structure below as a recommendation. Adapt it if your project needs a slightly different flow.
+Use this as a recommendation and adapt it where needed.
 
-### 1. Title
+| Section | Function |
+| --- | --- |
+| Title | Name the project clearly and specifically. |
+| Motivation and research question | Explain why the project matters and state the question early. |
+| Data | Describe datasets, sources, coverage, time period, format and limitations. |
+| Methods and implementation | Explain the workflow and key method choices. |
+| Results | Present the main outputs with key figures or maps. |
+| Discussion and limitations | Explain meaning, reliability, uncertainty and limitations. |
+| Conclusion | Briefly answer the research question. |
+| References | Cite data, methods, literature, code sources and external material. |
+| AI use statement, if applicable | State when and how AI tools supported your work. |
 
-Use a clear and specific title. A good title usually conveys the project message or spatial focus, not only the method.
-
-### 2. Motivation and research question
-
-Briefly explain why the project matters and state the research question clearly.
-
-Keep background short. The reader should quickly understand the problem, area and purpose.
-
-### 3. Data
-
-Describe the datasets you used. Include relevant information such as provider, spatial coverage, time period, format, resolution, licence and any important limitations.
-
-### 4. Methods and implementation
-
-Explain the main workflow and method choices. Focus on what is needed to understand and reproduce the analysis.
-
-You do not need to include every code detail. Detailed code belongs in the repository.
-
-### 5. Results
-
-Present the main results using clear text and key figures or maps.
-
-Lead with important results, not with the amount of effort involved.
-
-### 6. Discussion and limitations
-
-Explain what the results mean, how reliable they are and what limitations remain.
-
-Limitations can concern data quality, spatial resolution, model performance, evaluation, assumptions, computing constraints or scope.
-
-### 7. Conclusion
-
-Briefly answer the research question and state the main takeaway.
-
-### 8. References
-
-Include references for data, methods, code sources, literature and other external materials where relevant.
-
-### 9. AI use statement, if applicable
-
-If you used AI tools, describe when and how they supported your work. See [AI use and integrity](../01_course/05_ai-integrity.md).
+For AI guidance, see [AI use and integrity](../01_course/05_ai-integrity.md).
 
 ---
 
@@ -123,11 +89,9 @@ Read your report aloud. If a sentence is hard to read aloud, it is probably hard
 
 ---
 
-## Writing about methods
+## Writing about methods and results
 
-The methods section should explain why and how the workflow was implemented.
-
-A useful pattern is:
+For methods, explain why and how the workflow was implemented.
 
 ```text
 Input data
@@ -137,25 +101,9 @@ Input data
 → output generation
 ```
 
-Mention software only where it matters for reproducibility. The repository should contain more detailed setup information.
+Mention software where it matters for reproducibility. Detailed code belongs in the repository, not in the short report.
 
-For methods, put the reason before the technical detail where possible:
-
-```text
-To compare land-cover patterns across time, the images were first reprojected and clipped to the same study area.
-```
-
-This is usually clearer than starting with tool names or low-level operations.
-
----
-
-## Writing about results
-
-Results should prioritise what matters for the research question.
-
-Avoid “statspeak” or output descriptions that the reader cannot interpret. Explain what a value, map or metric means for the project.
-
-For each key result, ask:
+For results, lead with what matters for the research question. For each key result, ask:
 
 - What did I find?
 - Where is it visible?
@@ -183,17 +131,17 @@ Failed attempts can be mentioned briefly if they explain an important project de
 
 ---
 
-## Common pitfalls
+## Flags & checks
 
-| Pitfall | Better approach |
+| Red flag | First check |
 | --- | --- |
-| The research question appears only at the end | State it early and return to it in the conclusion. |
+| The research question appears late | State it near the beginning. |
 | The report describes tools but not decisions | Explain why each key step was needed. |
-| Data sources are vague | Name provider, coverage, time period and important limitations. |
+| Data sources are vague | Name provider, coverage, time period and limitations. |
 | Figures are shown but not interpreted | Explain what each figure demonstrates. |
 | The discussion hides problems | State limitations clearly and professionally. |
 | The report repeats generic course content | Focus on your project. |
-| The repository link is missing | Include the public repository link in the report. |
+| The repository link is missing | Add the public repository link. |
 | AI use is not disclosed | Add a short, accurate AI-use statement if applicable. |
 
 ---
@@ -218,6 +166,6 @@ Then check whether the five sentences already form a coherent project story.
 
 - The report should explain what you did, why you did it and what you found.
 - Keep the report concise and focused on the project.
-- Use figures and maps as evidence, not decoration.
+- Use figures and maps as evidence.
 - Discuss limitations honestly.
 - Include the public repository link and AI-use statement where applicable.

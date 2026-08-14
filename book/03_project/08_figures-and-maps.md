@@ -15,14 +15,14 @@ Communicating spatial results clearly and honestly
 
 ## Why figures and maps matter
 
-Figures and maps are not decoration. They are evidence for your project argument.
+Figures and maps are evidence for your project argument.
 
 A good figure helps the reader understand what you analysed, what you found and why it matters. A weak figure can confuse the reader, hide uncertainty or make a result look more precise than it is.
 
-The SDS110 visualisation material used a simple starting point: every visualisation should begin with a question. For SDS320, ask:
+Start every visual with a question:
 
 ```text
-What do I want the reader to learn from this figure?
+What should the reader learn from this figure?
 Where is the result located?
 Why does this visual matter?
 Who is the audience?
@@ -32,17 +32,16 @@ Who is the audience?
 
 ## What makes a good project figure?
 
-A good SDS320 figure or map usually:
+A good figure or map usually:
 
-- answers or supports the research question,
+- supports the research question,
 - focuses on one main message,
 - has a clear caption,
 - shows enough spatial context,
-- uses a suitable {term}`Basemap` only when helpful,
-- includes a legend, labels, units and time frame where needed,
-- uses colour choices that match the data and do not mislead,
-- is readable in both report and presentation formats,
-- avoids unnecessary visual clutter,
+- includes legend, labels, units and time frame where needed,
+- uses suitable colour choices,
+- is readable in report and presentation formats,
+- avoids unnecessary clutter,
 - makes limitations visible or discusses them in the caption or text.
 
 ```{tip}
@@ -75,21 +74,19 @@ Not every project needs all of these. Choose figures that serve your argument.
 
 Before using a map in your report or presentation, check:
 
-- [ ] Does the map answer a specific question?
-- [ ] Is the title or caption clear?
-- [ ] Is the study area visible and understandable?
+- [ ] Does the map answer or support a specific question?
+- [ ] Is the study area clear?
 - [ ] Is the legend readable?
 - [ ] Are labels, units and time frames included where needed?
 - [ ] Is the projection suitable for the purpose?
 - [ ] Is the colour scale appropriate for the data type?
-- [ ] Are class breaks or value ranges consistent where comparisons are made?
-- [ ] Is the layout readable?
-- [ ] Are uncertainties or limitations mentioned where relevant?
+- [ ] Are class breaks consistent when comparing maps?
+- [ ] Are uncertainty or limitations mentioned where relevant?
 
 For satellite RGB or false-colour images, explain the assigned channels, for example:
 
 ```text
-R, G, B = near-infrared, red, green
+R, G, B = shortwave-infrared, near-infrared, red
 ```
 
 ---
@@ -124,17 +121,7 @@ Figure X. Predicted built-up areas in the study area based on a semantic segment
 
 ## Visual hierarchy and storytelling
 
-Visual hierarchy means that the most important information is easiest to see.
-
-Use hierarchy through:
-
-- title and caption,
-- colour emphasis,
-- line weight,
-- spacing,
-- grouping,
-- annotation,
-- figure order.
+Visual hierarchy means that the most important information is easiest to see. Use hierarchy through title, caption, colour emphasis, annotation, spacing and figure order.
 
 Storytelling does not mean exaggeration. It means guiding the reader from question to evidence to interpretation.
 
@@ -146,23 +133,19 @@ For your final presentation, one strong key-result figure is often more effectiv
 
 | Pitfall | Better approach |
 | --- | --- |
-| Too many figures | Select the few figures that support the main argument. |
-| Unclear legend | Simplify classes and use readable labels. |
-| Unreadable labels | Increase font size and reduce clutter. |
-| No spatial context | Add study area outline, reference locations or a small overview map. |
-| Misleading colour scale | Use colour choices that match the data type and avoid false precision. |
-| Comparing maps with different class breaks | Use consistent breaks when the goal is comparison. |
-| Showing model output without limitations | Add evaluation, uncertainty or a clear caution. |
-| Figure not mentioned in the text | Refer to every figure and explain why it matters. |
-| Caption only describes colours | Explain the result, not only the visual elements. |
+| The figure does not support the research question | Remove it or change the message. |
+| The map has no spatial context | Add study area outline, reference locations or overview map. |
+| Labels or legends are hard to read | Simplify classes and increase readability. |
+| Colours imply false precision | Use a colour scale that matches the data type. |
+| Maps are compared with different class breaks | Use consistent breaks where comparison is intended. |
+| Model output is shown without limitations | Add evaluation, uncertainty or a clear caution. |
+| Caption only describes colours | Explain what the figure demonstrates. |
 
 ---
 
 ## Mini task
 
-Choose one figure or map that could become central to your SDS320 project.
-
-Write:
+Choose one figure or map that could become central to your project.
 
 ```text
 Figure purpose:
