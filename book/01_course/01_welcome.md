@@ -13,7 +13,7 @@ Welcome to SDS320: Spatial Data Analytics
 
 ---
 
-## Welcome to SDS320
+## 1. Welcome to SDS320
 
 This course is the final module of the Spatial Data Science minor. It builds on the foundations you developed in earlier SDS modules and gives you space to apply them in a more independent, project-oriented setting.
 
@@ -21,7 +21,7 @@ You have already worked with spatial data, GIS, remote sensing and Python. In SD
 
 ---
 
-## What this course is about
+## 2. What this course is about
 
 SDS320 moves from data handling and programming fundamentals toward applied spatial analytics and data-driven modelling.
 
@@ -31,7 +31,7 @@ The goal is not to cover every method in full theoretical depth. The goal is to 
 
 ---
 
-## Who this course is for
+## 3. Who this course is for
 
 This course is for students who have completed earlier SDS modules and are ready to work more independently.
 
@@ -41,7 +41,7 @@ You should, however, be willing to work steadily on your own project, ask questi
 
 ---
 
-## What you will develop
+## 4. What you will develop
 
 Throughout the semester, you will develop an independent spatial data science project.
 
@@ -59,7 +59,7 @@ The final outcome should show that you can design, implement and explain a repro
 
 ---
 
-## How to approach the course
+## 5. How to approach the course
 
 SDS320 follows a project-driven teaching concept.
 
@@ -69,7 +69,7 @@ Our weekly in-person sessions partly comprise lectures on a given topic. However
 
 ---
 
-## What success looks like
+## 6. What success looks like
 
 A successful SDS320 project is one that makes you proud of your achievements. It does not have to be technically perfect. What matters more is that your project motivates you and provides multiple learning opportunities.
 

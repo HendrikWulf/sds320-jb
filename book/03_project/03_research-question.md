@@ -13,7 +13,7 @@ Turning a broad spatial idea into a feasible project question
 
 ---
 
-## Why the research question matters
+## 1. Why the research question matters
 
 A research question is the engine of your project. It guides what data you need, which method makes sense, how you evaluate outputs and how you explain results.
 
@@ -21,7 +21,7 @@ Without a clear question, a project can become a loose collection of tools: down
 
 ---
 
-## From topic to question
+## 2. From topic to question
 
 A topic is not yet a project. A project begins when you connect a question to data, method, output and evaluation.
 
@@ -35,7 +35,7 @@ A topic is not yet a project. A project begins when you connect a question to da
 
 ---
 
-## What makes a good research question?
+## 3. What makes a good {abbr}`RQ (research question)`?
 
 A good SDS320 research question is usually:
 
@@ -51,7 +51,7 @@ The SDS110 project-planning material (lecture 4) used the FINER criteria: feasib
 
 ---
 
-## Use PICOT to sharpen the question
+## 4. Use PICOT to sharpen the question
 
 The PICOT framework can help you make a question more precise.
 
@@ -71,7 +71,7 @@ How does [indicator] differ between [comparison groups] for [population/features
 
 ---
 
-## Useful question patterns
+## 5. Useful question patterns
 
 ```text
 How does [spatial phenomenon] vary across [area/time/classes]?
@@ -95,7 +95,7 @@ How well can [method] map or predict [spatial feature] from [input data]?
 
 ---
 
-## Weak vs improved examples
+## 6. Weak vs improved examples
 
 The examples below are illustrative.
 
@@ -109,7 +109,7 @@ The examples below are illustrative.
 
 ---
 
-## Scope check
+## 7. Scope check
 
 Before settling on a question, check:
 
@@ -126,7 +126,7 @@ If several answers are unclear, narrow the question before adding technical comp
 
 ---
 
-## Decision points
+## 8. Decision points
 
 Ask yourself:
 
@@ -138,7 +138,7 @@ Ask yourself:
 
 ---
 
-## Mini task
+## 9. Mini task
 
 Write three versions to improve your question:
 
@@ -160,7 +160,7 @@ It can be evaluated by ...
 
 ---
 
-## Key takeaways
+## 10. Key takeaways
 
 - A good research question guides data, methods, workflow, evaluation and communication.
 - Start broad, then narrow.

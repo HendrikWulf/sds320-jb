@@ -13,7 +13,7 @@ Making your project understandable and rerunnable
 
 ---
 
-## Why reproducibility matters
+## 1. Why reproducibility matters
 
 {term}`Reproducibility` means that someone else can understand and rerun the main steps of your project.
 
@@ -25,7 +25,7 @@ This page builds on the [SDS210 reproducibility material](https://hendrikwulf.gi
 
 ---
 
-## What reproducibility means in this course
+## 2. What reproducibility means in this course
 
 In SDS320, reproducibility does not mean that every large dataset must be stored in your repository. It means that the main workflow is understandable and rerunnable from documented materials.
 
@@ -43,7 +43,7 @@ Another student should be able to answer:
 
 ---
 
-## Reproducibility checklist
+## 3. Reproducibility checklist
 
 Use this checklist throughout the semester.
 
@@ -79,7 +79,7 @@ Use this checklist throughout the semester.
 
 ---
 
-## Reproducibility during the project
+## 4. Reproducibility during the project
 
 Do not wait until the final week to make your project reproducible. Build reproducibility gradually.
 
@@ -108,7 +108,7 @@ Your future self is also a user of your project. Write instructions so that you 
 
 ---
 
-## Flags & checks
+## 5. Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -122,7 +122,7 @@ Your future self is also a user of your project. Write instructions so that you 
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Identify one part of your current workflow that someone else could not yet reproduce.
 
@@ -138,7 +138,7 @@ Then make one small change: update a README, rename a file, add a path check, sa
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 - Reproducibility is a practical project habit.
 - Another student should be able to understand and rerun your main workflow.

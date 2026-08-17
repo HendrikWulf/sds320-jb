@@ -13,7 +13,7 @@ How to read, use and return to the SDS320 course materials
 
 ---
 
-## The role of this book
+## 1. The role of this book
 
 This Jupyter Book is the central reference for SDS320.
 
@@ -23,7 +23,7 @@ The book is not meant to be read once from beginning to end and then forgotten. 
 
 ---
 
-## Main parts of the book
+## 2. Main parts of the book
 
 The book is organised into several main sections:
 
@@ -36,7 +36,7 @@ The book is organised into several main sections:
 
 ---
 
-## How lessons are structured
+## 3. How lessons are structured
 
 Most lessons follow a modular structure. They start with an overview page that introduces the topic and gives you the learning path. The subsequent chapter pages then guide you through focused parts of the topic.
 
@@ -52,7 +52,7 @@ The project-transfer page is especially important. It helps you connect the less
 
 ---
 
-## How to study before class
+## 4. How to study before class
 
 Before the session, start with the overview page. Read the context, motivation and learning objectives. If you find the topic relevant or interesting, work through the subsequent pages in order.
 
@@ -68,7 +68,7 @@ Useful preparation for a topic of interest usually means:
 
 ---
 
-## How to use the book during project work
+## 5. How to use the book during projects
 
 During independent project work, you will often move away from the weekly topics.
 
@@ -80,7 +80,7 @@ This is expected. Project work is iterative, and you will often need to revisit 
 
 ---
 
-## When you feel lost
+## 6. When you feel lost
 
 If you are unsure where to start, go back to the parent page of the current lesson. Check the roadmap and identify which chapter page addresses your current question.
 

@@ -13,7 +13,7 @@ Ways you can contribute to the course.
 
 ---
 
-## Why feedback matters
+## 1. Why feedback matters
 
 Your feedback helps improve SDS320.
 
@@ -23,7 +23,7 @@ Both positive and critical feedback are useful. Positive feedback helps identify
 
 ---
 
-## What kind of feedback is useful?
+## 2. What kind of feedback is useful?
 
 Useful feedback can include:
 
@@ -43,7 +43,7 @@ Brief feedback is fine. A short note such as “The explanation of raster masks 
 
 ---
 
-## How to give feedback
+## 3. How to give feedback
 
 You can use different channels depending on the type of feedback.
 
@@ -83,7 +83,7 @@ If the course website has an “Edit this page” ✏️ icon at the top, you ma
 
 ---
 
-## Thank you
+## 4. Thank you
 
 Thank you for helping improve the course.
 

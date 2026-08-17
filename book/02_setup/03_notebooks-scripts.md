@@ -13,7 +13,7 @@ Choosing the right format for exploration, analysis and reproducibility
 
 ---
 
-## Why this distinction matters
+## 1. Why this distinction matters
 
 In SDS320, your project code should do more than produce a result once. It should help you explore data, test ideas, document decisions, rerun important steps and explain your workflow to others.
 
@@ -26,7 +26,7 @@ You do not need to choose one format for the whole project. A good project workf
 
 ---
 
-## The basic idea
+## 2. The basic idea
 
 A notebook is good for thinking with your code. A script is good for organising code that you want to reuse.
 
@@ -65,7 +65,7 @@ This pathway supports a clearer {term}`Data Pipeline` and improves {term}`Reprod
 
 ---
 
-### 1. What notebooks are good for
+### A. What notebooks are good for
 
 Use notebooks when you want to:
 
@@ -98,7 +98,7 @@ Use Markdown cells in notebooks to explain what a code block does, what you expe
 
 ---
 
-### 2. What scripts are good for
+### B. What scripts are good for
 
 Use scripts when you want to:
 
@@ -133,7 +133,7 @@ This example assumes that your project structure and Python import path support 
 
 ---
 
-### 3. A practical SDS320 structure
+### C. A practical SDS320 structure
 
 Your exact project structure may differ, but a clear separation between notebooks, scripts, data and results is useful.
 
@@ -177,7 +177,7 @@ Your `README.md` should explain the intended order of notebooks and scripts. You
 
 ---
 
-### 4. Moving code from notebook to script
+### D. Moving code from notebook to script
 
 You do not need to move everything into scripts. Move code when it improves clarity.
 
@@ -242,7 +242,7 @@ A good rule of thumb: keep exploratory thinking in notebooks, but move repeated 
 
 ---
 
-### 5. Keeping notebooks readable
+### E. Keeping notebooks readable
 
 A notebook should not only run. It should also tell the reader what is happening.
 
@@ -272,7 +272,7 @@ Avoid mixing too many unrelated tasks in one notebook. If one notebook contains 
 
 ---
 
-### 6. Hidden notebook state
+### F. Hidden notebook state
 
 A common notebook problem is hidden state. This happens when a notebook only works because cells were executed in a special order that is not visible from top to bottom.
 
@@ -290,7 +290,7 @@ A notebook that works only after manually running selected cells in a special or
 
 ---
 
-### 7. Scripts that are easy to reuse
+### G. Scripts that are easy to reuse
 
 A script should have a clear purpose. It does not need to be long or advanced.
 
@@ -311,7 +311,7 @@ Be careful with scripts that run a full analysis as soon as they are imported. T
 
 ---
 
-## Flags & checks
+## 3. Flags & checks
 
 Use this table when your notebooks or scripts become difficult to manage.
 
@@ -332,7 +332,7 @@ For technical debugging, see [Troubleshooting](05_troubleshooting.md).
 
 ---
 
-## Mini task
+## 4. Mini task
 
 Choose one notebook from your current or planned SDS320 project. If you do not yet have a project notebook, use your Python reactivation notebook.
 
@@ -354,7 +354,7 @@ Which part of this notebook supports exploration, and which part should become m
 
 ---
 
-## Key takeaways
+## 5. Key takeaways
 
 - Notebooks are useful for exploration, explanation and visual checks.
 - Scripts are useful for reusable logic and repeated processing.
@@ -362,14 +362,3 @@ Which part of this notebook supports exploration, and which part should become m
 - Restarting and rerunning notebooks helps reveal hidden-state problems.
 - Repeated code is a signal that a function or script may be useful.
 - Clear file names and a documented order make your repository easier to reproduce.
-
----
-
-### What to do next
-
-After this page:
-
-- use [Git basics](04_git-basics.md) to track your notebooks and scripts,
-- use [Workflow design](../03_project/04_workflow-design.md) to connect notebooks and scripts to your analytical workflow,
-- use [Repository](../03_project/07_repository.md) to document your final project structure,
-- use [Reproducibility](../03_project/06_reproducibility.md) to check whether someone else can rerun the main workflow.

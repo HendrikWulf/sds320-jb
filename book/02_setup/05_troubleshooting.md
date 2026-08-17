@@ -13,7 +13,7 @@ A practical guide for when your code, environment or data workflow breaks
 
 ---
 
-## Why errors matter
+## 1. Why errors matter
 
 Errors are normal in spatial data science. They are not a sign that you are bad at programming.
 
@@ -31,7 +31,7 @@ This page helps you:
 
 ---
 
-## A troubleshooting pathway
+## 2. A troubleshooting pathway
 
 When something breaks, use this routine.
 
@@ -49,7 +49,7 @@ read the error
 
 ---
 
-### 1. Read the error message
+### A. Read the error message
 
 Start at the bottom of the error message. Python usually shows the most direct error there.
 
@@ -75,7 +75,7 @@ The error message is not just noise. It is usually the best starting point.
 
 ---
 
-### 2. Identify the line that failed
+### B. Identify the line that failed
 
 Do not debug the whole notebook at once. Find the specific line that caused the error.
 
@@ -104,7 +104,7 @@ the problem may be:
 
 ---
 
-### 3. Check the active environment
+### C. Check the active environment
 
 Many package errors come from using the wrong Python environment.
 
@@ -130,7 +130,7 @@ If imports fail in the notebook but work in the terminal, your notebook may use 
 
 ---
 
-### 4. Check paths and files
+### D. Check paths and files
 
 Many spatial data workflows fail because a file path is wrong.
 
@@ -156,7 +156,7 @@ For more on paths, see [Python reactivation](02_python-reactivation.md).
 
 ---
 
-### 5. Run a smaller example
+### E. Run a smaller example
 
 If a workflow fails on a large dataset, test the same logic on something smaller.
 
@@ -188,7 +188,7 @@ A smaller example is not wasted time. It is often the fastest way to find the ac
 
 ---
 
-### 6. Inspect spatial assumptions
+### F. Inspect spatial assumptions
 
 Spatial workflows can produce wrong results even when Python does not raise an error.
 
@@ -209,7 +209,7 @@ A map that looks plausible is not proof that the analysis is correct, but a map 
 
 ---
 
-## Common error categories
+## 3. Common error categories
 
 ### A. Environment and package errors
 
@@ -446,7 +446,7 @@ For more help, see [Git basics](04_git-basics.md).
 
 ---
 
-## Troubleshooting with an AI tool
+## 4. Troubleshooting with an AI tool
 
 AI tools can be useful for debugging, but they are not a substitute for understanding your own code. Use them as a structured helper, not as an automatic fix button.
 
@@ -459,7 +459,7 @@ There are two common pathways:
 Do not paste private data, passwords, API keys, access tokens, unpublished student data or sensitive project material into external AI tools. When in doubt, remove file paths, credentials and data samples before asking.
 ```
 
-### What AI tools are good at
+### A. What AI tools are good at
 
 AI tools can help you:
 
@@ -481,7 +481,7 @@ They are less reliable for:
 - detecting all privacy or licensing problems,
 - guaranteeing that generated code is correct.
 
-### Before asking an AI tool
+### B. Before asking an AI tool
 
 Collect the context first:
 
@@ -505,7 +505,7 @@ Remove or anonymise:
 - large raw data samples,
 - information that should not leave the university environment.
 
-### Pathway A: external LLM in a browser
+### C. Pathway I: external LLM in a browser
 
 Use this when you want a plain-language explanation or a debugging plan.
 
@@ -533,7 +533,7 @@ Please explain the most likely causes and suggest three checks before changing t
 
 A good AI answer should help you decide what to test next. Do not copy a long block of generated code into your project without understanding it.
 
-### Pathway B: internal AI assistant
+### D. Pathway II: internal AI assistant
 
 VS Code can integrate AI coding assistants. The most common option is GitHub Copilot. Depending on your installation and account, Copilot Chat may support project questions, file references, terminal questions, `/fix`, and other code-improvement commands.
 
@@ -577,7 +577,7 @@ Suggest a smaller test case for this raster workflow before I run it on the full
 Help me turn this repeated notebook code into a small function. Keep the code readable for a student project.
 ```
 
-### Evaluate AI-generated advice
+### E. Evaluate AI-generated advice
 
 Before applying AI suggestions, ask:
 
@@ -595,7 +595,7 @@ AI-generated code can run and still be wrong. In spatial data science, you still
 
 ---
 
-### How to ask a good question
+### F. How to ask a good question
 
 Use this template when asking for help from instructors, peers or AI tools:
 
@@ -628,7 +628,7 @@ This question gives others enough information to suggest the likely cause: the n
 
 ---
 
-## Flags & checks
+## 5. Flags & checks
 
 Use this table before changing many things.
 
@@ -648,7 +648,7 @@ Use this table before changing many things.
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Take one previous error, warning or confusing output from your own Python work.
 
@@ -678,7 +678,7 @@ The goal is not only to fix one error. The goal is to build a troubleshooting ha
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 - Errors are normal in spatial data science projects.
 - Debug one problem at a time.

@@ -13,7 +13,7 @@ Planning the steps from raw data to interpretable results
 
 ---
 
-## Why workflow design matters
+## 1. Why workflow design matters
 
 A workflow turns your research question into an implementable project. It shows how raw data become results, figures and interpretation.
 
@@ -21,7 +21,7 @@ Without a workflow, it is easy to jump between notebooks, tools and ideas withou
 
 ---
 
-## What is a spatial analytics workflow?
+## 2. What is a spatial analytics workflow?
 
 A spatial analytics workflow connects:
 
@@ -53,7 +53,7 @@ The workflow should show both technical steps and project logic. It should answe
 
 ---
 
-## Workflow diagram
+## 3. Workflow diagram
 
 A simple diagram can make your project easier to discuss during feedback sessions.
 
@@ -80,7 +80,7 @@ Adapt the diagram to your project. The goal is clarity, not decorative complexit
 
 ---
 
-## Design your workflow backwards
+## 4. Design your workflow backwards
 
 Start from the result you want to communicate.
 
@@ -101,7 +101,7 @@ Design a minimum viable workflow: the smallest version of your project that can 
 
 ---
 
-## Minimum viable workflow
+## 5. Minimum viable workflow
 
 A minimum viable workflow might be:
 
@@ -119,7 +119,7 @@ Once this works, you can decide whether to expand.
 
 ---
 
-## Decision points
+## 6. Decision points
 
 | Decision | Example question |
 | --- | --- |
@@ -131,7 +131,7 @@ Once this works, you can decide whether to expand.
 
 ---
 
-## Flags & checks
+## 7. Flags & checks
 
 Use this table when your workflow becomes difficult to explain, rerun or connect to the research question.
 
@@ -147,7 +147,7 @@ Use this table when your workflow becomes difficult to explain, rerun or connect
 
 ---
 
-## Mini task
+## 8. Mini task
 
 Write your project workflow in 6–8 steps.
 
@@ -171,7 +171,7 @@ Fallback if this step fails:
 
 ---
 
-## Key takeaways
+## 9. Key takeaways
 
 - A workflow connects your question, data, method, output and interpretation.
 - Designing backwards keeps the project focused.

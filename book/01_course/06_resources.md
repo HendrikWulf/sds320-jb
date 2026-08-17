@@ -13,7 +13,7 @@ Where to find help, documentation and supporting material
 
 ---
 
-## Course platforms
+## 1. Course platforms
 
 SDS320 uses a small number of course platforms. Each has a specific role.
 
@@ -48,7 +48,7 @@ OLAT is used only to provide the course syllabus. All other course-related commu
 
 ---
 
-## Technical resources
+## 2. Technical resources
 
 The following types of resources may be useful while working on SDS320 projects.
 
@@ -98,7 +98,7 @@ Use these resources when working with classification, object detection, segmenta
 
 ---
 
-## Project resources
+## 3. Project resources
 
 For project work, the most important internal resources are:
 
@@ -109,7 +109,7 @@ For project work, the most important internal resources are:
 
 ---
 
-## Asking meaningful questions
+## 4. Asking meaningful questions
 
 Good questions are easier to answer and more useful for others.
 
@@ -131,7 +131,7 @@ I expected the output CRS to be EPSG:2056, but it remains EPSG:4326.
 Here is the code I ran, the output I got, and the error/warning message.
 ```
 
-## Keeping resources manageable
+## 5. Keeping resources manageable
 
 It is easy to open too many resources at once. Start with the course material and official documentation. Use videos, blogs, forums and AI tools selectively when they help you solve a specific problem.
 

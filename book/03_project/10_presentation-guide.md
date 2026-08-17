@@ -13,7 +13,7 @@ Explaining your project clearly at concept and final stage
 
 ---
 
-## Why presentations matter
+## 1. Why presentations matter
 
 Presentations are part of the SDS320 project process. They help you receive feedback, communicate decisions and show how your project develops over time.
 
@@ -26,7 +26,7 @@ The two presentations have different purposes. The concept presentation explains
 
 ---
 
-## Concept presentation
+## 2. Concept presentation
 
 The concept presentation focuses on your project plan.
 
@@ -57,7 +57,7 @@ Keep the presentation focused. At this stage, it is better to be clear about ope
 
 ---
 
-## Final presentation
+## 3. Final presentation
 
 The final presentation focuses on what you actually implemented, found and learned.
 
@@ -77,7 +77,7 @@ The final presentation should show development from idea to implemented spatial 
 
 ---
 
-## Concept vs. final presentation
+## 4. Concept vs. final presentation
 
 | Concept presentation | Final presentation |
 | --- | --- |
@@ -92,7 +92,7 @@ A strong final presentation is honest about changes. If your project became smal
 
 ---
 
-## Possible presentation formats
+## 5. Possible presentation formats
 
 Suitable formats include:
 
@@ -108,7 +108,7 @@ Live demos can be useful, but they can also fail or take too long. Keep them sho
 
 ---
 
-## Slide structure
+## 6. Slide structure
 
 A possible final-presentation slide outline is:
 
@@ -137,7 +137,7 @@ UZH presentation templates are available from the Corporate Design website:
 
 ---
 
-## Designing presentation visuals
+## 7. Designing presentation visuals
 
 Use figures and maps that are readable from a distance.
 
@@ -160,7 +160,7 @@ One clear key-result slide is often more convincing than five crowded result sli
 
 ---
 
-## Explaining limitations
+## 8. Explaining limitations
 
 Limitations show that you understand your data, method and result.
 
@@ -175,7 +175,7 @@ With more time, I would improve ...
 
 ---
 
-## Flags & checks
+## 9. Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -191,7 +191,7 @@ With more time, I would improve ...
 
 ---
 
-## Mini task
+## 10. Mini task
 
 Write a one-minute explanation of your project.
 
@@ -208,7 +208,7 @@ Read it aloud. If it takes too long or feels unclear, simplify the project story
 
 ---
 
-## Key takeaways
+## 11. Key takeaways
 
 - The concept presentation is for feedback on the plan.
 - The final presentation explains implementation, results and learning.

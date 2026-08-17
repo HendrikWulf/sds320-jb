@@ -13,7 +13,7 @@ The weekly structure of SDS320
 
 ---
 
-## How to read the schedule
+## 1. How to read the schedule
 
 Each week combines a lesson topic with a project focus.
 
@@ -23,7 +23,7 @@ The course is designed so that your project develops gradually. You should use t
 
 ---
 
-## Weekly programme
+## 2. Weekly programme
 
 | Week | Date | Lesson topic | Project focus | Suggested project progress |
 | :---: | :---: | --- | --- | --- |
@@ -44,7 +44,7 @@ The course is designed so that your project develops gradually. You should use t
 
 ---
 
-## Important project moments
+## 3. Important project moments
 
 Several weeks are especially important for project development:
 
@@ -58,7 +58,7 @@ Several weeks are especially important for project development:
 
 ---
 
-## Flexibility
+## 4. Flexibility
 
 The programme may be adjusted during the semester depending on implementation progress, student needs, project progress and technical requirements.
 

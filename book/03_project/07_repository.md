@@ -13,7 +13,7 @@ Organising your SDS320 project so others can understand and rerun it
 
 ---
 
-## Why the repository matters
+## 1. Why the repository matters
 
 Your SDS320 project must include a public GitHub or GitLab {term}`Repository`. The report must include a link to this repository.
 
@@ -23,7 +23,7 @@ This page explains what the repository should contain. It does not replace [Git 
 
 ---
 
-## What your repository should contain
+## 2. What your repository should contain
 
 Based on the SDS320 syllabus, your repository should include:
 
@@ -42,7 +42,7 @@ Your repository should not be a random file dump. It should tell the reader what
 
 ---
 
-## Suggested repository structure
+## 3. Suggested repository structure
 
 The structure below is a recommendation, not a strict rule. Adapt it to your project.
 
@@ -75,7 +75,7 @@ Adapt the structure if another organisation is clearer for your project. The imp
 
 ---
 
-## README structure
+## 4. README structure
 
 Your `README.md` is the entry point to your project. Start it early and improve it throughout the semester.
 
@@ -139,7 +139,7 @@ Do not wait until the end to write the README. A rough README is useful already 
 
 ---
 
-## Data instructions
+## 5. Data instructions
 
 Large raw data files should usually not be committed. Instead, document how to get them.
 
@@ -165,7 +165,7 @@ Do not commit sensitive data, private data, passwords, access tokens or API keys
 
 ---
 
-## What not to upload
+## 6. What not to upload
 
 Avoid uploading:
 
@@ -184,7 +184,7 @@ Use a {term}`Gitignore File` to exclude files and folders that should not be tra
 
 ---
 
-## Code quality in the repository
+## 7. Code quality in the repository
 
 Your code should be readable and sufficiently documented.
 
@@ -205,7 +205,7 @@ For code organisation, see [Notebooks and scripts](../02_setup/03_notebooks-scri
 
 ---
 
-## Flags & checks
+## 8. Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -220,7 +220,7 @@ For code organisation, see [Notebooks and scripts](../02_setup/03_notebooks-scri
 
 ---
 
-## Mini task
+## 9. Mini task
 
 Open your project repository and improve the README.
 
@@ -243,7 +243,7 @@ Update README with project question and data sources
 
 ---
 
-## Key takeaways
+## 10. Key takeaways
 
 - The repository is part of the assessed SDS320 project.
 - It should support understanding and reproducibility, not only file storage.

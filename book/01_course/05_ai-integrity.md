@@ -13,7 +13,7 @@ How to use AI tools responsibly in SDS320
 
 ---
 
-## General principle
+## 1. General principle
 
 In SDS320, purposeful, transparent and reflective use of {abbr}`AI (Artificial Intelligence)` tools is allowed as part of your learning process.
 
@@ -25,7 +25,7 @@ If an AI tool produces text or code that you cannot explain, adapt or validate, 
 
 ---
 
-## Appropriate uses
+## 2. Appropriate uses
 
 Appropriate uses of AI tools may include:
 
@@ -42,7 +42,7 @@ When you use AI in these ways, you should stay actively involved. Treat AI-gener
 
 ---
 
-## Your responsibility
+## 3. Your responsibility
 
 You are responsible for everything you submit.
 
@@ -58,7 +58,7 @@ AI tools may help you work more efficiently, but they do not remove your respons
 
 ---
 
-## What counts as problematic use
+## 4. What counts as problematic use
 
 Problematic use includes presenting AI-generated work as your own without acknowledgement.
 
@@ -72,7 +72,7 @@ You must be able to explain the text, code, figures and analytical decisions you
 
 ---
 
-## Disclosure statement
+## 5. Disclosure statement
 
 If you use AI tools during the preparation of your project report, include a short disclosure statement.
 
@@ -84,7 +84,7 @@ Adapt the statement so that it accurately reflects your actual use. Do not inclu
 
 ---
 
-## When in doubt
+## 6. When in doubt
 
 If you are unsure whether a specific use of AI is permitted, ask your course instructor before submitting your work.
 

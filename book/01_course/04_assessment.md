@@ -13,7 +13,7 @@ How your work in SDS320 is assessed
 
 ---
 
-## Assessment overview
+## 1. Assessment overview
 
 SDS320 is assessed through continuous semester engagement and an individual programming project.
 
@@ -29,7 +29,7 @@ The project integrates the concepts, methods and coding practices developed thro
 
 ---
 
-## Passing the course
+## 2. Passing the course
 
 To pass the course, you must achieve a total weighted score of at least **60%** across all assessment components.
 
@@ -37,7 +37,7 @@ Because the final grade is cumulative, you do not need to pass every individual 
 
 ---
 
-## Course engagement
+## 3. Course engagement
 
 Course engagement contributes **40%** of the final grade.
 
@@ -57,7 +57,7 @@ You are not expected to have perfect solutions at every stage. What matters is t
 
 ---
 
-## Project report and repository
+## 4. Project report and repository
 
 The project report and repository contribute **30%** of the final grade.
 
@@ -110,7 +110,7 @@ The report and repository are evaluated using the following criteria:
 
 ---
 
-## Project presentations
+## 5. Project presentations
 
 Project presentations contribute **30%** of the final grade.
 
@@ -153,7 +153,7 @@ Possible formats include a short live demo, a walkthrough of the repository, a v
 
 ---
 
-## How to use this page
+## 6. How to use this page
 
 Return to this page when you plan your project, prepare presentations, write your report and finalise your repository.
 

@@ -13,7 +13,7 @@ Writing a concise project report that explains what you did and what you found
 
 ---
 
-## Purpose of the report
+## 1. Purpose of the report
 
 The SDS320 report documents your project in a concise and structured way.
 
@@ -34,7 +34,7 @@ The report must include a link to your public GitHub or GitLab repository.
 
 ---
 
-## Report constraints
+## 2. Report constraints
 
 The project report and repository contribute 30% to the final grade.
 
@@ -44,7 +44,7 @@ The report should not exceed **6500 characters including spaces**, excluding fig
 
 ---
 
-## Suggested report structure
+## 3. Suggested report structure
 
 Use this as a recommendation and adapt it where needed.
 
@@ -64,7 +64,7 @@ For AI guidance, see [AI use and integrity](../01_course/05_ai-integrity.md).
 
 ---
 
-## Writing style
+## 4. Writing style
 
 Good scientific writing is clear, concise and reader-friendly.
 
@@ -89,7 +89,7 @@ Read your report aloud. If a sentence is hard to read aloud, it is probably hard
 
 ---
 
-## Writing about methods and results
+## 5. Writing about methods and results
 
 For methods, explain why and how the workflow was implemented.
 
@@ -113,7 +113,7 @@ For results, lead with what matters for the research question. For each key resu
 
 ---
 
-## What to leave out
+## 6. What to leave out
 
 Because the report is short, leave out:
 
@@ -131,7 +131,7 @@ Failed attempts can be mentioned briefly if they explain an important project de
 
 ---
 
-## Flags & checks
+## 7. Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -146,7 +146,7 @@ Failed attempts can be mentioned briefly if they explain an important project de
 
 ---
 
-## Mini task
+## 8. Mini task
 
 Draft a five-sentence report outline:
 
@@ -162,7 +162,7 @@ Then check whether the five sentences already form a coherent project story.
 
 ---
 
-## Key takeaways
+## 9. Key takeaways
 
 - The report should explain what you did, why you did it and what you found.
 - Keep the report concise and focused on the project.

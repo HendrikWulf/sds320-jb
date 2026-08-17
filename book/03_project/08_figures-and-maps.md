@@ -13,7 +13,7 @@ Communicating spatial results clearly and honestly
 
 ---
 
-## Why figures and maps matter
+## 1. Why figures and maps matter
 
 Figures and maps are evidence for your project argument.
 
@@ -30,7 +30,7 @@ Who is the audience?
 
 ---
 
-## What makes a good project figure?
+## 2. What makes a good project figure?
 
 A good figure or map usually:
 
@@ -50,7 +50,7 @@ Resist the temptation to put everything on one map. A simpler figure that suppor
 
 ---
 
-## Types of useful project visuals
+## 3. Types of useful project visuals
 
 Different project stages need different visuals.
 
@@ -70,7 +70,7 @@ Not every project needs all of these. Choose figures that serve your argument.
 
 ---
 
-## Map design checklist
+## 4. Map design checklist
 
 Before using a map in your report or presentation, check:
 
@@ -91,7 +91,7 @@ R, G, B = shortwave-infrared, near-infrared, red
 
 ---
 
-## Captions and interpretation
+## 5. Captions and interpretation
 
 A figure should not stand alone without explanation.
 
@@ -119,7 +119,7 @@ Figure X. Predicted built-up areas in the study area based on a semantic segment
 
 ---
 
-## Visual hierarchy and storytelling
+## 6. Visual hierarchy and storytelling
 
 Visual hierarchy means that the most important information is easiest to see. Use hierarchy through title, caption, colour emphasis, annotation, spacing and figure order.
 
@@ -129,7 +129,7 @@ For your final presentation, one strong key-result figure is often more effectiv
 
 ---
 
-## Potential pitfalls
+## 7. Potential pitfalls
 
 | Pitfall | Better approach |
 | --- | --- |
@@ -143,7 +143,7 @@ For your final presentation, one strong key-result figure is often more effectiv
 
 ---
 
-## Mini task
+## 8. Mini task
 
 Choose one figure or map that could become central to your project.
 
@@ -160,7 +160,7 @@ Then draft a two-sentence caption.
 
 ---
 
-## Key takeaways
+## 9. Key takeaways
 
 - Figures and maps should support your project argument.
 - Start every visual with a question and audience.

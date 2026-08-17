@@ -13,7 +13,7 @@ A short refresher for getting back into Python
 
 ---
 
-## Why this refresher matters
+## 1. Why this refresher matters
 
 You have already used Python in SDS210. Still, it is normal to feel rusty after a break.
 
@@ -23,7 +23,7 @@ The goal is not to repeat a full Python course. The goal is to help you write co
 
 ---
 
-## Before you start
+## 2. Before you start
 
 Before working through this page, check that you have:
 
@@ -39,7 +39,7 @@ Use this page actively. Run the examples, adapt variable names, and connect the 
 
 ---
 
-## The project coding pathway
+## 3. The project coding pathway
 
 A useful SDS320 coding workflow often follows this pathway:
 
@@ -58,7 +58,7 @@ You do not need to write perfect code from the beginning. Start with readable co
 
 ---
 
-### 1. Start with project settings
+### A. Start with project settings
 
 A good project notebook usually begins with a small setup block. This keeps important project settings visible in one place.
 
@@ -101,7 +101,7 @@ Check what `PROJECT_DIR` prints. If it points to an unexpected folder, your code
 
 ---
 
-### 2. Variables and strings
+### B. Variables and strings
 
 Variables store values so that you can reuse them.
 
@@ -127,7 +127,7 @@ print(output_name)
 
 ---
 
-### 3. Lists
+### C. Lists
 
 Lists store multiple values in order.
 
@@ -149,7 +149,7 @@ for year in years:
 
 ---
 
-### 4. Dictionaries
+### D. Dictionaries
 
 Dictionaries store named values. They are useful for project parameters because they keep related settings together.
 
@@ -175,7 +175,7 @@ for key, value in project_config.items():
 
 ---
 
-### 5. Functions
+### E. Functions
 
 Functions make code reusable. They are useful when the same logic appears more than once.
 
@@ -211,7 +211,7 @@ check_path(RAW_DATA_DIR)
 
 ---
 
-### 6. Imports
+### F. Imports
 
 Imports load packages or modules.
 
@@ -236,7 +236,7 @@ This example is illustrative. It assumes that the packages are installed in the 
 
 ---
 
-### 7. Paths and working directories
+### G. Paths and working directories
 
 Paths are central in project work. Use `pathlib` to make paths clearer and more portable.
 
@@ -261,7 +261,7 @@ Prefer paths that are relative to your project folder.
 
 ---
 
-### 8. Conditionals
+### H. Conditionals
 
 Conditionals let your code react to situations.
 
@@ -287,7 +287,7 @@ for column in required_columns:
 
 ---
 
-### 9. DataFrames
+### I. DataFrames
 
 A DataFrame is a table-like data structure. It is useful for organising dataset inventories, project parameters, evaluation results or summary statistics.
 
@@ -320,7 +320,7 @@ vector_data
 
 ---
 
-### 10. GeoDataFrames
+### J. GeoDataFrames
 
 A {term}`GeoDataFrame` is like a DataFrame, but with a geometry column. It is used for {term}`Vector Data`, such as points, lines or polygons.
 
@@ -346,7 +346,7 @@ These checks help you understand the spatial reference, number of features, attr
 
 ---
 
-### 11. Raster data reminders
+### K. Raster data reminders
 
 {term}`Raster Data` are stored as grids of pixels or cells. Satellite images, elevation models, masks and prediction maps are common raster datasets.
 
@@ -377,7 +377,7 @@ This example is illustrative and requires an existing raster file.
 
 ---
 
-### 12. From fragments to a pipeline
+### L. From fragments to a pipeline
 
 In SDS320, Python should help you build a repeatable {term}`Data Pipeline`.
 
@@ -404,7 +404,7 @@ For the next step, see [Notebooks and scripts](03_notebooks-scripts.md), where y
 
 ---
 
-## Flags & checks
+## 4. Flags & checks
 
 Use this table when your Python workflow becomes confusing.
 
@@ -424,7 +424,7 @@ For more help, see [Troubleshooting](05_troubleshooting.md).
 
 ---
 
-## Mini task
+## 5. Mini task
 
 Create or update a notebook called:
 
@@ -448,7 +448,7 @@ The goal is not to produce final project code. The goal is to reactivate the hab
 
 ---
 
-## Key takeaways
+## 6. Key takeaways
 
 - You do not need to remember every Python detail immediately.
 - Focus on patterns that support project work: paths, imports, functions, loops, checks and small tables.
@@ -459,12 +459,3 @@ The goal is not to produce final project code. The goal is to reactivate the hab
 - Clear Python habits support {term}`Reproducibility`.
 
 ---
-
-### What to do next
-
-After this refresher:
-
-- use [Notebooks and scripts](03_notebooks-scripts.md) to decide how to organise your code,
-- use [Git basics](04_git-basics.md) to start tracking meaningful changes,
-- use [Workflow design](../03_project/04_workflow-design.md) to connect code steps to your project question,
-- use [Reproducibility](../03_project/06_reproducibility.md) to check whether someone else could rerun your work.

@@ -11,7 +11,9 @@ Turning a project idea into concrete data search criteria
 </div>
 <!-- markdownlint-enable MD033 -->
 
-## Why data search matters
+---
+
+## 1. Why data search matters
 
 Before you download anything, you need to know what kind of data would actually support your project.
 
@@ -21,7 +23,7 @@ In the next page, you will apply these ideas to remote sensing data and {abbr}`S
 
 ---
 
-## Core idea
+## 2. Core idea
 
 Data search is a filtering process.
 
@@ -44,7 +46,7 @@ The output of this page is not a finished dataset. It is a reasoned shortlist of
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### Step 1: Start from the project question
 
@@ -112,7 +114,7 @@ The type of data affects your workflow, file structure and preprocessing needs.
 
 ---
 
-### Step 4: Check suitability before downloading
+### Step 4: Check suitability
 
 Before downloading large files, inspect the metadata or preview where possible.
 
@@ -159,7 +161,7 @@ You can keep this in a Markdown file, spreadsheet or notebook table. The importa
 
 ---
 
-## Python reactivation
+## 4. Python reactivation
 
 A small project data inventory can be represented as a list of dictionaries and converted to a table.
 
@@ -193,7 +195,7 @@ This is not yet data acquisition code. It is project thinking in a structured fo
 
 ---
 
-## Common pitfalls
+## 5. Common pitfalls
 
 | Pitfall                                 | How to avoid it                                                        |
 | --------------------------------------- | ---------------------------------------------------------------------- |
@@ -206,7 +208,7 @@ This is not yet data acquisition code. It is project thinking in a structured fo
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Create a first data inventory for your project.
 
@@ -252,7 +254,7 @@ Decision: download a small test area
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 * Data search starts from the project question.
 * Suitable data must fit area, time, resolution, quality, licence and method.

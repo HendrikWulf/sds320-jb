@@ -13,7 +13,7 @@ Using Git to track, organise and share your SDS320 project
 
 ---
 
-## Why Git matters
+## 1. Why Git matters
 
 {term}`Git` helps you track how your SDS320 project changes over time. This is useful for backup, documentation, transparency and {term}`Reproducibility`.
 
@@ -23,7 +23,7 @@ This page gives you a practical Git refresher for SDS320. It focuses on the basi
 
 ---
 
-## The basic idea
+## 2. The basic idea
 
 Git records snapshots of your project. These snapshots are called commits.
 
@@ -45,7 +45,7 @@ Think of Git as a project diary for your files. It does not replace your report 
 
 ---
 
-## Key Git concepts
+## 3. Key Git concepts
 
 ### Repository
 
@@ -81,7 +81,7 @@ Your local repository lives on your computer. The remote repository makes it pos
 
 ---
 
-## Recommended Git workflow
+## 4. Recommended Git workflow
 
 Use this workflow regularly while working on your project.
 
@@ -143,7 +143,7 @@ If you work on different computers, get into the habit of pulling before you sta
 
 ---
 
-## Starting a repository
+## 5. Starting a repository
 
 There are two common ways to start.
 
@@ -181,7 +181,7 @@ Then connect it to an online repository later.
 
 ---
 
-## Using Git in VS Code
+## 6. Using Git in VS Code
 
 You can use Git from the {term}`Command Line`, but many students find the VS Code interface easier for everyday work.
 
@@ -251,7 +251,7 @@ The VS Code Sync button can combine pull and push actions. This is convenient, b
 
 ---
 
-## Repository contents
+## 7. Repository contents
 
 ### What should go into your repository
 
@@ -318,7 +318,7 @@ Never commit passwords, tokens or private credentials. If this happens, deleting
 
 ---
 
-## Good commit messages
+## 8. Good commit messages
 
 Useful commit messages are short and specific.
 
@@ -349,7 +349,7 @@ Document model limitation
 
 ---
 
-## Flags & checks
+## 9. Flags & checks
 
 Use this table when your Git workflow becomes confusing. Start with the first check before changing many things at once.
 
@@ -374,7 +374,7 @@ For technical problems, see [Troubleshooting](05_troubleshooting.md).
 
 ---
 
-## Mini task
+## 10. Mini task
 
 Work inside your SDS320 project folder.
 
@@ -408,7 +408,7 @@ My next useful Git commit will be: ...
 
 ---
 
-## Key takeaways
+## 11. Key takeaways
 
 - Git records the development of your project over time.
 - Commit regularly after meaningful changes.

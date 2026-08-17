@@ -14,7 +14,7 @@ Preparing the tools you need for SDS320
 
 ---
 
-## Why this setup matters
+## 1. Why this setup matters
 
 A stable software setup saves time during project work. Spatial analytics projects often combine {term}`GeoAI` tools, geospatial libraries, machine learning packages, notebooks, scripts, model outputs and external data. If your environment and folder structure are unclear, small technical problems can become difficult to diagnose.
 
@@ -33,7 +33,7 @@ The SDS320 environment file is the main reference for package installation. It u
 
 ---
 
-## Organise your SDS320 folders
+## 2. Organise your SDS320 folders
 
 Before you download the environment file, create one clear working area for SDS320. This helps separate course exercises from your own project and makes it easier to use relative paths later.
 
@@ -223,7 +223,7 @@ Large raw data files (>100 MB) should usually not be committed to Git. Use `data
 
 ---
 
-## Software recommendations
+## 3. Software recommendations
 
 For SDS320, you should have access to:
 
@@ -296,7 +296,7 @@ This package list covers notebooks, {term}`Raster Data`, {term}`Vector Data`, ma
 
 ---
 
-## Hardware and {abbr}`OS (operating-system)` recommendations
+## 4. Hardware and {abbr}`OS (operating-system)` recommendations
 
 Most SDS320 work can be done on a normal laptop, especially when working with small examples, pre-trained models or limited study areas.
 
@@ -316,7 +316,7 @@ A CPU-only setup is sufficient for many SDS320 tasks. If your project depends on
 
 ---
 
-## Setup pathway
+## 5. Setup pathway
 
 Follow the steps below in order.
 
@@ -332,7 +332,7 @@ Create folders
 
 ---
 
-### 1. Install Miniconda or Anaconda
+### A. Install Miniconda or Anaconda
 
 Conda is recommended because geospatial Python packages often depend on compiled libraries such as {term}`GDAL/OGR`, PROJ and GEOS. Conda can install many of these dependencies together, which usually avoids compatibility problems.
 
@@ -450,7 +450,7 @@ You can also use the graphical Miniconda installer from the official website if 
 
 ---
 
-### 2. Save the SDS320 environment file
+### B. Save the SDS320 environment file
 
 [Download](https://data.source.coop/giuz/sds320/environment.yml) the course `environment.yml` file and save it here here:
 
@@ -468,7 +468,7 @@ This makes the project easier to reproduce because the software requirements are
 
 ---
 
-### 3. Create the SDS320 environment
+### C. Create the SDS320 environment
 
 Open a terminal in the `sds320/course/` folder, where the course `environment.yml` file is saved.
 
@@ -530,7 +530,7 @@ Activate the `sds320` environment each time you open a new terminal for course o
 
 ---
 
-### 4. Optional: update the environment
+### D. Optional: update the environment
 
 If the course environment file changes later, update your environment from the folder that contains `environment.yml`:
 
@@ -546,7 +546,7 @@ Update the environment only from the intended `environment.yml` file. Running th
 
 ---
 
-### 5. Optional: GPU and CUDA setup
+### E. Optional: GPU and CUDA setup
 
 Some GeoAI and deep learning workflows are faster with {term}`CUDA` support. CUDA is relevant only for compatible NVIDIA GPUs.
 
@@ -688,7 +688,7 @@ The CUDA version shown by `nvidia-smi` indicates what your driver can support. I
 
 ---
 
-### 6. Optional: cloud alternatives
+### F. Optional: cloud alternatives
 
 If your local computer struggles with larger models, cloud notebooks can provide GPU access.
 
@@ -701,7 +701,7 @@ In this course we will use Colab, as Kaggle has restrictions for the {term}`Leaf
 
 ---
 
-### 7. Install and configure VS Code
+### G. Install and configure VS Code
 
 VS Code is useful for editing scripts, Markdown files, YAML files, README files and notebooks.
 
@@ -721,7 +721,7 @@ Open the whole `sds320/` folder in VS Code, not only a single notebook. This mak
 
 ---
 
-### 8. Check Git
+### H. Check Git
 
 Check whether Git is installed:
 
@@ -739,7 +739,7 @@ You will use Git more fully in [Git basics](04_git-basics.md). For now, the goal
 
 ---
 
-### 9. Verify your setup
+### I. Verify your setup
 
 After activating the environment, run the following checks.
 
@@ -831,7 +831,7 @@ If an interactive map appears, your notebook and visualisation stack are working
 
 ---
 
-## Flags & checks
+## 6. Flags & checks
 
 Use this table before reinstalling packages.
 
@@ -852,7 +852,7 @@ For more detail, see [Troubleshooting](05_troubleshooting.md).
 
 ---
 
-## Mini task
+## 7. Mini task
 
 Before the first project work session, complete this checklist:
 
@@ -874,7 +874,7 @@ Keep the setup-check notebook. It gives you a quick way to test whether your env
 
 ---
 
-## Key takeaways
+## 8. Key takeaways
 
 * Create the SDS320 folder structure before installing or downloading data.
 * Keep course exercises and your own project separate.
@@ -886,13 +886,3 @@ Keep the setup-check notebook. It gives you a quick way to test whether your env
 * Document setup choices because they affect {term}`Reproducibility`.
 
 ---
-
-### What to do next
-
-Once your setup works, continue with:
-
-* [Python reactivation](02_python-reactivation.md) if you need to refresh basic Python patterns,
-* [Notebooks and scripts](03_notebooks-scripts.md) to plan how your project code should be organised,
-* [Git basics](04_git-basics.md) to start tracking your project,
-* [Repository](../03_project/07_repository.md) when you begin preparing your assessed project repository,
-* [Reproducibility](../03_project/06_reproducibility.md) when you document how your project can be rerun.

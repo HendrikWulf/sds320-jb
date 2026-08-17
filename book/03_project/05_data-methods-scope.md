@@ -13,7 +13,7 @@ Keeping your project feasible and methodologically coherent
 
 ---
 
-## Why alignment matters
+## 1. Why alignment matters
 
 A good SDS320 project does not simply combine an interesting dataset with an impressive method. The research question, available data and analytical method need to fit together.
 
@@ -21,7 +21,7 @@ A project can fail even when each part sounds good individually. A strong GeoAI 
 
 ---
 
-## The alignment triangle
+## 2. The alignment triangle
 
 Think of your project as a triangle:
 
@@ -41,7 +41,7 @@ My project asks [question], uses [data], applies [method], and produces [output]
 
 ---
 
-## Choosing suitable data
+## 3. Choosing suitable data
 
 When choosing data, check the following criteria.
 
@@ -61,7 +61,7 @@ For GeoAI projects, data suitability depends on the task. Object detection needs
 
 ---
 
-## Choosing suitable methods
+## 4. Choosing suitable methods
 
 Choose methods based on the question and data.
 
@@ -86,7 +86,7 @@ A simpler baseline method can strengthen your project. It gives you something to
 
 ---
 
-## Managing scope
+## 5. Managing scope
 
 Scope is the size and complexity of your project. Managing scope does not mean making the project weak. It means making it possible to finish well.
 
@@ -107,7 +107,7 @@ For a semester project, depth is usually better than width. A focused project wi
 
 ---
 
-## Data-method fit examples
+## 6. Data-method fit examples
 
 These examples are illustrative.
 
@@ -121,7 +121,7 @@ These examples are illustrative.
 
 ---
 
-## Flags & checks
+## 7. Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -136,7 +136,7 @@ These examples are illustrative.
 
 ---
 
-## Mini task
+## 8. Mini task
 
 Write one alignment statement for your project:
 
@@ -153,7 +153,7 @@ Then check whether every part fits together. If one part feels weak, revise it b
 
 ---
 
-## Key takeaways
+## 9. Key takeaways
 
 - Question, data and method need to fit together.
 - Interesting data and impressive methods are not enough on their own.

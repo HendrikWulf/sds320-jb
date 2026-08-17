@@ -13,7 +13,7 @@ What you should clarify, test and produce during the semester
 
 ---
 
-## Why milestones matter
+## 1. Why milestones matter
 
 Milestones help you check whether your project is developing at a realistic pace. They translate the semester schedule into concrete project checkpoints.
 
@@ -21,7 +21,7 @@ They are not separate assessment rules. Use them as practical signals: if you ar
 
 ---
 
-## Semester milestones
+## 2. Semester milestones
 
 The table below follows the provisional SDS320 schedule. The programme may be adjusted during the semester depending on project progress, student needs and technical requirements.
 
@@ -44,7 +44,7 @@ The table below follows the provisional SDS320 schedule. The programme may be ad
 
 ---
 
-## Key assessment moments
+## 3. Key assessment moments
 
 ### Concept presentations
 
@@ -62,7 +62,7 @@ The report must include a link to your public GitHub or GitLab repository.
 
 ---
 
-## Use milestones flexibly
+## 4. Use milestones flexibly
 
 Not all projects progress at the same speed. Some need more time for data access. Others quickly produce outputs but need more work on evaluation or interpretation.
 
@@ -77,7 +77,7 @@ When you fall behind, do not simply add more work. First simplify:
 
 ---
 
-## Flags & checks
+## 5. Flags & checks
 
 | Red flag | First check |
 | --- | --- |
@@ -91,7 +91,7 @@ When you fall behind, do not simply add more work. First simplify:
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Compare your current project status with the table.
 
@@ -106,7 +106,7 @@ What can I simplify if needed?
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 - Milestones help you detect delays early.
 - Concept presentations are for useful early feedback.
