@@ -3,7 +3,7 @@ site:
   outline_maxdepth: 2
 ---
 
-# Finding spatial data
+# Finding suitable data
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
@@ -11,7 +11,7 @@ Turning a project idea into concrete data search criteria
 </div>
 <!-- markdownlint-enable MD033 -->
 
-## Why this matters
+## Why data search matters
 
 Before you download anything, you need to know what kind of data would actually support your project.
 
