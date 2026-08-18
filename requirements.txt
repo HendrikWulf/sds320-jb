@@ -20,3 +20,6 @@ cmcrameri
 gdown
 cftime
 cartopy
+pystac-client
+planetary-computer
+pyproj

@@ -3,7 +3,7 @@ site:
   outline_maxdepth: 2
 ---
 
-# Project transfer: data acquisition
+# Project transfer
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
@@ -11,7 +11,9 @@ Turning this lesson into concrete progress on your SDS320 project
 </div>
 <!-- markdownlint-enable MD033 -->
 
-## Why this page matters
+---
+
+## 1. Why this page matters
 
 This lesson should change the state of your project. After working through it, you should no longer only have a topic idea. You should have a first data acquisition plan: candidate datasets, search criteria, access routes, limitations and a small test.
 
@@ -19,7 +21,7 @@ The goal is not to download everything. The goal is to know whether your project
 
 ---
 
-## Project checklist
+## 2. Project checklist
 
 Apply this checklist to your own project.
 
@@ -56,7 +58,7 @@ Apply this checklist to your own project.
 
 ---
 
-## Decision points
+## 3. Decision points
 
 ### Which dataset is the main input?
 
@@ -95,7 +97,7 @@ Possible simplifications:
 
 ---
 
-## Red flags
+## 4. Red flags
 
 | Red flag | First check |
 | --- | --- |
@@ -110,7 +112,7 @@ Possible simplifications:
 
 ---
 
-## Mini deliverable
+## 5. Mini deliverable
 
 Create a **data acquisition plan** for your SDS320 project.
 
@@ -154,7 +156,7 @@ This mini deliverable should be concrete enough that you can discuss it in class
 
 ---
 
-## Reflection questions
+## 6. Reflection questions
 
 Answer these briefly for your own project:
 
@@ -166,7 +168,7 @@ Answer these briefly for your own project:
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 - Data acquisition should produce decisions, not only files.
 - A small test is better than a large unverified download.

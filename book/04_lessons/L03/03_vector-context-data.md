@@ -3,7 +3,7 @@ site:
   outline_maxdepth: 2
 ---
 
-# Adding vector and contextual data
+# Vector and contextual data
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
@@ -11,7 +11,9 @@ Using buildings, roads, places and boundaries to support spatial analytics proje
 </div>
 <!-- markdownlint-enable MD033 -->
 
-## Why this matters
+---
+
+## 1. Why this page matters
 
 Remote sensing imagery often needs context. A satellite image may show pixels, but your project may need buildings, roads, land-use polygons, administrative boundaries, reference samples or validation data to make the analysis meaningful.
 
@@ -21,7 +23,7 @@ The next page explains how to document and cite both raster and vector sources.
 
 ---
 
-## Core idea
+## 2. Core idea
 
 Vector data can support an SDS320 project in several roles:
 
@@ -38,11 +40,11 @@ The same vector dataset can be helpful for one project and misleading for anothe
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### Step 1: Identify the role of vector data
 
-Before downloading vector data, write what you need it for.
+Consider what you need the vector data for before downloading it.
 
 Examples:
 
@@ -107,7 +109,7 @@ If the helper function is not available, use the official Overture documentation
 
 ---
 
-### Step 4: Access OpenStreetMap-style data
+### Step 4: Access {abbr}`OSM (OpenStreetMap)`-style data
 
 OpenStreetMap data can be useful for roads, buildings, points of interest and land-use context. The GeoAI source material mentions libraries such as `osmnx`, `ohsome`, `quackosm` and `leafmap.osm`.
 
@@ -164,7 +166,7 @@ Record which format you used and why.
 
 ---
 
-## Python reactivation
+## 4. Python reactivation
 
 Vector data workflows often use familiar GeoPandas operations:
 
@@ -189,7 +191,7 @@ buildings_projected["area_m2"] = buildings_projected.area
 
 ---
 
-## Common pitfalls
+## 5. Common pitfalls
 
 | Pitfall                                                      | How to avoid it                                            |
 | ------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -202,7 +204,7 @@ buildings_projected["area_m2"] = buildings_projected.area
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Find one vector or contextual dataset for your project.
 
@@ -241,7 +243,7 @@ Decision: test small AOI and overlay on imagery
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 * Vector data can define study areas, provide context, support labels or help evaluate outputs.
 * Choose vector data based on its role in your project.

@@ -20,6 +20,33 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Landsat
+: A long-running Earth observation satellite programme that provides global imagery useful for long-term change analysis. In SDS320, Landsat is often useful when temporal depth matters more than fine spatial detail.
+
+NAIP
+: The National Agriculture Imagery Program, which provides high-resolution aerial imagery for the United States. NAIP is useful for projects that need fine spatial detail within its coverage area.
+
+Planetary Computer
+: A cloud-based geospatial data platform by Microsoft that hosts many Earth observation datasets and provides STAC-based search and data access tools.
+
+Preview Subset
+: A small spatial subset of a larger raster dataset used for quick inspection, visualisation or teaching. Preview subsets are useful for checking data fit but may be resampled and should not automatically be treated as analysis-ready data.
+
+STAC Asset
+: A file linked to a STAC item, such as an image band, preview, metadata document or quality layer. Asset keys need to be inspected because they differ between collections.
+
+STAC Collection
+: A group of related STAC items that share common metadata, such as a satellite mission, product level or data provider collection.
+
+STAC Item
+: A single spatiotemporal observation in a STAC collection, often one satellite scene, tile or image acquisition.
+
+SWISSIMAGE
+: A high-resolution aerial imagery product for Switzerland provided by swisstopo. It can be useful for detailed visual inspection and mapping in Swiss study areas.
+
+Vantor Open Data
+: A collection of event-focused high-resolution imagery released for selected disasters and humanitarian contexts. Availability and licence conditions should be checked for each event collection.
+
 AI-Assisted Debugging
 : The use of an AI tool to help explain errors, suggest checks or improve code during troubleshooting. AI-assisted debugging can be useful, but students remain responsible for testing and understanding any suggested fix.
 

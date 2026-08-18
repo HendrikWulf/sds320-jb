@@ -3,7 +3,7 @@ site:
   outline_maxdepth: 2
 ---
 
-# Citing and documenting data
+# Citing data
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
@@ -11,7 +11,9 @@ Recording where your data came from and what others need to know about it
 </div>
 <!-- markdownlint-enable MD033 -->
 
-## Why this matters
+---
+
+## 1. Why documentation matters
 
 Data acquisition is not complete when a file appears in your folder. You also need to know where the data came from, whether you are allowed to use it, how it was accessed, what limitations it has and how another person could retrieve or understand it.
 
@@ -21,7 +23,7 @@ In the previous pages, you identified raster and vector candidates. Here, you tu
 
 ---
 
-## Core idea
+## 2. Core idea
 
 Every dataset in your project should have a short documentation trail:
 
@@ -40,7 +42,7 @@ This documentation protects your project from common problems: forgotten downloa
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### Step 1: Record source information immediately
 
@@ -136,7 +138,7 @@ A clear limitation is better than a hidden weakness.
 
 ---
 
-## Python reactivation
+## 4. Python reactivation
 
 You can keep a lightweight data log in a table.
 
@@ -173,7 +175,7 @@ data_log.to_csv(output_path, index=False)
 
 ---
 
-## Data citation in the report
+## 5. Data citation in the report
 
 Your short report should not contain a full data-management manual. It should include enough information for the reader to understand the data basis.
 
@@ -191,7 +193,7 @@ Building footprint data were obtained from [provider] for [area] and used as [co
 
 ---
 
-## Common pitfalls
+## 6. Common pitfalls
 
 | Pitfall                                       | How to avoid it                                                       |
 | --------------------------------------------- | --------------------------------------------------------------------- |
@@ -204,7 +206,7 @@ Building footprint data were obtained from [provider] for [area] and used as [co
 
 ---
 
-## Mini task
+## 7. Mini task
 
 Create one data documentation entry for a dataset you may use.
 
@@ -251,7 +253,7 @@ How I will cite or acknowledge it: include provider, collection and access route
 
 ---
 
-## Key takeaways
+## 8. Key takeaways
 
 * Data acquisition includes documentation, not only downloading.
 * Record source, access route, licence, coverage, format and limitations early.
