@@ -1,4 +1,4 @@
-# L03 – Data acquisition
+# L02 – Data acquisition
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
@@ -48,11 +48,11 @@ By the end of this lesson, you should be able to:
 
 Work through the pages in this order:
 
-1. [Finding suitable spatial data](L03/01_data-search.md) — define what “suitable data” means for your project and create a first data inventory.
-2. [Working with remote sensing data](L03/02_remote-sensing-data.md) — use STAC-based search logic to find imagery such as Sentinel-2, Landsat, NAIP or SWISSIMAGE.
-3. [Adding vector and contextual data](L03/03_vector-context-data.md) — explore vector sources such as Overture Maps and other context data that can support your analysis.
-4. [Citing and documenting data](L03/04_data-citation.md) — record data provenance, licences, limitations and reuse conditions.
-5. [Project transfer](L03/05_project-transfer.md) — turn the lesson into a concrete data acquisition plan for your own project.
+1. [Finding suitable spatial data](L02/01_data-search.md) — define what “suitable data” means for your project and create a first data inventory.
+2. [Working with remote sensing data](L02/02_remote-sensing-data.md) — use STAC-based search logic to find imagery such as Sentinel-2, Landsat, NAIP or SWISSIMAGE.
+3. [Adding vector and contextual data](L02/03_vector-context-data.md) — explore vector sources such as Overture Maps and other context data that can support your analysis.
+4. [Citing and documenting data](L02/04_data-citation.md) — record data provenance, licences, limitations and reuse conditions.
+5. [Project transfer](L02/05_project-transfer.md) — turn the lesson into a concrete data acquisition plan for your own project.
 
 ---
 

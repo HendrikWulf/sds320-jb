@@ -15,7 +15,7 @@ Recording where your data came from and what others need to know about it
 
 ## 1. Why documentation matters
 
-Data acquisition is not complete when a file appears in your folder. You also need to know where the data came from, whether you are allowed to use it, how it was accessed, what limitations it has and how another person could retrieve or understand it.
+Data acquisition is unfortunately not complete when a file appears in your folder. You also should know where the data came from, whether you are allowed to use it, how it was accessed, what limitations it has and how another person could retrieve or understand it.
 
 For SDS320, this matters because your final project includes a public repository and a short report. Another student should be able to understand your data choices and reproduce the main workflow.
 
@@ -44,7 +44,7 @@ This documentation protects your project from common problems: forgotten downloa
 
 ## 3. Workflow
 
-### Step 1: Record source information immediately
+### Step 1: Record source information
 
 For every dataset, record:
 
@@ -58,11 +58,11 @@ Licence:
 Citation or attribution text:
 ```
 
-Do this before preprocessing. Once data are renamed, clipped or merged, it becomes harder to reconstruct their origin.
+Best do this before preprocessing. Once data are renamed, clipped or merged, it becomes harder to reconstruct their origin.
 
 ---
 
-### Step 2: Record spatial and temporal metadata
+### Step 2: Record metadata
 
 For spatial data, document:
 
@@ -80,7 +80,7 @@ This information helps you explain whether the data fit your research question.
 
 ---
 
-### Step 3: Separate raw and processed data
+### Step 3: Separate raw and processed
 
 Keep raw downloads separate from processed files.
 

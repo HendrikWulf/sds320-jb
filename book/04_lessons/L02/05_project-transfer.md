@@ -97,9 +97,9 @@ Possible simplifications:
 
 ---
 
-## 4. Red flags
+## 4. Common pitfalls
 
-| Red flag | First check |
+| Pitfall | How to avoid it |
 | --- | --- |
 | You cannot name the main dataset | Return to the research question and identify what evidence is needed. |
 | The data do not cover your study area | Change data source or reduce the study area. |

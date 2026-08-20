@@ -790,11 +790,11 @@ This makes your workflow easier to adapt and document.
 
 ---
 
-## 10. Flags & checks
+## 10. Common pitfalls
 
 Use this table when your imagery workflow becomes confusing, fails unexpectedly or produces data that are too large.
 
-| Red flag | First check |
+| Pitfall | How to avoid it |
 | --- | --- |
 | Search returns no items | Check bbox order, date range, collection ID and whether the collection covers the area. |
 | Too many items are returned | Narrow the bbox, date range or quality filter. |

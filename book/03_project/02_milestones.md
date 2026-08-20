@@ -29,18 +29,18 @@ The table below follows the provisional SDS320 schedule. The programme may be ad
 | :---: | :---: | --- | --- | --- | --- |
 | 1 | 15 Sep | Course introduction | Project framework | You understand the course structure and project expectations. | 3–5 possible project ideas. |
 | 2 | 22 Sep | Project planning | Project topic | You have narrowed your broad interest toward one possible topic. | Draft topic, motivation and first research question. |
-| 3 | 29 Sep | Data acquisition | Data & methods | You have identified candidate datasets and checked basic fit. | Data inventory with source, format, coverage, access route and licence notes. |
-| 4 | 06 Oct | Data preprocessing | Concept presentations | You can explain your project concept and have tested data access. | Concept-presentation draft and one successful data-loading step. |
-| 5 | 13 Oct | Training data | Concept presentations | You know whether labels, masks, samples or validation data are needed. | Revised concept note and training/validation plan if relevant. |
+| 3 | 29 Sep | Data acquisition | Data & methods + concept prep | You have identified candidate datasets, checked basic fit, and drafted your concept (topic, question, motivation). | Data inventory (source, format, coverage, access route, licence) and a concept-presentation draft. |
+| 4 | 06 Oct | Data preprocessing | Concept presentations — Group A | You can present your project concept. | One successful data-loading step. |
+| 5 | 13 Oct | Training data | Concept presentations — Group B | You know whether labels, masks, samples or validation data are needed, and have incorporated concept-presentation feedback. | Revised concept note and training/validation plan if relevant. |
 | 6 | 20 Oct | Object detection | Data analysis | You are moving from planning into implementation. | First prototype on a small example, tile, subset or sample. |
 | 7 | 27 Oct | Semantic segmentation | Data analysis | You have tested whether the selected method fits your data and question. | First model or analysis output, even if incomplete. |
 | 8 | 03 Nov | Instance segmentation | Processing pipeline | You can describe the workflow from input data to output. | Workflow diagram and cleaned notebook/script order. |
 | 9 | 10 Nov | Image translation | Figures & visuals | You have started creating visuals for data, workflow or first results. | One draft figure or map with a short caption. |
 | 10 | 17 Nov | Change detection | Storytelling | You can explain the project argument: question, data, method, result and limitation. | Five-sentence project story. |
-| 11 | 24 Nov | Regression | Repository | Your repository structure, README and environment information are improving. | Repository check with README, run order and data instructions. |
-| 12 | 01 Dec | Segment Anything | Final presentations | You can present near-final implementation, results and limitations. | Final-presentation draft or slide outline. |
-| 13 | 08 Dec | Satellite embeddings | Final presentations | You have presented final progress and know what needs revision. | Final revision list for report, repository and figures. |
-| 14 | 15 Dec | Finale Grande | Final review | You consolidate remaining questions before final submission. | Final project checklist. |
+| 11 | 24 Nov | Regression | Repository + final-presentation prep | Your repository structure, README and environment information are improving, and you have started preparing your final presentation. | Repository check (README, run order, data instructions) and a final-presentation slide outline draft. |
+| 12 | 01 Dec | Segment Anything | Final presentations — Group B | You can present near-final implementation, results and limitations. | Revision list based on presentation feedback (what to fix in report, repository, figures). |
+| 13 | 08 Dec | Satellite embeddings | Final presentations — Group A | You have presented final progress and know what needs revision. |  polishing your report + repository submission, due Mon 14 Dec, 17:00.** |
+| 14 | 15 Dec | Finale Grande | Final review | — | — |
 
 ---
 

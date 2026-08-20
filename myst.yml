@@ -79,28 +79,37 @@ project:
         - file: book/03_project/09_report-writing.md
         - file: book/03_project/10_presentation-guide.md
 
-    - title: L01 – Course intro
-      file: book/04_lessons/01_course-introduction.md
+    - title: L01 – Intro to GeoAI
+      file: book/04_lessons/01_introduction-to-geoai.md
       children:
-        - file: book/04_lessons/L01/01_spatial-data-analytics.md
-        - file: book/04_lessons/L01/02_project-framework.md
-        - file: book/04_lessons/L01/03_project-idea-inventory.md
+        - file: book/04_lessons/L01/01_what-is-geoai.md
+        - file: book/04_lessons/L01/02_why-spatial-data-is-different.md
+        - file: book/04_lessons/L01/03_applications-of-geoai.md
+        - file: book/04_lessons/L01/04_python-ecosystem.md
+        - file: book/04_lessons/L01/05_core-geoai-tasks.md
+        - file: book/04_lessons/L01/06_foundation-models.md
+        - file: book/04_lessons/L01/07_project-transfer.md
 
-    - title: L02 – Project planning
-      file: book/04_lessons/02_project-planning.md
+    - title: L02 – Data acquisition
+      file: book/04_lessons/02_data-acquisition.md
       children:
-        - file: book/04_lessons/L02/01_research-questions.md
-        - file: book/04_lessons/L02/02_feasibility.md
-        - file: book/04_lessons/L02/03_project-canvas.md
+        - file: book/04_lessons/L02/01_data-search.md
+        - file: book/04_lessons/L02/02_remote-sensing-data.md
+        - file: book/04_lessons/L02/03_vector-context-data.md
+        - file: book/04_lessons/L02/04_data-citation.md
+        - file: book/04_lessons/L02/05_project-transfer.md
 
-    - title: L03 – Data acquisition
-      file: book/04_lessons/03_data-acquisition.md
+    - title: L03 – Interactive viz.
+      file: book/04_lessons/03_interactive-mapping-visualisation.md
       children:
-        - file: book/04_lessons/L03/01_data-search.md
-        - file: book/04_lessons/L03/02_remote-sensing-data.md
-        - file: book/04_lessons/L03/03_vector-context-data.md
-        - file: book/04_lessons/L03/04_data-citation.md
-        - file: book/04_lessons/L03/05_project-transfer.md
+        - file: book/04_lessons/L03/01_leafmap-basics.md
+        - file: book/04_lessons/L03/02_raster-data-on-maps.md
+        - file: book/04_lessons/L03/03_planetary-computer-maps.md
+        - file: book/04_lessons/L03/04_vector-data-on-maps.md
+        - file: book/04_lessons/L03/05_split-panel-comparisons.md
+        - file: book/04_lessons/L03/06_model-results-on-maps.md
+        - file: book/04_lessons/L03/07_visualisation-best-practices.md
+        - file: book/04_lessons/L03/08_project-transfer.md
 
     - title: L04 – Data preprocess.
       file: book/04_lessons/04_data-preprocessing.md
