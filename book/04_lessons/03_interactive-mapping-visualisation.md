@@ -1,8 +1,13 @@
-# L03 – Interactive mapping
+---
+site:
+  outline_maxdepth: 2
+---
+
+# L03 – Interactive visualisation
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Turning rasters, vectors, and model outputs into maps you and others can explore
+Using interactive maps to inspect data, compare layers and evaluate GeoAI outputs
 </div>
 <!-- markdownlint-enable MD033 -->
 
@@ -10,17 +15,29 @@ Turning rasters, vectors, and model outputs into maps you and others can explore
 
 ## 1. Context
 
-You now know what {term}`GeoAI` is, and in [L02](02_data-acquisition.md) you learned how to find and access raster and vector data. This lesson is about seeing that data: building interactive maps in a Jupyter notebook that let you and your audience explore imagery, vector layers, and — later in the course — model predictions.
+In the previous lesson, you searched for spatial data, inspected candidate sources and created small data subsets. This lesson turns those data into interactive maps.
 
-Interactive maps are not only a presentation tool. Panning, zooming, and toggling layers is often the fastest way to spot a misaligned dataset, a suspicious gap, or a promising study area, well before you write any analysis code.
+Interactive mapping is not only a final presentation step. It is part of the whole {term}`GeoAI` workflow. Before modelling, you use maps to inspect imagery, check whether labels align with visible features, compare data sources and identify problems such as clouds, shadows or missing coverage. After {term}`Inference`, you use maps to compare predictions with source imagery, reference labels and spatial context.
+
+This lesson focuses on practical visual checks using Python and {term}`Leafmap`. You will work with raster layers, vector overlays, cloud-hosted datasets, split-panel comparisons and model-style outputs.
+
+The next lessons build on these skills. Data preprocessing, training data creation, segmentation, detection and change detection all depend on your ability to see whether spatial layers actually make sense together.
 
 ---
 
 ## 2. Motivation
 
-A static screenshot can only show one view of your data at one moment. An interactive map lets you and your reader check coverage, zoom into details, compare two time periods, or toggle a model prediction against the underlying imagery — all without re-running code. This is especially valuable in a GeoAI workflow, where a "wrong-looking" prediction is often easiest to diagnose by looking at it directly on a map next to the input imagery.
+A workflow can run without errors and still be spatially wrong.
 
-This lesson focuses on `leafmap`, the interactive mapping package used throughout this book, and on the mapping helpers built into the `geoai` package for common GeoAI-specific tasks such as showing STAC items or comparing predictions.
+A raster may be shifted by one projection issue. A label layer may not match the imagery date. A building mask may look good in one neighbourhood but fail near shadows or tile edges. A model metric may look strong while the map reveals systematic errors.
+
+Interactive maps help you find these problems early because you can zoom, pan, toggle layers and compare datasets at the same location. This is especially important in project work, where you often combine data from different providers, sensors, dates and formats.
+
+A useful rule for SDS320 is:
+
+```text
+If a spatial decision affects your project, map it before you trust it.
+```
 
 ---
 
@@ -28,13 +45,14 @@ This lesson focuses on `leafmap`, the interactive mapping package used throughou
 
 By the end of this lesson, you should be able to:
 
-* create a basic interactive map with `leafmap` and add a basemap,
-* display a local raster or {term}`Cloud Optimized GeoTIFF (COG)` on a map,
-* visualise a {term}`SpatioTemporal Asset Catalog (STAC)` item directly from the {term}`Planetary Computer` without downloading it first,
-* add vector layers to a map with styling and popups,
-* build a split-panel map to compare two layers side by side,
-* preview model prediction outputs on a map, in anticipation of the modelling lessons later in this book,
-* apply basic best practices for choosing between interactive and static maps.
+- create interactive maps with Leafmap in a Jupyter notebook,
+- add basemaps, raster layers and vector layers to a map,
+- visualise local GeoTIFFs and cloud-hosted COGs,
+- use true-colour and false-colour band combinations for imagery inspection,
+- preview Planetary Computer items without downloading full datasets,
+- compare layers with split-panel maps,
+- overlay labels or model outputs on source imagery,
+- apply basic visualisation choices that support project communication.
 
 ---
 
@@ -42,27 +60,30 @@ By the end of this lesson, you should be able to:
 
 Work through the pages in this order:
 
-1. [Leafmap basics](L03/01_leafmap-basics.md) — create your first interactive map and add a basemap.
-2. [Raster data on maps](L03/02_raster-data-on-maps.md) — display local rasters and COGs, with band and colormap control.
-3. [Planetary Computer maps](L03/03_planetary-computer-maps.md) — visualise STAC items directly from a cloud catalogue.
-4. [Vector data on maps](L03/04_vector-data-on-maps.md) — add and style vector layers, with popups and legends.
-5. [Split-panel comparisons](L03/05_split-panel-comparisons.md) — compare two layers side by side in one map.
-6. [Model results on maps](L03/06_model-results-on-maps.md) — preview how prediction outputs will be visualised in later lessons.
-7. [Visualisation best practices](L03/07_visualisation-best-practices.md) — choosing colormaps, basemaps, and interactive versus static output.
-8. [Project transfer](L03/08_project-transfer.md) — build a first interactive map for your own project data.
+1. [Leafmap basics](L03/01_leafmap-basics.md) — create your first interactive maps and use basemaps for spatial context.
+2. [Raster data on maps](L03/02_raster-data-on-maps.md) — display local and remote raster data, including GeoTIFFs, COGs and band combinations.
+3. [Planetary Computer maps](L03/03_planetary-computer-maps.md) — search, preview and visualise cloud-hosted items before downloading data.
+4. [Vector data on maps](L03/04_vector-data-on-maps.md) — overlay GeoJSON files and GeoDataFrames on imagery and style them clearly.
+5. [Split-panel comparisons](L03/05_split-panel-comparisons.md) — compare two layers interactively with a draggable divider.
+6. [Model results on maps](L03/06_model-results-on-maps.md) — overlay masks, labels or predictions on source imagery for visual evaluation.
+7. [Visualisation best practices](L03/07_visualisation-best-practices.md) — choose colormaps, layer names, opacity and context layers deliberately.
+8. [Project transfer](L03/08_project-transfer.md) — turn the lesson into a concrete visual inspection plan for your own project.
 
 ---
 
 ## 5. Project framing
 
-As you work through this lesson, try building maps with your own project's data where possible — the raster and vector sources you identified in [L02](02_data-acquisition.md) are a good starting point.
+As you work through the lesson, keep your own project in mind.
 
-* Which layer from my project would benefit most from an interactive view rather than a static plot?
-* Do I need to compare two datasets, two dates, or a prediction against ground truth?
-* Who is the audience for this map — myself while exploring, or a reader in my final report?
+Use these guiding questions:
+
+- Which datasets do I need to inspect visually before I can trust them?
+- Which layers need to be compared: imagery, labels, predictions, reference data or context layers?
+- What visual evidence would show that my data are aligned and usable?
+- Which map or comparison would help another person understand my project decision?
 
 ```{tip}
-An interactive map you build now for exploration does not need to be polished. Save the cartographic polish — legends, titles, colour choices — for the maps that go into your final report, covered in the [Project handbook's figures and maps page](../03_project/08_figures-and-maps.md).
+Do not wait until the final report to make maps. Use maps as quality-control tools while your project is still flexible.
 ```
 
 ---
@@ -71,9 +92,13 @@ An interactive map you build now for exploration does not need to be polished. S
 
 Before class, prepare the following:
 
-* [ ] Make sure `leafmap` and `geoai` run in your notebook environment (see [Python & project setup](../02_setup.md) if not).
-* [ ] Have at least one local raster file or vector file from [L02](02_data-acquisition.md) ready to visualise.
-* [ ] Think of one comparison you would like to see on a map for your project (two dates, two sources, or prediction versus truth).
+- [ ] Review your candidate data sources from Lesson 02.
+- [ ] Choose one small {term}`Area of Interest (AOI)` that is suitable for visual inspection.
+- [ ] Make sure you can open JupyterLab or VS Code with the SDS320 environment.
+- [ ] Bring one dataset or data source you would like to inspect on a map.
+- [ ] Note one visual question you need to answer for your project.
+
+<!-- TODO: confirm whether `leafmap`, `geoai`, `rasterio`, `geopandas` and Planetary Computer helper functions are included in the final SDS320 environment. -->
 
 ---
 
@@ -81,8 +106,10 @@ Before class, prepare the following:
 
 After completing this lesson, you should have:
 
-* a working interactive map built with `leafmap`,
-* experience displaying at least one raster and one vector layer on a map,
-* a split-panel comparison of two layers,
-* a sense of how model outputs will be visualised once you reach the modelling lessons,
-* a short list of visualisation choices to revisit when you prepare figures for your final report.
+- at least one interactive map for your project area,
+- a first visual check of your main imagery or spatial data,
+- a comparison of at least two relevant layers,
+- a short note on whether the data look suitable,
+- a list of visual problems or uncertainties to address before preprocessing or modelling.
+
+These outputs do not need to be polished. Their purpose is to help you make better project decisions before the workflow becomes more complex.

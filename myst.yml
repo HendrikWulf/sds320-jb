@@ -99,7 +99,7 @@ project:
         - file: book/04_lessons/L02/04_data-citation.md
         - file: book/04_lessons/L02/05_project-transfer.md
 
-    - title: L03 – Interactive viz.
+    - title: L03 – Interactive vis.
       file: book/04_lessons/03_interactive-mapping-visualisation.md
       children:
         - file: book/04_lessons/L03/01_leafmap-basics.md

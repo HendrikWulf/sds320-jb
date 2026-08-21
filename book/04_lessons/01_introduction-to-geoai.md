@@ -2,7 +2,7 @@
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-What GeoAI is, why spatial data needs its own thinking, and where this book is headed
+What GeoAI is and  why spatial data needs its own thinking & toolkit
 </div>
 <!-- markdownlint-enable MD033 -->
 
@@ -10,22 +10,19 @@ What GeoAI is, why spatial data needs its own thinking, and where this book is h
 
 ## 1. Context
 
-This is the first lesson in the book. Before you search for data, build maps or train a model, you need a shared vocabulary and a mental map of the field: what {term}`GeoAI` actually is, why spatial data behaves differently from a typical tabular dataset, and which tools in the Python ecosystem you will rely on throughout the rest of the course.
+You have already worked through the course orientation, set up your Python environment, and previewed the project handbook that will carry you from an idea to a finished SDS320 project. This lesson is where the technical spine of the course begins.
 
-This lesson does not teach a specific technique yet. It builds the conceptual foundation that the following lessons — data acquisition, interactive mapping, preprocessing, and the modelling lessons from object detection onward — all build on.
+SDS320 builds on {abbr}`SDS210 (the prerequisite Spatial Data Science course)`. You already know how to work with raster and vector data, use Git, and run basic spatial analysis in Python. What you are missing, and what this lesson supplies, is a shared vocabulary for {term}`GeoAI`: what it is, why it is not just "computer vision with satellite pictures," and which of its core tasks might fit your own project.
+
+Nothing here requires you to write code. The point of this lesson is conceptual footing. [L02 – Data acquisition](../02_data-acquisition.md) is where you start touching real datasets, and the concepts you build here will shape which data and which task type make sense for you to pursue.
 
 ---
 
 ## 2. Motivation
 
-Artificial intelligence is increasingly applied to satellite imagery, aerial photos, and geospatial vector data: mapping buildings after a disaster, tracking deforestation, monitoring crops, or detecting change in cities over time. These applications sit at the intersection of two fields that historically developed separately — geographic information science and machine learning.
+Every SDS320 project eventually has to answer a deceptively simple question: what, exactly, should the model predict? Getting this wrong is expensive. Teams that pick a task type before understanding their options often end up trying to force a segmentation problem into a classification workflow, or spend weeks labeling bounding boxes when a simpler scene-level label would have answered the research question just as well.
 
-That intersection is not a simple sum of the two. Spatial data has properties that most machine learning tools were never designed for: locations are not independent of their neighbours, resolution and scale change what a model can "see", and a coordinate reference system determines whether measurements are even meaningful. GeoAI is the emerging practice of applying AI methods to geospatial problems while taking these properties seriously.
-
-```{admonition} A fast-moving field
-:class: note
-GeoAI is young and evolving quickly. Tools, packages, and even best practices from a year ago may already have shifted. Treat this book as an entry point and orientation, not a final reference — the [platforms and reference pages](../06_reference.md) later in this book point you toward resources that stay current.
-```
+This lesson exists to help you avoid that. By the end of it, you should be able to look at a rough project idea and immediately narrow it down to a small set of plausible task types and tools, instead of discovering the mismatch three lessons from now when it is much harder to change course.
 
 ---
 
@@ -33,62 +30,48 @@ GeoAI is young and evolving quickly. Tools, packages, and even best practices fr
 
 By the end of this lesson, you should be able to:
 
-* explain what {term}`GeoAI` is and how it differs from conventional GIS analysis and from generic machine learning,
-* describe at least two properties that make spatial data different from tabular data,
-* name real-world application areas where GeoAI is used,
-* recognise the main Python packages this course relies on and what each one is for,
-* describe the core families of GeoAI tasks covered later in this book,
-* explain, at a conceptual level, what a foundation model is and why it matters for GeoAI,
-* connect these ideas to your own project idea.
+- explain what GeoAI means in the context of spatial data science,
+- describe why spatial data require different thinking from ordinary images,
+- identify major application areas where GeoAI is useful,
+- recognise the main Python tools used in GeoAI workflows,
+- distinguish core GeoAI task types and match them to project questions,
+- explain why foundation models are changing GeoAI workflows,
+- draft a first GeoAI framing statement for your own SDS320 project.
 
 ---
 
 ## 4. Lesson roadmap
 
-Work through the pages in this order:
-
-1. [What is GeoAI?](L01/01_what-is-geoai.md) — define the field and see how it relates to GIS, remote sensing, and machine learning.
-2. [Why spatial data is different](L01/02_why-spatial-data-is-different.md) — spatial autocorrelation, scale, resolution, and coordinate reference systems.
-3. [Applications of GeoAI](L01/03_applications-of-geoai.md) — real projects across environmental monitoring, urban analysis, agriculture, and disaster response.
-4. [The Python ecosystem](L01/04_python-ecosystem.md) — the packages you will use throughout this book, and how they fit together.
-5. [Core GeoAI tasks](L01/05_core-geoai-tasks.md) — a map of the task families covered in later lessons: detection, segmentation, translation, change, regression.
-6. [Foundation models](L01/06_foundation-models.md) — what pretrained, general-purpose models mean for geospatial work.
-7. [Project transfer](L01/07_project-transfer.md) — connect these ideas to your own project idea.
+1. [What is GeoAI?](L01/01_what-is-geoai.md) — a working definition and a short history from manual photo interpretation to foundation models.
+2. [Why spatial data is different](L01/02_why-spatial-data-is-different.md) — the properties of spatial data that make GeoAI its own field rather than a subfield of ordinary computer vision.
+3. [Applications of GeoAI](L01/03_applications-of-geoai.md) — a tour of six domains where GeoAI is used in production, as inspiration for your own project.
+4. [The Python ecosystem for GeoAI](L01/04_python-ecosystem.md) — the libraries you will use throughout SDS320, and how they fit together.
+5. [Core GeoAI tasks](L01/05_core-geoai-tasks.md) — the seven task types that define almost every GeoAI problem, and how to tell them apart.
+6. [From traditional methods to foundation models](L01/06_foundation-models.md) — how the field evolved, and what that means for how much data and compute your project actually needs.
+7. [Project transfer](L01/07_project-transfer.md) — turning everything above into a first concrete direction for your own project.
 
 ---
 
 ## 5. Project framing
 
-You do not need a finished project idea yet, but keep these questions in mind as you read:
+As you read through this lesson, keep your own project loosely in mind. You do not need a final idea yet, but a few questions are worth carrying with you:
 
-* What real-world question or phenomenon am I curious about, and does it have a spatial dimension?
-* Would I expect a satellite image, an aerial photo, or a vector dataset to be more relevant to that question?
-* Which of the application areas in this lesson feels closest to what I want to work on?
-* Is my interest closer to "detect specific objects", "classify area", "measure change over time", or "estimate a continuous quantity"?
-
-```{tip}
-It is normal not to know the answer to all of these yet. The goal of this lesson is to give you enough vocabulary to start narrowing things down, not to lock in a final decision.
-```
+- Which application domain from this lesson is closest to something you would actually want to investigate?
+- What decision, question, or pattern would your project help someone understand or act on?
+- Looking at the seven core tasks, which one or two seem closest to what you would want a model to output?
+- Does your rough idea depend on very fine spatial detail, a long time series, or many spectral bands? Those choices will shape which data sources are realistic later.
 
 ---
 
 ## 6. Before class
 
-Before class, prepare the following:
-
-* [ ] Skim the [Python & project setup](../02_setup.md) section if you have not already, so your environment is ready.
-* [ ] Think of one real-world phenomenon you would like to study with spatial data.
-* [ ] Bring one question or point of confusion about "AI and maps" to discuss in class.
+- Skim [Chapter 1 of the course textbook](https://www.eoportal.org/satellite-missions/copernicus-sentinel-2) <!-- TODO: replace with the correct link to the assigned textbook chapter once available in the course reference section --> on the introduction to GeoAI, if you have not already.
+- Re-open the [Project handbook](../03_project.md) pages on the research question and workflow design. You will revisit them at the end of this lesson.
+- Confirm your Python environment from [Setup](../02_setup.md) still activates without errors. You will not need it for this lesson, but you will for the next one.
+- Jot down one or two rough areas you are curious about (a place, a hazard, a resource, a process) even if you have no idea yet whether GeoAI is the right tool for them.
 
 ---
 
 ## 7. After this lesson
 
-After completing this lesson, you should have:
-
-* a working definition of {term}`GeoAI` in your own words,
-* a short list of application areas that could match your project interest,
-* a rough sense of which core GeoAI task family (detection, segmentation, translation, change, regression) fits your idea best,
-* familiarity with the names of the main Python packages used later in this book.
-
-This lesson does not require any data download or coding. The next lesson, [L02 – Data acquisition](02_data-acquisition.md), is where you start working hands-on.
+You should be able to explain, in your own words, what makes a dataset "spatial" in a way that matters for modeling, and you should be able to name the seven core GeoAI tasks without looking them up. For your own project, you should have a short written sketch: a candidate domain, a rough research direction, and a tentative task type, produced on the [project transfer](L01/07_project-transfer.md) page. This sketch is not a commitment. [L02 – Data acquisition](../02_data-acquisition.md) will test it against what data is actually available, and you may well revise it.

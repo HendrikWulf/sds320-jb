@@ -7,65 +7,92 @@ site:
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Locating GeoAI between GIS, remote sensing, and machine learning
+A working definition of GeoAI and a short history of how the field got here
 </div>
 <!-- markdownlint-enable MD033 -->
 
 ---
 
-## 1. A working definition
+## 1. Why this definition matters
 
-{term}`GeoAI` (geospatial artificial intelligence) is the application of {term}`Deep Learning` and other machine learning methods to geospatial data — {term}`Remote Sensing` imagery, {term}`Vector Data`, elevation models, and similar sources — to detect, classify, segment, translate, or predict spatial patterns.
+"GeoAI" gets used loosely. Sometimes it means any machine learning model that happens to touch a map. Sometimes it means only deep learning on satellite imagery. If you do not pin the term down early, it becomes hard to scope a project, because you will not know whether a random forest on tabular census data counts, or whether it has to involve a neural network and a GPU.
 
-It is not a single tool or package. It is a practice that combines three things that used to live in separate communities:
-
-| Field | Core question | Typical output |
-| --- | --- | --- |
-| Geographic information science (GIS) | Where is it, and how does it relate to other locations? | Maps, spatial queries, overlays |
-| Remote sensing | What can we observe from imagery? | Classified scenes, indices, time series |
-| Machine learning | What pattern predicts this outcome? | Trained models, predictions |
-
-GeoAI sits at the overlap of all three: it uses machine learning models, trained and evaluated with the same rigour as any ML project, but applied to data that carries geographic meaning and needs geographic handling.
+Having a clear definition also helps you talk about your own project precisely, both to your instructor and in your final report.
 
 ---
 
-## 2. How it differs from "just GIS"
+## 2. Core idea
 
-Traditional GIS analysis is often rule-based: you buffer a road, intersect two layers, or reclassify a raster using thresholds you define. The logic is explicit and the outcome is predictable from the rules.
+{term}`GeoAI` is what happens where {term}`geospatial data science <GeoAI>` and artificial intelligence overlap. It combines domain knowledge about geography and {term}`remote sensing` with the pattern-recognition abilities of modern machine learning and deep learning. In practice, that means taking data that is tied to a location on Earth and using a model, rather than only manual rules or visual interpretation, to extract information from it.
 
-GeoAI instead learns the mapping from data to outcome. Instead of writing "a building is a group of pixels with these reflectance values", you show a model many labelled examples of buildings and let it learn the pattern. This trades explicit control for the ability to recognise patterns too complex or too inconsistent to hand-code — but it also introduces new failure modes: models can be confidently wrong, need representative training data, and require evaluation just like any statistical method.
+The name is fairly recent. It became common in the mid-2010s as researchers began applying {term}`deep learning` to spatial problems at scale, and it was picked up by workshops and review papers that tried to formalize the overlap between AI and geospatial science. The underlying idea, using computation to pull information out of spatial data, is much older than the name.
 
-```{admonition} GeoAI does not replace GIS thinking
-:class: important
-Coordinate reference systems, resolution, scale, and data quality checks still matter just as much in a GeoAI workflow as in a traditional GIS one. A powerful model on badly prepared spatial data will still produce a badly prepared answer.
+---
+
+## 3. How GeoAI developed
+
+The idea behind GeoAI is older than the name. You can think of its development as a series of overlapping stages.
+
+### 1. Manual photo interpretation (1940s–1960s)
+
+Trained analysts examined aerial photographs by eye to identify roads, buildings, and crop types. This worked, but it was slow, expert-dependent, and could take weeks to cover even a modest area. There was no automation at all; every judgment was made by a person.
+
+### 2. The satellite era and statistical classifiers (1970s–1980s)
+
+The launch of Landsat 1 in 1972 gave scientists repeated, consistent observations of the Earth's surface for the first time. That created a new problem: far more imagery than people could look at by hand. Early automated approaches used simple statistical classifiers, assigning each pixel to a land-cover class based on its spectral signature, without any concept of what a "building" or "field" actually looked like as a shape.
+
+### 3. Traditional machine learning (1990s–2010s)
+
+Methods such as {term}`random forests <Random Forest>`, support vector machines, and gradient boosting began to outperform the older statistical classifiers. They could handle more input variables and capture non-linear relationships. The catch is that a person still had to hand-design the input features, spectral indices, texture measures, shape metrics, that the model would learn from. This step, called feature engineering, took real domain expertise.
+
+### 4. The deep learning shift (2012 onward)
+
+Starting with breakthroughs in general image classification around 2012, {term}`convolutional neural networks <Convolutional Neural Network (CNN)>` (CNNs) learned useful features directly from raw imagery, without a person hand-designing them. Architectures such as {term}`U-Net` became a default choice for pixel-level tasks like {term}`semantic segmentation <Semantic Segmentation>`, and the geospatial community adopted them quickly for land cover mapping, building extraction, and crop classification.
+
+### 5. Foundation models (2020s onward)
+
+The current frontier is {term}`foundation models <Foundation Model>`: large models pre-trained on huge, broad datasets that can be adapted to many downstream tasks with comparatively little extra training. Meta's {term}`Segment Anything Model (SAM)` is a well-known general-purpose example, and geospatial-specific foundation models now exist for satellite imagery. These models can generalize across geographies and sensors in ways that earlier, narrowly-trained models could not, which lowers the amount of labeled data a new project needs to get started.
+
+```{admonition} A carpenter analogy
+:class: tip
+Each stage in this history did not erase the one before it. Traditional machine learning is still a reasonable choice when labeled data is scarce or when you need an interpretable model. Choosing the right era's tool for your problem, rather than automatically reaching for the newest one, is itself a skill you will practice in this course.
 ```
 
 ---
 
-## 3. How it differs from "just machine learning"
+## 4. Python reactivation
 
-Generic machine learning tooling is usually built around independent, identically distributed rows in a table. Geospatial data breaks that assumption in several ways covered in the [next page](02_why-spatial-data-is-different.md) — nearby locations are correlated, resolution changes what a model can detect, and a raster is really a georeferenced grid, not just an array of numbers.
-
-This means GeoAI work usually needs geospatial-aware tooling on top of standard machine learning frameworks: libraries that understand {term}`Coordinate Reference System (CRS)` metadata, can tile large rasters for training, and can turn model outputs back into georeferenced layers you can map. The [Python ecosystem page](04_python-ecosystem.md) introduces the specific packages this book uses for that.
+Nothing here requires code yet. But it is worth noting where your SDS210 skills fit: the {term}`raster <Raster Data>` and {term}`vector <Vector Data>` handling you already know (reading a {term}`GeoTIFF`, working with a {term}`GeoDataFrame`) sits underneath every stage above. GeoAI does not replace that foundation; it adds a modeling layer, built on packages such as {term}`PyTorch`, on top of it. You will see exactly how those packages fit together on the [Python ecosystem](04_python-ecosystem.md) page.
 
 ---
 
-## 4. A first mental model
+## 5. Common pitfalls
 
-A useful way to think about a GeoAI project is as a pipeline:
-
-```text
-Find and access data → Prepare and check data → Prepare or find training data →
-Choose a task and model → Train or apply a model → Interpret and communicate results
-```
-
-Every lesson in this book maps onto one or more stages of this pipeline. This lesson (L01) sits before all of them — it is about understanding the field well enough to navigate the rest of the pipeline with intention rather than by trial and error.
+- **Treating "GeoAI" as a synonym for "deep learning on satellite images."** Traditional machine learning on spatial data is still GeoAI, and is sometimes the more appropriate choice for your project.
+- **Assuming newer always means better.** A foundation model can be the wrong tool if your problem is small, well-understood, and better served by an interpretable model with a handful of hand-picked features.
+- **Confusing scene-level labels with pixel-level maps.** As you will see on the [core tasks](05_core-geoai-tasks.md) page, these are genuinely different tasks with different data requirements, not two names for the same thing.
 
 ---
 
-## 5. Key takeaways
+## 6. Mini task
 
-* {term}`GeoAI` combines GIS thinking, remote sensing data, and machine learning methods.
-* It replaces explicit, rule-based logic with learned patterns — powerful, but it needs careful data and evaluation.
-* Geospatial data has properties that plain machine learning tooling does not handle by default.
-* A GeoAI project is a pipeline: data, preparation, training data, modelling, and interpretation, all covered across later lessons in this book.
+Pick one real-world GeoAI system, either one named on this page (Microsoft's building footprints, Google's Dynamic World, Meta's SAM) or one you find yourself. In three to four sentences:
+
+1. Describe what problem it solves.
+2. Say which stage of the history above it belongs to (traditional ML, CNN-era deep learning, or foundation model).
+3. Justify your placement using one concrete detail about how the system works.
+
+:::{note} Sample solution
+:class: dropdown
+
+Google's Dynamic World project classifies global land cover in near-real time, updating every time a new Sentinel-2 image becomes available. It belongs to the CNN-era deep learning stage rather than the foundation-model stage, because it is a task-specific segmentation model trained to output a fixed set of land-cover classes, not a general-purpose model adapted afterward to many different tasks. The near-real-time updating is only possible because the model runs automatically on new imagery without a person manually reviewing each output, which distinguishes it from the manual photo-interpretation era.
+:::
+
+---
+
+## 7. Key takeaways
+
+- {term}`GeoAI` is the overlap of geospatial data science and artificial intelligence; it is not limited to deep learning or to satellite imagery.
+- The field moved through five broad stages: manual interpretation, statistical classifiers, traditional machine learning, deep learning, and foundation models.
+- Each stage lowered the barrier to entry, but did not make earlier approaches obsolete.
+- Being able to place a system or project idea within this history helps you reason about what tools and how much labeled data it will realistically need.

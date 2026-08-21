@@ -1,110 +1,130 @@
 ---
 site:
-  outline_maxdepth: 2
+  outline_maxdepth: 1
 ---
 
-# The Python ecosystem
+# The GeoAI ecosystem
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Orienting yourself among the packages this book uses
+The libraries you may use in SDS320
 </div>
 <!-- markdownlint-enable MD033 -->
 
 ---
 
-## 1. Why an orientation page
+## 1. Why this ecosystem matters
 
-This book uses a fairly large set of Python packages, each covering a specific part of the GeoAI pipeline. You do not need to master all of them now — the goal here is to recognise names when you see them later, and know roughly what each package is responsible for.
-
-```{tip}
-If a package name in a later lesson feels unfamiliar, come back to this page rather than guessing from context.
-```
+You do not need to memorize every package on this page today. You do need to recognize the names when they appear in later lessons, and understand roughly what job each one does, so that when something breaks you know which layer of the stack to look at.
 
 ---
 
-## 2. Core geospatial data packages
+## 2. Core idea
 
-| Package | Purpose |
-| --- | --- |
-| {term}`GeoPandas` | Vector data as a {term}`GeoDataFrame`: reading, writing, filtering, and spatial operations. |
-| {term}`Shapely` | The geometry objects (points, lines, polygons) that GeoPandas is built on. |
-| Fiona / Pyogrio | Lower-level vector file I/O engines used behind the scenes by GeoPandas. |
-| {term}`Rasterio` | Reading, writing, and reprojecting raster data such as {term}`GeoTIFF` files. |
-| Rioxarray | Combines Rasterio with Xarray-style labelled arrays for raster analysis. |
-| Xarray | N-dimensional labelled arrays, useful for multi-band or time-series raster data. |
-| {term}`GDAL/OGR` | The underlying C library that most of the packages above rely on for format support and reprojection. |
-| Pyproj | Coordinate reference system transformations. |
-
-## 3. Mapping and visualisation
-
-| Package | Purpose |
-| --- | --- |
-| {term}`Leafmap` | Interactive maps in Jupyter notebooks, covered in depth in [L03 – Interactive mapping and visualisation](../03_interactive-mapping-visualisation.md). |
-| Folium | The Leaflet.js wrapper that some of Leafmap's functionality builds on. |
-| `localtileserver` | Serves large local raster files as map tiles for interactive display. |
-| Matplotlib | General-purpose plotting, used throughout this book for static figures. |
-
-## 4. Data access
-
-| Package | Purpose |
-| --- | --- |
-| `pystac-client` | Searching {term}`SpatioTemporal Asset Catalog (STAC)` catalogues such as the Planetary Computer. |
-| `planetary-computer` | Signs and resolves access URLs for {term}`Planetary Computer` assets. |
-| `requests` | General-purpose HTTP requests, used for direct REST API access (for example the Swiss geodata APIs in [L02](../02_data-acquisition.md)). |
-| `quackosm` / `leafmap.osm` | Querying {term}`OpenStreetMap (OSM)` data by bounding box, place name, or geometry. |
-| `boto3` / `s3fs` / `awscli` | Accessing cloud object storage (Amazon S3), used by some open imagery archives. |
-
-## 5. The GeoAI and modelling stack
-
-| Package | Purpose |
-| --- | --- |
-| `geoai` | This book's central package: helper functions for data access, visualisation, training data preparation, and model workflows. |
-| {term}`PyTorch` | The deep learning framework underneath most models used in this book. |
-| {term}`TorchGeo` | PyTorch extensions specifically for geospatial data: datasets, samplers, and pretrained models. |
-| `torchvision` | General computer vision building blocks (model architectures, transforms) that TorchGeo builds on. |
-| `segment-geospatial` (`samgeo`) | Applies the Segment Anything Model to geospatial imagery — covered in [L12 – Segment Anything](../12_segment-anything.md). |
-
-## 6. General scientific Python
-
-| Package | Purpose |
-| --- | --- |
-| NumPy | Array computation that almost every other package here depends on. |
-| Pandas | Tabular {term}`DataFrame` operations; GeoPandas extends this for spatial data. |
-| scikit-learn | Classical machine learning algorithms and evaluation metrics. |
-| scikit-image | General image processing operations, useful alongside raster-specific tools. |
-| tqdm | Progress bars for long-running loops, such as batch downloads or {term}`Batch Inference`. |
+A GeoAI pipeline is built from four rough layers: deep learning frameworks, geospatial data libraries, visualization tools, and higher-level packages that tie the others together. Python has a mature library for each layer, and most GeoAI workflows combine various tools.
 
 ---
 
-## 7. A typical import block
+## 3. Main tool families
 
-Most notebooks in this book will start with some subset of these imports, depending on the task:
+### 1. Deep learning frameworks
+
+{term}`PyTorch` is the most widely used deep learning framework in research and provides the low-level building blocks for defining and training neural networks. `torchvision` extends it with pre-trained models and image transforms for computer vision. {term}`TorchGeo` is a PyTorch domain library built specifically for geospatial data: it provides datasets, samplers, and pre-trained models that understand multi-spectral inputs and irregularly-shaped satellite scenes, rather than assuming every image is a fixed-size RGB photo the way general computer vision datasets do.
+
+### 2. Geospatial data libraries
+
+{term}`Rasterio` reads and writes raster formats such as {term}`GeoTIFF`, giving you pixel values as NumPy arrays while preserving {term}`CRS <Coordinate Reference System (CRS)>` and other metadata. {term}`GeoPandas` extends Pandas with geometric operations for vector data, and {term}`Shapely` handles the underlying geometry operations (buffering, intersection, union). Underneath most of these sits {term}`GDAL/OGR`, the C/C++ library that actually reads and writes the file formats. A typical workflow uses Rasterio to load imagery and GeoPandas to load vector labels, then combines the two into training data for a model.
+
+### 3. Interactive visualization
+
+{term}`Leafmap` provides a high-level API for interactive maps inside Jupyter, built on backends such as folium and ipyleaflet. It is well-suited to GeoAI work because it can overlay model predictions directly on satellite basemaps and supports side-by-side comparisons, which is useful for visually checking whether a model's output actually makes sense.
+
+### 4. High-level, unified packages
+
+The `geoai` Python package is the central library used throughout this book. It wraps {term}`PyTorch`, {term}`TorchGeo`, {term}`Rasterio`, and {term}`GeoPandas` into a consistent, higher-level interface for tasks such as {term}`object detection <Object Detection>`, {term}`semantic segmentation <Semantic Segmentation>`, and {term}`change detection <Change Detection>`, so you are not stitching together low-level training loops and data loaders by hand for every lesson.
+
+### 5. Segment Anything for geospatial data
+
+The `segment-geospatial` package (also called `samgeo`) adapts Meta's {term}`Segment Anything Model (SAM)` for georeferenced imagery, producing vector outputs such as {term}`GeoJSON` with a proper {term}`CRS <Coordinate Reference System (CRS)>`, rather than plain image masks with no spatial reference. It supports both interactive segmentation (clicking on objects) and automatic mask generation, and is particularly useful for tasks like building or tree-canopy extraction where you have not trained a task-specific model of your own. You will use it directly in [L12 – Segment Anything](../12_segment-anything.md).
+
+---
+
+## 4. A typical workflow stack
+
+A simple project might use the tools like this:
+
+| Workflow step | Possible tool |
+| --- | --- |
+| Search or download imagery | STAC tools, data APIs, provider portals |
+| Read raster data | Rasterio |
+| Read vector data | GeoPandas |
+| Process geometries | GeoPandas, Shapely |
+| Build model-ready chips | Rasterio, NumPy, TorchGeo or GeoAI |
+| Train or run a model | PyTorch, GeoAI, samgeo |
+| Visualise inputs and outputs | Leafmap, Matplotlib |
+| Save outputs | GeoTIFF, GeoPackage, GeoParquet, CSV |
+| Document workflow | Jupyter Notebook, README, repository |
+
+This stack may change from project to project. The important part is that each tool has a clear role.
 
 ```python
-# core geospatial
-import geopandas as gpd
-import rasterio
-import xarray as xr
+:caption: A preview of what a geoai workflow can look like (not runnable yet)
 
-# mapping
-import leafmap
-
-# data access
-from pystac_client import Client
-import planetary_computer
-
-# GeoAI stack
+# This is illustrative only, no coding is required in this lesson.
+# You will write real versions of this starting in later lessons.
 import geoai
-import torch
+
+model = geoai.train_segmentation_model(
+    images="path/to/image_chips",
+    labels="path/to/masks",
+    architecture="unet",
+)
+predictions = model.predict("path/to/new_area.tif")
 ```
 
-You will rarely need all of these at once — a data-acquisition notebook mostly needs the data-access and core geospatial groups, while a modelling notebook in later lessons leans on the GeoAI and modelling stack.
+---
+
+## 5. Common pitfalls
+
+- **Trying to install everything at once without an isolated environment.** Deep learning and geospatial packages have many dependencies; a shared, unmanaged environment is a common source of version conflicts.
+- **Confusing `geoai` (the package) with GeoAI (the field).** The lowercase, code-formatted name refers specifically to the Python package used in this course.
+- **Assuming a high-level package removes the need to understand your data.** `geoai` and `samgeo` handle a lot of plumbing, but they cannot fix a mismatched CRS or a poorly chosen resolution for you.
+
+---
+
+## 6. Mini task
+
+Match each tool below to the layer of the pipeline it belongs to: data I/O, modeling, visualization, or high-level orchestration.
+
+`PyTorch` · `Rasterio` · `Leafmap` · `TorchGeo` · `geoai` · `GeoPandas` · `samgeo`
+
+:::{note} Sample solution
+:class: dropdown
+
+- Data I/O: Rasterio, GeoPandas
+- Modeling: PyTorch, TorchGeo
+- Visualization: Leafmap
+- High-level orchestration: `geoai`, `samgeo`
+
+Note that TorchGeo sits between data I/O and modeling in practice, since its samplers handle geospatial-aware data loading specifically for model training, but its core purpose is preparing data for PyTorch models rather than reading files from disk in the first place.
+:::
+
+---
+
+## 7. Further reading
+
+- [PyTorch documentation](https://pytorch.org)
+- [TorchGeo documentation](https://torchgeo.readthedocs.io)
+- [Rasterio documentation](https://rasterio.readthedocs.io)
+- [GeoPandas documentation](https://geopandas.org)
+- [Leafmap documentation](https://leafmap.org)
+- [segment-geospatial (samgeo) documentation](https://samgeo.gishub.org)
 
 ---
 
 ## 8. Key takeaways
 
-* This book's packages cluster into five groups: core geospatial data, mapping, data access, GeoAI/modelling, and general scientific Python.
-* `geoai`, `leafmap`, `torchgeo`, and `segment-geospatial` are the packages most specific to this book's approach; the rest are widely used across the Python geospatial community.
-* You do not need to memorise every package now — treat this page as a reference to return to.
+- GeoAI pipelines combine four layers: deep learning frameworks, geospatial data libraries, visualization tools, and high-level orchestration packages.
+- `PyTorch` and `TorchGeo` handle modeling; `Rasterio`, `GeoPandas`, and `Shapely` handle data; `Leafmap` handles visualization; `geoai` and `samgeo` tie these together at a higher level.
+- Your SDS210 skills with Rasterio and GeoPandas carry over directly; this course adds the modeling layer on top.
+- A clean, isolated environment prevents most of the dependency headaches that come with combining geospatial and deep learning packages.

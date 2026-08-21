@@ -6,6 +6,8 @@ Key terms used in SDS320
 </div>
 <!-- markdownlint-enable MD033 -->
 
+---
+
 ## How to use the glossary
 
 This glossary collects important terms used across SDS320, especially terms related to geospatial data, remote sensing, GeoAI workflows, training data, model evaluation and reproducible project work.
@@ -16,9 +18,17 @@ The definitions are intentionally short. They are meant to help you understand a
 
 <!-- TODO: Add SDS320-specific responsible AI and academic integrity terms from the course policy page if these terms are linked in the book. -->
 
+---
+
 ## Glossary entries
 
 ```{glossary}
+
+Segment Anything Model (SAM)
+: A general-purpose image segmentation foundation model released by Meta, capable of segmenting objects in an image without being trained specifically for that object type. In GeoAI, it is adapted for georeferenced imagery through packages such as `segment-geospatial`.
+
+segment-geospatial (samgeo)
+: A Python package that adapts the Segment Anything Model for geospatial imagery, producing georeferenced vector outputs such as GeoJSON or Shapefiles instead of plain, unreferenced image masks.
 
 Landsat
 : A long-running Earth observation satellite programme that provides global imagery useful for long-term change analysis. In SDS320, Landsat is often useful when temporal depth matters more than fine spatial detail.

@@ -339,7 +339,7 @@ Use them as patterns for your own project. The exact locations are examples, but
 
 ---
 
-### Sentinel-2 data: Rome
+### Sentinel-2 data
 
 Sentinel-2 is a useful first example because it is global, multispectral and available through the Planetary Computer.
 
@@ -402,7 +402,7 @@ Project check: if your project targets small objects such as individual trees, c
 
 ---
 
-### Landsat data: Himalaya region
+### Landsat
 
 Landsat is useful when the time dimension matters. It has a long archive and global coverage, but coarser resolution than Sentinel-2.
 
@@ -462,7 +462,7 @@ For analysis, match the band combination to the project question. For visual ins
 
 ---
 
-### NAIP data: New York
+### NAIP
 
 NAIP provides high-resolution aerial imagery for the United States. It is useful for fine spatial detail such as buildings, tree crowns and urban features.
 
@@ -516,7 +516,7 @@ Project check: NAIP is useful for high-detail examples, but it is not a global s
 
 ---
 
-### Vantor Open Data: France wildfire 2026
+### Vantor Open Data
 
 Vantor Open Data provides high-resolution imagery for selected disaster events. The root catalog is a static STAC catalog, and event collections are listed as child collections.
 
@@ -622,7 +622,7 @@ Vantor Open Data licensing and event availability should be checked directly in 
 
 ---
 
-### SWISSIMAGE data: UZH Campus Irchel
+### SWISSIMAGE data
 
 For projects in Switzerland, SWISSIMAGE can be useful because it provides very high-resolution aerial imagery. At 10 cm resolution, even a small area can become a large raster.
 

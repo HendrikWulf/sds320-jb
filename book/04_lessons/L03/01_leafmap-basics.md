@@ -7,63 +7,145 @@ site:
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Creating your first interactive map in a notebook
+Creating interactive maps in Jupyter notebooks
 </div>
 <!-- markdownlint-enable MD033 -->
 
 ---
 
-## 1. Why leafmap
+## 1. Why this page matters
 
-{term}`Leafmap` is a Python package that wraps interactive mapping libraries (Leaflet.js, via `folium` or `ipyleaflet`) with a notebook-friendly API. It is the interactive mapping layer this book builds on, and the `geoai` package's own map helpers, covered in the following pages, extend it further for GeoAI-specific tasks.
+In Lesson 02, you searched for datasets and created small spatial subsets. Here, you start inspecting those data interactively.
+
+Every visualization technique in this lesson builds on the same starting point: a `leafmap` map object. Getting comfortable with creating and configuring one is a small investment that pays off across the rest of the course.
 
 ---
 
-## 2. Your first map
+## 2. Core idea
 
-```python
+{term}`Leafmap` gives you a Pythonic interface to an interactive map widget inside a Jupyter notebook. It is built on `ipyleaflet` but adds convenience functions for loading raster, vector, and cloud-hosted geospatial data, so you do not have to assemble those pieces yourself.
+
+---
+
+## 3. Create your first map
+
+The basic object is `leafmap.Map()`.
+
+```{code-cell} python
 import leafmap
 
-m = leafmap.Map(center=[47.37, 8.54], zoom=12)  # centred near Zurich
+m = leafmap.Map(center=[41.38, 2.16], zoom=12, height="600px")  # centred near Barcelona
 m
 ```
 
-Displaying `m` at the end of a notebook cell renders an interactive, pannable and zoomable map widget directly in the notebook.
-
----
-
-## 3. Choosing a basemap
-
-By default, `leafmap.Map()` uses a hybrid satellite basemap. You can switch to any of its built-in basemaps with `add_basemap()`:
-
-```python
-m = leafmap.Map(center=[47.37, 8.54], zoom=12)
-m.add_basemap("OpenStreetMap")
-```
-
-Common choices include `"OpenStreetMap"`, `"HYBRID"`, `"SATELLITE"`, `"TERRAIN"`, and `"OpenTopoMap"`. Choose a basemap that supports your data rather than distracts from it — a busy street-map basemap can crowd out a subtle raster layer, while a plain terrain or satellite basemap often works better as background.
+The `center` parameter uses a latitude-longitude pair. The `zoom` parameter controls how close the initial view is. The `height` parameter controls how much vertical space the map uses in the notebook.
 
 ```{tip}
-You can call `add_basemap()` more than once to layer multiple basemap options, then toggle between them with the layer control described below.
+Leafmap map centres use `[latitude, longitude]`. Many spatial searches use bounding boxes in `[west, south, east, north]` order. Mixing these orders is a common source of wrong locations.
 ```
 
 ---
 
-## 4. Adding a layer control
+## 4. Add basemaps
 
-Once you have more than one layer on a map, add a layer control so viewers can toggle layers on and off:
+A {term}`Basemap` gives spatial context. Without it, your results may look like shapes floating in empty space. With it, you can recognise neighbourhoods, roads, terrain or land-cover context.
 
-```python
-m.add_layer_control(position="topright")
+```{code-cell} python
+m = leafmap.Map()
+m.add_basemap("Esri.WorldImagery")
+m
 ```
 
-Later pages in this lesson add raster, vector, and STAC layers to a map like this one — the pattern is always the same: create a `Map`, add one or more layers, optionally add a layer control, then display the map.
+Different basemaps support different purposes.
+
+| Basemap type | Useful for |
+| --- | --- |
+| Satellite imagery | Checking labels or predictions against visible ground features. |
+| Street map | Orienting readers with roads, places and neighbourhood names. |
+| Terrain map | Understanding elevation, relief or hydrological context. |
+| Light neutral map | Presenting thematic layers without visual clutter. |
+
+You can also add more than one basemap and switch between them with the layer control.
+
+```{code-cell} python
+m = leafmap.Map()
+m.add_basemap("Esri.WorldImagery")
+m.add_basemap("OpenTopoMap")
+m
+```
 
 ---
 
-## 5. Key takeaways
+## 5. Inspect available basemaps
 
-* {term}`Leafmap` provides a notebook-friendly interactive map widget built on Leaflet.js.
-* `leafmap.Map(center=..., zoom=...)` creates a map; displaying the object renders it.
-* `add_basemap()` switches or layers basemaps; choose one that supports rather than competes with your data.
-* `add_layer_control()` lets viewers toggle layers — useful as soon as a map has more than one layer.
+Leafmap provides many basemap options. You do not need to memorise them. You can inspect the list when needed.
+
+```{code-cell} python
+basemaps = list(leafmap.basemaps.keys())
+
+print(f"Total basemaps: {len(basemaps)}")
+print("First 10:", basemaps[:10])
+```
+
+Use this list to test basemaps for your project map. Choose one that helps interpretation rather than one that simply looks attractive.
+
+---
+
+## 6. Use maps as a project check
+
+For your own project, a first map should answer three basic questions:
+
+1. Is the map centred on the right place?
+2. Is the zoom level appropriate for the feature or pattern?
+3. Does the basemap help interpret the area?
+
+If the answer to any of these is unclear, fix the map before adding more layers.
+
+---
+
+## 7. Python reactivation
+
+`leafmap.Map()` returns an object, and you build up your visualization by calling methods on that object (`m.add_basemap(...)`) rather than reassigning `m` each time. This is the same pattern you used with `matplotlib` axes objects in SDS210: create the object once, then call methods on it to add more content.
+
+---
+
+## 8. Common pitfalls
+
+| Pitfall | How to avoid it |
+| --- | --- |
+| The map opens in the wrong place | Check whether coordinates are latitude-longitude or longitude-latitude. |
+| The basemap distracts from the data | Use a simpler basemap or reduce layer opacity. |
+| The map is too zoomed out | Match zoom level to the feature size you need to inspect. |
+| Too many layers are added at once | Build the map gradually and check each layer. |
+| Layer names are unclear | Use descriptive names that explain what each layer shows. |
+
+---
+
+## 9. Mini task
+
+Create a map centered on your own project's rough study area (or a placeholder location if you do not have one yet). Add two different basemaps to it and use the layer control to switch between them.
+
+:::{note} Sample solution
+:class: dropdown
+
+```{code-cell} python
+import leafmap
+
+m = leafmap.Map(center=[-3.0637, 37.3579], zoom=12, height="500px") 
+m.add_basemap("Esri.WorldTerrain")
+m.add_basemap("SwissFederalGeoportal.SWISSIMAGE")
+m
+```
+
+Switching between "Esri.WorldImagery" and "OpenTopoMap" in the layer control shows the same area once as satellite imagery and once as a topographic map, which is a quick way to decide which basemap best supports your project's study area.
+:::
+
+---
+
+## 10. Key takeaways
+
+- Leafmap creates interactive maps directly in notebooks.
+- Basemaps provide spatial context for data inspection.
+- Map centres use latitude-longitude order.
+- Interactive maps are useful for debugging and project decisions, not only final presentation.
+- Start simple before adding raster, vector or model layers.
