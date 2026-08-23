@@ -1,6 +1,6 @@
 ---
 site:
-  outline_maxdepth: 1
+  outline_maxdepth: 2
 ---
 
 # Applications of GeoAI
@@ -106,23 +106,23 @@ As you read the list above, notice how often "compare two time periods" maps to 
 
 Use applications as models for project design.
 
-### Step 1: Identify the problem type
+### Step A: Identify the problem type
 
 Ask whether the application is mainly about mapping, detecting, counting, comparing, predicting or monitoring.
 
-### Step 2: Identify the spatial evidence
+### Step B: Identify the spatial evidence
 
 Ask what data provide evidence. Is the key information in imagery, time series, vector layers, field labels, sensors or a combination?
 
-### Step 3: Identify the task type
+### Step C: Identify the task type
 
 Translate the problem into a task: classification, detection, segmentation, change detection, regression or embedding-based exploration.
 
-### Step 4: Identify the output
+### Step D: Identify the output
 
 Name the final output. A project becomes clearer when you can name the map, figure, metric or table you want to produce.
 
-### Step 5: Identify the limitation
+### Step E: Identify the limitation
 
 Every application has limitations. Look for issues such as resolution, incomplete labels, clouds, sensor differences, spatial bias, uncertainty or ethical concerns.
 

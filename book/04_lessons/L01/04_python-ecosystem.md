@@ -1,6 +1,6 @@
 ---
 site:
-  outline_maxdepth: 1
+  outline_maxdepth: 2
 ---
 
 # The GeoAI ecosystem
@@ -27,23 +27,23 @@ A GeoAI pipeline is built from four rough layers: deep learning frameworks, geos
 
 ## 3. Main tool families
 
-### 1. Deep learning frameworks
+### A. Deep learning frameworks
 
 {term}`PyTorch` is the most widely used deep learning framework in research and provides the low-level building blocks for defining and training neural networks. `torchvision` extends it with pre-trained models and image transforms for computer vision. {term}`TorchGeo` is a PyTorch domain library built specifically for geospatial data: it provides datasets, samplers, and pre-trained models that understand multi-spectral inputs and irregularly-shaped satellite scenes, rather than assuming every image is a fixed-size RGB photo the way general computer vision datasets do.
 
-### 2. Geospatial data libraries
+### B. Geospatial data libraries
 
 {term}`Rasterio` reads and writes raster formats such as {term}`GeoTIFF`, giving you pixel values as NumPy arrays while preserving {term}`CRS <Coordinate Reference System (CRS)>` and other metadata. {term}`GeoPandas` extends Pandas with geometric operations for vector data, and {term}`Shapely` handles the underlying geometry operations (buffering, intersection, union). Underneath most of these sits {term}`GDAL/OGR`, the C/C++ library that actually reads and writes the file formats. A typical workflow uses Rasterio to load imagery and GeoPandas to load vector labels, then combines the two into training data for a model.
 
-### 3. Interactive visualization
+### C. Interactive visualization
 
 {term}`Leafmap` provides a high-level API for interactive maps inside Jupyter, built on backends such as folium and ipyleaflet. It is well-suited to GeoAI work because it can overlay model predictions directly on satellite basemaps and supports side-by-side comparisons, which is useful for visually checking whether a model's output actually makes sense.
 
-### 4. High-level, unified packages
+### D. High-level, unified packages
 
 The `geoai` Python package is the central library used throughout this book. It wraps {term}`PyTorch`, {term}`TorchGeo`, {term}`Rasterio`, and {term}`GeoPandas` into a consistent, higher-level interface for tasks such as {term}`object detection <Object Detection>`, {term}`semantic segmentation <Semantic Segmentation>`, and {term}`change detection <Change Detection>`, so you are not stitching together low-level training loops and data loaders by hand for every lesson.
 
-### 5. Segment Anything for geospatial data
+### E. Segment Anything for geospatial data
 
 The `segment-geospatial` package (also called `samgeo`) adapts Meta's {term}`Segment Anything Model (SAM)` for georeferenced imagery, producing vector outputs such as {term}`GeoJSON` with a proper {term}`CRS <Coordinate Reference System (CRS)>`, rather than plain image masks with no spatial reference. It supports both interactive segmentation (clicking on objects) and automatic mask generation, and is particularly useful for tasks like building or tree-canopy extraction where you have not trained a task-specific model of your own. You will use it directly in [L12 – Segment Anything](../12_segment-anything.md).
 

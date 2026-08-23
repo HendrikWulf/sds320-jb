@@ -27,49 +27,49 @@ Every GeoAI task differs mainly in what the model outputs: a single label, a set
 
 ## 3. The seven core tasks
 
-### 1. Image recognition (scene classification)
+### A. Image recognition
 
 Assigns one categorical label to a whole image chip, for example "residential" or "forested," with no information about *where* within the chip that label applies. It is the simplest granularity, useful as a pre-filter (find which tiles contain buildings before running an expensive segmentation model) or for scene-level inventories. A key challenge is mixed content: a single chip can straddle both urban and agricultural land, and shifting the tiling grid by a few pixels can change which label looks dominant.
 
 > Example: Classify image chips as residential, industrial, forest or agriculture.  
 > Use case: This is useful for screening large archives or creating scene-level summaries.
 
-### 2. Object detection
+### B. Object detection
 
 Draws {term}`bounding boxes <Bounding Box>` around discrete objects and assigns each one a class and a {term}`confidence score <Confidence Score>`, for example counting vehicles in a parking lot or ships in a harbor. It is the right choice when you need to count or locate individual objects rather than describe the whole scene. A distinctive challenge in overhead imagery is the huge range of object sizes: a vehicle might be a handful of pixels while a building spans hundreds, which is why detection models for this domain often use {term}`feature pyramid networks <Feature Pyramid Network (FPN)>` to handle multiple scales at once.
 
 > Example: Detect ships in a harbour or vehicles in a parking lot.  
 > Use case: The output is usually a set of bounding boxes. Detection is useful for counts and locations.
 
-### 3. Semantic segmentation
+### C. Semantic segmentation
 
 Assigns a class label to every pixel, producing a thematic map (building, road, vegetation, water, bare soil) with the same spatial dimensions as the input. This is one of the most common GeoAI tasks because it directly produces the kind of map that planners and geographers actually use. {term}`U-Net`'s {term}`encoder-decoder architecture <Encoder-Decoder Architecture>`, which compresses an image to learn context and then reconstructs pixel-level detail, is a standard choice here.
 
 > Example: Map water, vegetation, buildings and bare soil for a study area.  
 > Use case: This is useful for thematic mapping and area statistics.
 
-### 4. Instance segmentation
+### D. Instance segmentation
 
 Combines segmentation and detection: it classifies every pixel *and* distinguishes individual objects, so you know not just that a pixel belongs to a building, but which building. This matters for tasks like building footprint extraction, where adjacent structures of the same type need separate polygons. {term}`Mask R-CNN` is the classic architecture; {term}`SAM <Segment Anything Model (SAM)>` is a more recent, general-purpose alternative.
 
 > Example: Extract separate building footprints or individual tree crowns.  
 > Use case: This is useful when counts, shapes or object-level measurements matter.
 
-### 5. Image translation
+### E. Image translation
 
 Transforms an image from one representation to another while preserving spatial structure. The most common geospatial version is {term}`super-resolution <Super-Resolution>`, generating a higher-resolution image from a lower-resolution input, though {term}`cloud removal <Cloud Removal>` is another example. A critical limitation: the added detail is *inferred*, not observed. A super-resolution model cannot recover information the sensor never captured; it predicts plausible detail based on patterns it learned elsewhere. That distinction matters if your project needs measurement accuracy rather than just a sharper-looking image.
 
 > Example: Create a super-resolution version of a lower-resolution image.  
 > Use case: This can support visualisation or some workflows, but inferred detail must be interpreted carefully.
 
-### 6. Change detection
+### F. Change detection
 
 Identifies differences between images of the same location at different times, from a simple binary "changed / not changed" map to a multi-class map of change type (forest to urban, intact building to rubble). Models typically process image pairs through {term}`siamese networks <Siamese Network>` that learn to compare features across the two time steps. The core challenge is separating meaningful change from nuisance variation, differences in lighting, season, or sensor calibration, while staying sensitive to genuine change.
 
 > Example: Identify areas that changed between a pre-event and post-event image.  
 > Use case: This requires careful attention to temporal alignment, seasonality, clouds, illumination and sensor differences.
 
-### 7. Pixel regression
+### G. Pixel regression
 
 Predicts a continuous value per pixel rather than a category: canopy height, biomass, soil moisture, elevation. Architecturally this looks like segmentation, an {term}`encoder-decoder <Encoder-Decoder Architecture>` network, but with a regression head and a loss such as mean squared error instead of a classification loss.
 

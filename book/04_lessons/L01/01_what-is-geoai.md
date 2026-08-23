@@ -33,23 +33,23 @@ The name is fairly recent. It became common in the mid-2010s as researchers bega
 
 The idea behind GeoAI is older than the name. You can think of its development as a series of overlapping stages.
 
-### 1. Manual photo interpretation (1940s–1960s)
+### A. Manual photo interpretation (1940s–1960s)
 
 Trained analysts examined aerial photographs by eye to identify roads, buildings, and crop types. This worked, but it was slow, expert-dependent, and could take weeks to cover even a modest area. There was no automation at all; every judgment was made by a person.
 
-### 2. The satellite era and statistical classifiers (1970s–1980s)
+### B. The satellite era and statistical classifiers (1970s–1980s)
 
 The launch of Landsat 1 in 1972 gave scientists repeated, consistent observations of the Earth's surface for the first time. That created a new problem: far more imagery than people could look at by hand. Early automated approaches used simple statistical classifiers, assigning each pixel to a land-cover class based on its spectral signature, without any concept of what a "building" or "field" actually looked like as a shape.
 
-### 3. Traditional machine learning (1990s–2010s)
+### C. Traditional machine learning (1990s–2010s)
 
 Methods such as {term}`random forests <Random Forest>`, support vector machines, and gradient boosting began to outperform the older statistical classifiers. They could handle more input variables and capture non-linear relationships. The catch is that a person still had to hand-design the input features, spectral indices, texture measures, shape metrics, that the model would learn from. This step, called feature engineering, took real domain expertise.
 
-### 4. The deep learning shift (2012 onward)
+### D. The deep learning shift (2012 onward)
 
 Starting with breakthroughs in general image classification around 2012, {term}`convolutional neural networks <Convolutional Neural Network (CNN)>` (CNNs) learned useful features directly from raw imagery, without a person hand-designing them. Architectures such as {term}`U-Net` became a default choice for pixel-level tasks like {term}`semantic segmentation <Semantic Segmentation>`, and the geospatial community adopted them quickly for land cover mapping, building extraction, and crop classification.
 
-### 5. Foundation models (2020s onward)
+### E. Foundation models (2020s onward)
 
 The current frontier is {term}`foundation models <Foundation Model>`: large models pre-trained on huge, broad datasets that can be adapted to many downstream tasks with comparatively little extra training. Meta's {term}`Segment Anything Model (SAM)` is a well-known general-purpose example, and geospatial-specific foundation models now exist for satellite imagery. These models can generalize across geographies and sensors in ways that earlier, narrowly-trained models could not, which lowers the amount of labeled data a new project needs to get started.
 

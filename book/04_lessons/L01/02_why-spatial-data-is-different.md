@@ -29,31 +29,31 @@ Spatial data carries structure that ordinary images do not. That structure is no
 
 Walk through each property below and ask, for your own emerging project idea, whether it applies.
 
-### 1. Coordinate reference systems and projections
+### A. {abbr}`CRS (Coordinate Reference Systems)` and projections
 
 Every geospatial dataset is tied to a location on Earth through a {term}`coordinate reference system <Coordinate Reference System (CRS)>` ({abbr}`CRS (Coordinate Reference System)`). Because the Earth is a three-dimensional shape and a map is flat, representing it always involves a {term}`projection`, and every projection distorts something (area, distance, direction, or shape). If you combine datasets in different CRSs without {term}`reprojecting <Reprojection>` them onto a shared one, distances and overlaps will simply be wrong.
 
-### 2. Spatial resolution and scale
+### B. Spatial resolution and scale
 
 Sensors capture data at very different {term}`spatial resolutions <Spatial Resolution>`. {term}`Sentinel-2` provides 10-meter pixels; some commercial satellites resolve below a meter. The same object looks completely different depending on the sensor, and a model trained at one resolution often does not transfer well to another. Before you settle on a data source, ask whether the resolution is fine enough to actually see the thing you care about.
 
-### 3. Spectral bands
+### C. Spectral bands
 
 Unlike an RGB photo with three color channels, satellite imagery often carries many {term}`spectral bands <Spectral Band>`, spanning visible, near-infrared, and shortwave infrared wavelengths. These extra bands carry information invisible to the human eye, such as vegetation stress, visible in the {abbr}`NIR (Near-Infrared)` band, or soil moisture. A model that only looks at {term}`multispectral imagery <Multispectral Imagery>`'s RGB channels is throwing away signal that an RGB-only computer vision model was never built to use in the first place.
 
-### 4. The temporal dimension
+### D. The temporal dimension
 
 Satellites revisit the same location on a regular cycle, which creates dense time series rather than one-off snapshots. That enables tasks like {term}`change detection <Change Detection>` and monitoring of seasonal or gradual processes, but it also means your model, and your evaluation, need to reason about sequences of images, not just a single one.
 
-### 5. Spatial autocorrelation
+### E. Spatial autocorrelation
 
 Nearby locations tend to be more similar than distant ones. This has a very concrete consequence: if you split pixels from a single scene into training and test sets at random, pixels that end up on opposite sides of that split can still be right next to each other on the ground, so your test set is not really independent of your training set. That produces {term}`accuracy` estimates that look better than the model will actually perform elsewhere. Proper evaluation usually requires spatial separation between training and test regions, not a random shuffle.
 
-### 6. Diverse data formats
+### F. Diverse data formats
 
 Raster data alone comes in formats such as {term}`GeoTIFF`, {term}`Cloud Optimized GeoTIFF (COG)`, and {term}`Zarr`, each with different conventions for metadata and multi-band storage. Vector data adds formats such as {term}`GeoJSON`, {term}`Shapefile <Shapefile>`, and {term}`GeoPackage`. Many GeoAI tasks need both at once, for example using vector building outlines as labels for a raster-based model, which means part of your workflow will always be format conversion and reconciling {term}`CRS <Coordinate Reference System (CRS)>` differences.
 
-### 7. Large file sizes and tiled processing
+### G. Large file sizes and tiled processing
 
 A single {term}`Sentinel-2` {term}`scene` can cover a 100-by-100-kilometer area with well over a hundred million pixels per band. Processing a whole scene at once usually will not fit in memory or on a {term}`GPU`. GeoAI workflows instead cut imagery into {term}`chips <Chip>` or {term}`tiles <Tile>`, run the model on each one, and stitch the results back together, which introduces its own edge-effect problems at tile boundaries.
 
