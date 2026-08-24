@@ -258,9 +258,9 @@ Search a Planetary Computer collection using the rough bounding box of your own 
 
 ```{code-cell} python
 items = geoai.pc_stac_search(
-    collection="naip",
-    bbox=[-76.6657, 39.2648, -76.6478, 39.2724],
-    time_range="2018-01-01/2020-12-31",
+    collection="landsat-c2-l2",
+    bbox=[100.0868, 13.7554, 100.3354, 13.986],
+    time_range="2020-01-01/2020-12-31",
 )
 print(geoai.pc_item_asset_list(items[0]))
 geoai.view_pc_item(item=items[0])
