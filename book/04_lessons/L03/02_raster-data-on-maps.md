@@ -28,26 +28,28 @@ Raster data, satellite imagery, elevation models, model outputs, is the backbone
 ## Workflow
 
 **1. Get some sample data.**
-This lesson uses four datasets from a Las Vegas building-detection project, hosted publicly on Source Cooperative: {term}`NAIP` aerial imagery (four bands, 60 cm resolution), a LiDAR-derived {abbr}`HAG (Height Above Ground)` raster, building footprint annotations, and a rasterized building {term}`mask <Mask>`. The `geoai.download_file()` function fetches a file only if it is not already present locally.
+This lesson uses four datasets from a Las Vegas building-detection project, hosted publicly on Source Cooperative: {term}`swissimage` aerial imagery (four bands, 60 cm resolution), a LiDAR-derived {abbr}`HAG (Height Above Ground)` raster, building footprint annotations, and a rasterized building {term}`mask <Mask>`. The `geoai.download_file()` function fetches a file only if it is not already present locally.
 
 ```{code-cell} python
 import geoai
 
-naip_url = "https://data.source.coop/opengeos/geoai/las-vegas-train-naip.tif"
-hag_url = "https://data.source.coop/opengeos/geoai/las-vegas-train-hag.tif"
+swissimage_url = "https://source.coop/giuz/sds320/L03/data/willisau_2024_swissimage_rgb_subset.tif"
+hag_url = "https://source.coop/giuz/sds320/L03/data/willisau_height_above_ground_ndsm.tif”
+s2_url = "https://source.coop/giuz/sds320/L03/data/willisau_2026-07-24_sentinel2_subset.tif"
 
-naip_path = geoai.download_file(naip_url)
+swissimage_path = geoai.download_file(swissimage_url)
 hag_path = geoai.download_file(hag_url)
+s2_path = geoai.download_file(s2_url)
 ```
 
 **2. Add a multi-band raster.**
-For imagery like {term}`NAIP`, `add_raster()` automatically composites the first three bands as an {term}`RGB composite <RGB Composite>`.
+For imagery like {term}`swissimage`, `add_raster()` automatically composites the first three bands as an {term}`RGB composite <RGB Composite>`.
 
 ```{code-cell} python
 import leafmap
 
 m = leafmap.Map()
-m.add_raster(naip_path, layer_name="NAIP Image")
+m.add_raster(swissimage_path, layer_name="swissimage")
 m
 ```
 
@@ -59,7 +61,7 @@ m.add_raster(
     hag_path,
     vmin=0,
     vmax=10,
-    colormap="terrain",
+    colormap="plasma",
     layer_name="Height Above Ground",
 )
 m
@@ -72,7 +74,7 @@ A {term}`Cloud Optimized GeoTIFF (COG)` can be streamed without downloading the 
 
 ```{code-cell} python
 m2 = leafmap.Map()
-m2.add_cog_layer(naip_url, name="Las Vegas NAIP (streamed)")
+m2.add_cog_layer(swissimage_url, name="Willisau swissimage (streamed)")
 m2
 ```
 
@@ -81,15 +83,15 @@ m2
 
 ```{code-cell} python
 m3 = leafmap.Map()
-m3.add_raster(naip_path, indexes=[4, 1, 2], layer_name="False Color")
+m3.add_raster(s2_path, indexes=[5, 4, 3], layer_name="False Color")
 m3
 ```
 
-Placing the {abbr}`NIR (Near-Infrared)` band (band 4 in NAIP) in the red channel makes healthy vegetation appear bright red, which makes it easy to separate vegetated areas from impervious surfaces like roads and rooftops.
+Placing the {abbr}`NIR (Near-Infrared)` band (band 4 in this Sentinel-2 subset) in the green channel makes healthy vegetation appear bright green, which makes it easy to separate vegetated areas from impervious surfaces like roads and rooftops.
 
 ```{admonition} Matching colormap to data type
 :class: tip
-Height data reads well with `"terrain"`. Continuous variables with two directions of change, such as temperature anomalies, read better with a diverging colormap like `"coolwarm"`. You will revisit this choice more formally on the [best practices page](07_visualisation-best-practices.md).
+Continous height data reads well with a sequential colormap like `"viridis"`, which is perceptually uniform. Continuous variables with two directions of change, such as temperature anomalies, read better with a diverging colormap like `"coolwarm"`. You will revisit this choice more formally on the [best practices page](07_visualisation-best-practices.md).
 ```
 
 ---
@@ -104,25 +106,26 @@ Height data reads well with `"terrain"`. Continuous variables with two direction
 
 - **Forgetting to set `vmin`/`vmax` on single-band rasters.** Without a sensible range, a handful of extreme values can compress the color scale so much that real variation disappears.
 - **Assuming `add_raster()` always shows RGB.** For single-band data, you need to specify a colormap yourself, or the default rendering may not be informative.
-- **Mixing up band order.** {term}`NAIP`'s bands are Red (1), Green (2), Blue (3), Near-Infrared (4); an `indexes` list in the wrong order produces a color-shifted image that looks wrong but not obviously broken.
+- **Mixing up band order.** Sentinel-2 data has 13 spectral bands ranging from the visible to the Shortwave-Infrared spectrum of which we sampled 6 bands; an `indexes` list in the wrong order can cause confusion.
 
 ---
 
 ## Mini task
 
-Using your own candidate raster from L02 (or the NAIP sample above if you do not have one yet), add it to a map twice: once as a true-color composite and once as a false-color composite with the infrared band in the red channel. Compare what each reveals.
+Using your own candidate raster from L02 (or the Sentinel-2 sample above if you do not have one yet), add it to a map twice: once as a true-color composite and once as a false-color composite with the infrared band in the red channel. Compare what each reveals.
 
 :::{note} Sample solution
 :class: dropdown
 
 ```{code-cell} python
 m = leafmap.Map()
-m.add_raster(naip_path, indexes=[1, 2, 3], layer_name="True Color")
-m.add_raster(naip_path, indexes=[4, 1, 2], layer_name="False Color")
+m.add_raster(s2_path, indexes=[1, 2, 3], layer_name="True Color")
+m.add_raster(s2_path, indexes=[4, 3, 2], layer_name="False Color 1")
+m.add_raster(s2_path, indexes=[6, 4, 3], layer_name="False Color 2")
 m
 ```
 
-Toggling between the two layers in the layer control shows the same area rendered naturally and with vegetation highlighted in red. The false-color view makes it much easier to separate lawns and trees from rooftops and pavement, which is useful groundwork for later lessons on segmentation.
+Toggling between the three layers in the layer control shows the same area rendered naturally and with vegetation highlighted in red and green. The false-color views makes it much easier to separate vegetation from urban spaces, which is useful groundwork for later lessons on segmentation.
 :::
 
 ---
