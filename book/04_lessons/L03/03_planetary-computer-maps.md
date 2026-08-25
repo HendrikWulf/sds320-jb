@@ -13,16 +13,6 @@ Previewing cloud-hosted geospatial data before downloading it
 
 ---
 
-## Why this page matters
-
-In the previous page, you displayed local and remote raster layers. Here, you use interactive maps to preview data from the Microsoft {term}`Planetary Computer`.
-
-This connects directly to Lesson 02. During data acquisition, you searched for candidate scenes and assets. In this page, you inspect them visually before deciding whether they are useful enough to download or process.
-
-The next page moves from raster previews to vector overlays.
-
----
-
 ## Why this workflow matters
 
 Downloading a full imagery archive before you know whether it is even useful wastes time and disk space. Being able to search, preview, and inspect metadata first, and only download what you actually need, is a core skill for the data-acquisition side of your project, and it connects directly back to [L02 – Data acquisition](../02_data-acquisition.md).
@@ -57,7 +47,7 @@ print(f"Total collections: {len(collections)}")
 collections.head(10)
 ```
 
-### B. Search for items matching your area and time range
+### B. Search for items
 
 `pc_stac_search()` takes a collection ID, a bounding box in `[west, south, east, north]` format, and a time range. Each result is a {term}`STAC item <STAC Item>` with metadata and links to the underlying data.
 
@@ -87,7 +77,7 @@ for y in years:
     )
 ```
 
-### C. Check what data is actually attached to an item
+### C. Check what data is in an item
 
 A STAC item bundles several {term}`STAC assets <STAC Asset>`, image bands, metadata, and more, and asset keys differ between collections, so it is worth checking before you write code that assumes a particular key exists.
 
@@ -95,7 +85,7 @@ A STAC item bundles several {term}`STAC assets <STAC Asset>`, image bands, metad
 geoai.pc_item_asset_list(landsat_items[0])
 ```
 
-### D. Preview an item without downloading it
+### D. Preview without downloading it
 
 `view_pc_item()` streams tiles from Planetary Computer's tile server directly onto a `leafmap` map, so you can inspect a search result before committing to a download.
 
@@ -107,16 +97,16 @@ geoai.view_pc_item(
 )
 ```
 
-### E. Compute a spectral index on the fly
+### E. Compute an index on the fly
 
-For multispectral collections like Landsat, you can pass an `expression` to compute a {term}`spectral index <Spectral Index>` server-side, without downloading anything. Here is the {abbr}`NDVI (Normalized Difference Vegetation Index)`, a common measure of vegetation greenness:
+For multispectral collections like Landsat, you can pass an `expression` to compute a {term}`spectral index <Spectral Index>` server-side, without downloading anything. Here is the {abbr}`NDWI (Normalized Difference Water Index)`, a common measure of surface water:
 
 ```{code-cell} python
 geoai.view_pc_item(
     item=landsat_items[0],
-    expression="(nir08-red)/(nir08+red)",
-    rescale="-0.5,0.5",
-    colormap_name="rdylgn",
+    expression="(green-nir08)/(green+nir08)", 
+    rescale="-0.5,0.5",     # 
+    colormap_name="rdylbu",
     name="NDVI",
     backend="ipyleaflet",
 )
@@ -169,7 +159,7 @@ clipped_paths = download_clipped(landsat_items, ["nir08", "red"], bbox)
 Every step above except the last one avoids downloading full-resolution data. Get in the habit of previewing with `view_pc_item()` before you call a download function, especially for large collections.
 ```
 
-### G. Apply the same steps to other collections
+### G. Apply to other collections
 
 The search → check assets → preview pattern from steps B–D works the same way for any collection in the catalog. The two dropdowns below work through it for NAIP aerial imagery and for a land-cover classification collection.
 
@@ -237,7 +227,7 @@ m
 
 ## Python reactivation
 
-Search results behave like a list of objects (`naip_items[0]`), and filters are passed as dictionaries (`query={"eo:cloud_cover": {"lt": 1}}`), the same nested-dictionary pattern you used for JSON-like structures in SDS210. If a search returns nothing, check your bounding box and time range before assuming the collection has no data.
+Search results behave like a list of objects (`landsat_items[0]`), and filters are passed as dictionaries (`query={"eo:cloud_cover": {"lt": 10}}`), the same nested-dictionary pattern you used for JSON-like structures in SDS210. If a search returns nothing, check your bounding box and time range before assuming the collection has no data.
 
 ---
 
@@ -251,7 +241,7 @@ Search results behave like a list of objects (`naip_items[0]`), and filters are 
 
 ## Mini task
 
-Search a Planetary Computer collection using the rough bounding box of your own project's study area (or the Baltimore example above if you do not have one yet). List the available assets for the first result, and preview it on a map.
+Search a Planetary Computer collection using the rough bounding box of your own project's study area. List the available assets for the first result, and preview it on a map.
 
 :::{note} Sample solution
 :class: dropdown
