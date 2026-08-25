@@ -7,71 +7,62 @@ site:
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Building a first interactive map for your own project data
+Turning this lesson into progress on your SDS320 project
 </div>
 <!-- markdownlint-enable MD033 -->
 
 ---
 
-## 1. Why this page matters
+## Intro
 
-This lesson should leave you with a working interactive map built from your own project data, not just from the example files used earlier in this lesson. Building one now — even a rough one — often surfaces data issues (misaligned CRS, an empty layer, an unexpectedly large file) well before you reach the modelling lessons.
-
----
-
-## 2. Project checklist
-
-- [ ] I built a `leafmap.Map()` with at least one basemap.
-- [ ] I added at least one raster layer from my own project data.
-- [ ] I added at least one vector layer from my own project data.
-- [ ] I added a layer control so a viewer can toggle layers.
-- [ ] I checked that my layers actually align spatially on the map (not just in code).
-- [ ] I chose a colormap or style appropriate to my data type.
+You now have a working set of visualization techniques: basemaps, raster and vector overlays, cloud-hosted previews, split-panel comparisons, and result overlays. The goal of this page is not new theory. It is to turn those techniques into a short, reusable notebook you will come back to throughout the rest of the semester, every time you acquire new data, generate training tiles, or produce a prediction.
 
 ---
 
-## 3. A minimal template
+## Project checklist
 
-Adapt this template with your own file paths:
-
-```python
-import leafmap
-
-m = leafmap.Map(center=[0, 0], zoom=10)  # replace with your area's centre
-
-m.add_raster("path/to/your_raster.tif", layer_name="My raster")
-m.add_vector("path/to/your_vector.geojson", layer_name="My vector")
-
-m.add_layer_control()
-m
-```
-
-If something looks wrong — a layer that does not appear, or appears in the wrong place — check the {term}`Coordinate Reference System (CRS)` of both layers first. This is the most common cause of a "missing" layer that is actually just rendered somewhere far outside the current map view.
+- [ ] Loaded your own candidate dataset (or datasets) from L02 onto an interactive map
+- [ ] Checked visually whether any labels or annotations you have align with the source imagery
+- [ ] Chosen a band combination or colormap that best reveals the pattern your project cares about
+- [ ] Built at least one split-panel comparison relevant to your project (two dates, two sources, or labels vs. imagery)
+- [ ] Applied the five-point best-practices self-check from the [previous page](07_visualisation-best-practices.md) to at least one map
 
 ---
 
-## 4. Reflection questions
+## Decision points
 
-1. Did my raster and vector layers align spatially without extra reprojection steps? If not, what did I have to fix?
-2. Which comparison — two dates, two sources, or two classes — would a split-panel map make clearer for my project?
-3. Is my current map meant for exploration, or could a version of it end up in my final report?
-4. What is one visualisation choice (colormap, basemap, styling) I want to revisit later, based on the [best practices page](07_visualisation-best-practices.md)?
+**Which basemap fits your project by default?** If your project depends on visually verifying structures or land cover, a satellite basemap is usually the right default. If it depends on terrain or hydrology, a topographic basemap may serve you better.
 
----
+**Which band combination or colormap best reveals your target?** If you are not sure yet, try at least two options side by side, as in the mini task on the [raster data page](02_raster-data-on-maps.md), and pick based on what you actually see rather than habit.
 
-## 5. Mini deliverable
-
-Save a short notebook or script that builds one interactive map combining at least one raster and one vector layer from your own project. Note its location and a one-line description in your project notes, for example:
-
-```text
-notebooks/02_first_map.ipynb — first interactive view of [raster] and [vector] for [study area]
-```
+**What will you need to compare later, and can you set that comparison up now?** If your project involves change detection, before/after imagery, or model evaluation, a split-panel pattern you build now will still be useful once you have real predictions.
 
 ---
 
-## 6. Key takeaways
+## Common pitfalls
 
-* A first interactive map is a practical way to catch spatial alignment problems early.
-* The `Map → add layer(s) → add layer control` pattern from this lesson covers most day-to-day mapping needs.
-* Keep exploration maps rough; save polish for the figures that go into your final report.
-* The next lessons move from viewing data to preparing it — starting with [L04 – Data preprocessing](../04_data-preprocessing.md).
+- **Building one-off maps you cannot reuse.** If you find yourself rewriting the same `leafmap.Map()` setup repeatedly, turn it into a small function instead. This will save time from L04 onward.
+- **Never checking label alignment before relying on labels.** If your project uses existing annotations (from OpenStreetMap, a government dataset, or elsewhere), verify them visually before treating them as ground truth.
+- **Overloading a single map with every layer you have.** A map with too many simultaneous layers becomes as hard to read as no map at all. Split panels or separate maps are often clearer than one crowded view.
+
+---
+
+## Mini deliverable
+
+Produce a short **Project Visualization Notebook** containing:
+
+1. An interactive map of your project's study area with an appropriate basemap.
+2. At least one raster or vector layer from your own candidate data, styled deliberately (not left at default settings).
+3. One split-panel comparison relevant to your project question.
+4. A two- or three-sentence note on what the visualization revealed, including anything that looked wrong or unexpected.
+
+Keep this notebook. You will extend it directly in [L04 – Data preprocessing](../04_data-preprocessing.md) and again once you generate training tiles in [L05 – Training data](../05_training-data.md).
+
+---
+
+## Reflection questions
+
+- Did anything about your data look different once you actually visualized it, compared to what you expected from L02?
+- If you have candidate labels, did they align cleanly with your imagery, or did you spot a misalignment worth investigating further?
+- Which visualization technique from this lesson do you expect to use most often for your specific project, and why?
+- If you had to show one map from this lesson to someone unfamiliar with your project, which one would you choose, and what would you need to add (a legend, a caption, a basemap) to make it understandable to them?

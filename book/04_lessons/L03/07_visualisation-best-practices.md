@@ -3,67 +3,62 @@ site:
   outline_maxdepth: 2
 ---
 
-# Visualisation best practices
+# Best practices
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Choosing colormaps, basemaps, and when to go static instead of interactive
+Colormap choice, spatial context, consistent styling, and knowing your audience
 </div>
 <!-- markdownlint-enable MD033 -->
 
 ---
 
-## 1. Scope of this page
+## Why visualization matters
 
-This page covers practical choices specific to building *interactive* maps in a notebook. For the broader question of preparing polished, publication-ready figures and maps for your final report, see the [Project handbook's figures and maps page](../../03_project/08_figures-and-maps.md) — the two pages are complementary, not duplicates.
+A technically correct map can still be a poor map. A misleading colormap, a missing basemap, or an unlabeled layer can make a viewer misread your results, even when the underlying data and analysis are sound. These habits also feed directly into the [figures and maps](../03_project/08_figures-and-maps.md) guidance in your Project handbook.
 
 ---
 
-## 2. Interactive or static?
+## Core idea
 
-Not every visual belongs in an interactive map. A useful rule of thumb:
+Good visualization is about choosing representations that match your data type and communicate correctly to your intended audience.
 
-| Use an interactive map when… | Use a static plot when… |
+---
+
+## Workflow
+
+### A. Match the colormap to the data type
+
+Sequential {term}`colormaps <Colormap>` such as `"batlow"` or `"viridis"` suit continuous data with a natural low-to-high ordering, such as elevation. Diverging colormaps such as `"RdBu"` suit data with a meaningful center point, such as a change value or a temperature anomaly. Categorical data, such as {term}`land cover classification <Land Cover Classification>`, needs a qualitative colormap with visually distinct colors per class. Avoid rainbow colormaps: they lack a natural perceptual ordering and can make differences look larger or smaller than they really are.
+
+### B. Include spatial context
+
+A prediction map without context is difficult to interpret. A cluster of polygons floating in empty space does not mean much on its own. Include enough context (e.g. basemap, boundaries) for the reader to know where the result is and what it relates to.
+
+### C. Keep comparisons consistent
+
+When comparing outputs from different experiments, dates, or models, use the same colormap, value range, and opacity across every layer in the comparison. Inconsistent styling can create the appearance of a difference that is not actually present in the data.
+
+### D. Label your layers clearly
+
+Give each layer a descriptive name in the layer control. `"Building Predictions (U-Net)"` tells a reader something useful; `"Layer 1"` does not, especially once you have several layers active at once.
+
+### E. Design for your actual audience
+
+A technical peer may appreciate a detailed, multi-layer interactive map. A non-technical reader, or your instructor reading a final report, often needs a simpler view with a clear legend and a short caption explaining what they are looking at.
+
+| Audience | Map style |
 | --- | --- |
-| You want to explore coverage or spot-check data quality | You need a figure for a written report |
-| The audience will view it in a notebook or a web page | The audience will view it on paper or in a slide |
-| You want to compare layers by toggling or sliding | You need precise control over legend, scale, and annotation |
-| The data is too large to embed as a static image | The exact visual needs to be reproducible byte-for-byte |
-
-```{tip}
-It is common to use an interactive map during exploration, and then export a specific, well-chosen view as a static figure once you know what you want to show.
-```
+| You during analysis | Interactive, layered, includes debugging information. |
+| Tutor or peer feedback | Shows relevant comparison and highlights uncertainty. |
+| Final report reader | Clean, focused, labelled and explained in a caption. |
+| Non-technical audience | Fewer layers, clear legend, limited jargon. |
 
 ---
 
-## 3. Choosing a colormap
+## Key takeaways
 
-* For continuous, one-directional data (elevation, distance, count), use a sequential colormap such as `"viridis"` or `"YlGnBu"`.
-* For data with a meaningful midpoint (change, anomaly, difference from a reference), use a diverging colormap such as `"RdYlGn"` or `"RdBu"`, centred on that midpoint via `vmin`/`vmax`.
-* Avoid the classic rainbow colormap (`"jet"`) for continuous data — it has no consistent perceptual ordering and can visually exaggerate boundaries that are not actually there.
-* For categorical data (land cover classes, suitability classes), use a small set of clearly distinguishable, colorblind-safe colours rather than a continuous colormap.
-
----
-
-## 4. Choosing a basemap
-
-A basemap should support your data, not compete with it. A busy street basemap under a semi-transparent raster can make both illegible; a plain terrain or light basemap usually works better as visual context. If your data already provides full visual context (a true-colour satellite composite, for example), consider turning the basemap off, or using a minimal one only for orientation at low zoom levels.
-
----
-
-## 5. Performance considerations
-
-Large rasters and vector layers with many thousands of features can make an interactive map slow to render and pan. A few practical mitigations:
-
-* Prefer {term}`Cloud Optimized GeoTIFF (COG)` sources with `add_cog_layer()` over embedding a large local raster directly — tiles are only requested for the current view.
-* Simplify very detailed vector geometries before adding them to a map, if geometric precision is not needed for the visual.
-* Clip a large vector layer to your area of interest before adding it, rather than the full dataset (the `bbox` argument of `add_vector()`, introduced on the [vector data page](04_vector-data-on-maps.md), helps here).
-
----
-
-## 6. Key takeaways
-
-* Choose interactive maps for exploration and static figures for your final report — see the [figures and maps page](../../03_project/08_figures-and-maps.md) for that side of the decision.
-* Match the colormap to the data type: sequential for continuous, diverging for data centred on zero, categorical for classes — and avoid `"jet"`.
-* Let the basemap support your data rather than compete with it.
-* Use COGs, geometry simplification, and bounding-box filtering to keep large interactive maps responsive.
+- Match colormap type (sequential, diverging, categorical) to your data type; avoid rainbow colormaps for continuous data.
+- Always include a basemap or reference layer for spatial context.
+- Keep styling consistent across any layers you intend to compare.
+- Label layers descriptively, and design the level of detail around your actual audience.

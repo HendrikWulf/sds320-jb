@@ -7,13 +7,13 @@ site:
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Overlaying prediction-style outputs on source imagery to see where and why a model fails
+Overlaying prediction-style outputs on source imagery
 </div>
 <!-- markdownlint-enable MD033 -->
 
 ---
 
-## Why this matters
+## Context
 
 A single accuracy number tells you how a model performs on average. It does not tell you *where* it fails. A model can post a high overall accuracy score while consistently missing buildings in shadow, confusing parking lots with rooftops, or producing jagged boundaries along water edges. These spatial error patterns are invisible in a summary statistic and immediately visible on a map.
 
@@ -70,9 +70,8 @@ Before comparing a prediction to a reference label, confirm the reference label 
 m2 = leafmap.Map()
 m2.split_map(
     left_layer=buildings_path,
-    right_layer=mask_path,
+    right_layer=swissimage_path,
     left_args={"style": {"color": "red", "fillOpacity": 0.2}},
-    right_args={"vmin": 0, "vmax": 1, "cmap": "greys_r"},
     left_label="Building labels",
     right_label="SWISSIMAGE imagery",
 )
