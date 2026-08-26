@@ -1,2 +1,2 @@
-# Tiling And Batch Workflows
+# Tiling and image chips
 

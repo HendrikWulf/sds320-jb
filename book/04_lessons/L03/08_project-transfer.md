@@ -56,7 +56,7 @@ Produce a short **Project Visualization Notebook** containing:
 3. One split-panel comparison relevant to your project question.
 4. A two- or three-sentence note on what the visualization revealed, including anything that looked wrong or unexpected.
 
-Keep this notebook. You will extend it directly in [L04 – Data preprocessing](../04_data-preprocessing.md) and again once you generate training tiles in [L05 – Training data](../05_training-data.md).
+Keep this notebook. You will extend it directly in [L04 – Training data](../04_training-data.md) and again once you train a classifier in [L05 – Image recognition](../05_image-recognition.md).
 
 ---
 

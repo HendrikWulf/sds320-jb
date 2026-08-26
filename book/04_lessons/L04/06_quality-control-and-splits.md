@@ -1,2 +1,2 @@
-# Quality Control And Splits
+# Quality control and splits
 

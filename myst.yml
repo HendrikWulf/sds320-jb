@@ -111,87 +111,124 @@ project:
         - file: book/04_lessons/L03/07_visualisation-best-practices.md
         - file: book/04_lessons/L03/08_project-transfer.md
 
-    - title: L04 – Data preprocess.
-      file: book/04_lessons/04_data-preprocessing.md
+    - title: L04 – Training data
+      file: book/04_lessons/04_training-data.md
       children:
-        - file: book/04_lessons/L04/01_preprocessing-overview.md
-        - file: book/04_lessons/L04/02_raster-preprocessing.md
-        - file: book/04_lessons/L04/03_vector-preprocessing.md
-        - file: book/04_lessons/L04/04_quality-checks.md
-        - file: book/04_lessons/L04/05_project-transfer.md
+        - file: book/04_lessons/L04/01_training-data-pipeline.md
+        - file: book/04_lessons/L04/02_imagery-and-annotations.md
+        - file: book/04_lessons/L04/03_vector-to-raster-masks.md
+        - file: book/04_lessons/L04/04_tiling-and-image-chips.md
+        - file: book/04_lessons/L04/05_batch-workflows-and-pairing.md
+        - file: book/04_lessons/L04/06_quality-control-and-splits.md
+        - file: book/04_lessons/L04/07_project-transfer.md
 
-    - title: L05 – Training data
-      file: book/04_lessons/05_training-data.md
+    - title: L05 – Image recognition
+      file: book/04_lessons/05_image-recognition.md
       children:
-        - file: book/04_lessons/L05/01_training-data-pipeline.md
-        - file: book/04_lessons/L05/02_annotations-labels-and-masks.md
-        - file: book/04_lessons/L05/03_tiling-and-batch-workflows.md
-        - file: book/04_lessons/L05/04_quality-control-and-splits.md
-        - file: book/04_lessons/L05/05_project-transfer.md
+        - file: book/04_lessons/L05/01_when-to-use-image-recognition.md
+        - file: book/04_lessons/L05/02_from-pixels-to-labels.md
+        - file: book/04_lessons/L05/03_classification-architectures.md
+        - file: book/04_lessons/L05/04_imagefolder-and-eurosat.md
+        - file: book/04_lessons/L05/05_training-a-classifier.md
+        - file: book/04_lessons/L05/06_evaluation-and-confusion-matrices.md
+        - file: book/04_lessons/L05/07_architecture-comparison-and-reuse.md
+        - file: book/04_lessons/L05/08_project-transfer.md
 
     - title: L06 – Object detection
       file: book/04_lessons/06_object-detection.md
       children:
         - file: book/04_lessons/L06/01_when-to-use-object-detection.md
-        - file: book/04_lessons/L06/02_core-concepts.md
-        - file: book/04_lessons/L06/03_workflow.md
-        - file: book/04_lessons/L06/04_project-transfer.md
+        - file: book/04_lessons/L06/02_bounding-boxes-and-detection-concepts.md
+        - file: book/04_lessons/L06/03_detection-architectures.md
+        - file: book/04_lessons/L06/04_detection-datasets-and-annotations.md
+        - file: book/04_lessons/L06/05_training-a-detector.md
+        - file: book/04_lessons/L06/06_evaluation-with-map.md
+        - file: book/04_lessons/L06/07_inference-and-visualisation.md
+        - file: book/04_lessons/L06/08_project-transfer.md
 
     - title: L07 – Semantic seg.
       file: book/04_lessons/07_semantic-segmentation.md
       children:
         - file: book/04_lessons/L07/01_when-to-use-semantic-segmentation.md
-        - file: book/04_lessons/L07/02_core-concepts.md
-        - file: book/04_lessons/L07/03_workflow.md
-        - file: book/04_lessons/L07/04_project-transfer.md
+        - file: book/04_lessons/L07/02_pixel-masks-and-segmentation-concepts.md
+        - file: book/04_lessons/L07/03_segmentation-architectures-and-encoders.md
+        - file: book/04_lessons/L07/04_binary-segmentation-workflow.md
+        - file: book/04_lessons/L07/05_multispectral-and-sensor-specific-workflows.md
+        - file: book/04_lessons/L07/06_pretrained-segmentation-models.md
+        - file: book/04_lessons/L07/07_multiclass-segmentation-and-postprocessing.md
+        - file: book/04_lessons/L07/08_project-transfer.md
 
     - title: L08 – Instance seg.
       file: book/04_lessons/08_instance-segmentation.md
       children:
-        - file: book/04_lessons/L08/01_semantic-vs-instance.md
-        - file: book/04_lessons/L08/02_core-concepts.md
-        - file: book/04_lessons/L08/03_workflow.md
-        - file: book/04_lessons/L08/04_project-transfer.md
+        - file: book/04_lessons/L08/01_when-to-use-instance-segmentation.md
+        - file: book/04_lessons/L08/02_instances-masks-and-object-identity.md
+        - file: book/04_lessons/L08/03_mask-rcnn-architecture.md
+        - file: book/04_lessons/L08/04_ftw-dataset-and-preparation.md
+        - file: book/04_lessons/L08/05_training-a-mask-rcnn-model.md
+        - file: book/04_lessons/L08/06_inference-and-raw-predictions.md
+        - file: book/04_lessons/L08/07_cleaning-vectorisation-and-properties.md
+        - file: book/04_lessons/L08/08_batch-processing-and-project-transfer.md
 
     - title: L09 – Image translation
       file: book/04_lessons/09_image-translation.md
       children:
-        - file: book/04_lessons/L09/01_image-translation-overview.md
-        - file: book/04_lessons/L09/02_super-resolution.md
-        - file: book/04_lessons/L09/03_workflow.md
-        - file: book/04_lessons/L09/04_limitations.md
+        - file: book/04_lessons/L09/01_when-to-use-image-translation.md
+        - file: book/04_lessons/L09/02_image-to-image-translation-concepts.md
+        - file: book/04_lessons/L09/03_super-resolution-for-remote-sensing.md
+        - file: book/04_lessons/L09/04_latent-diffusion-and-ldsr-s2.md
+        - file: book/04_lessons/L09/05_single-patch-super-resolution.md
+        - file: book/04_lessons/L09/06_uncertainty-and-interpretation.md
+        - file: book/04_lessons/L09/07_tiled-inference-and-visual-comparison.md
+        - file: book/04_lessons/L09/08_limitations-and-project-transfer.md
 
     - title: L10 – Change detection
       file: book/04_lessons/10_change-detection.md
       children:
-        - file: book/04_lessons/L10/01_change-detection-question.md
-        - file: book/04_lessons/L10/02_methods.md
-        - file: book/04_lessons/L10/03_workflow.md
-        - file: book/04_lessons/L10/04_interpretation.md
+        - file: book/04_lessons/L10/01_when-to-use-change-detection.md
+        - file: book/04_lessons/L10/02_change-types-and-challenges.md
+        - file: book/04_lessons/L10/03_traditional-change-detection.md
+        - file: book/04_lessons/L10/04_deep-learning-for-change-detection.md
+        - file: book/04_lessons/L10/05_changestar-workflow.md
+        - file: book/04_lessons/L10/06_visualising-and-interpreting-results.md
+        - file: book/04_lessons/L10/07_thresholds-model-variants-and-exports.md
+        - file: book/04_lessons/L10/08_project-transfer.md
 
     - title: L11 – Regression
       file: book/04_lessons/11_regression.md
       children:
-        - file: book/04_lessons/L11/01_spatial-regression.md
-        - file: book/04_lessons/L11/02_evaluation.md
-        - file: book/04_lessons/L11/03_workflow.md
-        - file: book/04_lessons/L11/04_uncertainty.md
+        - file: book/04_lessons/L11/01_when-to-use-pixel-regression.md
+        - file: book/04_lessons/L11/02_classification-vs-regression.md
+        - file: book/04_lessons/L11/03_regression-architectures-and-losses.md
+        - file: book/04_lessons/L11/04_regression-data-and-tiles.md
+        - file: book/04_lessons/L11/05_training-a-pixel-regressor.md
+        - file: book/04_lessons/L11/06_inference-and-temporal-prediction.md
+        - file: book/04_lessons/L11/07_evaluation-and-residual-analysis.md
+        - file: book/04_lessons/L11/08_project-transfer.md
 
     - title: L12 – Segment Anything
       file: book/04_lessons/12_segment-anything.md
       children:
-        - file: book/04_lessons/L12/01_foundation-models.md
-        - file: book/04_lessons/L12/02_segment-anything.md
-        - file: book/04_lessons/L12/03_workflow.md
-        - file: book/04_lessons/L12/04_project-use-cases.md
+        - file: book/04_lessons/L12/01_when-to-use-segment-anything.md
+        - file: book/04_lessons/L12/02_sam-concepts-and-prompts.md
+        - file: book/04_lessons/L12/03_samgeo-setup-and-geospatial-outputs.md
+        - file: book/04_lessons/L12/04_text-point-and-box-prompts.md
+        - file: book/04_lessons/L12/05_building-extraction-and-vectorisation.md
+        - file: book/04_lessons/L12/06_batch-and-tiled-segmentation.md
+        - file: book/04_lessons/L12/07_interactive-and-video-segmentation.md
+        - file: book/04_lessons/L12/08_project-transfer.md
 
     - title: L13 – Embeddings
       file: book/04_lessons/13_satellite-embeddings.md
       children:
-        - file: book/04_lessons/L13/01_satellite-embeddings.md
-        - file: book/04_lessons/L13/02_similarity-and-clustering.md
-        - file: book/04_lessons/L13/03_workflow.md
-        - file: book/04_lessons/L13/04_project-transfer.md
+        - file: book/04_lessons/L13/01_when-to-use-satellite-embeddings.md
+        - file: book/04_lessons/L13/02_embedding-concepts-and-formats.md
+        - file: book/04_lessons/L13/03_embedding-datasets-and-registry.md
+        - file: book/04_lessons/L13/04_patch-based-embeddings-with-clay.md
+        - file: book/04_lessons/L13/05_visualisation-clustering-and-similarity.md
+        - file: book/04_lessons/L13/06_lightweight-classification-and-change.md
+        - file: book/04_lessons/L13/07_pixel-based-and-cloud-embeddings.md
+        - file: book/04_lessons/L13/08_project-transfer.md
 
     - title: Project gallery
       file: book/05_gallery.md

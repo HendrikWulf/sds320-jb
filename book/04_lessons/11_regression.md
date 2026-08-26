@@ -1,3 +1,9 @@
 # L11 – Regression
 
-This page provides the overview for the eleventh lesson. Add a short introduction, learning goals, and links to the subpages here.
+<!-- markdownlint-disable MD033-->
+<div class="page-subtitle">
+Predicting a continuous value per pixel instead of a category
+</div>
+<!-- markdownlint-enable MD033 -->
+
+<!-- TODO: introduce pixel regression as the next modelling lesson after change detection (L10), building on the definition already given in L01/05_core-geoai-tasks.md (section G). Add learning goals and links to the subpages below. -->
