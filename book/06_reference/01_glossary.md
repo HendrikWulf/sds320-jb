@@ -24,6 +24,9 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Split-Panel Map
+: An interactive map layout that places two datasets side by side with a draggable divider, so both sides always share the same geographic extent and zoom level. It is commonly used to compare imagery from different dates, compare a prediction against ground truth, or check whether labels align with source imagery.
+
 Segment Anything Model (SAM)
 : A general-purpose image segmentation foundation model released by Meta, capable of segmenting objects in an image without being trained specifically for that object type. In GeoAI, it is adapted for georeferenced imagery through packages such as `segment-geospatial`.
 
