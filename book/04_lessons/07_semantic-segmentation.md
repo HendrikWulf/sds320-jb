@@ -1,4 +1,4 @@
-# L07 – Semantic segmentation
+# L07 - Semantic segmentation
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

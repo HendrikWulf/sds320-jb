@@ -1,4 +1,4 @@
-# L08 – Instance segmentation
+# L08 - Instance segmentation
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

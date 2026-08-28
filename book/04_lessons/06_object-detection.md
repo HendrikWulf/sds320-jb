@@ -1,4 +1,4 @@
-# L06 – Object detection
+# L06 - Object detection
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

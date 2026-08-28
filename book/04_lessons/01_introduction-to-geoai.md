@@ -1,4 +1,4 @@
-# L01 – Introduction to GeoAI
+# L01 - Introduction to GeoAI
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

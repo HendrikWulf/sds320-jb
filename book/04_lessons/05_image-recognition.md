@@ -1,4 +1,4 @@
-# L05 – Image recognition
+# L05 - Image recognition
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

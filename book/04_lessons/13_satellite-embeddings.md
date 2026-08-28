@@ -1,4 +1,4 @@
-# L13 – Satellite embeddings
+# L13 - Satellite embeddings
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

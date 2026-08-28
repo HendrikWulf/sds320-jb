@@ -3,7 +3,7 @@ site:
   outline_maxdepth: 2
 ---
 
-# L04 – Training data
+# L04 - Training data
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

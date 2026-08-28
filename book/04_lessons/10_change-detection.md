@@ -1,4 +1,4 @@
-# L10 – Change detection
+# L10 - Change detection
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

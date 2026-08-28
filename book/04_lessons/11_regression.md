@@ -1,4 +1,4 @@
-# L11 – Regression
+# L11 - Regression
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

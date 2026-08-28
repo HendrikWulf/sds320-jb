@@ -3,7 +3,7 @@ site:
   outline_maxdepth: 2
 ---
 
-# L03 – Interactive visualisation
+# L03 - Interactive visualisation
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

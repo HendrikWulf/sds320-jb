@@ -79,7 +79,7 @@ project:
         - file: book/03_project/09_report-writing.md
         - file: book/03_project/10_presentation-guide.md
 
-    - title: L01 – Intro to GeoAI
+    - title: L01 - Intro to GeoAI
       file: book/04_lessons/01_introduction-to-geoai.md
       children:
         - file: book/04_lessons/L01/01_what-is-geoai.md
@@ -90,7 +90,7 @@ project:
         - file: book/04_lessons/L01/06_foundation-models.md
         - file: book/04_lessons/L01/07_project-transfer.md
 
-    - title: L02 – Data acquisition
+    - title: L02 - Data acquisition
       file: book/04_lessons/02_data-acquisition.md
       children:
         - file: book/04_lessons/L02/01_data-search.md
@@ -99,7 +99,7 @@ project:
         - file: book/04_lessons/L02/04_data-citation.md
         - file: book/04_lessons/L02/05_project-transfer.md
 
-    - title: L03 – Interactive vis.
+    - title: L03 - Interactive vis.
       file: book/04_lessons/03_interactive-mapping-visualisation.md
       children:
         - file: book/04_lessons/L03/01_leafmap-basics.md
@@ -111,7 +111,7 @@ project:
         - file: book/04_lessons/L03/07_visualisation-best-practices.md
         - file: book/04_lessons/L03/08_project-transfer.md
 
-    - title: L04 – Training data
+    - title: L04 - Training data
       file: book/04_lessons/04_training-data.md
       children:
         - file: book/04_lessons/L04/01_training-data-pipeline.md
@@ -122,7 +122,7 @@ project:
         - file: book/04_lessons/L04/06_quality-control-and-splits.md
         - file: book/04_lessons/L04/07_project-transfer.md
 
-    - title: L05 – Image recognition
+    - title: L05 - Image recognition
       file: book/04_lessons/05_image-recognition.md
       children:
         - file: book/04_lessons/L05/01_when-to-use-image-recognition.md
@@ -134,7 +134,7 @@ project:
         - file: book/04_lessons/L05/07_architecture-comparison-and-reuse.md
         - file: book/04_lessons/L05/08_project-transfer.md
 
-    - title: L06 – Object detection
+    - title: L06 - Object detection
       file: book/04_lessons/06_object-detection.md
       children:
         - file: book/04_lessons/L06/01_when-to-use-object-detection.md
@@ -146,7 +146,7 @@ project:
         - file: book/04_lessons/L06/07_inference-and-visualisation.md
         - file: book/04_lessons/L06/08_project-transfer.md
 
-    - title: L07 – Semantic seg.
+    - title: L07 - Semantic seg.
       file: book/04_lessons/07_semantic-segmentation.md
       children:
         - file: book/04_lessons/L07/01_when-to-use-semantic-segmentation.md
@@ -158,7 +158,7 @@ project:
         - file: book/04_lessons/L07/07_multiclass-segmentation-and-postprocessing.md
         - file: book/04_lessons/L07/08_project-transfer.md
 
-    - title: L08 – Instance seg.
+    - title: L08 - Instance seg.
       file: book/04_lessons/08_instance-segmentation.md
       children:
         - file: book/04_lessons/L08/01_when-to-use-instance-segmentation.md
@@ -170,7 +170,7 @@ project:
         - file: book/04_lessons/L08/07_cleaning-vectorisation-and-properties.md
         - file: book/04_lessons/L08/08_batch-processing-and-project-transfer.md
 
-    - title: L09 – Image translation
+    - title: L09 - Image translation
       file: book/04_lessons/09_image-translation.md
       children:
         - file: book/04_lessons/L09/01_when-to-use-image-translation.md
@@ -182,7 +182,7 @@ project:
         - file: book/04_lessons/L09/07_tiled-inference-and-visual-comparison.md
         - file: book/04_lessons/L09/08_limitations-and-project-transfer.md
 
-    - title: L10 – Change detection
+    - title: L10 - Change detection
       file: book/04_lessons/10_change-detection.md
       children:
         - file: book/04_lessons/L10/01_when-to-use-change-detection.md
@@ -194,7 +194,7 @@ project:
         - file: book/04_lessons/L10/07_thresholds-model-variants-and-exports.md
         - file: book/04_lessons/L10/08_project-transfer.md
 
-    - title: L11 – Regression
+    - title: L11 - Regression
       file: book/04_lessons/11_regression.md
       children:
         - file: book/04_lessons/L11/01_when-to-use-pixel-regression.md
@@ -206,7 +206,7 @@ project:
         - file: book/04_lessons/L11/07_evaluation-and-residual-analysis.md
         - file: book/04_lessons/L11/08_project-transfer.md
 
-    - title: L12 – Segment Anything
+    - title: L12 - Segment Anything
       file: book/04_lessons/12_segment-anything.md
       children:
         - file: book/04_lessons/L12/01_when-to-use-segment-anything.md
@@ -218,7 +218,7 @@ project:
         - file: book/04_lessons/L12/07_interactive-and-video-segmentation.md
         - file: book/04_lessons/L12/08_project-transfer.md
 
-    - title: L13 – Embeddings
+    - title: L13 - Embeddings
       file: book/04_lessons/13_satellite-embeddings.md
       children:
         - file: book/04_lessons/L13/01_when-to-use-satellite-embeddings.md

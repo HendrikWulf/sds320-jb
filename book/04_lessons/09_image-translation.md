@@ -1,4 +1,4 @@
-# L09 – Image translation
+# L09 - Image translation
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

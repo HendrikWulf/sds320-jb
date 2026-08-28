@@ -1,4 +1,4 @@
-# L12 – Segment Anything
+# L12 - Segment Anything
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

@@ -1,4 +1,4 @@
-# L02 – Data acquisition
+# L02 - Data acquisition
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
