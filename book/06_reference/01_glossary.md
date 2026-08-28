@@ -24,6 +24,30 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Hyperparameter
+: A setting chosen before or during training, such as learning rate, batch size, number of epochs or model architecture. Hyperparameters affect model behaviour but are not learned directly from the data.
+
+Classification Head
+: The final part of a classification model that maps learned features to class scores or probabilities.
+
+
+ImageFolder
+: A simple image-classification dataset layout where each class is represented by one folder, and all images inside that folder receive the folder name as their label.
+
+EuroSAT
+: A land-use and land-cover classification dataset derived from Sentinel-2 imagery. In SDS320, it is useful as a compact benchmark for learning image-recognition workflows.
+
+
+ResNet
+: A convolutional neural network family built around residual (skip) connections, which let gradients flow directly through the network and make it possible to train much deeper models. ResNet-50 is a common default architecture for image classification, including satellite image tiles.
+
+EfficientNet
+: A convolutional neural network family that scales network depth, width, and input resolution together using a single coefficient, aiming for strong accuracy with fewer parameters than comparably accurate architectures. EfficientNet-B0 is the smallest and fastest variant in the family.
+
+timm
+: A Python library (PyTorch Image Models) providing implementations and pre-trained weights for over a thousand image classification architectures, including ResNet, EfficientNet, Vision Transformer, and ConvNeXt families. Packages such as `geoai` build on `timm` to let you select an architecture with a single string parameter.
+
+
 Split-Panel Map
 : An interactive map layout that places two datasets side by side with a draggable divider, so both sides always share the same geographic extent and zoom level. It is commonly used to compare imagery from different dates, compare a prediction against ground truth, or check whether labels align with source imagery.
 
