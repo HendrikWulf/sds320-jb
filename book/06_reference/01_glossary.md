@@ -24,19 +24,23 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Non-Maximum Suppression
+: A post-processing method that removes lower-confidence bounding boxes when they overlap strongly with a higher-confidence prediction of the same class.
+
+Anchor Box
+: A predefined bounding-box template used by some detection architectures as a starting point for predicting object location and size.
+
 Hyperparameter
 : A setting chosen before or during training, such as learning rate, batch size, number of epochs or model architecture. Hyperparameters affect model behaviour but are not learned directly from the data.
 
 Classification Head
 : The final part of a classification model that maps learned features to class scores or probabilities.
 
-
 ImageFolder
 : A simple image-classification dataset layout where each class is represented by one folder, and all images inside that folder receive the folder name as their label.
 
 EuroSAT
 : A land-use and land-cover classification dataset derived from Sentinel-2 imagery. In SDS320, it is useful as a compact benchmark for learning image-recognition workflows.
-
 
 ResNet
 : A convolutional neural network family built around residual (skip) connections, which let gradients flow directly through the network and make it possible to train much deeper models. ResNet-50 is a common default architecture for image classification, including satellite image tiles.
@@ -46,7 +50,6 @@ EfficientNet
 
 timm
 : A Python library (PyTorch Image Models) providing implementations and pre-trained weights for over a thousand image classification architectures, including ResNet, EfficientNet, Vision Transformer, and ConvNeXt families. Packages such as `geoai` build on `timm` to let you select an architecture with a single string parameter.
-
 
 Split-Panel Map
 : An interactive map layout that places two datasets side by side with a draggable divider, so both sides always share the same geographic extent and zoom level. It is commonly used to compare imagery from different dates, compare a prediction against ground truth, or check whether labels align with source imagery.
@@ -147,7 +150,6 @@ Stage
 Version Control
 : The practice of tracking changes to files over time. Version control makes it easier to review project history, recover earlier versions and collaborate.
 
-
 Hidden Notebook State
 : A situation where a notebook works only because cells were run in a particular previous order. Hidden notebook state makes a workflow difficult to reproduce and can often be detected by restarting the kernel and running all cells from top to bottom.
 
@@ -162,7 +164,6 @@ Python Script
 
 Restart and Run All
 : A notebook check in which the kernel is restarted and all cells are executed from top to bottom. It helps reveal missing imports, hidden variables, path problems and other reproducibility issues.
-
 
 Absolute Path
 : A file path that starts from the root of the file system or drive, such as `/Users/name/project/data/file.tif` or `C:\Users\name\project\data\file.tif`. Absolute paths often break when a project is moved to another computer.
@@ -250,7 +251,6 @@ VS Code
 
 Working Directory
 : The folder from which Python or a shell command is currently running. Many file-path errors happen because the working directory is different from what the user expects.
-
 
 Accuracy
 : The proportion of predictions that match the reference labels. It is easy to understand, but it can be misleading when classes are strongly imbalanced.
