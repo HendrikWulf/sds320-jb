@@ -24,6 +24,24 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Faster R-CNN
+: A two-stage object detection architecture that first proposes candidate regions with a Region Proposal Network, then classifies and refines each proposed region. It is the default detection architecture in the `geoai` package.
+
+Region Proposal Network (RPN)
+: A small network, used in two-stage detectors such as Faster R-CNN, that scans a backbone's feature map and proposes candidate regions likely to contain an object, regardless of class.
+
+RetinaNet
+: A single-stage object detection architecture that addresses class imbalance between background and object regions through a specialized loss function. It is supported in `geoai` as `retinanet_resnet50_fpn_v2`.
+
+FCOS (Fully Convolutional One-Stage)
+: An anchor-free, single-stage object detection architecture that predicts bounding boxes directly at each spatial location. It is supported in `geoai` as `fcos_resnet50_fpn`.
+
+DETR
+: A transformer-based object detection architecture (DEtection TRansformer) that predicts a fixed-size set of detections directly, without anchor boxes or non-maximum suppression.
+
+Zero-Shot Object Detection
+: Object detection performed using a model, such as OWL-ViT or Grounding DINO, that can locate objects described by a text prompt without training on labeled examples of that object class.
+
 Non-Maximum Suppression
 : A post-processing method that removes lower-confidence bounding boxes when they overlap strongly with a higher-confidence prediction of the same class.
 
