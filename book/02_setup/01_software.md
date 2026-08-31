@@ -680,6 +680,35 @@ nvidia-smi
 
 :::::
 
+:::::{tab-item} Google Colab
+
+If you do not have a local GPU, Google Colab provides free access to NVIDIA T4 GPUs directly in your browser.
+
+1. Open your Google Colab notebook.
+2. In the top menu bar, click **Runtime** > **Change runtime type**.
+3. Under the "Hardware accelerator" section, select **T4 GPU** and click **Save**.
+
+Verify the GPU allocation in a new code cell:
+
+```bash
+!nvidia-smi
+
+```
+
+If the command displays the Tesla T4 model, the GPU is active.
+
+Then check PyTorch:
+
+```python
+import torch
+print(torch.cuda.is_available())
+
+```
+
+A result of `True` means PyTorch can access the cloud GPU. Note that free Colab instances are temporary and will disconnect if left idle for too long.
+
+:::::
+
 ::::::
 
 ```{note}

@@ -24,6 +24,18 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Hugging Face Hub
+: An online platform for hosting and sharing trained model weights and configuration files. In `geoai`, `push_detector_to_hub()` and `predict_detector_from_hub()` support publishing and reusing trained detectors through the Hub.
+
+Average Precision (AP)
+: The area under a class's {term}`precision-recall curve <Precision-Recall Curve>`, summarizing that class's detection performance across all confidence thresholds into a single number. {term}`Mean Average Precision` averages AP across all classes.
+
+Precision-Recall Curve
+: A curve showing how precision and recall change as the confidence threshold used to retain predictions varies.
+
+NWPU-VHR-10
+: A benchmark dataset of 800 very-high-resolution remote sensing images (650 annotated, 150 background-only) covering 10 object classes, commonly used to evaluate multi-class object detection models.
+
 Faster R-CNN
 : A two-stage object detection architecture that first proposes candidate regions with a Region Proposal Network, then classifies and refines each proposed region. It is the default detection architecture in the `geoai` package.
 
