@@ -24,6 +24,42 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Sensor-Agnostic Model
+: A model designed to support input from multiple sensor types under specified input conventions, rather than being restricted to one sensor-specific training workflow.
+
+OmniWaterMask
+: A sensor-agnostic, pre-trained water segmentation model that combines deep learning with a spectral water index and OpenStreetMap reference data. Accessible in `geoai` through `segment_water()`.
+
+OmniCloudMask
+: A sensor-agnostic, pre-trained cloud and cloud-shadow detection model that classifies pixels as clear, thick cloud, thin cloud, or cloud shadow using red, green, and near-infrared bands. Accessible in `geoai` through `predict_cloud_mask_from_raster()`.
+
+Shortwave Infrared (SWIR)
+: A spectral region beyond near-infrared wavelengths. Water reflects very little in this range compared to vegetation and soil, which makes SWIR bands especially useful for distinguishing water from other land cover.
+
+Orthogonalization
+: A post-processing step that converts a raster segmentation mask into vector polygons and regularizes their edges into clean, right-angled shapes, better representing the geometry of features such as buildings.
+
+Decoder
+: The part of an encoder-decoder segmentation network that reconstructs a compressed feature representation back to the input's original spatial resolution, producing the final pixel-level prediction.
+
+Skip Connection
+: A direct pathway linking a corresponding encoder layer to a decoder layer at the same spatial scale, bypassing the network's compressed bottleneck. Skip connections let a decoder combine fine spatial detail with the semantically rich features learned deeper in the network.
+
+DeepLabV3+
+: A segmentation architecture that uses dilated (atrous) convolutions to capture multi-scale context without reducing spatial resolution as much as standard convolutions, combined with a decoder for improved boundary detail.
+
+PSPNet
+: A segmentation architecture (Pyramid Scene Parsing Network) that pools features at multiple region sizes to capture global scene context, useful for scenes where broad context matters more than fine boundary precision.
+
+Probability Map
+: A multi-band raster produced during segmentation inference, where each band corresponds to one class and pixel values from 0 to 1 represent the model's confidence that a pixel belongs to that class.
+
+Binary Segmentation
+: A semantic segmentation task with two classes, typically a target class and background.
+
+Multi-Class Segmentation
+: A semantic segmentation task in which each pixel is assigned to one of three or more classes.
+
 Hugging Face Hub
 : An online platform for hosting and sharing trained model weights and configuration files. In `geoai`, `push_detector_to_hub()` and `predict_detector_from_hub()` support publishing and reusing trained detectors through the Hub.
 

@@ -65,7 +65,7 @@ A useful starting point is to ask what one model prediction should represent.
 | Which class belongs to every pixel? | Semantic segmentation | One class per pixel |
 | Which pixels belong to each individual object? | {term}`Instance Segmentation` | Separate mask per object |
 
-### A. Use segmentation for area-like features
+### A. Use it for area-like features
 
 Surface water is a good example.
 
@@ -80,7 +80,7 @@ A binary segmentation mask can instead represent:
 
 This makes the result suitable for estimating water extent, examining shoreline patterns or producing a raster mask for later analysis.
 
-### B. Use segmentation when boundaries matter
+### B. Use it when boundaries matter
 
 Buildings can also be represented as segmentation masks.
 
@@ -92,7 +92,7 @@ This is useful if your question concerns:
 
 A building mask can follow the structure more closely than a detection box.
 
-### C. Use multi-class segmentation for thematic maps
+### C. Use multi-class for thematic maps
 
 Land-cover mapping is a typical multi-class task.
 
@@ -108,7 +108,7 @@ wetland
 
 The result resembles a conventional thematic raster map.
 
-### D. Use segmentation for preprocessing masks
+### D. Use it for preprocessing masks
 
 Not every segmentation result is a final research output.
 
@@ -175,7 +175,7 @@ vectorization / area statistics / overlay analysis
 
 For instance, a water mask can be converted into polygons; cloud masks can be used to define pixels that can be used; and land-cover classes can be summarised by administrative unit. Your required downstream analysis should influence how you design the segmentation task.
 
---- 
+---
 
 ## 8. Common pitfalls
 
