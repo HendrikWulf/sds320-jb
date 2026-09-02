@@ -184,4 +184,5 @@ You would check whether OmniWaterMask's supported sensors and resolution range g
 ### Further reading
 
 - OpenGeoAI, ["Load Model Checkpoint"](https://opengeoai.org/examples/load_model_checkpoint/) — general guidance on loading and reusing existing model checkpoints, relevant whenever you rely on someone else's trained weights.
+- OpenGeoAI, ["Cloud and Cloud Shadow Detection"](https://opengeoai.org/examples/cloud_detection/) — notebook demonstrating the integration of OmniCloudMask in GeoAI.
 - OpenGeoAI, ["Segment Anything (samgeo)"](https://opengeoai.org/examples/samgeo/) — another pre-trained, general-purpose segmentation approach, covered in more depth in L12.
