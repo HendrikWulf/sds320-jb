@@ -13,7 +13,7 @@ Turning this lesson into concrete progress on your SDS320 project
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 This lesson introduced the training-data pipeline: inspecting imagery and annotations, converting vector labels to raster masks, generating chips, running batch workflows, checking quality and planning spatial splits.
 

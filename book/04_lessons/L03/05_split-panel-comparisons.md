@@ -13,19 +13,19 @@ Comparing two datasets side by side with a draggable slider
 
 ---
 
-## Why comparison matters
+## 1. Motivation
 
 A large share of GeoAI work is fundamentally comparative: {term}`change detection <Change Detection>` compares two dates, model evaluation compares predictions against {term}`ground truth <Ground Truth>`, and data selection compares imagery from different sensors or seasons. Viewing two layers stacked on top of each other, one at a time, makes it hard to judge fine spatial differences. A split view keeps both layers visible at the same extent and zoom level.
 
 ---
 
-## Core idea
+## 2. Core idea
 
 A **split-panel map** places two layers side by side with a draggable divider, so both sides always share the same geographic extent and zoom, which keeps the comparison spatially honest.
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### A. Prepare sample data
 
@@ -84,7 +84,7 @@ Reach for a split-panel comparison whenever you are asking "do these two things 
 
 ---
 
-## Key takeaways
+## 4. Key takeaways
 
 - Split-panel maps keep two layers at the same extent and zoom, which makes spatial comparisons more reliable than toggling layers on and off.
 - `split_map()` and `geoai.create_split_map()` both support raster and vector sources with per-side styling arguments.

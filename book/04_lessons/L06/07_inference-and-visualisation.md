@@ -13,7 +13,7 @@ Apply the detector to new imagery and learn from the predictions it gets wrong
 
 ---
 
-## 1. Why inference matters
+## 1. Motivation
 
 A model's evaluation metrics summarize performance across an entire held-out set. Running {term}`inference <Inference>` on individual images and looking at the results directly is what tells you *how* the model fails, not just how often, which matters when you need to decide whether a detector is good enough for a specific project deliverable.
 

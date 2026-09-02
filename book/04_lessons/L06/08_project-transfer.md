@@ -8,7 +8,7 @@ Turning this lesson into concrete progress on your SDS320 project
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 This lesson covered a lot of ground: when detection fits, the concepts behind it, four architecture families, dataset formats, a full training and evaluation workflow, and inference. This page is not about learning anything new. It is about deciding, concretely, whether object detection belongs in your SDS320 project, and if so, sketching the specific choices, target objects, annotation approach, architecture, and evaluation plan, that your project will need.
 

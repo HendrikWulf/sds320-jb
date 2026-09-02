@@ -13,7 +13,7 @@ Prepare image-level object annotations for model training
 
 ---
 
-## 1. Why this matters
+## 1. Motivation
 
 A detection {term}`annotation <Annotation>` is more work to produce than a classification label, but less work than a segmentation {term}`mask <Mask>`: you draw one rectangle per object, rather than assigning one label to the whole image or tracing every pixel. Getting the annotation format right, and checking it visually, avoids a frustrating failure mode: a model that trains without errors but learns from silently misaligned or malformed boxes.
 

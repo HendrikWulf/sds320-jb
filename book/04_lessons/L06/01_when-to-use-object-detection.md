@@ -13,7 +13,7 @@ Match the computer-vision task to the spatial question before choosing a model
 
 ---
 
-## 1. Why this decision matters
+## 1. Motivation
 
 Picking the wrong vision task for a project question wastes time. If you train a classifier when you actually need object counts, or a segmentation model when a handful of bounding boxes would answer your question, you will spend weeks on data preparation and training before discovering the mismatch. Making this decision early, and revisiting it explicitly on the project-transfer page, keeps your SDS320 project scoped realistically.
 

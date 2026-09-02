@@ -13,19 +13,19 @@ Overlaying prediction-style outputs on source imagery
 
 ---
 
-## Context
+## 1. Motivation
 
 A single accuracy number tells you how a model performs on average. It does not tell you *where* it fails. A model can post a high overall accuracy score while consistently missing buildings in shadow, confusing parking lots with rooftops, or producing jagged boundaries along water edges. These spatial error patterns are invisible in a summary statistic and immediately visible on a map.
 
 ---
 
-## Core idea
+## 2. Core idea
 
 After running a GeoAI model, you typically have outputs as prediction rasters (segmentation masks) or vector files (detected objects). Overlaying these on the source imagery with partial transparency lets you assess whether the highlighted features actually correspond to real objects on the ground.
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### A. Prepare sample data
 
@@ -87,7 +87,7 @@ This overlay-with-transparency pattern is the same one you will use in [L06 – 
 
 ---
 
-## Key takeaways
+## 4. Key takeaways
 
 - Overlaying prediction-style outputs on source imagery reveals *where* and *why* a model fails, not just how often.
 - Partial opacity and a `nodata` setting keep the source imagery visible under a raster overlay.

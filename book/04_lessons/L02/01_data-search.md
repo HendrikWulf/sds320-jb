@@ -13,7 +13,7 @@ Turning a project idea into concrete data search criteria
 
 ---
 
-## 1. Why data search matters
+## 1. Motivation
 
 Before you download anything, you need to know what kind of data would actually support your project.
 

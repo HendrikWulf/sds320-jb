@@ -13,7 +13,7 @@ A working definition of GeoAI and a short history of how the field got here
 
 ---
 
-## 1. Why this definition matters
+## 1. Motivation
 
 "GeoAI" gets used loosely. Sometimes it means any machine learning model that happens to touch a map. Sometimes it means only deep learning on satellite imagery. If you do not pin the term down early, it becomes hard to scope a project, because you will not know whether a random forest on tabular census data counts, or whether it has to involve a neural network and a GPU.
 

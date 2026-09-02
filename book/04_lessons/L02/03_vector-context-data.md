@@ -13,7 +13,7 @@ Using buildings, roads, places and boundaries to support spatial analytics proje
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 Remote sensing imagery often needs context. A satellite image may show pixels, but your project may need buildings, roads, land-use polygons, administrative boundaries, reference samples or validation data to make the analysis meaningful.
 

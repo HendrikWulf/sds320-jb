@@ -13,7 +13,7 @@ Understand masks, class values, probability maps and large-image inference
 
 ---
 
-## 1. Why these concepts matter
+## 1. Motivation
 
 All the segmentation functions that you will use in this lesson — training, inference and evaluation — operate on {term}`masks <Mask>`  with specific shape and value conventions. Getting comfortable with these conventions now will save you time later.
 

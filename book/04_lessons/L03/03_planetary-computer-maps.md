@@ -13,19 +13,19 @@ Previewing cloud-hosted geospatial data before downloading it
 
 ---
 
-## Why this workflow matters
+## 1. Motivation
 
 Downloading a full imagery archive before you know whether it is even useful wastes time and disk space. Being able to search, preview, and inspect metadata first, and only download what you actually need, is a core skill for the data-acquisition side of your project, and it connects directly back to [L02 – Data acquisition](../02_data-acquisition.md).
 
 ---
 
-## Core idea
+## 2. Core idea
 
 Microsoft {term}`Planetary Computer` hosts a large volume of geospatial data through a {term}`SpatioTemporal Asset Catalog (STAC)` API. The `geoai` package wraps that API so you can search, visualize, and selectively download data without leaving Python.
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### A. Browse available collections
 
@@ -225,13 +225,13 @@ m
 
 ---
 
-## Python reactivation
+## 4. Python reactivation
 
 Search results behave like a list of objects (`landsat_items[0]`), and filters are passed as dictionaries (`query={"eo:cloud_cover": {"lt": 10}}`), the same nested-dictionary pattern you used for JSON-like structures in SDS210. If a search returns nothing, check your bounding box and time range before assuming the collection has no data.
 
 ---
 
-## Common pitfalls
+## 5. Common pitfalls
 
 - **Downloading before previewing.** Large collections can be expensive to pull down; check with `view_pc_item()` first.
 - **Using a sequential colormap for categorical data.** Land cover classes need a qualitative colormap like `"tab10"`, not a continuous one like `"viridis"`.
@@ -239,7 +239,7 @@ Search results behave like a list of objects (`landsat_items[0]`), and filters a
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Search a Planetary Computer collection using the rough bounding box of your own project's study area. List the available assets for the first result, and preview it on a map.
 
@@ -261,15 +261,15 @@ If the search returns no items, the most likely causes are a bounding box outsid
 
 ---
 
-## Further reading
-
-- [Microsoft Planetary Computer catalog](https://planetarycomputer.microsoft.com)
-
----
-
-## Key takeaways
+## 7. Key takeaways
 
 - `geoai`'s Planetary Computer functions let you search, preview, and selectively download cloud-hosted data through a {term}`STAC <SpatioTemporal Asset Catalog (STAC)>` API.
 - `view_pc_item()` streams tiles for preview without requiring a download.
 - Categorical data needs a qualitative colormap; continuous data needs a sequential or diverging one.
 - Band math expressions such as NDVI can be computed server-side and previewed before you download anything.
+
+---
+
+### Further reading
+
+- [Microsoft Planetary Computer catalog](https://planetarycomputer.microsoft.com)

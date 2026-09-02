@@ -13,19 +13,19 @@ Colormap choice, spatial context, consistent styling, and knowing your audience
 
 ---
 
-## Why visualization matters
+## 1. Motivation
 
 A technically correct map can still be a poor map. A misleading colormap, a missing basemap, or an unlabeled layer can make a viewer misread your results, even when the underlying data and analysis are sound. These habits also feed directly into the [figures and maps](../03_project/08_figures-and-maps.md) guidance in your Project handbook.
 
 ---
 
-## Core idea
+## 2. Core idea
 
 Good visualization is about choosing representations that match your data type and communicate correctly to your intended audience.
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### A. Match the colormap to the data type
 
@@ -56,7 +56,7 @@ A technical peer may appreciate a detailed, multi-layer interactive map. A non-t
 
 ---
 
-## Key takeaways
+## 4. Key takeaways
 
 - Match colormap type (sequential, diverging, categorical) to your data type; avoid rainbow colormaps for continuous data.
 - Always include a basemap or reference layer for spatial context.

@@ -13,7 +13,7 @@ The properties of spatial data that make GeoAI its own field
 
 ---
 
-## 1. Why these properties matter
+## 1. Motivation
 
 A photograph from a phone and a satellite image chip can both be stored as arrays of pixel values, and a generic image classifier could technically be pointed at either one. But treating them the same way is a common source of quiet, expensive mistakes in student projects: an accuracy estimate that looks great until you realize the test pixels were sitting right next to the training pixels, or a model trained on one region that silently fails on another because nobody accounted for a difference in resolution.
 

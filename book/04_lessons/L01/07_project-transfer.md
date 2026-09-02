@@ -13,7 +13,7 @@ Turning this lesson into progress on your SDS320 project
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 Every idea in this lesson, GeoAI's definition, why spatial is special, the domains it is used in, the tools, the seven core tasks, and the traditional-to-foundation-model trajectory, exists to help you answer one question for your own project: what should your model actually predict, and with what kind of approach? This page does not introduce new theory. It asks you to commit, provisionally, to a first direction.
 

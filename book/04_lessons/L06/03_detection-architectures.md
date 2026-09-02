@@ -13,7 +13,7 @@ Four families of detectors, and how to choose between them for a project.
 
 ---
 
-## 1. Why this comparison matters
+## 1. Motivation
 
 The `geoai` package supports several detection architectures through a single `model_name` parameter, so switching architectures in code is easy. Selecting the right architecture involves matching its strengths to your project's constraints, such as the required level of accuracy, the speed of inference, the size of your objects, and the amount of labelled data available.
 

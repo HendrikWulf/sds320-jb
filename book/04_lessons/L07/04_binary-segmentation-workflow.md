@@ -17,7 +17,7 @@ You now understand what a segmentation model predicts and how it is built. This 
 
 ---
 
-## 1. Why this workflow matters
+## 1. Motivation
 
 Building footprint segmentation is a clear, well-scoped binary problem (building versus background), which makes it a good vehicle for learning the full workflow before you add the complications of multiple bands (next page) or many classes (page 7). Everything from here on is a variation on this same pattern.
 

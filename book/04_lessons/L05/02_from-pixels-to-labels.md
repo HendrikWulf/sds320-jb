@@ -13,7 +13,7 @@ Understanding how a classifier turns an image chip into a prediction
 
 ---
 
-## 1. Why this concept matters
+## 1. Motivation
 
 `train_image_classifier` on the [training page](05_training-a-classifier.md) will feel like a black box unless you understand, at least at a conceptual level, what happens inside it. Knowing the input-output logic also helps you debug: if a model performs oddly, you will have a better sense of whether the problem is in the features it is learning or in the labels you gave it.
 

@@ -13,7 +13,7 @@ Organising image chips so folder names become class labels
 
 ---
 
-## 1. Why this structure matters
+## 1. Motivation
 
 `geoai.recognize` expects a specific, simple directory layout. Getting your own project's data into that shape correctly, the first time, avoids a class of bugs where images are silently mislabeled or entire classes go missing from training.
 

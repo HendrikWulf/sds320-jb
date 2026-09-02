@@ -39,7 +39,7 @@ The table below follows the provisional SDS320 schedule. The programme may be ad
 | 10 | 17 Nov | Change detection | Storytelling | You can explain the project argument: question, data, method, result and limitation. | Five-sentence project story. |
 | 11 | 24 Nov | Regression | Repository + final-presentation prep | Your repository structure, README and environment information are improving, and you have started preparing your final presentation. | Repository check (README, run order, data instructions) and a final-presentation slide outline draft. |
 | 12 | 01 Dec | Segment Anything | Final presentations — Group B | You can present near-final implementation, results and limitations. | Revision list based on presentation feedback (what to fix in report, repository, figures). |
-| 13 | 08 Dec | Satellite embeddings | Final presentations — Group A | You have presented final progress and know what needs revision. |  polishing your report + repository submission, due Mon 14 Dec, 17:00.** |
+| 13 | 08 Dec | Satellite embeddings | Final presentations — Group A | You have presented final progress and know what needs revision. | polishing your report + repository submission, due Mon 14 Dec, 17:00.** |
 | 14 | 15 Dec | Finale Grande | Final review | — | — |
 
 ---

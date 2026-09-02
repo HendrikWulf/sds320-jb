@@ -13,7 +13,7 @@ Splitting large rasters into paired image and mask tiles
 
 ---
 
-## 1. Why tiling matters
+## 1. Motivation
 
 A single satellite or aerial scene can span tens of thousands of pixels in each direction, while most deep learning models expect inputs of a few hundred pixels, commonly 256×256 or 512×512. Tiling, sometimes called "chipping," slices these large scenes into pieces that actually fit into GPU memory and match your model's expected input size.
 

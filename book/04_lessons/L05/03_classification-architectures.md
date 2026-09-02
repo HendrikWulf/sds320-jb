@@ -13,7 +13,7 @@ Choosing a sensible starting model for image recognition
 
 ---
 
-## 1. Why architecture choice matters
+## 1. Motivation
 
 You do not need to memorize {term}`architecture <Model Architecture>` internals to use them well. You do need enough intuition to make a reasonable first choice, and to know when it is worth trying an alternative. This page gives you that decision layer.
 

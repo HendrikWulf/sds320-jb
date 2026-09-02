@@ -13,7 +13,7 @@ Choose pixel-level classification when the spatial extent of a feature matters
 
 ---
 
-## 1. Why this decision matters
+## 1. Motivation
 
 Segmentation, detection, and classification each demand a different kind of {term}`annotation <Annotation>`, a different training setup, and answer a different kind of question. Picking the wrong one means discovering the mismatch only after tiling data, training a model, and evaluating results, which is an expensive way to learn that you needed a different task all along.
 

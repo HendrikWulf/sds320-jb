@@ -13,7 +13,7 @@ How the field evolved, and what that evolution means for how much data your proj
 
 ---
 
-## 1. Why this trajectory matters
+## 1. Motivation
 
 Every paradigm shift in this field lowered the amount of domain expertise and labeled data required to build something useful. Knowing where a method sits on that trajectory tells you, roughly, how much labeling work you are signing up for.
 

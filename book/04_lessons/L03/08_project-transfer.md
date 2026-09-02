@@ -13,13 +13,13 @@ Turning this lesson into progress on your SDS320 project
 
 ---
 
-## Intro
+## 1. Intro
 
 You now have a working set of visualization techniques: basemaps, raster and vector overlays, cloud-hosted previews, split-panel comparisons, and result overlays. The goal of this page is not new theory. It is to turn those techniques into a short, reusable notebook you will come back to throughout the rest of the semester, every time you acquire new data, generate training tiles, or produce a prediction.
 
 ---
 
-## Project checklist
+## 2. Project checklist
 
 - [ ] Loaded your own candidate dataset (or datasets) from L02 onto an interactive map
 - [ ] Checked visually whether any labels or annotations you have align with the source imagery
@@ -29,7 +29,7 @@ You now have a working set of visualization techniques: basemaps, raster and vec
 
 ---
 
-## Decision points
+## 3. Decision points
 
 **Which basemap fits your project by default?** If your project depends on visually verifying structures or land cover, a satellite basemap is usually the right default. If it depends on terrain or hydrology, a topographic basemap may serve you better.
 
@@ -39,7 +39,7 @@ You now have a working set of visualization techniques: basemaps, raster and vec
 
 ---
 
-## Common pitfalls
+## 4. Common pitfalls
 
 - **Building one-off maps you cannot reuse.** If you find yourself rewriting the same `leafmap.Map()` setup repeatedly, turn it into a small function instead. This will save time from L04 onward.
 - **Never checking label alignment before relying on labels.** If your project uses existing annotations (from OpenStreetMap, a government dataset, or elsewhere), verify them visually before treating them as ground truth.
@@ -47,7 +47,7 @@ You now have a working set of visualization techniques: basemaps, raster and vec
 
 ---
 
-## Mini deliverable
+## 5. Mini deliverable
 
 Produce a short **Project Visualization Notebook** containing:
 
@@ -60,7 +60,7 @@ Keep this notebook. You will extend it directly in [L04 – Training data](../04
 
 ---
 
-## Reflection questions
+## 6. Reflection questions
 
 - Did anything about your data look different once you actually visualized it, compared to what you expected from L02?
 - If you have candidate labels, did they align cleanly with your imagery, or did you spot a misalignment worth investigating further?

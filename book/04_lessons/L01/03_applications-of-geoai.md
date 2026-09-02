@@ -13,7 +13,7 @@ Six domains where GeoAI is already used in production, as inspiration for your o
 
 ---
 
-## 1. Why these examples matter
+## 1. Motivation
 
 Reading about real, deployed systems is one of the fastest ways to find a project direction. Each example below also gives you a concrete answer to a question you will need for your own project: which of the seven core tasks does this system rely on, and why that one rather than an alternative.
 

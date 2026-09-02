@@ -13,7 +13,7 @@ Searching, subsetting and visualising imagery before it enters your project work
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 In the previous page, you defined search criteria for suitable spatial data. Here, you apply that logic to {term}`Remote Sensing` data.
 

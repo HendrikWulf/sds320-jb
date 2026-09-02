@@ -24,6 +24,12 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Chesapeake Land Cover
+: A 13-class land-cover classification scheme for the Chesapeake Bay watershed, pairing NAIP aerial imagery with integer-valued land-cover label rasters. Used in `geoai` as a benchmark for multi-class segmentation.
+
+Class Imbalance
+: A situation where some classes occupy far more of a dataset than others. In segmentation, class imbalance can make aggregate metrics look strong while performance on rare classes remains poor.
+
 Sensor-Agnostic Model
 : A model designed to support input from multiple sensor types under specified input conventions, rather than being restricted to one sensor-specific training workflow.
 

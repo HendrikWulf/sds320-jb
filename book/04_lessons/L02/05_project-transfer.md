@@ -13,7 +13,7 @@ Turning this lesson into concrete progress on your SDS320 project
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 This lesson should change the state of your project. After working through it, you should no longer only have a topic idea. You should have a first data acquisition plan: candidate datasets, search criteria, access routes, limitations and a small test.
 

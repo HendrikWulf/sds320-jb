@@ -12,7 +12,7 @@ Turning this lesson into concrete progress on your SDS320 project
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 This lesson introduced image recognition as a tile-level classification workflow. You framed the task, inspected ImageFolder data, trained a classifier, evaluated it and compared architectures.
 

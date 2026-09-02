@@ -13,7 +13,7 @@ Using metrics, confusion matrices and visual checks to understand model errors
 
 ---
 
-## 1. Why evaluation matters
+## 1. Motivation
 
 A single accuracy number is easy to report and easy to misread. A model can post a respectable overall accuracy while consistently failing on one class you actually care about. This page gives you the tools to catch that.
 

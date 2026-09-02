@@ -13,7 +13,7 @@ Training a first ResNet-50 model with the GeoAI API
 
 ---
 
-## 1. Why this workflow matters
+## 1. Motivation
 
 This page is the practical core of the lesson: a single function call takes you from a directory of labeled tiles to a trained, evaluated model. Understanding its parameters means you can adapt this workflow directly to your own project's data later.
 

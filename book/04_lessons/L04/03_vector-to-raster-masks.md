@@ -13,7 +13,7 @@ Converting polygon annotations into raster labels aligned with imagery
 
 ---
 
-## 1. Why this conversion matters
+## 1. Motivation
 
 {term}`Semantic segmentation` models predict a class for every pixel, which means their training labels also need to be per-pixel. A polygon file on its own does not have that structure; it needs to be converted onto the same grid as the imagery first.
 

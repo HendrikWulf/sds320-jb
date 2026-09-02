@@ -13,7 +13,7 @@ The encoder-decoder pattern behind nearly every segmentation model
 
 ---
 
-## 1. Why architecture matters
+## 1. Motivation
 
 You now know what a segmentation model predicts. This page looks at how it gets there, and gives you enough of a decision framework to pick a reasonable architecture and encoder for the workflow on the next page.
 

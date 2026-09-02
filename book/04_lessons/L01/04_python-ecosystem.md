@@ -13,7 +13,7 @@ The libraries you may use in SDS320
 
 ---
 
-## 1. Why this ecosystem matters
+## 1. Motivation
 
 You do not need to memorize every package on this page today. You do need to recognize the names when they appear in later lessons, and understand roughly what job each one does, so that when something breaks you know which layer of the stack to look at.
 

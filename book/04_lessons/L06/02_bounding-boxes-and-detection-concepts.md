@@ -13,7 +13,7 @@ Understand how a detector represents, scores and filters object predictions
 
 ---
 
-## 1. Why these concepts matter
+## 1. Motivation
 
 Every detection architecture in the next page, whether Faster R-CNN, YOLO, or DETR, is built around these same five ideas. Once you understand them here, comparing architectures and reading `geoai` output (training curves, evaluation tables, visualized detections) becomes far easier, because you will recognize what each number and each colored box actually represents.
 

@@ -13,7 +13,7 @@ Deciding whether one label per image chip is enough
 
 ---
 
-## 1. Why this framing matters
+## 1. Motivation
 
 Choosing the wrong task formulation wastes real effort, exactly the warning from [L01's core tasks page](../L01/05_core-geoai-tasks.md). Image recognition is attractive because it is quick to set up and train, but it only answers questions of a specific shape. Recognizing that shape early saves you from labeling pixel masks you did not need, or discovering three weeks in that your question actually required object locations.
 

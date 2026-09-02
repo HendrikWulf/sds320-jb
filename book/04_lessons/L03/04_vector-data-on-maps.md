@@ -13,19 +13,19 @@ Adding and styling GeoJSON, GeoDataFrames, and point markers on top of raster im
 
 ---
 
-## Why vector visualization matters
+## 1. Motivation
 
 Vector data carries the labels, boundaries, and outputs that give raster imagery meaning: building footprints, glacier outlines, detected objects. Overlaying vector features on their source imagery is the standard way to check whether annotations actually line up with what is on the ground, which matters both for your own labels and for anything you download from elsewhere.
 
 ---
 
-## Core idea
+## 2. Core idea
 
 `leafmap` accepts vector data from files, URLs, or in-memory {term}`GeoDataFrames <GeoDataFrame>`, and gives you direct control over how each feature is styled.
 
 ---
 
-## Workflow
+## 3. Workflow
 
 ### A. Prepare sample data
 
@@ -120,13 +120,13 @@ If you are working with labels you did not create yourself, whether downloaded o
 
 ---
 
-## Python reactivation
+## 4. Python reactivation
 
 The `style` dictionary here is an ordinary Python dictionary with string keys, the same structure you used for {term}`project parameters <Project Parameter>` in SDS210. If a style is not applying, check for a typo in a key name (`fillColor`, not `fillcolor`) before assuming something is broken with the map itself.
 
 ---
 
-## Common pitfalls
+## 5. Common pitfalls
 
 - **Assuming default styling is good enough for a final figure.** The default outline and fill are fine for quick checks, but a final report figure usually needs deliberate color and opacity choices.
 - **Forgetting `zoom_to_layer=True`.** Without it, the map may stay at its previous view and your new vector layer can be off-screen.
@@ -134,7 +134,7 @@ The `style` dictionary here is an ordinary Python dictionary with string keys, t
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Load a vector dataset relevant to your project (or the Willisau buildings example above), overlay it on its source imagery, and apply a custom style that makes the features stand out clearly against the basemap.
 
@@ -160,7 +160,7 @@ A thin, high-contrast outline with a low fill opacity keeps individual building 
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 - `add_gdf()`, `add_geojson()`, and `add_marker()` cover the common ways of putting vector data on a `leafmap` map.
 - A style dictionary controls outline color, outline width, fill color, and fill opacity.

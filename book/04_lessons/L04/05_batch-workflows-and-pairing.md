@@ -13,7 +13,7 @@ Scaling training-data creation from one image to many paired files
 
 ---
 
-## 1. Why batch processing matters
+## 1. Motivation
 
 Real project data rarely comes as a single tidy image and a single annotation file. You will often have several scenes, tiles, or dates, each needing the same tiling treatment, and each needing to be paired correctly with its own annotations. Getting the pairing wrong, silently, is one of the more damaging mistakes you can make at this stage, since a model trained on mismatched images and masks can still appear to train "successfully" while learning nothing useful.
 

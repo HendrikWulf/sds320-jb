@@ -13,7 +13,7 @@ Checking whether source imagery and labels actually match
 
 ---
 
-## 1. Why this step matters
+## 1. Motivation
 
 Every problem that starts here, a CRS mismatch, a label that only partly covers the image, an unexpected image artifact, gets multiplied once you tile the data into hundreds of chips. Catching it now, on one image, is far cheaper than catching it later, across a whole batch.
 

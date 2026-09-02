@@ -13,7 +13,7 @@ Creating interactive maps in Jupyter notebooks
 
 ---
 
-## 1. Why this page matters
+## 1. Motivation
 
 In Lesson 02, you searched for datasets and created small spatial subsets. Here, you start inspecting those data interactively.
 

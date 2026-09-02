@@ -13,7 +13,7 @@ Understanding the path from raw spatial data to model-ready examples
 
 ---
 
-## 1. Why this pipeline matters
+## 1. Motivation
 
 Every task-specific lesson later in this course, image recognition, object detection, segmentation, will assume you already know how to get from "an image and some labels" to "a folder of model-ready tiles." Having the whole pipeline in view before diving into any one step helps you understand why each step exists, rather than treating it as an arbitrary sequence of function calls.
 

@@ -13,7 +13,7 @@ Checking label quality and organising data for honest model evaluation
 
 ---
 
-## 1. Why this part matters
+## 1. Motivation
 
 A dataset that looks fine at a glance can still have systematic problems that quietly limit model performance, incomplete labels, misaligned masks, or a class imbalance so severe the model learns to ignore the class you actually care about. Separately, how you split your data into training, validation, and test sets can make a model look far better than it actually is, if you are not careful about spatial separation.
 

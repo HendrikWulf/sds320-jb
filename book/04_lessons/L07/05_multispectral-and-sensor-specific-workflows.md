@@ -13,7 +13,7 @@ Adapting segmentation workflows to multispectral and sensor-specific inputs
 
 ---
 
-## 1. Why input data matters
+## 1. Motivation
 
 The previous page used three-channel aerial imagery to segment buildings. The same segmentation architecture can be used with very different forms of imagery, but the input configuration needs to match the sensor. The source material illustrates this with surface-water mapping from:
 

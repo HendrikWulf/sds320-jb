@@ -13,7 +13,7 @@ A practical, end-to-end workflow for training an object detector
 
 ---
 
-## 1. Why this workflow matters
+## 1. Motivation
 
 This is the page where the concepts from earlier in the lesson, bounding boxes, confidence scores, architecture choice, become an actual trained model. The `geoai` package deliberately hides a substantial amount of boilerplate (the training loop, the learning-rate scheduler, checkpoint saving) behind a small set of parameters, so your job is to understand what those parameters control well enough to make good choices for your own project data later.
 

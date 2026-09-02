@@ -13,7 +13,7 @@ Comparing classifiers fairly and sharing a trained model
 
 ---
 
-## 1. Why comparison matters
+## 1. Motivation
 
 "Model A scored higher than Model B" is only a meaningful statement if everything else was held constant. Otherwise, you cannot tell whether the architecture caused the difference, or something else did, a different random split, a different number of epochs, or a different batch size.
 

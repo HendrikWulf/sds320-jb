@@ -13,7 +13,7 @@ The seven task types that define almost every GeoAI problem, and how to tell the
 
 ---
 
-## 1. Why this distinction matters
+## 1. Motivation
 
 Picking the wrong task type wastes effort. Using classification when you actually need regression, or segmentation when detection would be sufficient, means relabeling data and retraining later. A carpenter needs to know when to reach for a saw versus a drill; a GeoAI practitioner needs the same instinct for task types.
 

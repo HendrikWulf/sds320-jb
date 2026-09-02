@@ -13,19 +13,19 @@ Displaying local and cloud-hosted rasters with appropriate colormaps
 
 ---
 
-## Why raster visualization matters
+## 1. Motivation
 
 Raster data, satellite imagery, elevation models, model outputs, is the backbone of most GeoAI workflows. Before you can trust a raster in an analysis, you need to see it: does it cover the area you expect, does it have the bands you think it has, and does anything look obviously wrong?
 
 ---
 
-## Core idea
+## 2. Core idea
 
 `leafmap` renders rasters as map tile layers. For multi-band imagery it can automatically composite an RGB view; for single-band rasters, you choose a {term}`colormap` and a value range yourself.
 
 ---
 
-## Workflow
+## 3. Workflow
 
 **1. Get some sample data.**
 This lesson uses four datasets from a Las Vegas building-detection project, hosted publicly on Source Cooperative: {term}`swissimage` aerial imagery (four bands, 60 cm resolution), a LiDAR-derived {abbr}`HAG (Height Above Ground)` raster, building footprint annotations, and a rasterized building {term}`mask <Mask>`. The `geoai.download_file()` function fetches a file only if it is not already present locally.
@@ -96,13 +96,13 @@ Continous height data reads well with a sequential colormap like `"viridis"`, wh
 
 ---
 
-## Python reactivation
+## 4. Python reactivation
 
 `vmin`/`vmax` and `indexes` are ordinary keyword arguments, the same pattern you used constantly in SDS210 with `matplotlib` and `rasterio`. If a raster call is not behaving the way you expect, checking the keyword arguments you passed is usually the fastest place to start.
 
 ---
 
-## Common pitfalls
+## 5. Common pitfalls
 
 - **Forgetting to set `vmin`/`vmax` on single-band rasters.** Without a sensible range, a handful of extreme values can compress the color scale so much that real variation disappears.
 - **Assuming `add_raster()` always shows RGB.** For single-band data, you need to specify a colormap yourself, or the default rendering may not be informative.
@@ -110,7 +110,7 @@ Continous height data reads well with a sequential colormap like `"viridis"`, wh
 
 ---
 
-## Mini task
+## 6. Mini task
 
 Using your own candidate raster from L02 (or the Sentinel-2 sample above if you do not have one yet), add it to a map twice: once as a true-color composite and once as a false-color composite with the infrared band in the red channel. Compare what each reveals.
 
@@ -130,7 +130,7 @@ Toggling between the three layers in the layer control shows the same area rende
 
 ---
 
-## Key takeaways
+## 7. Key takeaways
 
 - `add_raster()` composites multi-band imagery automatically and lets you set a colormap and value range for single-band rasters.
 - `add_cog_layer()` streams Cloud-Optimized GeoTIFFs directly from a URL without a full download.

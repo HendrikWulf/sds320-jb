@@ -13,7 +13,7 @@ Recording where your data came from and what others need to know about it
 
 ---
 
-## 1. Why documentation matters
+## 1. Motivation
 
 Data acquisition is unfortunately not complete when a file appears in your folder. You also should know where the data came from, whether you are allowed to use it, how it was accessed, what limitations it has and how another person could retrieve or understand it.
 

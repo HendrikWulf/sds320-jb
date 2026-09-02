@@ -17,7 +17,7 @@ You trained a detector on the previous page and reviewed its training-history pl
 
 ---
 
-## 1. Why evaluation matters
+## 1. Motivation
 
 A single headline accuracy number can hide serious problems. A detector might report strong overall performance while completely failing on one class that matters most for your project, for example missing nearly every vehicle while detecting tennis courts perfectly. Reading evaluation results at the right level of detail is what lets you catch this before relying on the model for a project deliverable.
 
