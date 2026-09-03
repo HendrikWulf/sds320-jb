@@ -142,5 +142,6 @@ Your project needs to map wetlands, which have highly irregular, gradual boundar
 
 ### Further reading
 
+- ArcGIS API for Python, [How U-net works?](https://developers.arcgis.com/python/latest/guide/how-unet-works/)
 - `segmentation_models.pytorch` [documentation](https://smp.readthedocs.io/en/latest/encoders.html) — the full list of supported architectures and encoders underlying `geoai`'s segmentation functions.
 - Ultralytics, ["Semantic Segmentation"](https://docs.ultralytics.com/tasks/semantic) — a general (non-geospatial) overview of the same task from a different library's perspective, useful for comparison.

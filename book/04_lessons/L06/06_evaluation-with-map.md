@@ -76,7 +76,7 @@ Overall performance can hide these differences.
 
 ### A. Prepare the dataset
 
-The following cells reproduce the setup from the previous page so that the key training variables are explicit.
+The following cells reproduce the setup from the previous page.
 
 ```{code-cell} python
 import os

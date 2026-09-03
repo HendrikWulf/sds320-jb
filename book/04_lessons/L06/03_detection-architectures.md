@@ -192,6 +192,9 @@ Using the table above, pick a `model_name` for each of these two scenarios, and 
 
 ### Further reading
 
+- ArcGIS API for Python, [How a single-shot detector (SSD) works?](https://developers.arcgis.com/python/latest/guide/how-ssd-works/)
+- ArcGIS API for Python, [YOLOv3 Object Detector](https://developers.arcgis.com/python/latest/guide/yolov3-object-detector/)
+- ArcGIS API for Python, [Faster R-CNN Object Detector](https://developers.arcgis.com/python/latest/guide/faster-rcnn-object-detector/)
 - GeoWGS84, ["A Complete Guide to Object Detection with Deep Learning and Machine Learning"](https://www.geowgs84.ai/post/a-complete-guide-to-object-detection-with-deep-learning-and-machine-learning) — a broader survey of algorithms and architectures beyond what is covered here.
 - OpenGeoAI, ["RF-DETR Detection"](https://opengeoai.org/examples/rfdetr_detection/) — a worked example of a current real-time, anchor-free transformer detector trained on the same NWPU-VHR-10 dataset used on the next page.
 - [Video walkthrough comparing detection architectures](https://youtu.be/ZTXYr29i9Ak)

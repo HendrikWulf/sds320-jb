@@ -24,6 +24,15 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Fields of The World (FTW)
+: A benchmark dataset for agricultural field-boundary mapping that pairs Sentinel-2 imagery with instance masks representing individual field parcels across multiple countries.
+
+RoI Align
+: A sampling operation used in region-based neural networks to extract features for a proposed object region without coarse coordinate rounding, helping preserve spatial alignment for mask prediction.
+
+Mask Head
+: The branch of Mask R-CNN that predicts a small, fixed-size binary mask for each detected object, run in parallel with the classification and bounding-box heads. It is the component that distinguishes Mask R-CNN from Faster R-CNN.
+
 Panoptic Segmentation
 : A segmentation task that combines semantic and instance information, assigning semantic classes to all pixels while also distinguishing individual countable objects with unique instance identities.
 
