@@ -24,6 +24,9 @@ The definitions are intentionally short. They are meant to help you understand a
 
 ```{glossary}
 
+Panoptic Segmentation
+: A segmentation task that combines semantic and instance information, assigning semantic classes to all pixels while also distinguishing individual countable objects with unique instance identities.
+
 Chesapeake Land Cover
 : A 13-class land-cover classification scheme for the Chesapeake Bay watershed, pairing NAIP aerial imagery with integer-valued land-cover label rasters. Used in `geoai` as a benchmark for multi-class segmentation.
 
