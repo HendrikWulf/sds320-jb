@@ -37,14 +37,14 @@ Because the course follows a flipped classroom concept, the Jupyter Book is not 
 
 Start with these pages:
 
-1. [Welcome](01_course/01_welcome.md) — introduces the course and the project-driven learning approach.
-2. [How to use this book](01_course/02_how-to-use-this-book.md) — explains how the Jupyter Book is organised.
-3. [Schedule](01_course/03_schedule.md) — shows the weekly topics and project focus.
-4. [Assessment](01_course/04_assessment.md) — explains how your work is assessed.
-5. [AI use and integrity](01_course/05_ai-integrity.md) — explains how AI tools may be used responsibly.
-6. [Resources](01_course/06_resources.md) — points you to course platforms, documentation and support.
-7. [Feedback](01_course/07_feedback.md) — explains how you can help improve the course materials.
-8. [Syllabus](01_course/08_syllabus.md) — quick reference, if you want to look something up.
+1. [Welcome](01_course/01_welcome.md) - introduces the course and the project-driven learning approach.
+2. [How to use this book](01_course/02_how-to-use-this-book.md) - explains how the Jupyter Book is organised.
+3. [Schedule](01_course/03_schedule.md) - shows the weekly topics and project focus.
+4. [Assessment](01_course/04_assessment.md) - explains how your work is assessed.
+5. [AI use and integrity](01_course/05_ai-integrity.md) - explains how AI tools may be used responsibly.
+6. [Resources](01_course/06_resources.md) - points you to course platforms, documentation and support.
+7. [Feedback](01_course/07_feedback.md) - explains how you can help improve the course materials.
+8. [Syllabus](01_course/08_syllabus.md) - quick reference, if you want to look something up.
 
 ---
 

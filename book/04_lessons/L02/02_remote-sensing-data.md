@@ -123,6 +123,9 @@ The following helper functions demonstrate how to retrieve a spatial subset of l
 
 You can configure the output dimensions to suit your needs—smaller subsets load faster and use less disk space, while larger subsets preserve more detail. These functions use spatial windowing to avoid downloading the entire scene. For final analysis, always verify the native resolution and document any resampling used.
 
+:::{note} Code for spatial subsets
+:class: dropdown
+
 ```{code-cell} python
 from pathlib import Path
 
@@ -319,6 +322,8 @@ def plot_rgb(path, title):
     plt.axis("off")
     plt.show()
 ```
+
+:::
 
 ---
 

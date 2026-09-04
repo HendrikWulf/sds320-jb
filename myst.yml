@@ -55,6 +55,7 @@ project:
         - file: book/01_course/06_resources.md
         - file: book/01_course/07_feedback.md
         - file: book/01_course/08_syllabus.md
+        - file: book/01_course/09_credits.md
 
     - title: Python & project setup
       file: book/02_setup.md
