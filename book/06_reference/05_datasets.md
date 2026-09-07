@@ -57,6 +57,7 @@ Before committing to a dataset, check:
 - [Global Nature Watch](https://globalnaturewatch.org/) — open data on forests, land cover, climate, and biodiversity.
 - [Global Surface Water](https://global-surface-water.appspot.com/) — open data on annual surface water.
 - [EarthEnv](https://www.earthenv.org/) — open data on biodiversity and climate.
+- [Copernicus Land Monitoring Service](https://eu-space.europa.eu/copernicus-land) - European land cover and bio-geophysical variables
   
 ### Urban and public administration data
 
