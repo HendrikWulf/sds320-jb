@@ -3,7 +3,7 @@ site:
   outline_maxdepth: 1
 ---
 
-# Git basics
+# Meet Git
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
