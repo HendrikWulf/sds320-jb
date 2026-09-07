@@ -183,7 +183,7 @@ A project that uses object counts and one that uses object areas can be affected
 
 ### F. Mask overlap
 
-{term}`Intersection over Union (IoU)` evaluates the geometric overlap between a predicted mask ($A$) and a reference mask ($B$):
+{term}`Intersection over Union (IoU) <Intersection over Union>` evaluates the geometric overlap between a predicted mask ($A$) and a reference mask ($B$):
 
 $$\text{IoU}(A, B) = \frac{\vert{}A \cap B\vert{}}{\vert{}A \cup B\vert{}} = \frac{\text{TP}}{\text{TP} + \text{FP} + \text{FN}} = \frac{\text{Area of Overlap}}{\text{Area of Union}}$$
 
@@ -191,7 +191,7 @@ For instance segmentation, the overlap is calculated using the **mask pixels**, 
 
 Higher mask IoU indicates stronger spatial agreement.
 
-This becomes useful when calculating instance-level metrics such as {term}`Average Precision (AP)`.
+This becomes useful when calculating instance-level metrics such as {term}`Average Precision (AP) <Average Precision>`.
 <!-- markdownlint-enable MD033 MD055 MD056 MD012 -->
 ---
 

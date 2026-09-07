@@ -3,7 +3,7 @@ site:
  outline_maxdepth: 2
 ---
 
-# AI use and integrity
+# AI use
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

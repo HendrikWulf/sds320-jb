@@ -149,7 +149,7 @@ geoai.plot_performance_metrics(
 )
 ```
 
-This plots training and validation loss alongside {term}`IoU <Intersection over Union (IoU)>`, {term}`F1-score`, {term}`precision <Precision>`, and {term}`recall <Recall>` over training epochs, and prints a short summary of the best and final values for each. A healthy run shows both {term}`loss <Loss Function>` curves decreasing together, with validation loss tracking training loss closely; a growing gap between the two is the classic sign of {term}`overfitting <Overfitting>`, where the model memorizes training examples rather than learning patterns that generalize.
+This plots training and validation loss alongside {term}`IoU <Intersection over Union>`, {term}`F1-score`, {term}`precision <Precision>`, and {term}`recall <Recall>` over training epochs, and prints a short summary of the best and final values for each. A healthy run shows both {term}`loss <Loss Function>` curves decreasing together, with validation loss tracking training loss closely; a growing gap between the two is the classic sign of {term}`overfitting <Overfitting>`, where the model memorizes training examples rather than learning patterns that generalize.
 
 ```{admonition} Read the gap, not just the numbers
 :class: important

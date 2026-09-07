@@ -21,7 +21,7 @@ Downloading a full imagery archive before you know whether it is even useful was
 
 ## 2. Core idea
 
-Microsoft {term}`Planetary Computer` hosts a large volume of geospatial data through a {term}`SpatioTemporal Asset Catalog (STAC)` API. The `geoai` package wraps that API so you can search, visualize, and selectively download data without leaving Python.
+Microsoft {term}`Planetary Computer` hosts a large volume of geospatial data through a {term}`SpatioTemporal Asset Catalog (STAC) <SpatioTemporal Asset Catalog>` API. The `geoai` package wraps that API so you can search, visualize, and selectively download data without leaving Python.
 
 ---
 
@@ -263,7 +263,7 @@ If the search returns no items, the most likely causes are a bounding box outsid
 
 ## 7. Key takeaways
 
-- `geoai`'s Planetary Computer functions let you search, preview, and selectively download cloud-hosted data through a {term}`STAC <SpatioTemporal Asset Catalog (STAC)>` API.
+- `geoai`'s Planetary Computer functions let you search, preview, and selectively download cloud-hosted data through a {term}`STAC <SpatioTemporal Asset Catalog>` API.
 - `view_pc_item()` streams tiles for preview without requiring a download.
 - Categorical data needs a qualitative colormap; continuous data needs a sequential or diverging one.
 - Band math expressions such as NDVI can be computed server-side and previewed before you download anything.

@@ -33,7 +33,7 @@ A GeoAI pipeline is built from four rough layers: deep learning frameworks, geos
 
 ### B. Geospatial data libraries
 
-{term}`Rasterio` reads and writes raster formats such as {term}`GeoTIFF`, giving you pixel values as NumPy arrays while preserving {term}`CRS <Coordinate Reference System (CRS)>` and other metadata. {term}`GeoPandas` extends Pandas with geometric operations for vector data, and {term}`Shapely` handles the underlying geometry operations (buffering, intersection, union). Underneath most of these sits {term}`GDAL/OGR`, the C/C++ library that actually reads and writes the file formats. A typical workflow uses Rasterio to load imagery and GeoPandas to load vector labels, then combines the two into training data for a model.
+{term}`Rasterio` reads and writes raster formats such as {term}`GeoTIFF`, giving you pixel values as NumPy arrays while preserving {term}`CRS <Coordinate Reference System>` and other metadata. {term}`GeoPandas` extends Pandas with geometric operations for vector data, and {term}`Shapely` handles the underlying geometry operations (buffering, intersection, union). Underneath most of these sits {term}`GDAL/OGR`, the C/C++ library that actually reads and writes the file formats. A typical workflow uses Rasterio to load imagery and GeoPandas to load vector labels, then combines the two into training data for a model.
 
 ### C. Interactive visualization
 
@@ -45,7 +45,7 @@ The `geoai` Python package is the central library used throughout this book. It 
 
 ### E. Segment Anything for geospatial data
 
-The `segment-geospatial` package (also called `samgeo`) adapts Meta's {term}`Segment Anything Model (SAM)` for georeferenced imagery, producing vector outputs such as {term}`GeoJSON` with a proper {term}`CRS <Coordinate Reference System (CRS)>`, rather than plain image masks with no spatial reference. It supports both interactive segmentation (clicking on objects) and automatic mask generation, and is particularly useful for tasks like building or tree-canopy extraction where you have not trained a task-specific model of your own. You will use it directly in [L12 – Segment Anything](../12_segment-anything.md).
+The `segment-geospatial` package (also called `samgeo`) adapts Meta's {term}`Segment Anything Model (SAM) <Segment Anything Model>` for georeferenced imagery, producing vector outputs such as {term}`GeoJSON` with a proper {term}`CRS <Coordinate Reference System>`, rather than plain image masks with no spatial reference. It supports both interactive segmentation (clicking on objects) and automatic mask generation, and is particularly useful for tasks like building or tree-canopy extraction where you have not trained a task-specific model of your own. You will use it directly in [L12 – Segment Anything](../12_segment-anything.md).
 
 ---
 

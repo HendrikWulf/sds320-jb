@@ -83,7 +83,7 @@ print(f"Study area: {STUDY_AREA}")
 print(f"Target CRS: {TARGET_CRS}")
 ```
 
-If you already know your {term}`Coordinate Reference System (CRS)`, storing it as a variable helps you use it consistently later.
+If you already know your {term}`Coordinate Reference System (CRS) <Coordinate Reference System>`, storing it as a variable helps you use it consistently later.
 
 Create folders only when your workflow needs to write outputs:
 

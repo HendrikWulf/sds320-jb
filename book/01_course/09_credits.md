@@ -40,7 +40,7 @@ In particular, SDS320 draws on resources developed around the `geoai` Python pac
 
 These resources provide important technical and conceptual foundations for the SDS320 lessons on image recognition, object detection, semantic segmentation, instance segmentation, image translation, change detection, pixel-level regression, Segment Anything, and satellite embeddings.
 
-The SDS320 Jupyter Book is not a reproduction of the GeoAI book, but its source code has been selectively used, reorganized, adapted, expanded and reframed around the learning objectives and project-based structure of SDS320. The lesson architecture, links between methods and student projects, learning activities, reflection questions, project-transfer sections, explanations and course-specific examples were developed for the SDS320 context.
+The SDS320 Jupyter Book is not a reproduction of the GeoAI book, but its open source code has been used and reframed around the learning objectives and project-based structure of SDS320. The lesson architecture, links between methods and student projects, learning activities, reflection questions, project-transfer sections, explanations and course-specific examples were developed for the SDS320 context.
 
 ---
 
@@ -68,9 +68,9 @@ Students who directly reuse GeoAI code or workflows in their SDS320 projects sho
 
 Large language models were used as **writing and editing assistants** during the development of this Jupyter Book.
 
-In particular, Claude Sonnet 5 was used to support tasks such as:
+In particular, Claude Sonnet 5 and GPT-5.6 Sol were used to support tasks such as:
 
-- revising explanatory text,
+- revising explanatory text and code,
 - improving structure and readability,
 - revising explanations of code and methodological concepts,
 - proposing alternative formulations,

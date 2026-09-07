@@ -80,7 +80,7 @@ For most geospatial segmentation tasks, U-Net with a pre-trained {term}`ResNet` 
 | --- | --- | --- |
 | `unet` | Symmetric encoder-decoder with skip connections at every level | Fine boundary delineation; the default starting point |
 | `deeplabv3plus` | {term}`DeepLabV3+` uses dilated convolutions to capture context at multiple scales without shrinking the feature map as much | Scenes needing broader context alongside boundary detail |
-| `fpn` | Aggregates a {term}`Feature Pyramid Network (FPN)` across multiple encoder levels | Classes that vary widely in spatial scale within the same scene |
+| `fpn` | Aggregates a {term}`Feature Pyramid Network (FPN) <Feature Pyramid Network>` across multiple encoder levels | Classes that vary widely in spatial scale within the same scene |
 | `pspnet` | {term}`PSPNet` pools features at multiple region sizes for global scene context | Scenes where broad context (a whole land-cover pattern) matters more than fine edges |
 | `segformer`, `dpt` | {term}`Transformer`-based encoders and decoders | Experimentation once you have outgrown CNN-based baselines; generally need more data and compute |
 

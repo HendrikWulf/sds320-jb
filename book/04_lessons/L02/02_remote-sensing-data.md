@@ -48,7 +48,7 @@ Choose source
 → document the decision
 ```
 
-This is especially useful for cloud-hosted {term}`Cloud Optimized GeoTIFFs <Cloud Optimized GeoTIFF (COG)>`, where Python can read only a spatial window from a large remote file.
+This is especially useful for cloud-hosted {term}`Cloud Optimized GeoTIFFs <Cloud Optimized GeoTIFF>`, where Python can read only a spatial window from a large remote file.
 
 ```{tip}
 In your project notes, record not only which image you used, but also why you selected it: location, date range, cloud cover, bands, spatial resolution and main limitation.
@@ -58,7 +58,7 @@ In your project notes, record not only which image you used, but also why you se
 
 ## 3. STAC in one minute
 
-{term}`SpatioTemporal Asset Catalog (STAC)` is a standard way to describe and search geospatial assets.
+{term}`SpatioTemporal Asset Catalog (STAC) <SpatioTemporal Asset Catalog>` is a standard way to describe and search geospatial assets.
 
 A typical STAC structure is:
 

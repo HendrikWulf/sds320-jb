@@ -23,13 +23,13 @@ Instance-level labels are expensive to produce, which is exactly why a well-cura
 
 ## 2. Core idea
 
-The **{term}`Fields of the World (FTW)`** dataset pairs Sentinel-2 imagery with instance segmentation masks for agricultural field boundaries, across 24 countries. Each chip already comes with a unique integer ID per field baked into its label, exactly the instance-identifier structure from the previous page, so no manual instance derivation is needed. This lesson uses the Luxembourg subset, one of the smallest country subsets, which keeps download and training time manageable while still using real, high-quality annotations.
+The **{term}`Fields of the World (FTW) <Fields of The World>`** dataset pairs Sentinel-2 imagery with instance segmentation masks for agricultural field boundaries, across 24 countries. Each chip already comes with a unique integer ID per field baked into its label, exactly the instance-identifier structure from the previous page, so no manual instance derivation is needed. This lesson uses the Luxembourg subset, one of the smallest country subsets, which keeps download and training time manageable while still using real, high-quality annotations.
 
 ---
 
 ## 3. Workflow
 
-The {term}`Fields of The World (FTW)` dataset contains over 70,000 agricultural image chips across multiple countries. For this workflow, we focus on the Luxembourg subset—a compact dataset ideal for learning instance segmentation pipelines without massive download overhead. Each chip uses 4-band {term}`Sentinel-2` imagery (Red, Green, Blue, Near-Infrared) at 10-meter spatial resolution. A $256 \times 256$ pixel tile covers a physical area of approximately $2.56\text{ km} \times 2.56\text{ km}$, paired with instance labels marking individual agricultural field boundaries.
+The {term}`Fields of The World (FTW) <Fields of The World>` dataset contains over 70,000 agricultural image chips across multiple countries. For this workflow, we focus on the Luxembourg subset—a compact dataset ideal for learning instance segmentation pipelines without massive download overhead. Each chip uses 4-band {term}`Sentinel-2` imagery (Red, Green, Blue, Near-Infrared) at 10-meter spatial resolution. A $256 \times 256$ pixel tile covers a physical area of approximately $2.56\text{ km} \times 2.56\text{ km}$, paired with instance labels marking individual agricultural field boundaries.
 
 ---
 

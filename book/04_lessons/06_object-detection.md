@@ -57,10 +57,10 @@ Detection also introduces several project decisions that did not occur in the sa
 By the end of this lesson, you should be able to:
 
 - Decide whether object detection fits a given project question, or whether segmentation is a better match
-- Explain bounding boxes, confidence scores, {term}`IoU <Intersection over Union (IoU)>`, non-maximum suppression, and anchor boxes
+- Explain bounding boxes, confidence scores, {term}`IoU <Intersection over Union>`, non-maximum suppression, and anchor boxes
 - Compare two-stage, single-stage, transformer-based, and zero-shot detection architectures and choose one based on project constraints
 - Prepare and visually check a detection dataset in {term}`COCO Format`
-- Train and evaluate a multi-class detector with the `geoai` package, and interpret {term}`mAP <Mean Average Precision (mAP)>` results, including per-class differences
+- Train and evaluate a multi-class detector with the `geoai` package, and interpret {term}`mAP <Mean Average Precision>` results, including per-class differences
 - Run inference on new imagery, visualize detections, and identify likely false positives and false negatives
 
 ---

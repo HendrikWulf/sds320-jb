@@ -3,7 +3,7 @@ site:
  outline_maxdepth: 2
 ---
 
-# How To Use This Book
+# How to use this book
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">

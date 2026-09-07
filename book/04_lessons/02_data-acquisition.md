@@ -78,7 +78,7 @@ Do not collect data only because it is available. Collect data because it suppor
 Before class, prepare the following:
 
 * [ ] Bring one draft research question or topic idea.
-* [ ] Define a rough {term}`Area of Interest (AOI)` for your project.
+* [ ] Define a rough {term}`Area of Interest (AOI) <Area of Interest>` for your project.
 * [ ] Identify at least one possible raster data source.
 * [ ] Identify at least one possible vector or contextual data source.
 * [ ] Create a project folder where you can store notes, data inventories and test downloads.

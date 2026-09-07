@@ -25,7 +25,7 @@ A single headline accuracy number can hide serious problems. A detector might re
 
 ## 2. Core idea
 
-Detection evaluation compares predicted boxes against ground-truth boxes using {term}`IoU <Intersection (IoU) Union over>`. Assuming the predicted class is correct, at a chosen IoU threshold:
+Detection evaluation compares predicted boxes against ground-truth boxes using {term}`IoU <Intersection over Union>`. Assuming the predicted class is correct, at a chosen IoU threshold:
 
 * A matched prediction is a **true positive** (TP).
 * An unmatched prediction is a {term}`False Positive` (FP).
@@ -41,13 +41,13 @@ $$\text{Precision} = \frac{TP}{TP + FP}$$
 
 $$\text{Recall} = \frac{TP}{TP + FN}$$
 
-* **{term}`Average Precision (AP)`** summarizes a class's precision-recall trade-off across all confidence thresholds into a single number, by measuring the area under its {term}`precision-recall curve`. Mathematically, it is the integral of precision $P$ as a function of recall $R$:
+* **{term}`Average Precision (AP) <Average Precision>`** summarizes a class's precision-recall trade-off across all confidence thresholds into a single number, by measuring the area under its {term}`precision-recall curve`. Mathematically, it is the integral of precision $P$ as a function of recall $R$:
 
 $$AP = \int_{0}^{1} P(R) dR$$
 
 *(Because real-world predictions are discrete rather than continuous, algorithms calculate this by summing the rectangular areas under the points on the curve: $AP = \sum (R_n - R_{n-1}) P_n$)*
 
-* **{term}`Mean Average Precision (mAP)`** averages AP across all classes. If your dataset has $N$ distinct classes, it is simply the arithmetic mean of all individual class APs:
+* **{term}`Mean Average Precision (mAP) <Mean Average Precision>`** averages AP across all classes. If your dataset has $N$ distinct classes, it is simply the arithmetic mean of all individual class APs:
 
 $$mAP = \frac{1}{N} \sum_{i=1}^{N} AP_i$$
 

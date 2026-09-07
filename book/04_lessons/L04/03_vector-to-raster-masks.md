@@ -21,7 +21,7 @@ Converting polygon annotations into raster labels aligned with imagery
 
 ## 2. Core idea
 
-**Rasterization** takes vector geometries and "burns" them onto a raster grid that matches a reference image's resolution, extent, and {term}`CRS <Coordinate Reference System (CRS)>`, assigning a pixel value wherever a geometry overlaps that pixel.
+**Rasterization** takes vector geometries and "burns" them onto a raster grid that matches a reference image's resolution, extent, and {term}`CRS <Coordinate Reference System>`, assigning a pixel value wherever a geometry overlaps that pixel.
 
 ---
 

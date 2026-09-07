@@ -33,7 +33,7 @@ A 64×64 RGB tile contains 64 × 64 × 3 = 12,288 individual pixel values. On th
 
 ### B. How a CNN builds features
 
-A {term}`convolutional neural network <Convolutional Neural Network (CNN)>` processes an image through layers of learned filters. Early layers tend to detect simple patterns like edges and color gradients; deeper layers combine these into textures, shapes, and eventually recognizable structures such as rooftops or tree canopies. A key property is weight sharing: the same filter is applied at every position in the image, so a filter that detects a road texture in one corner also detects it elsewhere, without needing separate parameters for every location. This also makes CNNs reasonably tolerant of the object simply appearing in a different part of the tile.
+A {term}`convolutional neural network <Convolutional Neural Network>` processes an image through layers of learned filters. Early layers tend to detect simple patterns like edges and color gradients; deeper layers combine these into textures, shapes, and eventually recognizable structures such as rooftops or tree canopies. A key property is weight sharing: the same filter is applied at every position in the image, so a filter that detects a road texture in one corner also detects it elsewhere, without needing separate parameters for every location. This also makes CNNs reasonably tolerant of the object simply appearing in a different part of the tile.
 
 ### C. From features to class probabilities
 

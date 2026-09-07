@@ -49,7 +49,7 @@ When choosing data, check the following criteria.
 | --- | --- |
 | Spatial resolution | Are the relevant features visible at this scale? |
 | Temporal coverage | Does the dataset cover the relevant dates or seasons? |
-| Study area | Does the dataset cover the full {term}`Area of Interest (AOI)`? |
+| Study area | Does the dataset cover the full {term}`Area of Interest (AOI) <Area of Interest>`? |
 | Format | Can you open, process and document it? |
 | Licence | Are you allowed to use and share the data or derived outputs? |
 | Accessibility | Can you access the data reliably? |

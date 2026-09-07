@@ -36,7 +36,7 @@ Each family makes a different trade-off between accuracy, speed, and how much la
 
 ### A. Two-stage detectors
 
-Two-stage detectors split detection into proposal generation and classification. {term}`Faster R-CNN` is the most influential architecture in this family. A {term}`Region Proposal Network (RPN)` first scans the {term}`backbone <Backbone>`'s feature map and proposes candidate regions that likely contain *some* object, regardless of class. Each proposed region is then cropped, resized to a fixed size, and passed through classification and box-refinement heads.
+Two-stage detectors split detection into proposal generation and classification. {term}`Faster R-CNN` is the most influential architecture in this family. A {term}`Region Proposal Network (RPN) <Region Proposal Network>` first scans the {term}`backbone <Backbone>`'s feature map and proposes candidate regions that likely contain *some* object, regardless of class. Each proposed region is then cropped, resized to a fixed size, and passed through classification and box-refinement heads.
 
 Conceptually:
 
@@ -52,7 +52,7 @@ classify + refine boxes
 detections
 ```
 
-This two-step process concentrates computation on promising regions rather than the whole image, which generally gives strong accuracy and handles objects of very different sizes well, at the cost of being slower than single-stage alternatives. `geoai` uses `fasterrcnn_resnet50_fpn_v2` as its default detection model, combining Faster R-CNN with a {term}`Feature Pyramid Network (FPN)` for multi-scale detection.
+This two-step process concentrates computation on promising regions rather than the whole image, which generally gives strong accuracy and handles objects of very different sizes well, at the cost of being slower than single-stage alternatives. `geoai` uses `fasterrcnn_resnet50_fpn_v2` as its default detection model, combining Faster R-CNN with a {term}`Feature Pyramid Network (FPN) <Feature Pyramid Network>` for multi-scale detection.
 
 ### B. Single-stage detectors
 
@@ -72,11 +72,11 @@ detections
 
 - **{term}`YOLO`** (You Only Look Once) is the most widely used single-stage family. Modern versions use multi-scale feature pyramids and refined prediction heads, and are competitive with two-stage detectors on many benchmarks while running much faster.
 - **{term}`RetinaNet`** addresses a class-imbalance problem common in single-stage detection, where most anchor positions correspond to background, through a loss function that down-weights easy negatives. `geoai` supports it as `retinanet_resnet50_fpn_v2`.
-- **{term}`FCOS (Fully Convolutional One-Stage)`** is anchor-free: it predicts boxes directly at each spatial location instead of adjusting pre-defined anchors, removing the need to tune anchor sizes and ratios. `geoai` supports it as `fcos_resnet50_fpn`.
+- **{term}`FCOS (Fully Convolutional One-Stage) <Fully Convolutional One-Stage>`** is anchor-free: it predicts boxes directly at each spatial location instead of adjusting pre-defined anchors, removing the need to tune anchor sizes and ratios. `geoai` supports it as `fcos_resnet50_fpn`.
 
 ### C. Transformer-based detectors
 
-{term}`DETR` (DEtection TRansformer) reframes detection as predicting a fixed-size set of objects in parallel, using a transformer encoder-decoder. The encoder uses self-attention to capture context across the whole image, which is useful for understanding spatial relationships in overhead imagery. The decoder turns a set of learned "object queries" into detections directly, without anchor boxes or {term}`non-maximum suppression <Non-Maximum Suppression (NMS)>`.
+{term}`DETR` (DEtection TRansformer) reframes detection as predicting a fixed-size set of objects in parallel, using a transformer encoder-decoder. The encoder uses self-attention to capture context across the whole image, which is useful for understanding spatial relationships in overhead imagery. The decoder turns a set of learned "object queries" into detections directly, without anchor boxes or {term}`non-maximum suppression <Non-Maximum Suppression>`.
 
 Conceptually:
 

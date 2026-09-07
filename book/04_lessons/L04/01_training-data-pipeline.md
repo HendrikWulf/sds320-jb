@@ -64,7 +64,7 @@ Before creating chips, inspect imagery and labels together. This catches obvious
 
 ### C. Convert vector labels to raster masks
 
-Some models need labels in a different format from the data you start with. For example, {term}`semantic segmentation` models need a {term}`Raster Mask`. So, {term}`vector data <Vector Data>` such as polygons has to be rasterized onto a grid that matches the imagery's resolution, extent, and {term}`CRS <Coordinate Reference System (CRS)>`. You will do this on the [vector-to-raster page](03_vector-to-raster-masks.md).
+Some models need labels in a different format from the data you start with. For example, {term}`semantic segmentation` models need a {term}`Raster Mask`. So, {term}`vector data <Vector Data>` such as polygons has to be rasterized onto a grid that matches the imagery's resolution, extent, and {term}`CRS <Coordinate Reference System>`. You will do this on the [vector-to-raster page](03_vector-to-raster-masks.md).
 
 ### D. Tile the imagery
 

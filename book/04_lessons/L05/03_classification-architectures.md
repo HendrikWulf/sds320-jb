@@ -37,7 +37,7 @@ Most geospatial classification tasks are well served by a small set of proven ar
 
 ### C. Vision Transformers and ConvNeXt
 
-{term}`Vision Transformers <Vision Transformer (ViT)>` split an image into fixed-size patches and process them with self-attention, which lets any patch directly relate to any other patch, capturing long-range structure that a CNN would need many stacked layers to approximate. The trade-off is that transformers typically need more training data to match CNN performance, and their computation grows quadratically with the number of patches. ConvNeXt takes a different route to a similar destination: it keeps the convolutional structure of a CNN but borrows design choices from transformers, larger kernels, fewer activation functions, layer normalization, and can match or exceed Vision Transformer accuracy while keeping CNN-level efficiency.
+{term}`Vision Transformers <Vision Transformer>` split an image into fixed-size patches and process them with self-attention, which lets any patch directly relate to any other patch, capturing long-range structure that a CNN would need many stacked layers to approximate. The trade-off is that transformers typically need more training data to match CNN performance, and their computation grows quadratically with the number of patches. ConvNeXt takes a different route to a similar destination: it keeps the convolutional structure of a CNN but borrows design choices from transformers, larger kernels, fewer activation functions, layer normalization, and can match or exceed Vision Transformer accuracy while keeping CNN-level efficiency.
 
 ### D. Picking one in practice
 

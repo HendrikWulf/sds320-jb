@@ -21,7 +21,7 @@ Every detection architecture in the next page, whether Faster R-CNN, YOLO, or DE
 
 ## 2. Core idea
 
-A detection model does not output a single answer. For one input image, it outputs a *set* of predictions, each one a {term}`bounding box <Bounding Box>` (a rectangle marking where an object is), a class label, and a {term}`confidence score <Confidence Score>` (how sure the model is). Two supporting mechanisms, {term}`IoU <Intersection over Union (IoU)>` and non-maximum suppression, decide which of the model's raw, often overlapping, box proposals actually survive into the final output. Anchor boxes are a design choice some architectures use to make that raw prediction problem easier to learn in the first place.
+A detection model does not output a single answer. For one input image, it outputs a *set* of predictions, each one a {term}`bounding box <Bounding Box>` (a rectangle marking where an object is), a class label, and a {term}`confidence score <Confidence Score>` (how sure the model is). Two supporting mechanisms, {term}`IoU <Intersection over Union>` and non-maximum suppression, decide which of the model's raw, often overlapping, box proposals actually survive into the final output. Anchor boxes are a design choice some architectures use to make that raw prediction problem easier to learn in the first place.
 
 ---
 
@@ -62,7 +62,7 @@ There is no universally correct threshold. The appropriate value depends on the 
 
 ### C. Intersection over Union (IoU)
 
-How can we measure whether two boxes describe approximately the same location? {term}`Intersection over Union (IoU)` compares their overlap: the area where they intersect, divided by the area they cover together (their union). An IoU of 1.0 means the boxes align perfectly; an IoU of 0 means they do not overlap at all.
+How can we measure whether two boxes describe approximately the same location? {term}`Intersection over Union (IoU) <Intersection over Union>` compares their overlap: the area where they intersect, divided by the area they cover together (their union). An IoU of 1.0 means the boxes align perfectly; an IoU of 0 means they do not overlap at all.
 
 ```{code-cell} python
 def iou(box_a, box_b):

@@ -33,11 +33,11 @@ The field moved from hand-crafted features, to features learned end-to-end from 
 
 ### B. Convolutional neural networks
 
-Starting around 2015, architectures like {term}`U-Net` learned features directly from raw imagery, removing the need for manual feature engineering and improving performance on segmentation and detection substantially. The trade-off: {term}`CNN <Convolutional Neural Network (CNN)>`-based methods typically need large labeled datasets and task-specific training. Benchmark datasets and the availability of {term}`GPUs <GPU>` made this practical at scale.
+Starting around 2015, architectures like {term}`U-Net` learned features directly from raw imagery, removing the need for manual feature engineering and improving performance on segmentation and detection substantially. The trade-off: {term}`CNN <Convolutional Neural Network>`-based methods typically need large labeled datasets and task-specific training. Benchmark datasets and the availability of {term}`GPUs <GPU>` made this practical at scale.
 
 ### C. Foundation models
 
-{term}`Foundation models <Foundation Model>` are large models pre-trained on massive, diverse datasets that learn general-purpose representations. {term}`SAM <Segment Anything Model (SAM)>`, trained on roughly a billion masks, can segment nearly any object without task-specific training. Geospatial-specific foundation models exist too, pre-trained on large volumes of satellite imagery and adaptable to tasks from flood mapping to crop classification with far less labeled data than training from scratch would need. `<!-- TODO: add current course-approved examples and links once a stable list of geospatial foundation models is confirmed for this term -->`
+{term}`Foundation models <Foundation Model>` are large models pre-trained on massive, diverse datasets that learn general-purpose representations. {term}`SAM <Segment Anything Model>`, trained on roughly a billion masks, can segment nearly any object without task-specific training. Geospatial-specific foundation models exist too, pre-trained on large volumes of satellite imagery and adaptable to tasks from flood mapping to crop classification with far less labeled data than training from scratch would need. `<!-- TODO: add current course-approved examples and links once a stable list of geospatial foundation models is confirmed for this term -->`
 
 ### D. Vision-language models
 

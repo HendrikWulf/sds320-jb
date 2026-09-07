@@ -144,7 +144,7 @@ Interactive split maps allow you to swipe between vector polygons and raw imager
 
 ### E. Coordinate Reference System
 
-Calculating real-world dimensions (e.g., area in hectares or perimeter in meters) requires verifying your dataset's {term}`Coordinate Reference System (CRS)`.
+Calculating real-world dimensions (e.g., area in hectares or perimeter in meters) requires verifying your dataset's {term}`Coordinate Reference System (CRS) <Coordinate Reference System>`.
 
 ```{important}
 If your GeoDataFrame uses a geographic CRS (latitude/longitude in degrees, such as EPSG:4326), area and perimeter calculations will yield meaningless degree-based units. Always reproject your vectors to an appropriate projected CRS (such as local UTM zones) before computing geometric attributes.

@@ -36,7 +36,7 @@ Assigns one categorical label to a whole image chip, for example "residential" o
 
 ### B. Object detection
 
-Draws {term}`bounding boxes <Bounding Box>` around discrete objects and assigns each one a class and a {term}`confidence score <Confidence Score>`, for example counting vehicles in a parking lot or ships in a harbor. It is the right choice when you need to count or locate individual objects rather than describe the whole scene. A distinctive challenge in overhead imagery is the huge range of object sizes: a vehicle might be a handful of pixels while a building spans hundreds, which is why detection models for this domain often use {term}`feature pyramid networks <Feature Pyramid Network (FPN)>` to handle multiple scales at once.
+Draws {term}`bounding boxes <Bounding Box>` around discrete objects and assigns each one a class and a {term}`confidence score <Confidence Score>`, for example counting vehicles in a parking lot or ships in a harbor. It is the right choice when you need to count or locate individual objects rather than describe the whole scene. A distinctive challenge in overhead imagery is the huge range of object sizes: a vehicle might be a handful of pixels while a building spans hundreds, which is why detection models for this domain often use {term}`feature pyramid networks <Feature Pyramid Network>` to handle multiple scales at once.
 
 > Example: Detect ships in a harbour or vehicles in a parking lot.  
 > Use case: The output is usually a set of bounding boxes. Detection is useful for counts and locations.
@@ -50,7 +50,7 @@ Assigns a class label to every pixel, producing a thematic map (building, road, 
 
 ### D. Instance segmentation
 
-Combines segmentation and detection: it classifies every pixel *and* distinguishes individual objects, so you know not just that a pixel belongs to a building, but which building. This matters for tasks like building footprint extraction, where adjacent structures of the same type need separate polygons. {term}`Mask R-CNN` is the classic architecture; {term}`SAM <Segment Anything Model (SAM)>` is a more recent, general-purpose alternative.
+Combines segmentation and detection: it classifies every pixel *and* distinguishes individual objects, so you know not just that a pixel belongs to a building, but which building. This matters for tasks like building footprint extraction, where adjacent structures of the same type need separate polygons. {term}`Mask R-CNN` is the classic architecture; {term}`SAM <Segment Anything Model>` is a more recent, general-purpose alternative.
 
 > Example: Extract separate building footprints or individual tree crowns.  
 > Use case: This is useful when counts, shapes or object-level measurements matter.

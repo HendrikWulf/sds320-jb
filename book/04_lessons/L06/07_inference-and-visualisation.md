@@ -21,7 +21,7 @@ A model's evaluation metrics summarize performance across an entire held-out set
 
 ## 2. Core idea
 
-`geoai`'s inference functions handle three things for you automatically: tiling a large input image into overlapping windows so it fits the model, running each window through the model, and applying {term}`non-maximum suppression <Non-Maximum Suppression (NMS)>` to merge duplicate detections that appear at tile boundaries. You still choose the confidence threshold, which decides how many of the model's raw predictions actually get reported.
+`geoai`'s inference functions handle three things for you automatically: tiling a large input image into overlapping windows so it fits the model, running each window through the model, and applying {term}`non-maximum suppression <Non-Maximum Suppression>` to merge duplicate detections that appear at tile boundaries. You still choose the confidence threshold, which decides how many of the model's raw predictions actually get reported.
 
 ---
 

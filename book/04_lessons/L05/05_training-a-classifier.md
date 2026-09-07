@@ -21,7 +21,7 @@ This page is the practical core of the lesson: a single function call takes you 
 
 ## 2. Core idea
 
-`train_image_classifier` handles the full pipeline in one call: it scans the {term}`ImageFolder <ImageFolder Format>` directory, performs a stratified train/validation/test split, builds the model, runs the training loop, and saves the best {term}`checkpoint <Checkpoint>`.
+`train_image_classifier` handles the full pipeline in one call: it scans the ImageFolder directory, performs a stratified train/validation/test split, builds the model, runs the training loop, and saves the best {term}`checkpoint <Checkpoint>`.
 
 Training an image classifier means adjusting model parameters so that predicted labels become closer to reference labels in the {term}`Training Set`.
 

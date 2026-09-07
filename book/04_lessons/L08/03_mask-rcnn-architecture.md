@@ -72,7 +72,7 @@ The {term}`Backbone` (typically ResNet-50 or ResNet-101) converts raw image pixe
 
 ### B. Region Proposal Network (RPN)
 
-Inherited directly from Faster R-CNN, the {term}`Region Proposal Network (RPN)` scans the multiscale feature maps to answer a single question: *Where might an object be located?*
+Inherited directly from Faster R-CNN, the {term}`Region Proposal Network (RPN) <Region Proposal Network>` scans the multiscale feature maps to answer a single question: *Where might an object be located?*
 
 1. **Candidate Generation:** The RPN slides across feature maps and evaluates predefined anchor boxes of different sizes and aspect ratios.
 2. **Scoring and Refinement:** For each anchor, it estimates an "objectness" score (the likelihood that a feature is present) and proposes an initial, coarse bounding box.

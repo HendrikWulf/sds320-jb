@@ -93,7 +93,7 @@ Do not wait until the final report to make maps. Use maps as quality-control too
 Before class, prepare the following:
 
 - [ ] Review your candidate data sources from Lesson 02.
-- [ ] Choose one small {term}`Area of Interest (AOI)` that is suitable for visual inspection.
+- [ ] Choose one small {term}`Area of Interest (AOI) <Area of Interest>` that is suitable for visual inspection.
 - [ ] Make sure you can open JupyterLab or VS Code with the SDS320 environment.
 - [ ] Bring one dataset or data source you would like to inspect on a map.
 - [ ] Note one visual question you need to answer for your project.

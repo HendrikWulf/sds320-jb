@@ -70,7 +70,7 @@ m
 Setting `vmax=10` here caps the display at 10 meters so that building-scale structures stand out clearly against the ground, rather than being compressed by a handful of much taller outliers.
 
 **4. Stream a Cloud-Optimized GeoTIFF directly.**
-A {term}`Cloud Optimized GeoTIFF (COG)` can be streamed without downloading the whole file first, which matters once your rasters get large. `add_cog_layer()` handles this directly from a URL.
+A {term}`Cloud Optimized GeoTIFF (COG) <Cloud Optimized GeoTIFF>` can be streamed without downloading the whole file first, which matters once your rasters get large. `add_cog_layer()` handles this directly from a URL.
 
 ```{code-cell} python
 m2 = leafmap.Map()

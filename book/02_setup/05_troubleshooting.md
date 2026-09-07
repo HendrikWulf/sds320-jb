@@ -194,7 +194,7 @@ Spatial workflows can produce wrong results even when Python does not raise an e
 
 Before trusting the output, check:
 
-- {term}`Coordinate Reference System (CRS)`,
+- {term}`Coordinate Reference System (CRS) <Coordinate Reference System>`,
 - geometry validity,
 - raster shape,
 - raster bounds,

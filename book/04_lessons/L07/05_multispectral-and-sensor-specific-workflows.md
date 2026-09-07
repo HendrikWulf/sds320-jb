@@ -80,7 +80,7 @@ The Sentinel-2 provides {term}`multispectral imagery <Multispectral Imagery>` in
 | SWIR1 | 1610 nm | Strong separation of water from many land surfaces |
 | SWIR2 | 2190 nm | Additional separation from wet soil and vegetation |
 
-Water absorbs strongly in the {term}`near-infrared (NIR) <Near-Infrared (NIR)>` and {term}`shortwave infrared (SWIR) <Shortwave Infrared (SWIR)>`, producing very low reflectance in these bands compared to vegetation and soil. Including them as extra input channels lets the model exploit a physical property of water that is simply invisible in RGB alone.
+Water absorbs strongly in the {term}`near-infrared (NIR) <Near-Infrared>` and {term}`shortwave infrared (SWIR) <Shortwave Infrared>`, producing very low reflectance in these bands compared to vegetation and soil. Including them as extra input channels lets the model exploit a physical property of water that is simply invisible in RGB alone.
 
 ```{code-cell} python
 geoai.train_segmentation_model(

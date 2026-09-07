@@ -47,11 +47,11 @@ Methods such as {term}`random forests <Random Forest>`, support vector machines,
 
 ### D. The deep learning shift (2012 onward)
 
-Starting with breakthroughs in general image classification around 2012, {term}`convolutional neural networks <Convolutional Neural Network (CNN)>` (CNNs) learned useful features directly from raw imagery, without a person hand-designing them. Architectures such as {term}`U-Net` became a default choice for pixel-level tasks like {term}`semantic segmentation <Semantic Segmentation>`, and the geospatial community adopted them quickly for land cover mapping, building extraction, and crop classification.
+Starting with breakthroughs in general image classification around 2012, {term}`convolutional neural networks <Convolutional Neural Network>` (CNNs) learned useful features directly from raw imagery, without a person hand-designing them. Architectures such as {term}`U-Net` became a default choice for pixel-level tasks like {term}`semantic segmentation <Semantic Segmentation>`, and the geospatial community adopted them quickly for land cover mapping, building extraction, and crop classification.
 
 ### E. Foundation models (2020s onward)
 
-The current frontier is {term}`foundation models <Foundation Model>`: large models pre-trained on huge, broad datasets that can be adapted to many downstream tasks with comparatively little extra training. Meta's {term}`Segment Anything Model (SAM)` is a well-known general-purpose example, and geospatial-specific foundation models now exist for satellite imagery. These models can generalize across geographies and sensors in ways that earlier, narrowly-trained models could not, which lowers the amount of labeled data a new project needs to get started.
+The current frontier is {term}`foundation models <Foundation Model>`: large models pre-trained on huge, broad datasets that can be adapted to many downstream tasks with comparatively little extra training. Meta's {term}`Segment Anything Model (SAM) <Segment Anything Model>` is a well-known general-purpose example, and geospatial-specific foundation models now exist for satellite imagery. These models can generalize across geographies and sensors in ways that earlier, narrowly-trained models could not, which lowers the amount of labeled data a new project needs to get started.
 
 ```{admonition} A carpenter analogy
 :class: tip

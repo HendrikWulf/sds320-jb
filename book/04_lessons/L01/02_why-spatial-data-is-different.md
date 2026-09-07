@@ -31,7 +31,7 @@ Walk through each property below and ask, for your own emerging project idea, wh
 
 ### A. {abbr}`CRS (Coordinate Reference Systems)` and projections
 
-Every geospatial dataset is tied to a location on Earth through a {term}`coordinate reference system <Coordinate Reference System (CRS)>` ({abbr}`CRS (Coordinate Reference System)`). Because the Earth is a three-dimensional shape and a map is flat, representing it always involves a {term}`projection`, and every projection distorts something (area, distance, direction, or shape). If you combine datasets in different CRSs without {term}`reprojecting <Reprojection>` them onto a shared one, distances and overlaps will simply be wrong.
+Every geospatial dataset is tied to a location on Earth through a {term}`coordinate reference system <Coordinate Reference System>` ({abbr}`CRS (Coordinate Reference System)`). Because the Earth is a three-dimensional shape and a map is flat, representing it always involves a {term}`projection`, and every projection distorts something (area, distance, direction, or shape). If you combine datasets in different CRSs without {term}`reprojecting <Reprojection>` them onto a shared one, distances and overlaps will simply be wrong.
 
 ### B. Spatial resolution and scale
 
@@ -51,7 +51,7 @@ Nearby locations tend to be more similar than distant ones. This has a very conc
 
 ### F. Diverse data formats
 
-Raster data alone comes in formats such as {term}`GeoTIFF`, {term}`Cloud Optimized GeoTIFF (COG)`, and {term}`Zarr`, each with different conventions for metadata and multi-band storage. Vector data adds formats such as {term}`GeoJSON`, {term}`Shapefile <Shapefile>`, and {term}`GeoPackage`. Many GeoAI tasks need both at once, for example using vector building outlines as labels for a raster-based model, which means part of your workflow will always be format conversion and reconciling {term}`CRS <Coordinate Reference System (CRS)>` differences.
+Raster data alone comes in formats such as {term}`GeoTIFF`, {term}`Cloud Optimized GeoTIFF (COG) <Cloud Optimized GeoTIFF>`, and {term}`Zarr`, each with different conventions for metadata and multi-band storage. Vector data adds formats such as {term}`GeoJSON`, {term}`Shapefile <Shapefile>`, and {term}`GeoPackage`. Many GeoAI tasks need both at once, for example using vector building outlines as labels for a raster-based model, which means part of your workflow will always be format conversion and reconciling {term}`CRS <Coordinate Reference System>` differences.
 
 ### G. Large file sizes and tiled processing
 
@@ -66,7 +66,7 @@ A single {term}`Sentinel-2` {term}`scene` can cover a 100-by-100-kilometer area 
 
 ## 4. Python reactivation
 
-You already handled {term}`CRS <Coordinate Reference System (CRS)>` transforms and raster/vector I/O in SDS210 with {term}`Rasterio` and {term}`GeoPandas`. Nothing here is new machinery, it is a reminder of why those steps exist. When you see `.to_crs()` or a resampling call later in the course, connect it back to the properties above rather than treating it as boilerplate.
+You already handled {term}`CRS <Coordinate Reference System>` transforms and raster/vector I/O in SDS210 with {term}`Rasterio` and {term}`GeoPandas`. Nothing here is new machinery, it is a reminder of why those steps exist. When you see `.to_crs()` or a resampling call later in the course, connect it back to the properties above rather than treating it as boilerplate.
 
 ---
 
