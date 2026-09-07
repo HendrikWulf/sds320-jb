@@ -1,3 +1,8 @@
+---
+site:
+  outline_maxdepth: 2
+---
+
 # Reference
 
 <!-- markdownlint-disable MD033-->

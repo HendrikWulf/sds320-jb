@@ -332,7 +332,7 @@ Create folders
 
 ---
 
-### A. Install Miniconda or Anaconda
+### A. Install Miniconda
 
 Conda is recommended because geospatial Python packages often depend on compiled libraries such as {term}`GDAL/OGR`, PROJ and GEOS. Conda can install many of these dependencies together, which usually avoids compatibility problems.
 

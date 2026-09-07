@@ -57,7 +57,7 @@ project:
         - file: book/01_course/08_syllabus.md
         - file: book/01_course/09_credits.md
 
-    - title: Python & project setup
+    - title: Setup
       file: book/02_setup.md
       children:
         - file: book/02_setup/01_software.md
@@ -66,7 +66,7 @@ project:
         - file: book/02_setup/04_git-basics.md
         - file: book/02_setup/05_troubleshooting.md
 
-    - title: Project handbook
+    - title: Project
       file: book/03_project.md
       children:
         - file: book/03_project/01_lifecycle.md
@@ -231,7 +231,7 @@ project:
         - file: book/04_lessons/L13/07_pixel-based-and-cloud-embeddings.md
         - file: book/04_lessons/L13/08_project-transfer.md
 
-    - title: Project gallery
+    - title: Gallery
       file: book/05_gallery.md
       children:
         - file: book/05_gallery/01_index.md

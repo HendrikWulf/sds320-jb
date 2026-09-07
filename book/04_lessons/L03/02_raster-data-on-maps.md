@@ -136,3 +136,4 @@ Toggling between the three layers in the layer control shows the same area rende
 - `add_cog_layer()` streams Cloud-Optimized GeoTIFFs directly from a URL without a full download.
 - The `indexes` parameter controls band order and combination; false-color composites reveal information invisible in true color.
 - Setting `vmin`/`vmax` deliberately, rather than relying on defaults, is often the difference between a readable and an unreadable single-band raster.
+

@@ -867,3 +867,8 @@ Next project decision: decide whether Sentinel-2 is detailed enough or whether h
 - Small spatial subsets are safer than full-scene downloads during project exploration.
 - Always inspect CRS, resolution, bands, bounds, file size and visual plausibility.
 - A subset is useful for project decisions, but final analysis may need native-resolution data and clearer preprocessing.
+
+### Useful links
+
+- [Copernicus Browser](https://browser.dataspace.copernicus.eu/) - browse and visualize any Copernicus data
+- [Vantor Open Data Programm](https://vantor.com/company/open-data-program/) - to browse and access VHR data, click on `Access Recent Activations` (lower right) and create a login
