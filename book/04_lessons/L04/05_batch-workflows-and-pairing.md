@@ -295,3 +295,7 @@ For a project with imagery tiles named `city_north.tif`, `city_south.tif` and an
 - Matching by filename is the most robust option whenever your file naming supports it; sorted-order matching depends on an assumption that is easy to get wrong silently.
 - The function also accepts pre-rasterized mask folders directly, skipping the vector-to-raster step.
 - Always check the returned summary statistics, especially the feature percentage, before moving on to visual inspection.
+
+### Useful links
+
+- [GeoAI Video Tutorial](https://youtu.be/RTv-Fz3Y5OE?si=SSeksyX3ZE-1UcYz) - creating image chips from multiple images and masks

@@ -212,6 +212,6 @@ For a citywide building-footprint project covering four distinct neighborhoods: 
 - The test set should stay untouched until your final evaluation; using it earlier undermines the honesty of that final check.
 - Consistent file naming between images and labels is necessary for data loaders to pair them correctly.
 
-## Further reading
+### Further reading
 
 - [Training, validation, and test data sets (Wikipedia)](https://en.wikipedia.org/wiki/Training,_validation,_and_test_data_sets) — a more formal treatment of why each of the three sets exists, the hold-out method, and why reusing the test set for tuning decisions undermines its purpose.

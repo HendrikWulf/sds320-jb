@@ -872,3 +872,4 @@ Next project decision: decide whether Sentinel-2 is detailed enough or whether h
 
 - [Copernicus Browser](https://browser.dataspace.copernicus.eu/) - browse and visualize any Copernicus data
 - [Vantor Open Data Programm](https://vantor.com/company/open-data-program/) - to browse and access VHR data, click on `Access Recent Activations` (lower right) and create a login
+- [GeoAI Video Tutorial](https://youtu.be/bnY5isQApW0?si=3MppUKJwPKLD39YU) - search and download data from Microsoft Planetary Computer

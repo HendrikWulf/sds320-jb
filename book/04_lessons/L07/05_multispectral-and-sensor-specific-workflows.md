@@ -184,3 +184,4 @@ For ponds only 10 to 30 meters across, NAIP's 1-meter resolution is likely decis
 
 - TorchGeo, ["Earth Surface Water"](https://docs.torchgeo.org/en/stable/tutorials/earth_surface_water.html) tutorial — background on the Sentinel-2 dataset (Luo et al., 2021) used in the multispectral example above.
 - OpenGeoAI, ["Water Detection"](https://opengeoai.org/examples/water_detection/) — a related worked example of water mapping with `geoai`.
+- OpenGeoAI, ["Batch Segmentation"](https://opengeoai.org/examples/water_detection/) — apply your workflow on multiple satellite images with `geoai`.

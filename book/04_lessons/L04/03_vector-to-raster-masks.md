@@ -179,3 +179,7 @@ The rasterized mask reproduces the building footprints as filled pixel blocks in
 - `vector_to_raster()` needs a `reference_raster` to guarantee the output mask shares the source imagery's resolution, extent, and CRS.
 - Buffer radius and all-touched settings help correct small misalignments and preserve small or thin features.
 - A `class_value_field` extends the same process to multi-class masks.
+
+### Useful links
+
+- [GeoAI Video Tutorial](https://youtu.be/B9FymJwJr0g?si=do8TzwGR4xFnW2Wn) - edit existing labeled dataset for deep learning

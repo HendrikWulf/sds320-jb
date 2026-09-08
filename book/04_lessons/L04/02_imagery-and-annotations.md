@@ -205,3 +205,7 @@ Document the choice before generating masks or chips.
 - Interactive inspection is better than checking only one static overview.
 - Label quality problems become model problems later.
 - Do not create chips until the source imagery and annotations are plausible.
+
+### Useful links
+
+- [GeoAI Video Tutorial](https://youtu.be/QqjhLFN8Hdc?si=B38bNd_YpeSwt4nE) - create a labeled dataset for deep learning

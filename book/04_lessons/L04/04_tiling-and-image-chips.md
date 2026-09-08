@@ -147,3 +147,7 @@ The 50% overlap setting produces roughly four times as many tiles as the 0% sett
 - Overlap helps with edge objects but increases storage and processing time.
 - The overview image checks spatial coverage.
 - Image-mask pair previews are a required quality check before training.
+
+### Useful links
+
+- [GeoAI Video Tutorial](https://youtu.be/9kuAVYgY_p8?si=4OnOSW7JZfIfecCf) - creating georeferenced image chips for deep learning
