@@ -47,6 +47,8 @@ Use the pages in this section as a project pathway:
 8. [Figures and maps](03_project/08_figures-and-maps.md) — create visuals that support your project argument.
 9. [Report writing](03_project/09_report-writing.md) — write a concise report that explains what you did and what you found.
 10. [Presentation guide](03_project/10_presentation-guide.md) — prepare the concept and final presentations.
+11. [Q&A sessions](03_project/11_questions-and-answers.md) — ask useful questions and get clear answers.
+12. [Effective feedback](03_project/12_effective-feedback.md) — giving effective feedback and receiving it well.
 
 ---
 

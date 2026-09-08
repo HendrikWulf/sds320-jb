@@ -79,6 +79,8 @@ project:
         - file: book/03_project/08_figures-and-maps.md
         - file: book/03_project/09_report-writing.md
         - file: book/03_project/10_presentation-guide.md
+        - file: book/03_project/11_questions-and-answers.md
+        - file: book/03_project/12_effective-feedback.md
 
     - title: L01 - Intro to GeoAI
       file: book/04_lessons/01_introduction-to-geoai.md

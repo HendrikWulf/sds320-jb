@@ -43,7 +43,7 @@ A continuous target forced into categorical bins loses information you often can
 
 Soil moisture, soil organic carbon, and population density are all continuous quantities that can be estimated from imagery combined with other spatial variables, supporting applications from precision agriculture to demographic analysis.
 
-### D. When other approaches are better 
+### D. When other approaches are better
 
 If your target genuinely has a small number of meaningful, distinct categories, and the exact value within a category adds little practical value, classification or segmentation (L05 and L07) are usually simpler and more directly interpretable. Land cover with a handful of well-defined classes is a good example: "forest" versus "cropland" is often more useful to a downstream user than a continuous greenness value, unless that specific continuous detail is what the project actually needs.
 

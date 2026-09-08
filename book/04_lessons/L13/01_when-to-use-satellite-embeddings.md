@@ -11,7 +11,6 @@ Recognising when a pre-computed representation beats training a model from scrat
 </div>
 <!-- markdownlint-enable MD033 -->
 
-
 ---
 
 The landing page introduced embeddings as a reusable numerical summary of a place. This page works through where that summary is genuinely useful, and where the pixel-precise, trained-model approach from earlier lessons remains the better fit.

@@ -156,6 +156,7 @@ try:
 except KeyError as e:
     print(f"Missing column: {e.args[0]}. Falling back to geopandas loading instead.")
 ```
+
 :::
 
 ### Further reading
