@@ -21,7 +21,7 @@ For the audience, asking a good question is one of the most efficient ways to le
 
 ---
 
-## 2. Asking questions is worth the discomfort
+## 2. Asking questions
 
 Most people hesitate before raising a hand. The reasons are familiar: the question feels too obvious, or too complicated to phrase well, or you worry you missed something everyone else already understood, or you simply do not want to be the center of attention for a moment.
 
@@ -33,7 +33,7 @@ If you are unsure whether your question is "good enough" to ask, that hesitation
 
 ---
 
-## 3. Listening actively and building a question
+## 3. Active listening
 
 Good questions come from active listening. While you watch a classmate's presentation, it helps to keep a few questions in mind:
 
@@ -65,7 +65,7 @@ This structure helps the presenter understand both **what you are asking** and *
 
 ---
 
-## 4. Types of questions you can ask
+## 4. Types of questions
 
 Most questions after a project presentation fall into a handful of recognizable types. Knowing them helps you both formulate your own questions and recognize what a questioner is actually asking you.
 
@@ -84,7 +84,7 @@ Many clear questions follow the same pattern: **frame** (which part of the prese
 
 ---
 
-## 5. Answering questions: general principles
+## 5. Answering questions
 
 Presenting is a one-way delivery of information you have rehearsed. Answering questions is different: you do not know what is coming, and the audience is watching how you handle that uncertainty as closely as they watched your slides.
 
@@ -97,7 +97,7 @@ A few principles apply across almost every question:
 
 ---
 
-## 6. Practical tips for answering well
+## 6. Practical answering tips
 
 ```{tip}
 When you don't understand a question, say so and ask for clarification, rather than guessing and answering something else. A confidently wrong answer is worse than a short pause to ask "could you rephrase that?"
@@ -129,7 +129,7 @@ When a question deserves more time than the room has, say so and offer to follow
 
 ---
 
-## 7. Handling difficult moments
+## 7. Handling tricky situations
 
 Some situations come up often enough that it helps to have a plan ready.
 

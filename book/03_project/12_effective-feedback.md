@@ -77,9 +77,9 @@ If you get feedback that stings a little, that is often a sign it touched on som
 
 ---
 
-## 5. Where this comes up in SDS320
+## 5. Where feedback comes up
 
-Peer feedback in this course is not limited to one moment; the same underlying skills apply in slightly different forms:
+Peer feedback in this course is will be useful in various situations. Here are just a few examples:
 
 - **After the concept presentation** — feedback here is mostly forward-looking: is the question well-scoped, is the planned data realistic, what risks does the audience see that you might not.
 - **After the final presentation** — feedback here often engages more directly with results: does the evidence support the conclusion, what would the audience want to see validated further.
@@ -90,7 +90,7 @@ The specific comments differ across these four situations, but the same core hab
 
 ---
 
-## 6. Written feedback needs a bit more care
+## 6. Written feedback
 
 Spoken feedback lets you read a reaction and adjust immediately. Written feedback, comments on a document, a pull request, a shared slide deck, does not, so a few things matter more than they do out loud:
 
