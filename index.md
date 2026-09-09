@@ -18,3 +18,5 @@ downloads:
 Welcome to the course website for "_Spatial Data Analytics_" (SDS320), offered at the Geography Department of the University of Zurich.
 
 ---
+
+The current version of this Jupyter Book is a work in progress, and it will be revised and updated throughout the fall semester (2026).
