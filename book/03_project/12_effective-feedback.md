@@ -146,9 +146,13 @@ Before your next peer discussion, prepare both sides.
 
 ## 11. Further reading
 
-- University of Waterloo, Centre for Teaching Excellence, ["Receiving and Giving Effective Feedback"](https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/receiving-and-giving-effective-feedback) — a concise tip sheet covering both sides of the exchange, and the main source behind the general principles on this page.
-- Center for Creative Leadership, ["The SBI Feedback Model"](https://www.ccl.org/articles/leading-effectively-articles/sbi-feedback-model-a-quick-win-to-improve-talent-conversations-development/) — the original source for the Situation-Behavior-Impact structure introduced above.
-- Google, ["How to Do a Code Review"](https://google.github.io/eng-practices/review/reviewer/) — official guidance on reviewing someone else's code constructively, directly relevant when you look at a classmate's repository.
-- George Mason University Writing Center, ["Providing Feedback to Writers"](https://writingcenter.gmu.edu/writing-resources/writing-as-process/providing-feedback-to-writers) — practical guidance for giving useful feedback on a report or draft, including how to prioritize big-picture issues over line-level wording.
+- University of Waterloo, Centre for Teaching Excellence, ["Receiving and Giving Effective Feedback"](https://uwaterloo.ca/centre-for-teaching-excellence/catalogs/tip-sheets/receiving-and-giving-effective-feedback)  
+  A concise tip sheet covering both sides of the exchange, and the main source behind the general principles on this page.
+- Center for Creative Leadership, ["The SBI Feedback Model"](https://www.ccl.org/articles/leading-effectively-articles/sbi-feedback-model-a-quick-win-to-improve-talent-conversations-development/)  
+  The original source for the Situation-Behavior-Impact structure introduced above.
+- Google, ["How to Do a Code Review"](https://google.github.io/eng-practices/review/reviewer/)  
+  official guidance on reviewing someone else's code constructively, directly relevant when you look at a classmate's repository.
+- George Mason University Writing Center, ["Providing Feedback to Writers"](https://writingcenter.gmu.edu/writing-resources/writing-as-process/providing-feedback-to-writers)  
+  Practical guidance for giving useful feedback on a report or draft, including how to prioritize big-picture issues over line-level wording.
 - Monash University, [Learn from feedback](https://www.monash.edu/student-academic-success/understand-assessments/learn-from-feedback)  
   Student-oriented guidance on using peer and instructor feedback critically and turning it into improvements.
