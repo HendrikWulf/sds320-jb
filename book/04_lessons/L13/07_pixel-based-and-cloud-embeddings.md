@@ -25,7 +25,7 @@ Patch-based embeddings are not the only option, and knowing what pixel-based and
 
 ## 2. Core idea
 
-TESSERA provides 128-channel pixel-based embeddings at 10-meter resolution, compressing a full year of spectral-temporal signal per pixel, downloadable by bounding box, point, or region. AlphaEarth provides annual pixel embeddings accessible directly through {term}`Google Earth Engine (GEE) <Google Earth Engine (GEE)>`, letting you compute and visualize results in the cloud without downloading any raster data locally at all.
+TESSERA provides 128-channel pixel-based embeddings at 10-meter resolution, compressing a full year of spectral-temporal signal per pixel, downloadable by bounding box, point, or region. AlphaEarth provides annual pixel embeddings accessible directly through {term}`Google Earth Engine (GEE) <Google Earth Engine>`, letting you compute and visualize results in the cloud without downloading any raster data locally at all.
 
 ---
 

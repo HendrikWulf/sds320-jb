@@ -25,7 +25,7 @@ The previous page argued that super-resolution needs a genuinely generative appr
 
 ## 2. Core idea
 
-A {term}`diffusion model <Diffusion Model>` learns to generate images by reversing a noise-corruption process: training gradually destroys real images with added noise, and the model learns to undo that process step by step, starting from noise and ending at a clean image. A {term}`latent diffusion model (LDM) <Latent Diffusion Model (LDM)>` runs this same process in a compressed representation instead of on full-resolution pixels directly, which makes it far cheaper to run. **LDSR-S2**, the model this lesson uses, applies this idea specifically to Sentinel-2 super-resolution, conditioning its generation on a low-resolution input so the output stays consistent with what the sensor actually observed.
+A {term}`diffusion model <Diffusion Model>` learns to generate images by reversing a noise-corruption process: training gradually destroys real images with added noise, and the model learns to undo that process step by step, starting from noise and ending at a clean image. A {term}`latent diffusion model (LDM) <Latent Diffusion Model>` runs this same process in a compressed representation instead of on full-resolution pixels directly, which makes it far cheaper to run. **LDSR-S2**, the model this lesson uses, applies this idea specifically to Sentinel-2 super-resolution, conditioning its generation on a low-resolution input so the output stays consistent with what the sensor actually observed.
 
 ---
 

@@ -37,7 +37,7 @@ Early, influential translation frameworks like Pix2Pix learn from **paired** dat
 
 ### B. How these models learn to translate
 
-Pix2Pix, CycleGAN, and similar models are built on **{term}`generative adversarial networks (GANs) <Generative Adversarial Network (GAN)>`**: a generator network produces candidate output images, and a discriminator network tries to tell generated images apart from real ones. Training pushes the generator to produce increasingly convincing output, since it improves specifically by fooling the discriminator, not by minimizing pixel-by-pixel error alone. This is conceptual background here; the model you will actually use in this lesson takes a different, more recent approach, covered on the next page.
+Pix2Pix, CycleGAN, and similar models are built on **{term}`generative adversarial networks (GANs) <Generative Adversarial Network>`**: a generator network produces candidate output images, and a discriminator network tries to tell generated images apart from real ones. Training pushes the generator to produce increasingly convincing output, since it improves specifically by fooling the discriminator, not by minimizing pixel-by-pixel error alone. This is conceptual background here; the model you will actually use in this lesson takes a different, more recent approach, covered on the next page.
 
 ### C. Generated, not observed
 

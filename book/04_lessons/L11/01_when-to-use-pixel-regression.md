@@ -33,7 +33,7 @@ A continuous target forced into categorical bins loses information you often can
 
 ### A. Vegetation and index prediction
 
-**{term}`NDVI <NDVI (Normalized Difference Vegetation Index)>`** and other spectral indices can be predicted directly from multispectral imagery, useful for filling temporal gaps caused by cloud cover, or for harmonizing values across different sensors. This is the running case study for the rest of this lesson.
+**{term}`NDVI <Normalized Difference Vegetation Index>`** and other spectral indices can be predicted directly from multispectral imagery, useful for filling temporal gaps caused by cloud cover, or for harmonizing values across different sensors. This is the running case study for the rest of this lesson.
 
 ### B. Structural and physical quantities
 

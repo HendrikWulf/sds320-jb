@@ -51,7 +51,7 @@ with rasterio.open(path_2024) as src:
     nir_2024 = src.read(5).astype(np.float32)
 ```
 
-This is a {term}`Landsat` scene from two different years over the same area. Reading the same band from both dates, here {term}`near-infrared (NIR) <Near-Infrared (NIR)>`, is the starting point for image differencing, since NIR reflectance is particularly sensitive to changes in vegetation and built structures.
+This is a {term}`Landsat` scene from two different years over the same area. Reading the same band from both dates, here {term}`near-infrared (NIR) <Near-Infrared>`, is the starting point for image differencing, since NIR reflectance is particularly sensitive to changes in vegetation and built structures.
 
 ### B. Image differencing
 
@@ -94,7 +94,7 @@ plt.show()
 
 ### C. Change Vector Analysis
 
-**{term}`Change Vector Analysis (CVA) <Change Vector Analysis (CVA)>`** extends the same idea to multiple bands at once. Instead of one difference value per pixel, each pixel becomes a vector in multi-band spectral space, with a magnitude (how much it changed) and a direction (what kind of change it likely represents).
+**{term}`Change Vector Analysis (CVA) <Change Vector Analysis>`** extends the same idea to multiple bands at once. Instead of one difference value per pixel, each pixel becomes a vector in multi-band spectral space, with a magnitude (how much it changed) and a direction (what kind of change it likely represents).
 
 ```{code-cell} python
 with rasterio.open(path_2023) as src:

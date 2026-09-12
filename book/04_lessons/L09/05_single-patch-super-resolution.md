@@ -111,7 +111,7 @@ with rio.open(sr_output) as src:
     print(f"SR Resolution: {src.res[0]:.2f} m")
 ```
 
-Confirming the output {term}`CRS <Coordinate Reference System (CRS)>` matches the input, and that the resolution is genuinely 2.5 meters, matters because it is what makes the enhanced output directly usable in GIS software, aligned with your other project data, rather than a plausible-looking image with no reliable spatial reference.
+Confirming the output {term}`CRS <Coordinate Reference System>` matches the input, and that the resolution is genuinely 2.5 meters, matters because it is what makes the enhanced output directly usable in GIS software, aligned with your other project data, rather than a plausible-looking image with no reliable spatial reference.
 
 ---
 

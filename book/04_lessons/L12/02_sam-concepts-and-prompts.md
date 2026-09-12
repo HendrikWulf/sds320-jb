@@ -33,7 +33,7 @@ SAM 3's architecture has three core components for image segmentation, plus a fo
 
 ### A. Image encoder
 
-The image encoder is a {term}`Vision Transformer (ViT) <Vision Transformer (ViT)>` that processes the input image into an {term}`image embedding <Image Embedding>`, a high-dimensional feature representation capturing shapes, textures, edges, and spatial relationships. This is the single most computationally expensive step in the whole pipeline, but because SAM was trained on an enormous and diverse dataset, this embedding generalizes well even to imagery the model has never specifically encountered, including satellite and aerial photos. Crucially, it only runs once per image; `samgeo`'s `set_image()` call is what triggers this step and caches the result.
+The image encoder is a {term}`Vision Transformer (ViT) <Vision Transformer>` that processes the input image into an {term}`image embedding <Image Embedding>`, a high-dimensional feature representation capturing shapes, textures, edges, and spatial relationships. This is the single most computationally expensive step in the whole pipeline, but because SAM was trained on an enormous and diverse dataset, this embedding generalizes well even to imagery the model has never specifically encountered, including satellite and aerial photos. Crucially, it only runs once per image; `samgeo`'s `set_image()` call is what triggers this step and caches the result.
 
 ### B. Prompt encoder
 

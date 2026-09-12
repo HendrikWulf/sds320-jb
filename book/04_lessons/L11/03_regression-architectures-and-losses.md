@@ -25,7 +25,7 @@ You already know U-Net and its relatives from L07. The good news is that this kn
 
 ## 2. Core idea
 
-Encoder-decoder architectures built for segmentation, {term}`U-Net`, UNet++, {term}`DeepLabV3+`, and {term}`Feature Pyramid Network (FPN) <Feature Pyramid Network (FPN)>`, all work for regression with minimal modification. The encoder still extracts multi-scale features, the decoder still reconstructs spatial detail, and {term}`skip connections <Skip Connection>` still preserve the fine-grained detail needed for precise per-pixel output. The real change is concentrated in the output head and the loss function, not the backbone itself.
+Encoder-decoder architectures built for segmentation, {term}`U-Net`, UNet++, {term}`DeepLabV3+`, and {term}`Feature Pyramid Network (FPN) <Feature Pyramid Network>`, all work for regression with minimal modification. The encoder still extracts multi-scale features, the decoder still reconstructs spatial detail, and {term}`skip connections <Skip Connection>` still preserve the fine-grained detail needed for precise per-pixel output. The real change is concentrated in the output head and the loss function, not the backbone itself.
 
 ---
 
@@ -43,8 +43,8 @@ A segmentation model ends in N output channels (one per class) followed by softm
 
 Three loss functions cover most regression use cases:
 
-- **{term}`MSE (Mean Squared Error) <MSE (Mean Squared Error)>`** averages the squared differences between predicted and actual values. Squaring makes it sensitive to outliers, penalizing large errors heavily, useful when minimizing worst-case error matters most.
-- **{term}`MAE (Mean Absolute Error) <MAE (Mean Absolute Error)>`** averages the absolute differences instead. It is more robust to outliers than MSE, since it does not amplify large errors through squaring, though its gradient stays constant regardless of error size, which can slow convergence as training approaches the optimum.
+- **{term}`MSE (Mean Squared Error) <Mean Squared Error>`** averages the squared differences between predicted and actual values. Squaring makes it sensitive to outliers, penalizing large errors heavily, useful when minimizing worst-case error matters most.
+- **{term}`MAE (Mean Absolute Error) <Mean Absolute Error>`** averages the absolute differences instead. It is more robust to outliers than MSE, since it does not amplify large errors through squaring, though its gradient stays constant regardless of error size, which can slow convergence as training approaches the optimum.
 - **{term}`Huber loss <Huber Loss>`** combines both: it behaves like MSE for small errors (smooth gradients near zero) and like MAE for large errors (reduced sensitivity to outliers). It is a reasonable default when your reference data may contain noise or occasional extreme values, which is common with field-measured or LiDAR-derived targets.
 
 `geoai` exposes all three through a `loss_type` parameter (`"mse"`, `"l1"`, `"huber"`), so switching between them is a one-line change, the same low-cost experimentation pattern you have seen for architecture and encoder choices in earlier lessons.

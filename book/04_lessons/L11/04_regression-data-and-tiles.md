@@ -47,7 +47,7 @@ test_raster = geoai.download_file(
 )
 ```
 
-This is {term}`Landsat` imagery over Knoxville, Tennessee, paired with an {term}`NDVI <NDVI (Normalized Difference Vegetation Index)>` raster for the same area and year (2022), used for training. A separate 2023 Landsat scene is downloaded too, held out for the temporal-prediction workflow two pages from now.
+This is {term}`Landsat` imagery over Knoxville, Tennessee, paired with an {term}`NDVI <Normalized Difference Vegetation Index>` raster for the same area and year (2022), used for training. A separate 2023 Landsat scene is downloaded too, held out for the temporal-prediction workflow two pages from now.
 
 ### B. Inspect the data before tiling
 

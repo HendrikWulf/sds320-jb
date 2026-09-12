@@ -63,9 +63,9 @@ In an ideal model, points cluster tightly along the 1:1 line. Systematic deviati
 
 ### C. The four standard metrics
 
-- **{term}`RMSE (Root Mean Squared Error) <RMSE (Root Mean Squared Error)>`** measures the standard deviation of prediction errors, in the same units as the target. An RMSE of 0.05 for NDVI means predictions are typically off by about 0.05, with larger errors weighted more heavily than smaller ones.
-- **{term}`MAE (Mean Absolute Error)`**, covered two pages ago as a loss function, doubles as an evaluation metric here: the plain average absolute error, less sensitive to outliers than RMSE, and often easier to explain as a simple "typical error."
-- **{term}`R-squared (R²)`**, introduced during training two pages ago, measures the proportion of variance in the target the model explains; an R-squared of 0.85 means the model captures 85% of the spatial variation in NDVI.
+- **{term}`RMSE (Root Mean Squared Error) <Root Mean Squared Error>`** measures the standard deviation of prediction errors, in the same units as the target. An RMSE of 0.05 for NDVI means predictions are typically off by about 0.05, with larger errors weighted more heavily than smaller ones.
+- **{term}`MAE (Mean Absolute Error) <Mean Absolute Error>`**, covered two pages ago as a loss function, doubles as an evaluation metric here: the plain average absolute error, less sensitive to outliers than RMSE, and often easier to explain as a simple "typical error."
+- **{term}`R-squared (R²) <R-squared>`**, introduced during training two pages ago, measures the proportion of variance in the target the model explains; an R-squared of 0.85 means the model captures 85% of the spatial variation in NDVI.
 - **{term}`Pearson correlation <Pearson Correlation>`** measures the linear relationship between predictions and actual values, capturing whether the model ranks pixels correctly even in the presence of a systematic bias that RMSE or MAE alone might not clearly reveal.
 
 ### D. Reading residual maps

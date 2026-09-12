@@ -19,7 +19,7 @@ The landing page introduced Segment Anything as a foundation-model shortcut arou
 
 ## 1. Motivation
 
-A zero-shot result in minutes is appealing, but appealing is not the same as appropriate for every task. Knowing where {term}`SAM <Segment Anything Model (SAM)>` tends to succeed, and where it tends to struggle, is what lets you use it efficiently rather than discovering its limits only after committing a project to it.
+A zero-shot result in minutes is appealing, but appealing is not the same as appropriate for every task. Knowing where {term}`SAM <Segment Anything Model>` tends to succeed, and where it tends to struggle, is what lets you use it efficiently rather than discovering its limits only after committing a project to it.
 
 ---
 

@@ -10,7 +10,7 @@ Segmenting almost any object with a prompt, no task-specific training needed
 
 ## 1. Context
 
-L07 and L08 trained {term}`semantic segmentation <Semantic Segmentation>` and {term}`instance segmentation <Instance Segmentation>` models from labeled data you prepared yourself. This lesson introduces a different starting point: a {term}`foundation model <Foundation Model>`, the {term}`Segment Anything Model (SAM)`, pre-trained on over a billion masks, that segments objects it has never specifically been trained on, with no task-specific training required from you at all.
+L07 and L08 trained {term}`semantic segmentation <Semantic Segmentation>` and {term}`instance segmentation <Instance Segmentation>` models from labeled data you prepared yourself. This lesson introduces a different starting point: a {term}`foundation model <Foundation Model>`, the {term}`Segment Anything Model (SAM) <Segment Anything Model>`, pre-trained on over a billion masks, that segments objects it has never specifically been trained on, with no task-specific training required from you at all.
 
 This does not make earlier lessons obsolete. It shifts where your effort goes. Instead of spending time on labeling and training, you spend it on prompt design and quality control, deciding what to ask the model for, and how much to trust what it returns.
 

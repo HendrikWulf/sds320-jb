@@ -75,7 +75,7 @@ print(f"Train accuracy: {result['train_accuracy']:.2%}")
 print(f"Val accuracy: {result['val_accuracy']:.2%}")
 ```
 
-`method="knn"` trains a {term}`k-nearest neighbors <k-Nearest Neighbors (k-NN)>` classifier, which predicts a new point's class based on the majority class among its `n_neighbors` closest embeddings. Comparing this against two alternatives is straightforward, since only the `method` argument changes:
+`method="knn"` trains a {term}`k-nearest neighbors <k-Nearest Neighbors>` classifier, which predicts a new point's class based on the majority class among its `n_neighbors` closest embeddings. Comparing this against two alternatives is straightforward, since only the `method` argument changes:
 
 ```{code-cell} python
 methods = ["knn", "random_forest", "logistic_regression"]

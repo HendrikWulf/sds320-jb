@@ -67,7 +67,7 @@ fig, history_df = geoai.plot_training_history(
 )
 ```
 
-This plots training and validation loss alongside {term}`R-squared <R-squared (R²)>` over the training run. A healthy run shows both loss curves decreasing together, with R-squared climbing toward 1.0 as training progresses.
+This plots training and validation loss alongside {term}`R-squared <R-squared>` over the training run. A healthy run shows both loss curves decreasing together, with R-squared climbing toward 1.0 as training progresses.
 
 ### D. Reading the curves
 

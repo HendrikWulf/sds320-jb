@@ -25,7 +25,7 @@ SAM itself has no built-in notion of coordinate reference systems or georeferenc
 
 ## 2. Core idea
 
-**{term}`segment-geospatial (samgeo) <segment-geospatial (samgeo)>`** wraps SAM's segmentation capability with geospatial input and output handling: it reads multiband GeoTIFF files, preserves {term}`coordinate reference system <Coordinate Reference System (CRS)>` information through the entire pipeline, and exports results as standard vector formats. This lesson uses its `SamGeo3` class, built for SAM 3 specifically, and its video counterpart, `SamGeo3Video`, covered later in this lesson.
+**{term}`segment-geospatial (samgeo) <segment-geospatial>`** wraps SAM's segmentation capability with geospatial input and output handling: it reads multiband GeoTIFF files, preserves {term}`coordinate reference system <Coordinate Reference System>` information through the entire pipeline, and exports results as standard vector formats. This lesson uses its `SamGeo3` class, built for SAM 3 specifically, and its video counterpart, `SamGeo3Video`, covered later in this lesson.
 
 ---
 

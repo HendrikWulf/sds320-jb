@@ -25,7 +25,7 @@ A 768-dimensional space cannot be plotted directly, and eyeballing raw numbers t
 
 ## 2. Core idea
 
-**{term}`Principal Component Analysis (PCA) <Principal Component Analysis (PCA)>`** projects high-dimensional embeddings down to two dimensions for visualization, preserving as much of the original structure as possible. **{term}`K-means clustering <K-Means Clustering>`** partitions embeddings into a fixed number of groups based on proximity, discovering structure without any labels. **{term}`Cosine similarity <Cosine Similarity>`** measures how alike two embedding vectors are, the basis for similarity search: given one location, finding others that look similar to the foundation model.
+**{term}`Principal Component Analysis (PCA) <Principal Component Analysis>`** projects high-dimensional embeddings down to two dimensions for visualization, preserving as much of the original structure as possible. **{term}`K-means clustering <K-Means Clustering>`** partitions embeddings into a fixed number of groups based on proximity, discovering structure without any labels. **{term}`Cosine similarity <Cosine Similarity>`** measures how alike two embedding vectors are, the basis for similarity search: given one location, finding others that look similar to the foundation model.
 
 ---
 

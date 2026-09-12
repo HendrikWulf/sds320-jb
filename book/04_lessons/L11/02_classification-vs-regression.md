@@ -41,7 +41,7 @@ Classification typically uses cross-entropy loss, which penalizes assigning low 
 
 ### C. Evaluation metrics
 
-Classification evaluation (accuracy, {term}`IoU <Intersection over Union (IoU)>`, F1) asks "how often was the prediction the correct category?" Regression evaluation asks a different question entirely: "how close, numerically, were the predictions to the actual values?" This calls for a different metric family (RMSE, MAE, R-squared), covered fully on the evaluation page later in this lesson.
+Classification evaluation (accuracy, {term}`IoU <Intersection over Union>`, F1) asks "how often was the prediction the correct category?" Regression evaluation asks a different question entirely: "how close, numerically, were the predictions to the actual values?" This calls for a different metric family (RMSE, MAE, R-squared), covered fully on the evaluation page later in this lesson.
 
 ### D. Label format
 
