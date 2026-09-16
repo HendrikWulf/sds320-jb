@@ -870,7 +870,10 @@ Next project decision: decide whether Sentinel-2 is detailed enough or whether h
 
 ### Useful links
 
+<!-- markdownlint-disable MD033-->
 - [Copernicus Browser](https://browser.dataspace.copernicus.eu/) - browse and visualize any Copernicus data
 - [Vantor Open Data Programm](https://vantor.com/company/open-data-program/) - to browse and access VHR data, click on `Access Recent Activations` (lower right) and create a login
 - [VEXCEL University Access Program](https://vexceldata.com/university-access-program/) - request aerial imagery (7.5 cm) from European and international cities
+- [Planet Classroom Access Program](https://www.planet.com/industries/education-and-research/) - request Planet global satellite imagery (3 m) covering 3000 km<sup>2</sup> per month
 - [GeoAI Video Tutorial](https://youtu.be/bnY5isQApW0?si=3MppUKJwPKLD39YU) - search and download data from Microsoft Planetary Computer
+<!-- markdownlint-enable MD033-->
