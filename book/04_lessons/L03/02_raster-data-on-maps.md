@@ -34,7 +34,7 @@ This lesson uses four datasets from a Las Vegas building-detection project, host
 import geoai
 
 swissimage_url = "https://source.coop/giuz/sds320/L03/data/willisau_2024_swissimage_rgb_subset.tif"
-hag_url = "https://source.coop/giuz/sds320/L03/data/willisau_height_above_ground_ndsm.tif”
+hag_url = "https://source.coop/giuz/sds320/L03/data/willisau_height_above_ground_ndsm.tif"
 s2_url = "https://source.coop/giuz/sds320/L03/data/willisau_2026-07-24_sentinel2_subset.tif"
 
 swissimage_path = geoai.download_file(swissimage_url)

@@ -107,7 +107,7 @@ geoai.view_pc_item(
     expression="(green-nir08)/(green+nir08)", 
     rescale="-0.5,0.5",     # 
     colormap_name="rdylbu",
-    name="NDVI",
+    name="NDWI",
     backend="ipyleaflet",
 )
 ```
