@@ -38,11 +38,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 import rasterio
 import geoai
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 url_2023 = "https://data.source.coop/opengeos/geoai/knoxville_landsat_2023.tif"
 url_2024 = "https://data.source.coop/opengeos/geoai/knoxville_landsat_2024.tif"
-path_2023 = geoai.download_file(url_2023)
-path_2024 = geoai.download_file(url_2024)
+path_2023 = geoai.download_file(url_2023, output_path=str(DATA_DIR / Path(url_2023).name))
+path_2024 = geoai.download_file(url_2024, output_path=str(DATA_DIR / Path(url_2024).name))
 
 # Read the NIR band (band 5 in Landsat 8/9) from both dates
 with rasterio.open(path_2023) as src:

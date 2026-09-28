@@ -34,8 +34,13 @@ Text, point, and box prompts trade breadth against precision. Text prompts are f
 ### A. Text prompts
 
 ```{code-cell} python
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 url = "https://data.source.coop/opengeos/geoai/uc-berkeley.tif"
-image_path = download_file(url)
+image_path = download_file(url, output=str(DATA_DIR / Path(url).name))
 
 sam3 = SamGeo3(backend="meta", load_from_HF=True, device=None, checkpoint_path=None)
 sam3.set_image(image_path)
@@ -68,7 +73,7 @@ A box drawn around one object tells SAM to use that object as a reference and se
 
 ```{code-cell} python
 url = "https://data.source.coop/opengeos/geoai/truck-example.jpg"
-image_path = download_file(url)
+image_path = download_file(url, output=str(DATA_DIR / Path(url).name))
 show_image(image_path, axis="on")
 
 sam = SamGeo3(backend="meta", enable_inst_interactivity=True)

@@ -30,14 +30,19 @@ Converting polygon annotations into raster labels aligned with imagery
 ### A. Define an output mask path
 
 ```{code-cell} python
+from pathlib import Path
+
 import geoai
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 raster_url = "https://data.source.coop/opengeos/geoai/naip-train.tif"
 vector_url = (
     "https://data.source.coop/opengeos/geoai/naip-train-buildings.geojson"
 )
-raster_path = geoai.download_file(raster_url)
-vector_path = geoai.download_file(vector_url)
+raster_path = geoai.download_file(raster_url, output_path=str(DATA_DIR / Path(raster_url).name))
+vector_path = geoai.download_file(vector_url, output_path=str(DATA_DIR / Path(vector_url).name))
 ```
 
 Use a clear output path so the mask is easy to find and document.

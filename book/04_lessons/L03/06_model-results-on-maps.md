@@ -32,16 +32,21 @@ After running a GeoAI model, you typically have outputs as prediction rasters (s
 This example uses a rasterised building mask as a stand-in for a model prediction.
 
 ```{code-cell} python
+from pathlib import Path
+
 import geoai
-import leafmap
+import leafmap.foliumap as leafmap
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 swissimage_url = "https://data.source.coop/giuz/sds320/L03/data/willisau_2024_swissimage_rgb_subset.tif"
 buildings_mask_url = "https://data.source.coop/giuz/sds320/L03/data/willisau_OSM_buildings_mask.tif"
 buildings_url = "https://data.source.coop/giuz/sds320/L03/data/willisau_overture_buildings_subset.geojson"
 
-swissimage_path = geoai.download_file(swissimage_url)
-mask_path = geoai.download_file(buildings_mask_url)
-buildings_path = geoai.download_file(buildings_url)
+swissimage_path = geoai.download_file(swissimage_url, output_path=str(DATA_DIR / Path(swissimage_url).name))
+mask_path = geoai.download_file(buildings_mask_url, output_path=str(DATA_DIR / Path(buildings_mask_url).name))
+buildings_path = geoai.download_file(buildings_url, output_path=str(DATA_DIR / Path(buildings_url).name))
 ```
 
 ### B. Overlay a mask on imagery
@@ -64,16 +69,15 @@ Setting `opacity` below 1 lets the underlying imagery show through, so you can j
 
 ### C. Compare labels and imagery
 
-Before comparing a prediction to a reference label, confirm the reference label itself is trustworthy. A split-panel view, from the [previous page](05_split-panel-comparisons.md), works well for this.
+Before comparing a prediction to a reference label, confirm the reference label itself is trustworthy. With the standard, ipyleaflet-based `leafmap.Map`, `split_map()` would take the building-footprint GeoJSON directly, just like a raster file. This page uses `leafmap.foliumap` so the map renders correctly on the built book website, and that backend's `split_map()` only synchronizes raster tile layers; overlaying both layers on one map instead, as in the [previous page](05_split-panel-comparisons.md), works just as well for this check.
 
 ```{code-cell} python
 m2 = leafmap.Map()
-m2.split_map(
-    left_layer=buildings_path,
-    right_layer=swissimage_path,
-    left_args={"style": {"color": "red", "fillOpacity": 0.2}},
-    left_label="Building labels",
-    right_label="SWISSIMAGE imagery",
+m2.add_raster(swissimage_path, layer_name="SWISSIMAGE imagery")
+m2.add_geojson(
+    buildings_path,
+    layer_name="Building labels",
+    style={"color": "red", "fillOpacity": 0.2},
 )
 m2
 ```

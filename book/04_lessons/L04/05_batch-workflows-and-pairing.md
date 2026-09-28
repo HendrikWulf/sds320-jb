@@ -48,9 +48,13 @@ The sample dataset for this page contains two NAIP image tiles, plus building an
 ```{code-cell} python
 import os
 import geoai
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 url = "https://data.source.coop/opengeos/geoai/naip-rgb-train-tiles.zip"
-data_dir = geoai.download_file(url)
+data_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 print("Images:")
 for f in sorted(os.listdir(f"{data_dir}/images")):
@@ -166,7 +170,7 @@ Some projects already have labels as raster masks, for example land-cover classi
 
 ```{code-cell} python
 url = "https://data.source.coop/opengeos/geoai/landcover-sample-data.zip"
-data_dir2 = geoai.download_file(url)
+data_dir2 = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 result = geoai.export_geotiff_tiles_batch(
     images_folder=f"{data_dir2}/images",

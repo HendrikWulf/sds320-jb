@@ -45,10 +45,14 @@ This page assumes that `result` is the trained ResNet-50 output from the previou
 
 from geoai.recognize import train_image_classifier
 import os
+from pathlib import Path
 from geoai.utils import download_file
 
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 url = "https://data.source.coop/opengeos/geoai/EuroSAT-RGB.zip"
-data_dir = download_file(url)
+data_dir = download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 ```
 

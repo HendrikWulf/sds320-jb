@@ -54,15 +54,20 @@ flowchart LR
 ### A. Download and inspect the data
 
 ```{code-cell} python
+from pathlib import Path
+
 import geoai
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 train_raster_url = "https://data.source.coop/opengeos/geoai/naip_rgb_train.tif"
 train_vector_url = "https://data.source.coop/opengeos/geoai/naip_train_buildings.geojson"
 test_raster_url = "https://data.source.coop/opengeos/geoai/naip_test.tif"
 
-train_raster_path = geoai.download_file(train_raster_url)
-train_vector_path = geoai.download_file(train_vector_url)
-test_raster_path = geoai.download_file(test_raster_url)
+train_raster_path = geoai.download_file(train_raster_url, output_path=str(DATA_DIR / Path(train_raster_url).name))
+train_vector_path = geoai.download_file(train_vector_url, output_path=str(DATA_DIR / Path(train_vector_url).name))
+test_raster_path = geoai.download_file(test_raster_url, output_path=str(DATA_DIR / Path(test_raster_url).name))
 ```
 
 The training data is a NAIP RGB image tile paired with building footprint polygons; a separate NAIP image serves as the held-out test set.

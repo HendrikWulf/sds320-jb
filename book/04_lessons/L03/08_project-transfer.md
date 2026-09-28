@@ -1,6 +1,6 @@
 ---
 site:
-  outline_maxdepth: 2
+  outline_maxdepth: 1
 ---
 
 # Project transfer
@@ -66,3 +66,34 @@ Keep this notebook. You will extend it directly in [L04 – Training data](../04
 - If you have candidate labels, did they align cleanly with your imagery, or did you spot a misalignment worth investigating further?
 - Which visualization technique from this lesson do you expect to use most often for your specific project, and why?
 - If you had to show one map from this lesson to someone unfamiliar with your project, which one would you choose, and what would you need to add (a legend, a caption, a basemap) to make it understandable to them?
+
+---
+
+## 7. Companion notebooks
+
+The examples in this lesson are intentionally kept short so that you can focus on the main visualization ideas. If you want to revisit the complete workflows, or understand how the example datasets used in L03 were prepared, you can find the supporting notebooks in the SDS320 folder on [Source Cooperative](https://data.source.coop/giuz/sds320/L03/notebooks/).
+
+The four notebooks serve **two different purposes**:
+
+- **Learning notebooks** extend the lesson and are useful for practising, exploring, and adapting the workflows to your own project.
+- **Reproducibility notebooks** document how some of the prepared datasets used in the lesson were downloaded and created. You do **not** need to rerun these notebooks to complete L03, but they let you trace the example data back to their source and reproduce the preparation workflow yourself.
+
+### Learning notebooks
+
+**[Leafmap recap notebook](https://data.source.coop/giuz/sds320/L03/notebooks/SDS320_L03_learning_leafmap_recap.ipynb)**  
+This notebook combines the main `leafmap` techniques from L03 into one start-to-finish workflow: basemaps, raster and vector layers, band combinations, split-panel comparisons, model-result overlays, Planetary Computer previews, and project transfer. Use it after the session if you want to **recapitulate the complete visualization workflow in one place**. A useful exercise is to run it from top to bottom first and then replace the sample datasets with your own project data.
+
+**[SWISSIMAGE, swissBUILDINGS3D and Overture Buildings walkthrough](https://data.source.coop/giuz/sds320/L03/notebooks/SDS320_L03_learning_SWISSIMAGE_swissBUILDINGS3D_download_viz.ipynb)**  
+This notebook provides a more detailed example of how **data acquisition and visualization connect**. Using a small area around UZH Campus Irchel, it moves from defining an area of interest through a swisstopo STAC search, spatial subsetting, CRS handling, and data inspection to an interactive comparison of SWISSIMAGE, swissBUILDINGS3D, and Overture building footprints. Use it when you want to understand the steps between **finding a dataset and deciding whether it is suitable for your project**.
+
+### Reproducibility notebooks
+
+**[Reproduce the Sentinel-2 subset](https://data.source.coop/giuz/sds320/L03/notebooks/SDS320_L03_reproduce_S2_subset_download.ipynb)**  
+This notebook documents how the Sentinel-2 example for Willisau was prepared. It queries the Microsoft Planetary Computer, selects a low-cloud Sentinel-2 scene, reads the required spectral bands, resamples them to a common grid, saves the spatial subset as a multiband GeoTIFF, and creates a quick visual preview. Consult it if you want to understand **where the Sentinel-2 file used in the lesson came from** or reproduce a similar subset for another study area.
+
+**[Reproduce the Swiss geodata subsets](https://data.source.coop/giuz/sds320/L03/notebooks/SDS320_L03_reproduce_swiss_geodata_download_v1.ipynb)**  
+This notebook documents how several of the Willisau datasets used in L03 were assembled. It searches the swisstopo STAC catalogue, mosaics and crops SWISSIMAGE, SwissSurface3D and SwissALTI3D data, derives a **Height Above Ground (nDSM)** raster, and retrieves building data from swissBUILDINGS3D, Overture Maps, and OpenStreetMap. Use it as a reference when you want to reproduce the lesson data or build a similar **download → subset → derive → inspect** pipeline for your own project.
+
+```{tip}
+Start with the **learning notebooks** if your goal is to practise the methods from L03. Open the **reproducibility notebooks** when you need to understand data provenance, repeat the preparation of the lesson datasets, or adapt the download workflow to a new study area.
+```

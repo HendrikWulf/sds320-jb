@@ -37,9 +37,13 @@ Skipping training does not mean skipping evaluation. A pre-trained model can sti
 {term}`OmniWaterMask` combines a sensor-agnostic deep learning model with a spectral water index and OpenStreetMap reference data, and supports multiple sensors including Sentinel-2, NAIP, Landsat, and others, all without any custom training.
 
 ```{code-cell} python
-s2_path = geoai.download_file(
-    "https://data.source.coop/opengeos/geoai/S2A-L2A-20190318-N0211-R061-6Bands-S2.tif"
-)
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+s2_url = "https://data.source.coop/opengeos/geoai/S2A-L2A-20190318-N0211-R061-6Bands-S2.tif"
+s2_path = geoai.download_file(s2_url, output_path=str(DATA_DIR / Path(s2_url).name))
 
 s2_gdf = geoai.segment_water(
     s2_path,
@@ -62,7 +66,7 @@ naip_url = (
     "naip_water_test_subset.tif"
 )
 
-naip_path = geoai.download_file(naip_url)
+naip_path = geoai.download_file(naip_url, output_path=str(DATA_DIR / Path(naip_url).name))
 ```
 
 The band-order preset changes:
@@ -100,7 +104,7 @@ url = (
     "S2C-MSIL2A-20250920T162001-subset.tif"
 )
 
-s2_path = geoai.download_file(url)
+s2_path = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 ```
 
 Run:

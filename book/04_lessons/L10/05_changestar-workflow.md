@@ -53,6 +53,9 @@ ChangeStar ships several variants, trained with different Changen2 pretraining s
 import geoai
 from pathlib import Path
 
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 device = geoai.get_device()
 print(f"Using device: {device}")
 
@@ -68,8 +71,8 @@ Path(out_folder).mkdir(exist_ok=True)
 naip_2019_url = "https://data.source.coop/opengeos/geoai/las_vegas_naip_2019_a.tif"
 naip_2022_url = "https://data.source.coop/opengeos/geoai/las_vegas_naip_2022_a.tif"
 
-naip_2019_path = geoai.download_file(naip_2019_url)
-naip_2022_path = geoai.download_file(naip_2022_url)
+naip_2019_path = geoai.download_file(naip_2019_url, output_path=str(DATA_DIR / Path(naip_2019_url).name))
+naip_2022_path = geoai.download_file(naip_2022_url, output_path=str(DATA_DIR / Path(naip_2022_url).name))
 ```
 
 This is {term}`NAIP` aerial imagery over Las Vegas, Nevada, from 2019 and 2022, a period of substantial suburban development, which makes it a useful test case for building change specifically.

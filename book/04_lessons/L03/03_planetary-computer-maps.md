@@ -75,6 +75,8 @@ for y in years:
         query={"eo:cloud_cover": {"lt": 10}},
         max_items=10,
     )
+
+print(f"Total items: {len(landsat_items)}")    
 ```
 
 ### C. Check what data is in an item
@@ -93,7 +95,6 @@ geoai.pc_item_asset_list(landsat_items[0])
 geoai.view_pc_item(
     item=landsat_items[0], 
     assets=["swir22", "nir08", "red"],
-    backend="ipyleaflet",
 )
 ```
 
@@ -108,7 +109,6 @@ geoai.view_pc_item(
     rescale="-0.5,0.5",     # 
     colormap_name="rdylbu",
     name="NDWI",
-    backend="ipyleaflet",
 )
 ```
 
@@ -187,7 +187,6 @@ NAIP items expose a single combined `"image"` asset rather than separate spectra
 geoai.view_pc_item(
     item=naip_items[1], 
     assets=["image"],
-    backend="ipyleaflet",
     map_args={"zoom": 16}, # if you don't see the image on the basemap, zoom further in
 )
 ```
@@ -216,7 +215,6 @@ m = geoai.view_pc_item(
     item=lc_items[0],
     colormap_name="tab10_r",
     basemap="SATELLITE",
-    backend="ipyleaflet",
 )
 m
 ```

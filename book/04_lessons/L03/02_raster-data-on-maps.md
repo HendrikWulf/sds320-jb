@@ -31,22 +31,29 @@ Raster data, satellite imagery, elevation models, model outputs, is the backbone
 This lesson uses four datasets from a Las Vegas building-detection project, hosted publicly on Source Cooperative: {term}`swissimage` aerial imagery (four bands, 60 cm resolution), a LiDAR-derived {abbr}`HAG (Height Above Ground)` raster, building footprint annotations, and a rasterized building {term}`mask <Mask>`. The `geoai.download_file()` function fetches a file only if it is not already present locally.
 
 ```{code-cell} python
+from pathlib import Path
+
 import geoai
 
-swissimage_url = "https://source.coop/giuz/sds320/L03/data/willisau_2024_swissimage_rgb_subset.tif"
-hag_url = "https://source.coop/giuz/sds320/L03/data/willisau_height_above_ground_ndsm.tif"
-s2_url = "https://source.coop/giuz/sds320/L03/data/willisau_2026-07-24_sentinel2_subset.tif"
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-swissimage_path = geoai.download_file(swissimage_url)
-hag_path = geoai.download_file(hag_url)
-s2_path = geoai.download_file(s2_url)
+swissimage_url = "https://data.source.coop/giuz/sds320/L03/data/willisau_2024_swissimage_rgb_subset.tif"
+hag_url = "https://data.source.coop/giuz/sds320/L03/data/willisau_height_above_ground_ndsm.tif"
+s2_url = "https://data.source.coop/giuz/sds320/L03/data/willisau_2026-07-24_sentinel2_subset.tif"
+
+swissimage_path = geoai.download_file(
+    swissimage_url, output_path=str(DATA_DIR / Path(swissimage_url).name)
+)
+hag_path = geoai.download_file(hag_url, output_path=str(DATA_DIR / Path(hag_url).name))
+s2_path = geoai.download_file(s2_url, output_path=str(DATA_DIR / Path(s2_url).name))
 ```
 
 **2. Add a multi-band raster.**
 For imagery like {term}`swissimage`, `add_raster()` automatically composites the first three bands as an {term}`RGB composite <RGB Composite>`.
 
 ```{code-cell} python
-import leafmap
+import leafmap.foliumap as leafmap
 
 m = leafmap.Map()
 m.add_raster(swissimage_path, layer_name="swissimage")

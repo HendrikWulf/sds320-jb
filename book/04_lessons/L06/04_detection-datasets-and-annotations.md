@@ -100,9 +100,13 @@ First import the package and download the archive.
 ```{code-cell} python
 import os
 import geoai
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 url = "https://data.source.coop/opengeos/geoai/NWPU-VHR-10.zip"
-data_dir = geoai.download_file(url)
+data_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 print(f"Dataset directory: {data_dir}")
 print(f"Contents: {os.listdir(data_dir)}")

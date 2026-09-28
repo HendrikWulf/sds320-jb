@@ -105,12 +105,18 @@ project:
     - title: L03 - Interactive vis.
       file: book/04_lessons/03_interactive-mapping-visualisation.md
       children:
-        - file: book/04_lessons/L03/01_leafmap-basics.md
-        - file: book/04_lessons/L03/02_raster-data-on-maps.md
-        - file: book/04_lessons/L03/03_planetary-computer-maps.md
-        - file: book/04_lessons/L03/04_vector-data-on-maps.md
-        - file: book/04_lessons/L03/05_split-panel-comparisons.md
-        - file: book/04_lessons/L03/06_model-results-on-maps.md
+        - file: book/04_lessons/L03/01_leafmap-basics.ipynb
+        # - file: book/04_lessons/L03/01_leafmap-basics.md
+        - file: book/04_lessons/L03/02_raster-data-on-maps.ipynb
+        # - file: book/04_lessons/L03/02_raster-data-on-maps.md
+        - file: book/04_lessons/L03/03_planetary-computer-maps.ipynb
+        # - file: book/04_lessons/L03/03_planetary-computer-maps.md
+        - file: book/04_lessons/L03/04_vector-data-on-maps.ipynb
+        # - file: book/04_lessons/L03/04_vector-data-on-maps.md
+        - file: book/04_lessons/L03/05_split-panel-comparisons.ipynb
+        # - file: book/04_lessons/L03/05_split-panel-comparisons.md
+        - file: book/04_lessons/L03/06_model-results-on-maps.ipynb
+        # - file: book/04_lessons/L03/06_model-results-on-maps.md
         - file: book/04_lessons/L03/07_visualisation-best-practices.md
         - file: book/04_lessons/L03/08_project-transfer.md
 

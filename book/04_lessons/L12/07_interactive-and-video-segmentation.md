@@ -32,7 +32,13 @@ Not every use of SAM needs a script. Interactive, no-code exploration is often t
 ## 3. Interactive map-based segmentation
 
 ```{code-cell} python
-image_path = download_file("https://data.source.coop/opengeos/geoai/uc-berkeley.tif")
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+image_url = "https://data.source.coop/opengeos/geoai/uc-berkeley.tif"
+image_path = download_file(image_url, output=str(DATA_DIR / Path(image_url).name))
 
 sam3 = SamGeo3(backend="transformers", device=None, checkpoint_path=None, load_from_HF=True)
 sam3.set_image(image_path)
@@ -60,7 +66,8 @@ Video segmentation is a genuine extension of everything covered so far, useful f
 ### A. Text-prompted video segmentation
 
 ```{code-cell} python
-video_path = download_file("https://data.source.coop/opengeos/geoai/cars.mp4")
+video_url = "https://data.source.coop/opengeos/geoai/cars.mp4"
+video_path = download_file(video_url, output=str(DATA_DIR / Path(video_url).name))
 
 sam = SamGeo3Video()
 sam.set_video(video_path)

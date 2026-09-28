@@ -34,10 +34,15 @@ Batch segmentation processes multiple separate images with the same prompt in on
 ### A. Batch segmentation
 
 ```{code-cell} python
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 image_paths = []
 for i in range(1, 5):
     url = f"https://data.source.coop/opengeos/geoai/uc-berkeley-{i}.tif"
-    image_paths.append(download_file(url))
+    image_paths.append(download_file(url, output=str(DATA_DIR / Path(url).name)))
 
 sam3 = SamGeo3(backend="meta", load_from_HF=True, device=None, checkpoint_path=None)
 sam3.set_image_batch(image_paths)
@@ -60,7 +65,8 @@ saved_files = sam3.save_masks_batch(output_dir="output/", prefix="building_mask"
 ### B. Tiled segmentation for one image
 
 ```{code-cell} python
-image_path = download_file("https://data.source.coop/opengeos/geoai/naip_water_train.tif")
+image_url = "https://data.source.coop/opengeos/geoai/naip_water_train.tif"
+image_path = download_file(image_url, output=str(DATA_DIR / Path(image_url).name))
 geoai.print_raster_info(image_path)
 
 sam = SamGeo3(backend="meta")

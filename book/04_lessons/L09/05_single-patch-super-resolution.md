@@ -38,9 +38,13 @@ import geoai
 import numpy as np
 import rasterio as rio
 from matplotlib import pyplot as plt
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 url = "https://data.source.coop/opengeos/geoai/S2C-MSIL2A-20250920T162001-Knoxville.tif"
-s2_path = geoai.download_file(url)
+s2_path = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 with rio.open(s2_path) as src:
     print(f"Bands: {src.count}")

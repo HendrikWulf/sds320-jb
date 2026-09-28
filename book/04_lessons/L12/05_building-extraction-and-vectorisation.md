@@ -34,8 +34,15 @@ The full pipeline has four stages: prompt with geographic coordinates (points or
 ### A. Point prompts from coordinates
 
 ```{code-cell} python
-image_path = download_file("https://data.source.coop/opengeos/geoai/wa-building-image.tif")
-geojson_path = download_file("https://data.source.coop/opengeos/geoai/wa-building-centroids.geojson")
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+image_url = "https://data.source.coop/opengeos/geoai/wa-building-image.tif"
+geojson_url = "https://data.source.coop/opengeos/geoai/wa-building-centroids.geojson"
+image_path = download_file(image_url, output=str(DATA_DIR / Path(image_url).name))
+geojson_path = download_file(geojson_url, output=str(DATA_DIR / Path(geojson_url).name))
 
 sam = SamGeo3(backend="meta", enable_inst_interactivity=True)
 sam.set_image(image_path)
@@ -73,7 +80,8 @@ Rather than typing coordinates manually, passing a GeoJSON path directly lets `s
 ### C. Box prompts from a vector file
 
 ```{code-cell} python
-boxes_path = download_file("https://data.source.coop/opengeos/geoai/wa-building-bboxes.geojson")
+boxes_url = "https://data.source.coop/opengeos/geoai/wa-building-bboxes.geojson"
+boxes_path = download_file(boxes_url, output=str(DATA_DIR / Path(boxes_url).name))
 
 output_masks = "building_masks.tif"
 sam.generate_masks_by_boxes_inst(

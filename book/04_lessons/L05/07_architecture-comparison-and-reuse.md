@@ -42,13 +42,17 @@ from geoai.recognize import (
     plot_confusion_matrix,
     plot_predictions,
 )
-from geoai.utils import download_file$
+from geoai.utils import download_file
 import os
 import random
+from pathlib import Path
 import matplotlib.pyplot as plt
 
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 url = "https://data.source.coop/opengeos/geoai/EuroSAT-RGB.zip"
-data_dir = download_file(url)
+data_dir = download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 ```
 

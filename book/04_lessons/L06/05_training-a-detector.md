@@ -34,12 +34,16 @@ The following cells reproduce the setup from the previous page so that the key t
 ```{code-cell} python
 import os
 import geoai
+from pathlib import Path
 ```
 
 ```{code-cell} python
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
 url = "https://data.source.coop/opengeos/geoai/NWPU-VHR-10.zip"
 
-data_dir = geoai.download_file(url)
+data_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 splits = geoai.prepare_nwpu_vhr10(
     data_dir,

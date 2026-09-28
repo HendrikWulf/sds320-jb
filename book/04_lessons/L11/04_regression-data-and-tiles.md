@@ -34,17 +34,20 @@ A regression dataset consists of matched pairs: an image tile and a target tile 
 ### A. Download imagery and target data
 
 ```{code-cell} python
+from pathlib import Path
+
 import geoai
 
-train_raster = geoai.download_file(
-    "https://data.source.coop/opengeos/geoai/tn_landsat_2022.tif"
-)
-train_target = geoai.download_file(
-    "https://data.source.coop/opengeos/geoai/tn_ndvi_2022.tif"
-)
-test_raster = geoai.download_file(
-    "https://data.source.coop/opengeos/geoai/tn_landsat_2023.tif"
-)
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+train_raster_url = "https://data.source.coop/opengeos/geoai/tn_landsat_2022.tif"
+train_target_url = "https://data.source.coop/opengeos/geoai/tn_ndvi_2022.tif"
+test_raster_url = "https://data.source.coop/opengeos/geoai/tn_landsat_2023.tif"
+
+train_raster = geoai.download_file(train_raster_url, output_path=str(DATA_DIR / Path(train_raster_url).name))
+train_target = geoai.download_file(train_target_url, output_path=str(DATA_DIR / Path(train_target_url).name))
+test_raster = geoai.download_file(test_raster_url, output_path=str(DATA_DIR / Path(test_raster_url).name))
 ```
 
 This is {term}`Landsat` imagery over Knoxville, Tennessee, paired with an {term}`NDVI <Normalized Difference Vegetation Index>` raster for the same area and year (2022), used for training. A separate 2023 Landsat scene is downloaded too, held out for the temporal-prediction workflow two pages from now.

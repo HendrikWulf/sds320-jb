@@ -32,16 +32,21 @@ Vector data carries the labels, boundaries, and outputs that give raster imagery
 This page uses the same Willisau building sample as the raster page.
 
 ```{code-cell} python
+from pathlib import Path
+
 import geoai
 import geopandas as gpd
 import leafmap
 
-swissimage_url = "https://source.coop/giuz/sds320/L03/data/willisau_2024_swissimage_rgb_subset.tif"
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+swissimage_url = "https://data.source.coop/giuz/sds320/L03/data/willisau_2024_swissimage_rgb_subset.tif"
 buildings_overture_url = ("https://data.source.coop/giuz/sds320/L03/data/willisau_overture_buildings_subset.geojson")
 buildings_OSM_url = ("https://data.source.coop/giuz/sds320/L03/data/willisau_OSM_buildings_subset_epsg4326.geojson")
 
-swissimage_path = geoai.download_file(swissimage_url)
-buildings_path = geoai.download_file(buildings_overture_url)
+swissimage_path = geoai.download_file(swissimage_url, output_path=str(DATA_DIR / Path(swissimage_url).name))
+buildings_path = geoai.download_file(buildings_overture_url, output_path=str(DATA_DIR / Path(buildings_overture_url).name))
 ```
 
 ### B. Load vector data as a GeoDataFrame
