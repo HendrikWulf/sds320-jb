@@ -60,13 +60,10 @@ In your project notes, record not only which image you used, but also why you se
 
 {term}`SpatioTemporal Asset Catalog (STAC) <SpatioTemporal Asset Catalog>` is a standard way to describe and search geospatial assets.
 
-A typical STAC structure is:
+A typical [STAC](https://stacspec.org/en) structure is:
 
 ```text
-Catalog
-→ Collection
-→ Item
-→ Asset
+Catalog → Collection → Item → Asset
 ```
 
 | STAC level | Meaning |
@@ -104,10 +101,10 @@ Common open or partly open sources include:
 | Source | Typical use | Main limitation |
 | --- | --- | --- |
 | {term}`Sentinel-2` | Multispectral land monitoring, vegetation, land cover and change detection. | Clouds and 10–20 m bands may limit small-object mapping. |
-| Landsat | Long-term change analysis over decades. | Coarser multispectral resolution than Sentinel-2. |
-| NAIP | High-resolution aerial imagery for the United States. | Coverage is limited to the United States. |
-| SWISSIMAGE | Very high-resolution imagery for Switzerland. | Very large data volume at 10 cm resolution. |
-| Vantor Open Data | Event-focused high-resolution imagery for selected disasters. | Coverage is limited to released events and licensing must be checked. |
+| {term}`Landsat` | Long-term change analysis over decades. | Coarser multispectral resolution than Sentinel-2. |
+| {term}`NAIP` | High-resolution aerial imagery for the United States. | Coverage is limited to the United States. |
+| {term}`SWISSIMAGE` | Very high-resolution imagery for Switzerland. | Very large data volume at 10 cm resolution. |
+| {term}`Vantor Open Data` | Event-focused high-resolution imagery for selected disasters. | Coverage is limited to released events and licensing must be checked. |
 
 Choose based on your project need, not only on popularity.
 

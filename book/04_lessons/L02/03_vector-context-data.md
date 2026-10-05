@@ -13,6 +13,10 @@ Using buildings, roads, places and boundaries to support spatial analytics proje
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L02/03_vector-context-data.ipynb)
+
+---
+
 ## 1. Motivation
 
 Remote sensing imagery often needs context. A satellite image may show pixels, but your project may need buildings, roads, land-use polygons, administrative boundaries, reference samples or validation data to make the analysis meaningful.
@@ -98,13 +102,13 @@ The `geoai` package offers two ways to access Overture data. Both rely on the `o
 
 `download_overture_buildings()` uses the Overture Maps CLI to download building footprints for a bounding box and save them to disk:
 
-```python
+```{code-cell} python
 import os
 import geoai
 
 bbox = (8.53, 47.37, 8.54, 47.38)  # example WGS84 bbox near Zurich
 
-output_path = "buildings.geojson"
+output_path = "data/raw/overture/buildings.geojson",
 
 geoai.download_overture_buildings(
     bbox=bbox,
@@ -133,7 +137,7 @@ bbox = (8.53, 47.37, 8.54, 47.38)  # example WGS84 bbox near Zurich
 buildings = geoai.get_overture_data(
     overture_type="building",
     bbox=bbox,
-    output="buildings.parquet",
+    output= "data/raw/overture/buildings.parquet",
 )
 
 print(f"Downloaded {len(buildings)} buildings")
@@ -155,7 +159,7 @@ The `quackosm` library uses DuckDB to extract OSM data efficiently from {abbr}`P
 
 To query by bounding box, use `quackosm_gdf_from_bbox()` with an OSM tag filter:
 
-```python
+```{code-cell} python
 import leafmap.osm as osm
 
 bbox = (8.53, 47.37, 8.54, 47.38)  # example WGS84 bbox near Zurich
@@ -168,7 +172,7 @@ buildings_osm.head()
 
 To query by place name, use `quackosm_gdf_from_place()`:
 
-```python
+```{code-cell} python
 roads = osm.quackosm_gdf_from_place("Basel, Switzerland", tags={"highway": True})
 
 print(f"Downloaded {len(roads)} road segments")
@@ -177,7 +181,7 @@ roads.head()
 
 For more precise control over the query area, pass a Shapely geometry to `quackosm_gdf_from_geometry()`:
 
-```python
+```{code-cell} python
 from shapely.geometry import Polygon
 
 polygon = Polygon([
@@ -267,7 +271,7 @@ Each roof facet carries a suitability class (`klasse_text`, ranging from low to 
 
 You can also query features at a specific point using the "identify" endpoint. This is useful for contextual lookups, for example checking whether a location sits on a mapped hiking trail:
 
-```python
+```{code-cell} python
 identify_url = "https://api3.geo.admin.ch/rest/services/api/MapServer/identify"
 
 response = requests.get(
@@ -292,7 +296,7 @@ if results:
 
 A third pattern is feature search: querying a layer's attributes by name instead of by location. The following example searches the swisstopo district-boundary layer for districts named "Bern":
 
-```python
+```{code-cell} python
 find_url = "https://api3.geo.admin.ch/rest/services/api/MapServer/find"
 
 response = requests.get(
@@ -315,7 +319,7 @@ for feature in response.json()["results"]:
 This layer covers administrative districts (Bezirke), which sit between canton and municipality and are coarser than a city's internal quarters or neighbourhoods. Intra-city boundaries such as Geneva's or Bern's own quartiers are usually published by the city's open data portal rather than by swisstopo — always check which administrative level a boundary dataset actually represents.
 ```
 
-```{admonition} APIs evolve — verify before you build
+```{admonition} APIs evolve. Verify before you build.
 :class: attention
 Endpoint parameters and available layer IDs can change over time. Check the [api3.geo.admin.ch service documentation](https://api3.geo.admin.ch/services/sdiservices.html) for the current parameter list before building a query for your project.
 ```
@@ -401,10 +405,11 @@ len(selected)
 
 If you calculate areas, make sure the data are in a projected CRS with metre-based units.
 
-```python
+```{code-cell} python
 # Example only: use a suitable CRS for your own study area
 buildings_projected = buildings.to_crs("EPSG:2056")
 buildings_projected["area_m2"] = buildings_projected.area
+sum(buildings_projected["area_m2"])
 ```
 
 ---

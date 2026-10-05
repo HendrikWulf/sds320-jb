@@ -97,8 +97,10 @@ project:
       file: book/04_lessons/02_data-acquisition.md
       children:
         - file: book/04_lessons/L02/01_data-search.md
-        - file: book/04_lessons/L02/02_remote-sensing-data.md
-        - file: book/04_lessons/L02/03_vector-context-data.md
+        - file: book/04_lessons/L02/02_remote-sensing-data.ipynb
+        # - file: book/04_lessons/L02/02_remote-sensing-data.md
+        - file: book/04_lessons/L02/03_vector-context-data.ipynb
+        # - file: book/04_lessons/L02/03_vector-context-data.md
         - file: book/04_lessons/L02/04_data-citation.md
         - file: book/04_lessons/L02/05_project-transfer.md
 
