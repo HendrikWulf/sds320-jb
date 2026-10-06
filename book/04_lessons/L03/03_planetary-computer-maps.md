@@ -13,6 +13,10 @@ Previewing cloud-hosted geospatial data before downloading it
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L03/03_planetary-computer-maps.ipynb)
+
+---
+
 ## 1. Motivation
 
 Downloading a full imagery archive before you know whether it is even useful wastes time and disk space. Being able to search, preview, and inspect metadata first, and only download what you actually need, is a core skill for the data-acquisition side of your project, and it connects directly back to [L02 – Data acquisition](../02_data-acquisition.md).

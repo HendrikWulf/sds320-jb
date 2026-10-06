@@ -13,6 +13,10 @@ Creating interactive maps in Jupyter notebooks
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L03/01_leafmap-basics.ipynb)
+
+---
+
 ## 1. Motivation
 
 In Lesson 02, you searched for datasets and created small spatial subsets. Here, you start inspecting those data interactively.

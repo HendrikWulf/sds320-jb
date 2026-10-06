@@ -13,6 +13,10 @@ Overlaying prediction-style outputs on source imagery
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L03/06_model-results-on-maps.ipynb)
+
+---
+
 ## 1. Motivation
 
 A single accuracy number tells you how a model performs on average. It does not tell you *where* it fails. A model can post a high overall accuracy score while consistently missing buildings in shadow, confusing parking lots with rooftops, or producing jagged boundaries along water edges. These spatial error patterns are invisible in a summary statistic and immediately visible on a map.

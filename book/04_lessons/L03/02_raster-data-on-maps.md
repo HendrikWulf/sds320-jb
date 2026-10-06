@@ -13,6 +13,10 @@ Displaying local and cloud-hosted rasters with appropriate colormaps
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L03/02_raster-data-on-maps.ipynb)
+
+---
+
 ## 1. Motivation
 
 Raster data, satellite imagery, elevation models, model outputs, is the backbone of most GeoAI workflows. Before you can trust a raster in an analysis, you need to see it: does it cover the area you expect, does it have the bands you think it has, and does anything look obviously wrong?

@@ -13,6 +13,10 @@ Comparing two datasets side by side with a draggable slider
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L03/05_split-panel-comparisons.ipynb)
+
+---
+
 ## 1. Motivation
 
 A large share of GeoAI work is fundamentally comparative: {term}`change detection <Change Detection>` compares two dates, model evaluation compares predictions against {term}`ground truth <Ground Truth>`, and data selection compares imagery from different sensors or seasons. Viewing two layers stacked on top of each other, one at a time, makes it hard to judge fine spatial differences. A split view keeps both layers visible at the same extent and zoom level.

@@ -13,6 +13,10 @@ Searching, subsetting and visualising imagery before it enters your project work
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L02/02_remote-sensing-data.ipynb)
+
+---
+
 ## 1. Motivation
 
 In the previous page, you defined search criteria for suitable spatial data. Here, you apply that logic to {term}`Remote Sensing` data.
@@ -865,7 +869,7 @@ Next project decision: decide whether Sentinel-2 is detailed enough or whether h
 - Always inspect CRS, resolution, bands, bounds, file size and visual plausibility.
 - A subset is useful for project decisions, but final analysis may need native-resolution data and clearer preprocessing.
 
-### Useful links
+### Very useful links
 
 <!-- markdownlint-disable MD033-->
 - [Copernicus Browser](https://browser.dataspace.copernicus.eu/) - browse and visualize any Copernicus data

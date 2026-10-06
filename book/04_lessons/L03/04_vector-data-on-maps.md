@@ -13,6 +13,10 @@ Adding and styling GeoJSON, GeoDataFrames, and point markers on top of raster im
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L03/04_vector-data-on-maps.ipynb)
+
+---
+
 ## 1. Motivation
 
 Vector data carries the labels, boundaries, and outputs that give raster imagery meaning: building footprints, glacier outlines, detected objects. Overlaying vector features on their source imagery is the standard way to check whether annotations actually line up with what is on the ground, which matters both for your own labels and for anything you download from elsewhere.
