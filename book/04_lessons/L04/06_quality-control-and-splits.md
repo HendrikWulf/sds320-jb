@@ -159,7 +159,7 @@ from pathlib import Path
 
 output_dir = Path("output")
 image_tiles = list(output_dir.glob("images/*.tif"))
-mask_tiles = list(output_dir.glob("masks/*.tif"))
+mask_tiles = list(output_dir.glob("labels/*.tif"))
 
 print("Image tiles:", len(image_tiles))
 print("Mask tiles:", len(mask_tiles))

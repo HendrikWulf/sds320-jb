@@ -126,9 +126,12 @@ project:
       file: book/04_lessons/04_training-data.md
       children:
         - file: book/04_lessons/L04/01_training-data-pipeline.md
-        - file: book/04_lessons/L04/02_imagery-and-annotations.md
-        - file: book/04_lessons/L04/03_vector-to-raster-masks.md
-        - file: book/04_lessons/L04/04_tiling-and-image-chips.md
+        - file: book/04_lessons/L04/02_imagery-and-annotations.ipynb
+        # - file: book/04_lessons/L04/02_imagery-and-annotations.md
+        - file: book/04_lessons/L04/03_vector-to-raster-masks.ipynb
+        # - file: book/04_lessons/L04/03_vector-to-raster-masks.md
+        - file: book/04_lessons/L04/04_tiling-and-image-chips.ipynb
+        # - file: book/04_lessons/L04/04_tiling-and-image-chips.md
         - file: book/04_lessons/L04/05_batch-workflows-and-pairing.md
         - file: book/04_lessons/L04/06_quality-control-and-splits.md
         - file: book/04_lessons/L04/07_project-transfer.md

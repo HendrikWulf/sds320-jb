@@ -129,7 +129,7 @@ Using your own image/mask pair (or the sample data here), generate tiles at two 
 :::{note} Sample solution
 :class: dropdown
 
-```{code-cell} python
+```python
 tiles_0 = geoai.export_geotiff_tiles(
     in_raster=raster_path, out_folder="output_0pct", in_class_data=vector_path,
     tile_size=256, stride=256, quiet=True,

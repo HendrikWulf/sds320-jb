@@ -101,28 +101,45 @@ For a binary task like "building or not building," a single output value of 0 or
 ```
 
 ```{code-cell} python
+import geopandas as gpd
+import rasterio
+
+MASKS_DIR = Path("output/mask_comparison")
+MASKS_DIR.mkdir(parents=True, exist_ok=True)
+
+mask_default_path = str(MASKS_DIR / "mask_default.tif")
+mask_buffered_path = str(MASKS_DIR / "mask_buffered.tif")
+mask_all_touched_path = str(MASKS_DIR / "mask_all_touched.tif")
+
 # Default: no buffer, center-of-pixel rule only
 geoai.vector_to_raster(
     vector_path,
-    "mask_default.tif",
+    mask_default_path,
     reference_raster=raster_path,
 )
 
-# With a buffer radius: expands each building outline outward
-# before rasterizing (units match the reference raster's CRS,
-# so this is meters for most projected NAIP data)
+# With a buffer: expands each building outline outward before rasterizing.
+# vector_to_raster() has no buffer_radius argument, so buffer the geometries
+# yourself first. Buffer in the reference raster's CRS so the distance is in
+# its units (meters for this projected NAIP data), then pass the buffered
+# GeoDataFrame directly instead of a file path.
+with rasterio.open(raster_path) as src:
+    raster_crs = src.crs
+
+buildings_buffered = gpd.read_file(vector_path).to_crs(raster_crs)
+buildings_buffered["geometry"] = buildings_buffered.buffer(10.0)
+
 geoai.vector_to_raster(
-    vector_path,
-    "mask_buffered.tif",
+    buildings_buffered,
+    mask_buffered_path,
     reference_raster=raster_path,
-    buffer_radius=1.0,
 )
 
 # With all_touched: any pixel touched by a geometry counts,
 # not only pixels whose center falls inside it
 geoai.vector_to_raster(
     vector_path,
-    "mask_all_touched.tif",
+    mask_all_touched_path,
     reference_raster=raster_path,
     all_touched=True,
 )
