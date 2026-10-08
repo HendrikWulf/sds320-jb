@@ -134,7 +134,8 @@ project:
         # - file: book/04_lessons/L04/04_tiling-and-image-chips.md
         - file: book/04_lessons/L04/05_batch-workflows-and-pairing.ipynb
         # - file: book/04_lessons/L04/05_batch-workflows-and-pairing.md
-        - file: book/04_lessons/L04/06_quality-control-and-splits.md
+        - file: book/04_lessons/L04/06_quality-control-and-splits.ipynb
+        # - file: book/04_lessons/L04/06_quality-control-and-splits.md
         - file: book/04_lessons/L04/07_project-transfer.md
 
     - title: L05 - Image recognition
