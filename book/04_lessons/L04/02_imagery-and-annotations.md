@@ -45,7 +45,7 @@ This step is simple, but it can prevent many modelling problems later.
 
 ### A. Download sample datasets
 
-The sample workflow uses {term}`NAIP` imagery and building footprint polygons.
+The sample workflow uses a {term}`SWISSIMAGE` orthophoto of Willisau (2024, 0.5 m RGB) and building footprint polygons from swissBUILDINGS3D.
 
 ```{code-cell} python
 from pathlib import Path
@@ -55,11 +55,15 @@ import geoai
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-raster_url = "https://data.source.coop/opengeos/geoai/naip-train.tif"
-vector_url = "https://data.source.coop/opengeos/geoai/naip-train-buildings.geojson"
+raster_url = "https://data.source.coop/giuz/sds320/L04/data/willisau_2024_swissimage_rgb_subset_05m.tif"
+vector_url = "https://data.source.coop/giuz/sds320/L04/data/willisau_2024_swissbuildings3D_clip.geojson"
 
-raster_path = geoai.download_file(raster_url, output_path=str(DATA_DIR / Path(raster_url).name))
-vector_path = geoai.download_file(vector_url, output_path=str(DATA_DIR / Path(vector_url).name))
+raster_path = geoai.download_file(
+    raster_url, output_path=str(DATA_DIR / Path(raster_url).name)
+)
+vector_path = geoai.download_file(
+    vector_url, output_path=str(DATA_DIR / Path(vector_url).name)
+)
 ```
 
 The raster is the source image. The vector file contains building polygons digitised for the same area.
@@ -69,7 +73,7 @@ The raster is the source image. The vector file contains building polygons digit
 Start with the image alone. Check whether the area, resolution and visual quality fit the task.
 
 ```{code-cell} python
-geoai.view_image(raster_path, figsize=(18, 10))
+geoai.view_image(raster_path, figsize=(20, 10))
 ```
 
 Look for obvious problems:
@@ -89,14 +93,25 @@ Now compare the vector labels with the image.
 geoai.view_vector(vector_path, raster_path=raster_path, figsize=(18, 10))
 ```
 
-The source chapter shows this as building footprints drawn on top of the NAIP image. Use the same idea in your project: the label should point to the same feature that is visible in the source imagery.
+The overlay shows the swissBUILDINGS3D footprints drawn on top of the SWISSIMAGE orthophoto. Use the same idea in your project: the label should point to the same feature that is visible in the source imagery.
 
 ### D. Inspect interactively
 
 Static figures are useful, but interactive maps make it easier to zoom into specific problems.
 
 ```{code-cell} python
-geoai.view_vector_interactive(vector_path, tiles=raster_path)
+import geopandas as gpd
+
+# The swissBUILDINGS3D export has datetime columns (DATUM_ERSTELLUNG,
+# DATUM_AENDERUNG). folium/leafmap can't serialize pandas Timestamp values
+# to JSON when building the interactive popup, so convert them to strings
+# before mapping.
+vector_gdf = gpd.read_file(vector_path)
+for col in vector_gdf.columns:
+    if vector_gdf[col].dtype.kind == "M":  # datetime64, incl. timezone-aware
+        vector_gdf[col] = vector_gdf[col].astype(str)
+
+geoai.view_vector_interactive(vector_gdf, tiles=raster_path)
 ```
 
 Zoom into several locations. Check both easy and difficult areas, including dense buildings, shadows, image edges and small structures.

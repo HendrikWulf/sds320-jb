@@ -37,12 +37,14 @@ import geoai
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-raster_url = "https://data.source.coop/opengeos/geoai/naip-train.tif"
-vector_url = (
-    "https://data.source.coop/opengeos/geoai/naip-train-buildings.geojson"
+raster_url = "https://data.source.coop/giuz/sds320/L04/data/willisau_2024_swissimage_rgb_subset_05m.tif"
+vector_url = "https://data.source.coop/giuz/sds320/L04/data/willisau_2024_swissbuildings3D_clip.geojson"
+raster_path = geoai.download_file(
+    raster_url, output_path=str(DATA_DIR / Path(raster_url).name)
 )
-raster_path = geoai.download_file(raster_url, output_path=str(DATA_DIR / Path(raster_url).name))
-vector_path = geoai.download_file(vector_url, output_path=str(DATA_DIR / Path(vector_url).name))
+vector_path = geoai.download_file(
+    vector_url, output_path=str(DATA_DIR / Path(vector_url).name)
+)
 ```
 
 Use a clear output path so the mask is easy to find and document.
@@ -74,7 +76,7 @@ Check the created mask before using it for chips.
 geoai.view_image(output_path, figsize=(18, 10))
 ```
 
-In the source chapter, the resulting building mask shows building pixels as a separate value from the background. This is the pixel-level label image used for segmentation-style training.
+The resulting building mask shows building pixels as a separate value from the background. This is the pixel-level label image used for segmentation-style training.
 
 ### D. Document the class values
 
@@ -93,11 +95,11 @@ Document these values clearly. A mask without class-value documentation is diffi
 
 ### E. Control edge cases
 
-Two parameters matter most in practice, though you will not always need to change them: a **buffer_radius**, which expands each geometry slightly outward before rasterizing, useful for correcting small, systematic misalignments between imagery and annotations; and an **all_touched** option, which marks a pixel as part of a feature if the geometry touches it at all, rather than only when the pixel's center falls inside the geometry. This matters most for small or thin features that might otherwise be missed entirely.
+Two things matter most in practice, though you will not always need to change them: **buffering**, which expands each geometry slightly outward before rasterizing and is useful for correcting small, systematic misalignments between imagery and annotations; and an **all_touched** option, which marks a pixel as part of a feature if the geometry touches it at all, rather than only when the pixel's center falls inside the geometry. This matters most for small or thin features that might otherwise be missed entirely. Note that `vector_to_raster()` has no `buffer_radius` argument of its own — buffer the geometries yourself with GeoPandas before passing them in, as shown below.
 
 ```{admonition} One raster per class value
 :class: tip
-For a binary task like "building or not building," a single output value of 0 or 1 is enough. For multi-class problems (several land-cover types, for example), a `class_value_field` parameter lets `vector_to_raster()` assign a different integer to each class based on an attribute column in your vector file.
+For a binary task like "building or not building," a single output value of 0 or 1 is enough. For multi-class problems (several land-cover types, for example), an `attribute_field` parameter lets `vector_to_raster()` assign a different integer to each class based on an attribute column in your vector file.
 ```
 
 ```{code-cell} python
@@ -121,7 +123,7 @@ geoai.vector_to_raster(
 # With a buffer: expands each building outline outward before rasterizing.
 # vector_to_raster() has no buffer_radius argument, so buffer the geometries
 # yourself first. Buffer in the reference raster's CRS so the distance is in
-# its units (meters for this projected NAIP data), then pass the buffered
+# its units (meters in the Swiss LV95 grid, EPSG:2056), then pass the buffered
 # GeoDataFrame directly instead of a file path.
 with rasterio.open(raster_path) as src:
     raster_crs = src.crs
@@ -146,19 +148,19 @@ geoai.vector_to_raster(
 ```
 
 ```{code-cell} python
-geoai.view_image("mask_default.tif", figsize=(10, 7))
-geoai.view_image("mask_buffered.tif", figsize=(10, 7))
-geoai.view_image("mask_all_touched.tif", figsize=(10, 7))
+geoai.view_image(mask_default_path, figsize=(10, 7))
+geoai.view_image(mask_buffered_path, figsize=(10, 7))
+geoai.view_image(mask_all_touched_path, figsize=(10, 7))
 ```
 
 Look closely at the same handful of small buildings across the three outputs:
 
 - In `mask_default.tif`, very narrow structures (sheds, carports) may appear thinner than in the vector file, or vanish entirely if no pixel center falls inside them.
-- In `mask_buffered.tif`, every building appears slightly larger than in the default mask, since `buffer_radius=1.0` grew each outline by one unit before rasterizing. This is useful when your annotations are systematically a pixel or two off from the true building edges.
+- In `mask_buffered.tif`, every building appears clearly larger than in the default mask, since the geometries were buffered outward by 10 m (20 pixels at the 0.5 m resolution of this image) before rasterizing. This deliberately large value makes the effect easy to see. To correct annotations that are systematically a pixel or two off from the true building edges, a buffer of about 0.5–1 m would be appropriate for this imagery.
 - In `mask_all_touched.tif`, thin or small features that disappeared in the default mask should now be at least partially visible, since a geometry only needs to touch a pixel, not contain its center, to be included.
 
 ```{tip}
-Buffering and all-touched solve different problems: buffering corrects *position* (labels that are shifted relative to the imagery), while all-touched corrects *omission* (small features that fall through the cracks of the default center-of-pixel rule). Try changing `buffer_radius` to a larger value, like `2.0` or `3.0`, on your own data to see how far you can push it before buildings start visibly merging into their neighbors.
+Buffering and all-touched solve different problems: buffering corrects *position* (labels that are shifted relative to the imagery), while all-touched corrects *omission* (small features that fall through the cracks of the default center-of-pixel rule). Try several buffer distances, like `1.0`, `3.0` and `10.0`, on your own data to see how far you can push it before buildings start visibly merging into their neighbors.
 ```
 
 ---
@@ -199,8 +201,8 @@ The rasterized mask reproduces the building footprints as filled pixel blocks in
 
 - Rasterization converts vector annotations into the pixel-level masks that segmentation models require.
 - `vector_to_raster()` needs a `reference_raster` to guarantee the output mask shares the source imagery's resolution, extent, and CRS.
-- Buffer radius and all-touched settings help correct small misalignments and preserve small or thin features.
-- A `class_value_field` extends the same process to multi-class masks.
+- Buffering the vector geometries yourself (there is no built-in `buffer_radius` argument) and the `all_touched` option help correct small misalignments and preserve small or thin features.
+- An `attribute_field` extends the same process to multi-class masks.
 
 ### Useful links
 

@@ -15,7 +15,7 @@ Scaling training-data creation from one image to many paired files
 
 ## 1. Motivation
 
-Real project data rarely comes as a single tidy image and a single annotation file. You will often have several scenes, tiles, or dates, each needing the same tiling treatment, and each needing to be paired correctly with its own annotations. Getting the pairing wrong, silently, is one of the more damaging mistakes you can make at this stage, since a model trained on mismatched images and masks can still appear to train "successfully" while learning nothing useful.
+Real project data rarely comes as a single tidy image and a single annotation file. You may have several scenes, tiles, or dates, each needing the same tiling treatment, and each needing to be paired correctly with its own annotations. Getting the pairing wrong, silently, is one of the more damaging mistakes you can make at this stage, since a model trained on mismatched images and masks can still appear to train "successfully" while learning nothing useful.
 
 ---
 
@@ -43,7 +43,7 @@ Matching by filename is usually the safest option when filenames are designed co
 
 ### B. Get and explore the sample data
 
-The sample dataset for this page contains two NAIP image tiles, plus building annotations in two formats: one GeoJSON file covering both tiles, and separate GeoJSON files matched to each tile. Downloading and listing it first shows you exactly what the three pairing modes below are actually operating on.
+The sample dataset for this page contains three adjacent SWISSIMAGE tiles (0.5 m RGB, Willisau 2024), plus swissBUILDINGS3D building footprints in two formats: one GeoJSON file covering all three tiles, and separate GeoJSON files matched to each tile. Downloading and listing it first shows you exactly what the three pairing modes below are actually operating on.
 
 ```{code-cell} python
 import os
@@ -53,31 +53,32 @@ from pathlib import Path
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-url = "https://data.source.coop/opengeos/geoai/naip-rgb-train-tiles.zip"
-data_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
+url = "https://data.source.coop/giuz/sds320/L04/data/swissimage_multiple-tiles.zip"
+extract_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
+data_dir = Path(extract_dir) / "data"  # the archive unpacks into a data/ subfolder
 
 print("Images:")
 for f in sorted(os.listdir(f"{data_dir}/images")):
     print(f" - {f}")
 
 print("\nAnnotations (single file):")
-for f in sorted(os.listdir(f"{data_dir}/masks1")):
+for f in sorted(os.listdir(f"{data_dir}/mask1")):
     print(f" - {f}")
 
 print("\nAnnotations (multiple files):")
-for f in sorted(os.listdir(f"{data_dir}/masks2")):
+for f in sorted(os.listdir(f"{data_dir}/mask2")):
     print(f" - {f}")
 ```
 
-Notice that `masks1/` holds one GeoJSON file for both images, while `masks2/` holds one GeoJSON file per image, this is exactly the "single file" versus "multiple files" distinction from step A.
+Notice that `mask1/` holds one GeoJSON file for all three images, while `mask2/` holds one GeoJSON file per image, this is exactly the "single file" versus "multiple files" distinction from step A.
 
 ### C. Preview one pair before running all
 
 Before pairing and tiling a whole folder, check that at least one image/annotation pair actually lines up, the same habit from the [imagery and annotations page](02_imagery-and-annotations.md), just applied here to a batch dataset. `display_image_with_vector()` overlays a single annotation file on its image and reports the feature count.
 
 ```{code-cell} python
-image_path = f"{data_dir}/images/naip_rgb_train_tile1.tif"
-mask_path = f"{data_dir}/masks2/naip_rgb_train_tile1.geojson"
+image_path = f"{data_dir}/images/willisau_2024_swissimage_tile-01.tif"
+mask_path = f"{data_dir}/mask2/willisau_2024_swissimage_tile-01.geojson"
 
 fig, axes, info = geoai.display_image_with_vector(image_path, mask_path)
 print(f"Number of buildings: {info['num_features']}")
@@ -87,10 +88,12 @@ print(f"Number of buildings: {info['num_features']}")
 
 The function loads the vector file once, spatially filters features for each image based on that image's bounds, and, with `skip_empty_tiles=True`, only keeps tiles that actually contain a feature.
 
+The swissBUILDINGS3D footprints have no `class` attribute, so `class_value_field="class"` finds nothing to read and the function falls back to binary masks (1 = building, 0 = background). For a multi-class dataset, point this parameter at the attribute column holding your class codes.
+
 ```{code-cell} python
 stats = geoai.export_geotiff_tiles_batch(
     images_folder=f"{data_dir}/images",
-    masks_file=f"{data_dir}/masks1/naip_train_buildings.geojson",
+    masks_file=f"{data_dir}/mask1/willisau_2024_swissbuildings3D_clip.geojson",
     output_folder="output/method1_single_mask",
     tile_size=256,
     stride=128,
@@ -107,13 +110,13 @@ This method is efficient, but only if the shared annotation file really overlaps
 
 ### E. Method 2: matched by sorted order
 
-This pairs the first image in the folder with the first mask file, the second with the second, and so on, based purely on alphabetical order. It works here because `naip_rgb_train_tile1.tif` and `naip_rgb_train_tile1.geojson` both sort first, but that alignment is a property of the filenames, not something the function checks for you.
+This pairs the first image in the folder with the first mask file, the second with the second, and so on, based purely on alphabetical order. It works here because `willisau_2024_swissimage_tile-01.tif` and `willisau_2024_swissimage_tile-01.geojson` both sort first, but that alignment is a property of the filenames, not something the function checks for you.
 
 Before using sorted-order matching, print the implied pairs.
 
 ```{code-cell} python
 image_files = sorted(os.listdir(f"{data_dir}/images"))
-annotation_files = sorted(os.listdir(f"{data_dir}/masks2"))
+annotation_files = sorted(os.listdir(f"{data_dir}/mask2"))
 
 for image_file, annotation_file in zip(image_files, annotation_files):
     print(image_file, "→", annotation_file)
@@ -124,7 +127,7 @@ Continue only if all pairs clearly belong together.
 ```{code-cell} python
 stats = geoai.export_geotiff_tiles_batch(
     images_folder=f"{data_dir}/images",
-    masks_folder=f"{data_dir}/masks2",
+    masks_folder=f"{data_dir}/mask2",
     output_folder="output/method2_sorted_order",
     tile_size=256,
     stride=128,
@@ -149,7 +152,7 @@ When each image has its own annotation file sharing the same base name, `match_b
 ```{code-cell} python
 stats = geoai.export_geotiff_tiles_batch(
     images_folder=f"{data_dir}/images",
-    masks_folder=f"{data_dir}/masks2",
+    masks_folder=f"{data_dir}/mask2",
     output_folder="output/method3_matched_name",
     tile_size=256,
     stride=128,
@@ -162,14 +165,14 @@ print(f"Total tiles generated: {stats['total_tiles']}")
 print(f"Tiles with features: {stats['tiles_with_features']}")
 ```
 
-This is usually the safest pairing mode for project datasets because `naip_rgb_train_tile1.tif` is paired with `naip_rgb_train_tile1.geojson`, not merely with the first file in a sorted list.
+This is usually the safest pairing mode for project datasets because `willisau_2024_swissimage_tile-01.tif` is paired with `willisau_2024_swissimage_tile-01.geojson`, not merely with the first file in a sorted list.
 
 ### G. Working with raster masks
 
 Some projects already have labels as raster masks, for example land-cover classification maps. In that case, you can pass a folder of raster masks directly instead of vector files. The function pairs images and masks the same way, just without the vector-to-raster conversion step.
 
 ```{code-cell} python
-url = "https://data.source.coop/opengeos/geoai/landcover-sample-data.zip"
+url = "https://data.source.coop/giuz/sds320/L04/data/naip-landcover-data_ocean-city.zip"
 data_dir2 = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 result = geoai.export_geotiff_tiles_batch(
@@ -193,7 +196,7 @@ The output folder gets the same `images/` and `masks/` structure as before, just
 ```{code-cell} python
 stats = geoai.export_geotiff_tiles_batch(
     images_folder=f"{data_dir}/images",
-    masks_file=f"{data_dir}/masks1/naip_train_buildings.geojson",
+    masks_file=f"{data_dir}/mask1/willisau_2024_swissbuildings3D_clip.geojson",
     output_folder="output/advanced_example",
     tile_size=512,
     stride=256,

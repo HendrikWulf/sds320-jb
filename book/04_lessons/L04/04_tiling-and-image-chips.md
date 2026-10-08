@@ -58,14 +58,24 @@ import geoai
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-raster_url = "https://data.source.coop/opengeos/geoai/naip-train.tif"
-vector_url = ("https://data.source.coop/opengeos/geoai/naip-train-buildings.geojson")
+raster_url = "https://data.source.coop/giuz/sds320/L04/data/willisau_2024_swissimage_rgb_subset_05m.tif"
+vector_url = "https://data.source.coop/giuz/sds320/L04/data/willisau_2024_swissbuildings3D_clip.geojson"
 
-raster_path = geoai.download_file(raster_url, output_path=str(DATA_DIR / Path(raster_url).name))
-vector_path = geoai.download_file(vector_url, output_path=str(DATA_DIR / Path(vector_url).name))
+raster_path = geoai.download_file(
+    raster_url, output_path=str(DATA_DIR / Path(raster_url).name)
+)
+vector_path = geoai.download_file(
+    vector_url, output_path=str(DATA_DIR / Path(vector_url).name)
+)
 ```
 
 ```{code-cell} python
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+if not hasattr(cm, "get_cmap"):
+    cm.get_cmap = plt.get_cmap
+
 tiles = geoai.export_geotiff_tiles(
     in_raster=raster_path,
     out_folder="output",
@@ -131,12 +141,20 @@ Using your own image/mask pair (or the sample data here), generate tiles at two 
 
 ```python
 tiles_0 = geoai.export_geotiff_tiles(
-    in_raster=raster_path, out_folder="output_0pct", in_class_data=vector_path,
-    tile_size=256, stride=256, quiet=True,
+    in_raster=raster_path,
+    out_folder="output_0pct",
+    in_class_data=vector_path,
+    tile_size=256,
+    stride=256,
+    quiet=True,
 )
 tiles_50 = geoai.export_geotiff_tiles(
-    in_raster=raster_path, out_folder="output_50pct", in_class_data=vector_path,
-    tile_size=256, stride=128, quiet=True,
+    in_raster=raster_path,
+    out_folder="output_50pct",
+    in_class_data=vector_path,
+    tile_size=256,
+    stride=128,
+    quiet=True,
 )
 ```
 
