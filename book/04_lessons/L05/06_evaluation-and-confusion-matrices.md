@@ -51,7 +51,7 @@ from geoai.utils import download_file
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-url = "https://data.source.coop/opengeos/geoai/EuroSAT-RGB.zip"
+url = "https://data.source.coop/giuz/sds320/L05/data/EuroSAT-RGB.zip"
 data_dir = download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 ```
