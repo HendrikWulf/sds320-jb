@@ -144,10 +144,14 @@ project:
         - file: book/04_lessons/L05/01_when-to-use-image-recognition.md
         - file: book/04_lessons/L05/02_from-pixels-to-labels.md
         - file: book/04_lessons/L05/03_classification-architectures.md
-        - file: book/04_lessons/L05/04_imagefolder-and-eurosat.md
-        - file: book/04_lessons/L05/05_training-a-classifier.md
-        - file: book/04_lessons/L05/06_evaluation-and-confusion-matrices.md
-        - file: book/04_lessons/L05/07_architecture-comparison-and-reuse.md
+        - file: book/04_lessons/L05/04_imagefolder-and-eurosat.ipynb
+        # - file: book/04_lessons/L05/04_imagefolder-and-eurosat.md
+        - file: book/04_lessons/L05/05_training-a-classifier.ipynb
+        # - file: book/04_lessons/L05/05_training-a-classifier.md
+        - file: book/04_lessons/L05/06_evaluation-and-confusion-matrices.ipynb
+        # - file: book/04_lessons/L05/06_evaluation-and-confusion-matrices.md
+        - file: book/04_lessons/L05/07_architecture-comparison-and-reuse.ipynb
+        # - file: book/04_lessons/L05/07_architecture-comparison-and-reuse.md
         - file: book/04_lessons/L05/08_project-transfer.md
 
     - title: L06 - Object detection
