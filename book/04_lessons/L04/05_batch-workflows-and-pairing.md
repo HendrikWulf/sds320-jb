@@ -13,6 +13,10 @@ Scaling training-data creation from one image to many paired files
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L04/05_batch-workflows-and-pairing.ipynb)
+
+---
+
 ## 1. Motivation
 
 Real project data rarely comes as a single tidy image and a single annotation file. You may have several scenes, tiles, or dates, each needing the same tiling treatment, and each needing to be paired correctly with its own annotations. Getting the pairing wrong, silently, is one of the more damaging mistakes you can make at this stage, since a model trained on mismatched images and masks can still appear to train "successfully" while learning nothing useful.

@@ -82,3 +82,9 @@ If your data is ready, also train a first baseline classifier and report its tes
 - If your baseline model's accuracy turns out disappointing, is the more likely cause your data (too little, too imbalanced, mislabeled) or your task framing (maybe this is not actually a one-label-per-tile problem)?
 - Which metric would you show first in a project report to a non-technical reader, and why?
 - If your project eventually needs object locations or pixel-level detail, how would you use this lesson's classifier as a pre-filtering step for that heavier task?
+
+---
+
+## 7. Companion notebook
+
+Revisit L05 with the [image-recognition recap notebook](https://data.source.coop/giuz/sds320/L05/notebooks/SDS320_L05_learning_image-recognition_recap.ipynb): it combines EuroSAT inspection, classifier training, evaluation and model reuse into one explained workflow, with an optional architecture comparison. Run it in your SDS320 Jupyter environment with the lesson data first, then use the project-settings cell to inspect your own class folders and plan an appropriate spatial or temporal split before training.

@@ -13,6 +13,10 @@ Checking label quality and organising data for honest model evaluation
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L04/06_quality-control-and-splits.ipynb)
+
+---
+
 ## 1. Motivation
 
 A dataset that looks fine at a glance can still have systematic problems that quietly limit model performance, incomplete labels, misaligned masks, or a class imbalance so severe the model learns to ignore the class you actually care about. Separately, how you split your data into training, validation, and test sets can make a model look far better than it actually is, if you are not careful about spatial separation.

@@ -13,6 +13,10 @@ Checking whether source imagery and labels actually match
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L04/02_imagery-and-annotations.ipynb)
+
+---
+
 ## 1. Motivation
 
 Every problem that starts here, a CRS mismatch, a label that only partly covers the image, an unexpected image artifact, gets multiplied once you tile the data into hundreds of chips. Catching it now, on one image, is far cheaper than catching it later, across a whole batch.

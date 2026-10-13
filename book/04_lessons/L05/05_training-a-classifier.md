@@ -13,6 +13,10 @@ Training a first ResNet-50 model with the GeoAI API
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L05/05_training-a-classifier.ipynb)
+
+---
+
 ## 1. Motivation
 
 This page is the practical core of the lesson: a single function call takes you from a directory of labeled tiles to a trained, evaluated model. Understanding its parameters means you can adapt this workflow directly to your own project's data later.
@@ -68,6 +72,9 @@ data_dir = download_file(url, output_path=str(DATA_DIR / Path(url).name))
 The `train_image_classifier()` function handles the main steps: scanning the directory, creating train/validation/test splits, constructing the model, running the training loop and saving the best checkpoint.
 
 ```{code-cell} python
+# Runtime: ~16 mins
+# Hardware: Apple M3 Pro (18 GB RAM, MPS GPU acceleration)
+
 result = train_image_classifier(
     data_dir=data_dir,
     model_name="resnet50",

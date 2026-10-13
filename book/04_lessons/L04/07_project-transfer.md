@@ -133,3 +133,9 @@ Keep this plan and this tile folder. You will build directly on them starting in
 - How confident are you that your planned train/validation/test split avoids spatial leakage? What would make you more confident?
 - If your dataset turns out too small once tiled, what is your fallback: a different overlap ratio, additional data sources, or a narrower project scope?
 - What tiling and split parameters do you need to document now so that your project remains reproducible later, as covered in the Project handbook?
+
+---
+
+## 7. Companion notebook
+
+To revisit L04, download the [training-data recap notebook](https://data.source.coop/giuz/sds320/L04/notebooks/SDS320_L04_learning_training_data_recap.ipynb). It combines imagery and annotation checks, mask creation, tiling, batch pairing and quality checks into one documented workflow, ending with a spatial split plan. Run it first with the prepared lesson data in your SDS320 Jupyter environment, then adapt the project-settings cell to one small area from your own project. Optional comparisons can remain disabled on your first run.

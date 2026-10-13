@@ -13,6 +13,10 @@ Converting polygon annotations into raster labels aligned with imagery
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L04/03_vector-to-raster-masks.ipynb)
+
+---
+
 ## 1. Motivation
 
 {term}`Semantic segmentation` models predict a class for every pixel, which means their training labels also need to be per-pixel. A polygon file on its own does not have that structure; it needs to be converted onto the same grid as the imagery first.

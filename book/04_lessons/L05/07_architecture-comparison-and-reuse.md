@@ -13,6 +13,10 @@ Comparing classifiers fairly and sharing a trained model
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L05/07_architecture-comparison-and-reuse.ipynb)
+
+---
+
 ## 1. Motivation
 
 "Model A scored higher than Model B" is only a meaningful statement if everything else was held constant. Otherwise, you cannot tell whether the architecture caused the difference, or something else did, a different random split, a different number of epochs, or a different batch size.

@@ -13,6 +13,10 @@ Organising image chips so folder names become class labels
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L05/04_imagefolder-and-eurosat.ipynb)
+
+---
+
 ## 1. Motivation
 
 `geoai.recognize` expects a specific, simple directory layout. Getting your own project's data into that shape correctly, the first time, avoids a class of bugs where images are silently mislabeled or entire classes go missing from training.

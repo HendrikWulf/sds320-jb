@@ -78,8 +78,17 @@ Overall performance can hide these differences.
 
 The following cells reproduce the setup from the previous page.
 
+```{admonition} Running on a Mac with Apple silicon
+:class: note
+On a Mac with an M-series chip, PyTorch uses the GPU through its MPS backend. One operation the detector needs, non-maximum suppression (`torchvision::nms`), is not yet available on MPS, so without the setting below the code stops with a `NotImplementedError`. Setting `PYTORCH_ENABLE_MPS_FALLBACK=1` runs just that operation on the CPU while everything else stays on the GPU. It must be set before PyTorch is imported (here via `geoai`), so if you have already run the imports, restart the kernel first. On Windows, Linux or Google Colab the setting has no effect and you can leave it in place.
+```
+
 ```{code-cell} python
 import os
+
+# Apple silicon only: run operations missing on MPS on the CPU instead
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+
 import geoai
 from pathlib import Path
 ```
@@ -88,7 +97,7 @@ from pathlib import Path
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-url = "https://data.source.coop/opengeos/geoai/NWPU-VHR-10.zip"
+url = "https://data.source.coop/giuz/sds320/L06/data/NWPU-VHR-10.zip"
 
 data_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 

@@ -13,6 +13,10 @@ Using metrics, confusion matrices and visual checks to understand model errors
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L05/06_evaluation-and-confusion-matrices.ipynb)
+
+---
+
 ## 1. Motivation
 
 A single accuracy number is easy to report and easy to misread. A model can post a respectable overall accuracy while consistently failing on one class you actually care about. This page gives you the tools to catch that.

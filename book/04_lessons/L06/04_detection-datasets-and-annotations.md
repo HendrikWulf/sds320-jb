@@ -105,7 +105,7 @@ from pathlib import Path
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-url = "https://data.source.coop/opengeos/geoai/NWPU-VHR-10.zip"
+url = "https://data.source.coop/giuz/sds320/L06/data/NWPU-VHR-10.zip"
 data_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 print(f"Dataset directory: {data_dir}")
@@ -140,6 +140,12 @@ print(f"Validation images: {len(splits['val_image_ids'])}")
 Before training anything, look at a sample of annotated images. This catches misaligned boxes, mislabeled classes, or a corrupted download before you waste time on a training run.
 
 ```{code-cell} python
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+
+if not hasattr(cm, "get_cmap"):
+    cm.get_cmap = plt.get_cmap
+
 geoai.visualize_coco_annotations(
     annotations_path=splits["annotations_path"],
     images_dir=splits["images_dir"],

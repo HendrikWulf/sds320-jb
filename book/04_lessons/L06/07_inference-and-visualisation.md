@@ -39,8 +39,17 @@ Visual inspection is important because metrics alone do not tell you **why** a d
 
 The following cells reproduce the setup from the previous page so that the key training variables are explicit.
 
+```{admonition} Running on a Mac with Apple silicon
+:class: note
+On a Mac with an M-series chip, PyTorch uses the GPU through its MPS backend. One operation the detector needs, non-maximum suppression (`torchvision::nms`), is not yet available on MPS, so without the setting below the code stops with a `NotImplementedError`. Setting `PYTORCH_ENABLE_MPS_FALLBACK=1` runs just that operation on the CPU while everything else stays on the GPU. It must be set before PyTorch is imported (here via `geoai`), so if you have already run the imports, restart the kernel first. On Windows, Linux or Google Colab the setting has no effect and you can leave it in place.
+```
+
 ```{code-cell} python
 import os
+
+# Apple silicon only: run operations missing on MPS on the CPU instead
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
+
 import json
 import geoai
 from pathlib import Path
@@ -50,7 +59,7 @@ from pathlib import Path
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-url = "https://data.source.coop/opengeos/geoai/NWPU-VHR-10.zip"
+url = "https://data.source.coop/giuz/sds320/L06/data/NWPU-VHR-10.zip"
 
 data_dir = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
@@ -320,3 +329,9 @@ result_path, inference_time, detections = geoai.predict_detector_from_hub(
 
 If you use this for your project, note the licensing and data-sharing implications of publishing a model trained on your own data before making a repository public.
 :::
+
+---
+
+### Useful links
+
+- [NWPU VHR-10 dataset](https://www.kaggle.com/datasets/larbisck/nwpu-vhr-10) - a collection of very high resolution remote sensing images of 10 object classes (1-airplane, 2-ship, 3-storage tank, 4-baseball diamond, 5-tennis court, 6-basketball court, 7-ground track field, 8-harbor, 9-bridge, 10-vehicle)
