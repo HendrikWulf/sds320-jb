@@ -3,13 +3,17 @@ site:
   outline_maxdepth: 2
 ---
 
-# Evaluation with mAP
+# Evaluation
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
 Evaluating a detector with mean Average Precision
 </div>
 <!-- markdownlint-enable MD033 -->
+
+---
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L06/06_evaluation-with-map.ipynb)
 
 ---
 

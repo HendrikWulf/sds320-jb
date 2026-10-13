@@ -13,6 +13,10 @@ Prepare image-level object annotations for model training
 
 ---
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HendrikWulf/sds320-jb/blob/main/book/04_lessons/L06/04_detection-datasets-and-annotations.ipynb)
+
+---
+
 ## 1. Motivation
 
 A detection {term}`annotation <Annotation>` is more work to produce than a classification label, but less work than a segmentation {term}`mask <Mask>`: you draw one rectangle per object, rather than assigning one label to the whole image or tracing every pixel. Getting the annotation format right, and checking it visually, avoids a frustrating failure mode: a model that trains without errors but learns from silently misaligned or malformed boxes.
