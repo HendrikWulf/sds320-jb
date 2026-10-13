@@ -160,10 +160,14 @@ project:
         - file: book/04_lessons/L06/01_when-to-use-object-detection.md
         - file: book/04_lessons/L06/02_bounding-boxes-and-detection-concepts.md
         - file: book/04_lessons/L06/03_detection-architectures.md
-        - file: book/04_lessons/L06/04_detection-datasets-and-annotations.md
-        - file: book/04_lessons/L06/05_training-a-detector.md
-        - file: book/04_lessons/L06/06_evaluation-with-map.md
-        - file: book/04_lessons/L06/07_inference-and-visualisation.md
+        - file: book/04_lessons/L06/04_detection-datasets-and-annotations.ipynb
+        # - file: book/04_lessons/L06/04_detection-datasets-and-annotations.md
+        - file: book/04_lessons/L06/05_training-a-detector.ipynb
+        # - file: book/04_lessons/L06/05_training-a-detector.md
+        - file: book/04_lessons/L06/06_evaluation-with-map.ipynb
+        # - file: book/04_lessons/L06/06_evaluation-with-map.md
+        - file: book/04_lessons/L06/07_inference-and-visualisation.ipynb
+        # - file: book/04_lessons/L06/07_inference-and-visualisation.md
         - file: book/04_lessons/L06/08_project-transfer.md
 
     - title: L07 - Semantic seg.
