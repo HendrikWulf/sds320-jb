@@ -70,3 +70,9 @@ Produce a short detection project plan (half a page is enough) that states:
 3. How will you decide, and justify, the confidence threshold you ship with?
 4. If your per-class AP turns out to be uneven across classes, as it was for several classes in this lesson's example, how will you report that honestly in your project write-up?
 5. Would your project be better served by detection, or does it actually belong to the instance segmentation task covered in L08?
+
+---
+
+## 7. Companion notebook
+
+Revisit L06 with the [object-detection recap notebook](https://data.source.coop/giuz/sds320/L06/notebooks/SDS320_L06_learning_object-detection_recap.ipynb). It brings annotation checks, detector training, mAP evaluation and single/batch inference into one explained workflow, with optional threshold exploration. Run it first with the lesson data (or reuse your documented local checkpoint), then adapt the project-settings cell to inspect your own annotations and plan independent evaluation regions or dates.
