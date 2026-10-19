@@ -61,16 +61,22 @@ import geoai
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-train_raster_url = "https://data.source.coop/opengeos/geoai/naip_rgb_train.tif"
-train_vector_url = "https://data.source.coop/opengeos/geoai/naip_train_buildings.geojson"
-test_raster_url = "https://data.source.coop/opengeos/geoai/naip_test.tif"
+train_raster_url = "https://data.source.coop/giuz/sds320/L07/data/willisau_2024_swissimage_rgb_subset_05m.tif"
+train_vector_url = "https://data.source.coop/giuz/sds320/L07/data/willisau_2024_swissbuildings3D_clip.geojson"
+test_raster_url = "https://data.source.coop/giuz/sds320/L07/data/marly_2023_swissimage_rgb_subset_05m.tif"
 
-train_raster_path = geoai.download_file(train_raster_url, output_path=str(DATA_DIR / Path(train_raster_url).name))
-train_vector_path = geoai.download_file(train_vector_url, output_path=str(DATA_DIR / Path(train_vector_url).name))
-test_raster_path = geoai.download_file(test_raster_url, output_path=str(DATA_DIR / Path(test_raster_url).name))
+train_raster_path = geoai.download_file(
+    train_raster_url, output_path=str(DATA_DIR / Path(train_raster_url).name)
+)
+train_vector_path = geoai.download_file(
+    train_vector_url, output_path=str(DATA_DIR / Path(train_vector_url).name)
+)
+test_raster_path = geoai.download_file(
+    test_raster_url, output_path=str(DATA_DIR / Path(test_raster_url).name)
+)
 ```
 
-The training data is a NAIP RGB image tile paired with building footprint polygons; a separate NAIP image serves as the held-out test set.
+The training data is a 0.5 m SWISSIMAGE RGB orthophoto of Willisau (2024) paired with swissBUILDINGS3D building footprint polygons. A separate SWISSIMAGE orthophoto of Marly (2023) serves as the held-out test set: a different town, captured in a different year. Both rasters are in the Swiss LV95 coordinate system (EPSG:2056).
 
 Before training, inspect both the raster and the reference polygons.
 
@@ -84,13 +90,26 @@ geoai.print_raster_info(
 Then overlay the building footprints on the imagery.
 
 ```{code-cell} python
+import geopandas as gpd
+
+# The swissBUILDINGS3D footprints have datetime columns (DATUM_AENDERUNG,
+# DATUM_ERSTELLUNG). folium/leafmap can't serialize pandas Timestamp values
+# to JSON when building the interactive popup, so convert them to strings
+# before mapping.
+train_vector_gdf = gpd.read_file(train_vector_path)
+for col in train_vector_gdf.columns:
+    if train_vector_gdf[col].dtype.kind == "M":  # datetime64, incl. timezone-aware
+        train_vector_gdf[col] = train_vector_gdf[col].astype(str)
+
 geoai.view_vector_interactive(
-    train_vector_path,
+    train_vector_gdf,
     tiles=train_raster_path,
 )
 ```
 
 `view_vector_interactive()` overlays the building footprint polygons directly on the training imagery, letting you visually confirm the labels actually align with the buildings before you spend any time training. This is the segmentation equivalent of the annotation check you did for detection in L06, and just as important.
+
+Expect small, systematic differences that are not labelling errors. swissBUILDINGS3D outlines are building footprints, while the orthophoto shows roofs, which usually overhang the walls. SWISSIMAGE is also not a true orthophoto, so taller buildings appear to lean away from the image centre and their roofs shift slightly relative to the footprints. Look for offsets that are larger than this or for buildings that are missing entirely.
 
 ```{code-cell} python
 geoai.view_raster(test_raster_path)
@@ -114,6 +133,8 @@ tiles = geoai.export_geotiff_tiles(
 ```
 
 `export_geotiff_tiles()` slices the training raster and rasterizes the vector labels into matching 512-by-512 pixel tiles, with a 256-pixel stride creating overlap between neighboring tiles. This overlap increases the effective training set size and helps the model learn features near tile boundaries, rather than only in tile interiors.
+
+The message `'class' not found in vector data. Using default class ID 1.` is expected: the footprints have no class column, so every building polygon is burned into the mask as class 1 and everything else stays background (0), which is exactly what a binary task needs.
 
 ### C. Train the U-Net model
 
@@ -161,11 +182,16 @@ This plots training and validation loss alongside {term}`IoU <Intersection over 
 A final validation IoU of 0.90 sounds strong on its own, but check the loss curves too. If validation loss started rising while training loss kept falling, that 0.90 may reflect an earlier, better {term}`checkpoint <Checkpoint>` rather than the final one, which is exactly why `geoai` saves the *best* checkpoint separately from the final one.
 ```
 
+```{admonition} Validation scores are optimistic here
+:class: warning
+The Willisau training image is small (2181 × 1031 pixels), so 512/256 tiling yields only about 20 tiles, and `val_split=0.2` holds back just a handful of them. Because neighbouring tiles overlap by 50%, every validation tile shares pixels with training tiles. The validation metrics therefore overstate how well the model generalizes. The independent check is the Marly test image in step E, a different town captured in a different year.
+```
+
 ### E. Run inference
 
 ```{code-cell} python
-masks_path = "naip_buildings_prediction.tif"
-probability_path = "naip_test_probability_map.tif"
+masks_path = "marly_buildings_prediction.tif"
+probability_path = "marly_test_probability_map.tif"
 model_path = f"{out_folder}/unet_models/best_model.pth"
 
 geoai.semantic_segmentation(
@@ -181,11 +207,9 @@ geoai.semantic_segmentation(
     batch_size=4,
     probability_path=probability_path,
 )
-
-geoai.view_raster(masks_path, nodata=0, colormap="binary", basemap=test_raster_path)
 ```
 
-Note that inference runs on `test_raster_path`, the held-out image the model never saw during training or validation, not on the training imagery itself. Passing `probability_path` additionally saves the per-class probability map introduced on the previous page, useful here for checking how confident the model is near building edges.
+Note that inference runs on `test_raster_path`, the held-out image the model never saw during training or validation, not on the training imagery itself. Passing `probability_path` additionally saves the per-class probability map introduced on the [pixel masks page](02_pixel-masks-and-segmentation-concepts.md), useful here for checking how confident the model is near building edges.
 
 ### F. Inspect masks and uncertainty
 
@@ -223,7 +247,7 @@ Look across several areas rather than drawing conclusions from one visually appe
 ### G. Vectorize and filter the predictions
 
 ```{code-cell} python
-output_vector_path = "naip_buildings_prediction.geojson"
+output_vector_path = "marly_buildings_prediction.geojson"
 
 gdf = geoai.orthogonalize(
     masks_path,
@@ -257,7 +281,7 @@ geoai.create_split_map(
 - **Skipping the label-alignment check in step A.** Training on misaligned labels produces a model that learns a systematically wrong offset, which is easy to miss until you inspect predictions and hard to fix after the fact.
 - **Forgetting `num_classes` includes background.** A binary task is `num_classes=2`, not `1`, the same convention as the detection lesson.
 - **Evaluating only the summary numbers, not the loss curves.** A single best-IoU number does not tell you whether the model was still improving, had plateaued, or had already started overfitting by that point.
-- **Treating the raw raster mask as the finished deliverable.** For most GIS uses, the vectorized, filtered, and orthogonalized output in step F is what you actually want to share or analyze further.
+- **Treating the raw raster mask as the finished deliverable.** For most GIS uses, the vectorized, filtered, and orthogonalized output in step G is what you actually want to share or analyze further.
 
 ---
 
@@ -275,7 +299,7 @@ Before changing any model settings, inspect the building workflow and identify:
 
 Possible answers include:
 
-1. **False positive:** a bright paved structure or roof-like texture is labelled as building.
+1. **False positive:** a bright paved structure or roof-like texture is predicted as building.
 2. **False negative:** a small or unusual roof is missed.
 3. **Overlap:** a building close to one tile edge appears more centrally in another overlapping tile.
 4. **Spatial test area:** it checks whether the model transfers beyond the exact spatial patterns present in training.
@@ -294,6 +318,6 @@ Possible answers include:
 
 ### Further reading
 
-- OpenGeoAI, ["Train Segmentation Model"](https://opengeoai.org/examples/train_segmentation_model/) — the full, runnable notebook this workflow is based on.
+- OpenGeoAI, ["Train Segmentation Model"](https://opengeoai.org/examples/train_segmentation_model/) — the full, runnable notebook this workflow is adapted from (it uses NAIP imagery from the United States instead of SWISSIMAGE).
 - SpaceNet, [news and resources](https://spacenet.ai/news-resources/) — background on one of the best-known building-footprint benchmark programs in remote sensing, useful if you want additional building-segmentation data for a project.
 - [GeoAI Tutorial 19: Train a Segmentation Model for Object Detection from Remote Sensing Imagery](https://youtu.be/l8DY166eAWI) — a video walkthrough covering a similar end-to-end workflow.
