@@ -103,3 +103,4 @@ Whether you are eventually building a building-segmentation model, a crop classi
 
 - [What is Training Data? (IBM)](https://www.ibm.com/think/topics/training-data) — a general, non-geospatial overview of why training data quality matters and how a typical data pipeline (collection, cleaning, splitting, labeling) is organized.
 - [Deep Learning Model Training Checklist (OpenCV)](https://opencv.org/deep-learning-model-training/) — shows where data preparation and splitting sit within the full deep learning workflow, from data validation through deployment.
+- [Earth Observation Training Data Lab](https://www.eotdl.com/) - create, share and use training datasets for Earth Observation Machine Learning applications with our open source tools.
