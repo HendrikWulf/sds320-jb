@@ -725,6 +725,44 @@ Project check: SWISSIMAGE is excellent for detailed visual inspection in Switzer
 
 ---
 
+### VEXCEL data
+
+The private company VEXCEL provides aerial orthoimages at up to 7.5 cm resolution, together with a Digital Surface Model (DSM) and a Digital Terrain Model (DTM). Coverage includes major cities around the world, much of Europe and the continental United States, often with several flight years per area.
+
+Two features make VEXCEL interesting for SDS320 projects:
+
+- **Very high resolution:** at 7.5 cm, individual roof structures, cars and small trees become visible.
+- **Near-infrared:** recent collections include a near-infrared band, so you can compute vegetation indices such as NDVI at a level of detail that satellite imagery cannot reach.
+
+VEXCEL data are commercial, but students can apply for free access through the [VEXCEL University Access Program](https://vexceldata.com/university-access-program/). With an account, you can browse the imagery in the [VEXCEL Viewer](https://app.vexcelgroup.com) and download it through the VEXCEL API.
+
+:::{figure} images/vexcel_viewer.png
+:alt: The VEXCEL Viewer showing a high-resolution aerial orthoimage of an urban area.
+:width: 600px
+:align: center
+
+*The VEXCEL Viewer: check which collections and flight years cover your area before downloading imagery through the API.*
+:::
+
+For downloads, you can use these script, available in two versions with identical code:
+
+- [vexcel_download.ipynb](https://data.source.coop/giuz/sds320/L02/notebooks/vexcel_download.ipynb) – step-by-step Jupyter notebook with explanations, a quick-look plot and a troubleshooting table
+- [vexcel_download.py](https://data.source.coop/giuz/sds320/L02/notebooks/vexcel_download.py) – plain Python script, run in one go
+
+Both require your personal access token, which is valid for 24 hours. The notebook explains how to obtain it. The workflow is:
+
+```text
+Log in to the API and copy the token
+→ set area, zoom level and target projection
+→ list the collections covering the area and pick the newest
+→ download true-colour (RGB) and colour-infrared (IRG) tiles
+→ stack to blue, green, red, NIR
+→ merge, reproject and clip to the exact area
+→ save one 4-band GeoTIFF
+```
+
+---
+
 ## 8. Inspect your subset before using it
 
 After creating a subset, inspect the saved file. This is the quality gate between data acquisition and preprocessing.
