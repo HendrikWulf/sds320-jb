@@ -95,11 +95,11 @@ The result should contain fewer redundant boxes.
 ```text
 before NMS                         after NMS
 
-┌──────────┐                      ┌──────────┐
-│ ┌──────────┐                    │          │
-│ │ object │ │  two boxes   →     │ object   │  one box
-└─│────────┘ │                    │          │
-  └──────────┘                    └──────────┘
+┌──────────┐                      ┌───────────┐
+│ ┌──────────┐                    │           │
+│ │ object │ │  two boxes   →     │  object   │  one box
+└─│────────┘ │                    │           │
+  └──────────┘                    └───────────┘
 ```
 
 ```{admonition} Where you will see this in practice
