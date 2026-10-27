@@ -178,8 +178,8 @@ project:
         - file: book/04_lessons/L07/03_segmentation-architectures-and-encoders.md
         - file: book/04_lessons/L07/04_binary-segmentation-workflow.ipynb
         # - file: book/04_lessons/L07/04_binary-segmentation-workflow.md
-        # - file: book/04_lessons/L07/05_multispectral-and-sensor-specific-workflows.ipynb
-        - file: book/04_lessons/L07/05_multispectral-and-sensor-specific-workflows.md
+        - file: book/04_lessons/L07/05_multispectral-and-sensor-specific-workflows.ipynb
+        # - file: book/04_lessons/L07/05_multispectral-and-sensor-specific-workflows.md
         # - file: book/04_lessons/L07/06_pretrained-segmentation-models.ipynb
         - file: book/04_lessons/L07/06_pretrained-segmentation-models.md
         # - file: book/04_lessons/L07/07_multiclass-segmentation-and-postprocessing.ipynb
