@@ -39,6 +39,7 @@ boto3
 s3fs
 awscli
 geoai-py
+omniwatermask
 torch
 torchgeo
 torchvision
