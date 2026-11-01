@@ -364,19 +364,21 @@ print("Saved:", vexcel_final)
 
 ```{code-cell} python
 if not vexcel_filtered.empty:
-    geoai.view_vector_interactive(
+    vector_map = geoai.view_vector_interactive(
         vexcel_filtered,
         tiles=str(vexcel_subset),
         tiles_args={"indexes": VEXCEL_RGB},
         layer_name="VEXCEL water polygons",
     )
-    geoai.create_split_map(
+    display(vector_map)
+    split_map = geoai.create_split_map(
         left_layer=vexcel_filtered,
         right_layer=str(vexcel_subset),
         left_args={"style": {"color": "blue", "fillOpacity": 0.3}},
         right_args={"indexes": VEXCEL_RGB},
         basemap=str(vexcel_subset),
     )
+    display(split_map)
 else:
     print(
         "No polygons passed the chosen filter; inspect the mask or lower the threshold."
@@ -687,20 +689,22 @@ Create an interactive polygon overlay and, where supported, a split comparison. 
 
 ```{code-cell} python
 if not s2_filtered.empty:
-    geoai.view_vector_interactive(
+    vector_map = geoai.view_vector_interactive(
         s2_filtered,
         column="area_m2",
         tiles=str(s2_val_image),
         tiles_args={"indexes": S2_FALSE_COLOR, "vmin": 0, "vmax": 5000},
         layer_name="Sentinel-2 water bodies",
     )
-    geoai.create_split_map(
+    display(vector_map)
+    split_map = geoai.create_split_map(
         left_layer=s2_filtered,
         right_layer=str(s2_val_image),
         left_args={"style": {"color": "blue", "fillOpacity": 0.3}},
         right_args={"indexes": S2_FALSE_COLOR, "vmin": 0, "vmax": 5000},
         basemap=str(s2_val_image),
     )
+    display(split_map)
     print(s2_filtered["area_m2"].describe())
 else:
     print("No water polygons passed the current minimum-area filter.")
