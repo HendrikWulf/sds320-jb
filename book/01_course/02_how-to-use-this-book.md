@@ -97,7 +97,7 @@ This is expected. Project work is iterative: it's normal to revisit a decision y
 
 ---
 
-## 6. When you feel lost
+## 6. When you get lost
 
 If you're unsure where to start, go back to the parent page of the current lesson, check its roadmap, and find the chapter that addresses your question.
 
