@@ -80,7 +80,7 @@ Use these resources when working with vector data, raster data, maps or spatial 
 - [Xarray](https://docs.xarray.dev/en/stable/) / [Rioxarray](https://corteva.github.io/rioxarray/stable/) documentation
 - [Leafmap](https://leafmap.org/) / [Folium](https://python-visualization.github.io/folium/latest/) documentation
 
-### Machine learning and GeoAI
+### Machine learning
 
 Use these resources when working with classification, object detection, segmentation, regression, foundation models or satellite embeddings.
 
@@ -88,7 +88,14 @@ Use these resources when working with classification, object detection, segmenta
 - [PyTorch documentation](https://docs.pytorch.org/docs/2.13/index.html)
 - [TorchGeo documentation](https://torchgeo.org/)
 
-### Related courses, materials and platforms
+### Books and deeper learning
+
+Use these resources when you want a deeper conceptual introduction to deep learning and its applications beyond the material covered in individual SDS320 lessons.
+
+- [Deep Learning for the Earth Sciences](https://uzb.swisscovery.ch/discovery/fulldisplay?docid=alma99117135829005508&context=L&vid=41SLSP_UZB:UZB&lang=de&search_scope=DiscoveryNetwork&adaptor=Local%20Search%20Engine&tab=41SLSP_UZB_DN&query=any,contains,Deep%20Learning%20for%20the%20Earth%20Sciences&sortby=date_d&facet=frbrgroupid,include,9059622811436996473&offset=0) — a useful reference for deep learning concepts and applications in Earth and environmental sciences. Available online as PDF and EPUB through the UZH Library.
+- [Dive into Deep Learning](https://d2l.ai/) — an interactive open-access book combining explanations, mathematics and executable code for understanding and applying deep learning.
+
+### Related learning resources and platforms
 
 - [GeoAI](https://opengeoai.org/) by [Qiusheng Wu](https://gishub.org/)
 - [GeoAI Tutorial Videos](https://youtube.com/playlist?list=PLAxJ4-o7ZoPcvENqwaPa_QwbbkZ5sctZE&si=2-6fs0qsZkkmKNVV)
