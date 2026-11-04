@@ -94,3 +94,9 @@ Produce a short instance segmentation project plan (half a page is enough) that 
 3. What geometric properties (area, elongation, solidity, or others) would your project actually use, and why?
 4. If instance labels are not readily available for your target class, how would you realistically plan for creating them?
 5. What would a reasonable confidence threshold look like for your project, and what trade-off does it reflect?
+
+---
+
+## 8. Companion notebook
+
+Revisit L08 with the [instance-segmentation recap notebook](https://data.source.coop/giuz/sds320/L08/notebooks/SDS320_L08_learning_instance_segmentation_recap.ipynb). It connects FTW preparation, Mask R-CNN training, raw predictions, instance-aware cleaning, vector measurements and batch processing in one explained workflow. Run it first with the lesson data (or your documented compatible checkpoint), then use the project-settings cell to inspect your own inputs and adapt the evaluation and post-processing decisions.

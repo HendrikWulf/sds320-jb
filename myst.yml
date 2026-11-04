@@ -192,11 +192,16 @@ project:
         - file: book/04_lessons/L08/01_when-to-use-instance-segmentation.md
         - file: book/04_lessons/L08/02_instances-masks-and-object-identity.md
         - file: book/04_lessons/L08/03_mask-rcnn-architecture.md
-        - file: book/04_lessons/L08/04_ftw-dataset-and-preparation.md
-        - file: book/04_lessons/L08/05_training-a-mask-rcnn-model.md
-        - file: book/04_lessons/L08/06_inference-and-raw-predictions.md
-        - file: book/04_lessons/L08/07_cleaning-vectorisation-and-properties.md
-        - file: book/04_lessons/L08/08_batch-processing-and-project-transfer.md
+        - file: book/04_lessons/L08/04_ftw-dataset-and-preparation.ipynb
+        # - file: book/04_lessons/L08/04_ftw-dataset-and-preparation.md
+        - file: book/04_lessons/L08/05_training-a-mask-rcnn-model.ipynb
+        # - file: book/04_lessons/L08/05_training-a-mask-rcnn-model.md
+        - file: book/04_lessons/L08/06_inference-and-raw-predictions.ipynb
+        # - file: book/04_lessons/L08/06_inference-and-raw-predictions.md
+        - file: book/04_lessons/L08/07_cleaning-vectorisation-and-properties.ipynb
+        # - file: book/04_lessons/L08/07_cleaning-vectorisation-and-properties.md
+        - file: book/04_lessons/L08/08_batch-processing-and-project-transfer.ipynb
+        # - file: book/04_lessons/L08/08_batch-processing-and-project-transfer.md
 
     - title: L09 - Image translation
       file: book/04_lessons/09_image-translation.md
