@@ -42,8 +42,10 @@ from pathlib import Path
 
 DATA_DIR = Path("data/raw")
 DATA_DIR.mkdir(parents=True, exist_ok=True)
+OUT_DIR = Path("data/processed")
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-url = "https://data.source.coop/opengeos/geoai/S2C-MSIL2A-20250920T162001-Knoxville.tif"
+url = "https://data.source.coop/giuz/sds320/L09/data/S2A_L2A_20260802_N0512_R094_subset_Granada.tif"
 s2_path = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
 
 with rio.open(s2_path) as src:
@@ -54,7 +56,7 @@ with rio.open(s2_path) as src:
     print(f"Dtype: {src.dtypes[0]}")
 ```
 
-This is a Sentinel-2 Level-2A scene over Knoxville, Tennessee, with four 10-meter bands (red, green, blue, near-infrared) stored as `uint16` surface reflectance values ranging from 0 to 10,000, where a value of 1,000 corresponds to 10% reflectance. This value range is standard for Sentinel-2 L2A products; do not mistake it for an already-8-bit image.
+This is a Sentinel-2A Level-2A subset over Granada, Spain, acquired on 2 August 2026, covering the city and the surrounding irrigated farmland of the Vega de Granada. It contains four 10-meter bands (red, green, blue, near-infrared; B4, B3, B2, B8), already in the order LDSR-S2 expects, stored as `uint16` surface reflectance values ranging from 0 to 10,000, where a value of 1,000 corresponds to 10% reflectance. This value range is standard for Sentinel-2 L2A products; do not mistake it for an already-8-bit image.
 
 ### B. Visualize the RGB composite
 
@@ -81,7 +83,7 @@ The percentile stretch maps the 2nd and 98th percentile values to 0 and 1, a sta
 ### C. Run single-patch super-resolution
 
 ```{code-cell} python
-sr_output = "sr_output.tif"
+sr_output = str(OUT_DIR / "sr_output.tif")
 sr_image, _ = geoai.super_resolution(
     input_lr_path=s2_path,
     output_sr_path=sr_output,

@@ -33,9 +33,27 @@ Because the reverse diffusion process involves stochastic sampling, running the 
 
 ### A. Compute uncertainty
 
+Start by loading the same Granada scene as on the previous page. If the file was already downloaded there, it is reused rather than downloaded again.
+
 ```{code-cell} python
-sr_unc_output = "sr_with_uncertainty.tif"
-unc_output = "uncertainty.tif"
+import geoai
+from matplotlib import pyplot as plt
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+OUT_DIR = Path("data/processed")
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+url = "https://data.source.coop/giuz/sds320/L09/data/S2A_L2A_20260802_N0512_R094_subset_Granada.tif"
+s2_path = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
+```
+
+Then run super-resolution on the same 128-by-128 patch as before, this time with uncertainty estimation enabled:
+
+```{code-cell} python
+sr_unc_output = str(OUT_DIR / "sr_with_uncertainty.tif")
+unc_output = str(OUT_DIR / "uncertainty.tif")
 
 sr_image2, uncertainty = geoai.super_resolution(
     input_lr_path=s2_path,

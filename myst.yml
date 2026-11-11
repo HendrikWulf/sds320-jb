@@ -210,9 +210,12 @@ project:
         - file: book/04_lessons/L09/02_image-to-image-translation-concepts.md
         - file: book/04_lessons/L09/03_super-resolution-for-remote-sensing.md
         - file: book/04_lessons/L09/04_latent-diffusion-and-ldsr-s2.md
-        - file: book/04_lessons/L09/05_single-patch-super-resolution.md
-        - file: book/04_lessons/L09/06_uncertainty-and-interpretation.md
-        - file: book/04_lessons/L09/07_tiled-inference-and-visual-comparison.md
+        - file: book/04_lessons/L09/05_single-patch-super-resolution.ipynb
+        # - file: book/04_lessons/L09/05_single-patch-super-resolution.md
+        - file: book/04_lessons/L09/06_uncertainty-and-interpretation.ipynb
+        # - file: book/04_lessons/L09/06_uncertainty-and-interpretation.md
+        - file: book/04_lessons/L09/07_tiled-inference-and-visual-comparison.ipynb
+        # - file: book/04_lessons/L09/07_tiled-inference-and-visual-comparison.md
         - file: book/04_lessons/L09/08_limitations-and-project-transfer.md
 
     - title: L10 - Change detection

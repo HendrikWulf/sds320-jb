@@ -33,8 +33,26 @@ For any region larger than LDSR-S2's native 128-by-128 input size, `geoai.super_
 
 ### A. Run tiled super-resolution
 
+Start by loading the same Granada scene as on the previous pages. If the file was already downloaded there, it is reused rather than downloaded again.
+
 ```{code-cell} python
-sr_large = "sr_large.tif"
+import geoai
+from matplotlib import pyplot as plt
+from pathlib import Path
+
+DATA_DIR = Path("data/raw")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+OUT_DIR = Path("data/processed")
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+url = "https://data.source.coop/giuz/sds320/L09/data/S2A_L2A_20260802_N0512_R094_subset_Granada.tif"
+s2_path = geoai.download_file(url, output_path=str(DATA_DIR / Path(url).name))
+```
+
+Then run super-resolution on a 256-by-256 region, four times the area of the single patch from before:
+
+```{code-cell} python
+sr_large = str(OUT_DIR / "sr_large.tif")
 sr_large_img, _ = geoai.super_resolution(
     input_lr_path=s2_path,
     output_sr_path=sr_large,
