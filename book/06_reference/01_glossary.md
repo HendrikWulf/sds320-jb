@@ -191,6 +191,9 @@ Confidence Score
 [CUDA](https://en.wikipedia.org/wiki/CUDA)
 : NVIDIA's computing platform for running code on compatible GPUs. In {term}`GeoAI`, CUDA can accelerate {term}`deep learning <Deep Learning>` training and {term}`inference <Inference>` when the hardware and software environment are configured correctly.
 
+[Data Augmentation](https://en.wikipedia.org/wiki/Data_augmentation)
+: Creating additional, slightly modified training examples on the fly, for example by flipping or rotating image chips. For pixel-level tasks, the {term}`mask <Mask>` must be transformed exactly like the image, and for {term}`change detection <Change Detection>` both dates must receive the same transformation.
+
 [Data Leakage](https://en.wikipedia.org/wiki/Leakage_%28machine_learning%29)
 : A situation where information from validation or test data unintentionally influences training. In spatial projects, leakage can happen when nearby or overlapping areas are split randomly across training and test sets.
 
@@ -214,6 +217,9 @@ DeepLabV3+
 
 [DETR](https://en.wikipedia.org/wiki/DETR-based_algorithms)
 : A {term}`transformer <Transformer>`-based {term}`object detection <Object Detection>` architecture (DEtection TRansformer) that predicts a fixed-size set of detections directly, without {term}`anchor boxes <Anchor Box>` or {term}`non-maximum suppression <Non-Maximum Suppression>`.
+
+Dice Loss
+: A {term}`loss function <Loss Function>` for segmentation and {term}`change detection <Change Detection>` that measures the overlap between predicted and reference masks, closely related to the {term}`F1-score`. It is less affected by {term}`class imbalance <Class Imbalance>` than pixel-wise cross-entropy, because the many easy background pixels do not dominate it.
 
 [Dictionary](https://en.wikipedia.org/wiki/Associative_array)
 : A Python data structure that stores key-value pairs. Dictionaries are useful for project settings because they keep related parameters together.
@@ -551,6 +557,9 @@ Orthogonalization
 [Orthomosaic](https://en.wikipedia.org/wiki/Orthophoto#Orthophotomosaic_and_orthophotomap)
 : A spatially corrected image mosaic made from overlapping aerial or drone images. Orthomosaics can provide high-resolution base imagery for mapping and {term}`annotation <Annotation>`.
 
+[Otsu's Method](https://en.wikipedia.org/wiki/Otsu%27s_method)
+: An automatic thresholding method that chooses the value which best separates a histogram into two groups, by maximising the variance between them. In {term}`change detection <Change Detection>`, it is a parameter-free way to threshold a difference or change-magnitude image, but it assumes the histogram actually contains two groups.
+
 [Overfitting](https://en.wikipedia.org/wiki/Overfitting)
 : A situation where a model learns the {term}`training data <Training Data>` too closely and performs poorly on new data. Overfitting is a risk when data are limited, imbalanced or spatially similar.
 
@@ -592,6 +601,9 @@ Pixel-Level Regression
 
 Planetary Computer
 : A cloud-based geospatial data platform by Microsoft that hosts many {term}`Earth observation <Earth Observation>` datasets and provides {term}`STAC <SpatioTemporal Asset Catalog>`-based search and data access tools.
+
+Post-Classification Comparison
+: A {term}`change detection <Change Detection>` approach that classifies each date separately and then compares the two classified maps. It directly yields "from–to" change categories, but the classification errors of both dates add up.
 
 Post-Processing
 : Processing applied after model prediction to clean, filter, vectorize or summarise outputs. Post-processing can improve usability but should be documented clearly.
@@ -661,6 +673,9 @@ Radiometric Normalization
 
 [Random Forest](https://en.wikipedia.org/wiki/Random_forest)
 : A traditional machine learning method based on many decision trees. It remains useful for spatial {term}`classification <Classification>` and {term}`regression <Regression>`, especially with tabular features or limited {term}`training data <Training Data>`.
+
+[Random Seed](https://en.wikipedia.org/wiki/Random_seed)
+: A number that initializes a random number generator so that random steps, such as weight initialization, data shuffling or {term}`augmentation <Data Augmentation>`, can be repeated. Re-running a training with different seeds shows how much results vary by chance, which matters for small datasets.
 
 [Raster Data](https://en.wikipedia.org/wiki/Data_model_%28GIS%29#Raster_data_model)
 : Spatial data stored as a grid of cells or pixels. Raster data are commonly used for satellite imagery, elevation, land cover and model output maps.
@@ -895,6 +910,9 @@ Vectorization
 
 [Version Control](https://en.wikipedia.org/wiki/Version_control)
 : The practice of tracking changes to files over time. Version control makes it easier to review project history, recover earlier versions and collaborate.
+
+VEXCEL
+: A provider of very high-resolution {term}`aerial imagery <Aerial Imagery>` (orthoimagery at around 20 cm or finer) with repeated flights over many cities. In SDS320, VEXCEL imagery is used under an academic access programme; it is licensed and must not be redistributed.
 
 [Vision Transformer](https://en.wikipedia.org/wiki/Vision_transformer)
 : A vision transformer (ViT) is a {term}`transformer <Transformer>` architecture adapted for image analysis. ViTs split images into {term}`patches <Patch>` and use attention to learn relationships across the image.

@@ -223,12 +223,18 @@ project:
       children:
         - file: book/04_lessons/L10/01_when-to-use-change-detection.md
         - file: book/04_lessons/L10/02_change-types-and-challenges.md
-        - file: book/04_lessons/L10/03_traditional-change-detection.md
+        - file: book/04_lessons/L10/03_traditional-change-detection.ipynb
+        # - file: book/04_lessons/L10/03_traditional-change-detection.md
         - file: book/04_lessons/L10/04_deep-learning-for-change-detection.md
-        - file: book/04_lessons/L10/05_changestar-workflow.md
-        - file: book/04_lessons/L10/06_visualising-and-interpreting-results.md
-        - file: book/04_lessons/L10/07_thresholds-model-variants-and-exports.md
-        - file: book/04_lessons/L10/08_project-transfer.md
+        - file: book/04_lessons/L10/05_changestar-workflow.ipynb
+        # - file: book/04_lessons/L10/05_changestar-workflow.md
+        - file: book/04_lessons/L10/06_visualising-and-interpreting-results.ipynb
+        # - file: book/04_lessons/L10/06_visualising-and-interpreting-results.md
+        - file: book/04_lessons/L10/07_thresholds-model-variants-and-exports.ipynb
+        # - file: book/04_lessons/L10/07_thresholds-model-variants-and-exports.md
+        - file: book/04_lessons/L10/08_training-a-change-detector.ipynb
+        # - file: book/04_lessons/L10/08_training-a-change-detector.md
+        - file: book/04_lessons/L10/09_project-transfer.md
 
     - title: L11 - Regression
       file: book/04_lessons/11_regression.md

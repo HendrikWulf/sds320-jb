@@ -15,7 +15,7 @@ Deciding whether change detection fits your SDS320 project
 
 ## 1. Motivation
 
-This lesson covered a lot: output types, comparability challenges, two traditional baselines, siamese networks, and a full ChangeStar workflow with tuning and export. This page is not about learning anything new. It is about deciding, concretely, whether change detection fits your SDS320 project, and sketching the specific choices, dates, method, threshold, and validation plan, your project would need.
+This lesson covered a lot: output types, comparability challenges, two traditional baselines, siamese networks, a full ChangeStar workflow with tuning and export, and training your own change detector on labeled Sentinel-2 pairs. This page is not about learning anything new. It is about deciding, concretely, whether change detection fits your SDS320 project, and sketching the specific choices, dates, method, threshold, and validation plan, your project would need.
 
 ---
 
@@ -28,6 +28,7 @@ Work through this list for your own project:
 - [ ] I have a plan to check co-registration and general comparability before running any method.
 - [ ] I have decided whether a traditional baseline (image differencing or CVA) would already answer my question, or whether I need a deep-learning approach.
 - [ ] If using a pretrained model like ChangeStar, I have considered whether it was designed for my target change type (its focus on building change may not transfer to, for example, vegetation loss).
+- [ ] If no suitable pretrained model exists, I know whether labeled image pairs (change masks) are available or could be created for my study area, and roughly how many.
 - [ ] I have a threshold strategy, and a reason for it, rather than defaulting to 0.5 without consideration.
 - [ ] I have a plan for validating results, even informally, before trusting them for a project conclusion.
 
@@ -41,9 +42,11 @@ Work through this list for your own project:
 
 **Traditional baseline, or deep learning?** If labeled training data is unavailable, or your project needs a fast, interpretable first look, start with image differencing or CVA. If your target change is subtle, spatially complex, or needs the kind of per-date understanding ChangeStar provides, a deep-learning approach is more appropriate, provided a suitable pretrained model or sufficient training data exists for your specific target.
 
+**Pretrained model, or train your own?** A pretrained model such as ChangeStar needs no labels, but only works for the change types it was trained on. Training your own, as on page 8, works for any change type you can label, but needs labeled image pairs, a held-out test set, and time for experiments. Even the 60 training pairs used there gave a usable model, but expect noisy scores with so little data, and plan to compare settings over several random seeds.
+
 **What threshold, and why?** As with confidence thresholds throughout this course, decide explicitly whether missed changes or false alarms are more costly for your application, and set your threshold accordingly, documenting the reasoning.
 
-**How will you validate results without exhaustive ground truth?** Options include spot-checking a sample of detected changes against high-resolution basemap imagery, comparing traditional and deep-learning results for agreement, or checking detections against any known changes in your study area.
+**How will you validate results without exhaustive ground truth?** Options include spot-checking a sample of detected changes against high-resolution basemap imagery, comparing traditional and deep-learning results for agreement (as page 7 does for the Osaka image pair), or checking detections against any known changes in your study area.
 
 ---
 
@@ -52,8 +55,9 @@ Work through this list for your own project:
 - **Choosing a change type that your available imagery cannot actually resolve.** Revisit the mixed-pixel and resolution discussion from earlier in this lesson before committing to a target.
 - **Comparing dates from different seasons without a plan to handle phenological variation.** This remains one of the most common sources of unreliable results.
 - **Applying a pretrained model like ChangeStar to a change type it was not designed for.** Building-focused pretraining does not automatically generalize to, for example, agricultural or vegetation change; check applicability before trusting results.
-- **Treating a single threshold or model variant as final without comparison.** As the previous page demonstrated, both choices can meaningfully affect results; test before committing.
+- **Treating a single threshold or model variant as final without comparison.** As pages 7 and 8 demonstrated, both choices can meaningfully affect results; test before committing.
 - **Skipping validation entirely because ground truth is expensive.** Even an informal spot-check against basemap imagery is better than no check at all.
+- **Reporting accuracy as the main result.** Most pixels in a change detection scene are unchanged, so accuracy is almost always high; report F1-score and IoU of the change class instead.
 
 ---
 
@@ -63,7 +67,7 @@ Produce a short change-detection project plan (half a page is enough) that state
 
 1. Your target change type and the output format (binary, categorical, or continuous) your project needs.
 2. Your candidate comparison dates, and how you will address any comparability concerns (season, co-registration, resolution).
-3. Your planned method: traditional baseline, deep learning, or both, with a one-sentence justification.
+3. Your planned method: traditional baseline, deep learning (pretrained or trained yourself), or both, with a one-sentence justification.
 4. Your threshold strategy and the reasoning behind it.
 5. Your validation plan, even if informal.
 
@@ -75,4 +79,5 @@ Produce a short change-detection project plan (half a page is enough) that state
 2. If your two candidate dates are not from the same season, how will you account for phenological variation?
 3. Would a traditional baseline already answer your project's question, or does the added complexity of a deep-learning method genuinely pay off here?
 4. If you used a pretrained model like ChangeStar, how would you check whether it generalizes to your specific target change and geographic setting?
-5. How will you communicate the threshold trade-off (sensitivity versus specificity) to someone reading your project who was not involved in choosing it?
+5. If no pretrained model fits your change type, where could labeled image pairs come from, and how would you keep a test set that the model never sees during training?
+6. How will you communicate the threshold trade-off (sensitivity versus specificity) to someone reading your project who was not involved in choosing it?

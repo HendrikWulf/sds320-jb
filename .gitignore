@@ -3,3 +3,8 @@ _build
 *.ckpt
 *.pth
 nwpu_output/
+
+# L10 change detection: downloaded imagery (VEXCEL data are licensed, do not redistribute) and model outputs
+book/04_lessons/L10/data/
+book/04_lessons/L10/changestar_results/
+book/04_lessons/L10/oscd_runs/
