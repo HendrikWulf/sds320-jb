@@ -8,3 +8,6 @@ nwpu_output/
 book/04_lessons/L10/data/
 book/04_lessons/L10/changestar_results/
 book/04_lessons/L10/oscd_runs/
+
+# L09 image translation: downloaded and generated rasters (re-created by the notebooks)
+book/04_lessons/L09/data/
