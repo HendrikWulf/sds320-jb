@@ -31,21 +31,22 @@ By the end of this lesson, you should be able to:
 - Decide when image translation, and super-resolution specifically, is an appropriate tool for a project
 - Explain paired and unpaired image translation at a conceptual level, and why translated outputs are generated rather than observed
 - Describe how a latent diffusion model performs super-resolution through encoding, denoising, and decoding
-- Run single-patch and tiled super-resolution on Sentinel-2 imagery with `geoai`, and verify the output's georeferencing
+- Run single-patch and tiled super-resolution on Sentinel-2 imagery with `geoai`, compare it against interpolation, and verify the output's georeferencing and its consistency with the 10 m input
 - Compute and interpret per-pixel uncertainty maps, and explain why low uncertainty does not guarantee correctness
+- Check generated detail against observed aerial imagery, taking acquisition dates into account
 - Identify what super-resolved imagery is, and is not, safe to use for in a project
 
 ---
 
 ## 4. Lesson roadmap
 
-1. [When translation fits](L09/01_when-to-use-image-translation.md) — the range of image translation tasks, and why this lesson focuses specifically on super-resolution.
-2. [Translation concepts](L09/02_image-to-image-translation-concepts.md) — domains, paired versus unpaired translation, and why outputs are generated images.
-3. [Why super-resolution matters](L09/03_super-resolution-for-remote-sensing.md) — the resolution-revisit-cost trade-off in satellite imagery, and what super-resolution can offer.
-4. [Latent diffusion and LDSR-S2](L09/04_latent-diffusion-and-ldsr-s2.md) — how diffusion models generate detail, and the specific LDSR-S2 workflow this lesson uses.
-5. [Single-patch super-resolution](L09/05_single-patch-super-resolution.md) — the main hands-on workflow: downloading Sentinel-2 imagery and enhancing one patch.
-6. [Uncertainty and interpretation](L09/06_uncertainty-and-interpretation.md) — computing per-pixel uncertainty maps and reading them responsibly.
-7. [Tiled inference and comparison](L09/07_tiled-inference-and-visual-comparison.md) — scaling to larger regions and comparing output against basemap imagery.
+1. [When translation fits](L09/01_when-to-use-image-translation.md) — the range of image translation tasks, their observed alternatives, and why this lesson focuses specifically on super-resolution.
+2. [Translation concepts](L09/02_image-to-image-translation-concepts.md) — domains, paired versus unpaired translation, how the training objective shapes the output, and why outputs are generated images.
+3. [Why super-resolution matters](L09/03_super-resolution-for-remote-sensing.md) — the resolution-revisit-cost trade-off in satellite imagery, interpolation versus super-resolution, and the main method families.
+4. [Latent diffusion and LDSR-S2](L09/04_latent-diffusion-and-ldsr-s2.md) — how diffusion models generate detail, and how LDSR-S2 keeps it consistent with the 10 m input.
+5. [Single-patch super-resolution](L09/05_single-patch-super-resolution.ipynb) — the main hands-on workflow on a Sentinel-2 scene of Granada, Spain: enhancing one patch, choosing the number of sampling steps, comparing against interpolation and checking consistency with the input.
+6. [Uncertainty and interpretation](L09/06_uncertainty-and-interpretation.ipynb) — two runs of the same input, per-pixel uncertainty maps, and where uncertainty concentrates.
+7. [Tiled inference and comparison](L09/07_tiled-inference-and-visual-comparison.ipynb) — scaling to larger regions, checking seams and side effects of blending, and comparing against Spanish aerial orthophotos.
 8. [Limitations & project transfer](L09/08_limitations-and-project-transfer.md) — what not to trust super-resolved imagery for, and applying this lesson to your project.
 
 Pages 1–2 build the conceptual foundation, pages 3–4 explain why and how super-resolution works, page 5 is the main hands-on workflow, and pages 6–7 extend it with uncertainty and scale. Page 8 closes with limitations and your own project.
@@ -66,7 +67,7 @@ While reading this lesson, keep your own project in mind and consider:
 ## 6. Before class
 
 - Review the L07 and L08 lessons on segmentation, since this lesson contrasts image translation against those label-producing tasks directly.
-- Make sure `geoai` is installed and importable in your environment.
+- Make sure `geoai` is installed and importable in your environment, including the super-resolution extra (`pip install "geoai-py[sr]"`, which installs `opensr-model`). The model weights (about 1 GB) are downloaded on first use.
 - Think about whether any part of your own project currently runs into a resolution limitation.
 
 ---

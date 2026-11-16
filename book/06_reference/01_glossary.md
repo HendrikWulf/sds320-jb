@@ -86,6 +86,9 @@ Batch Inference
 [Batch Processing](https://en.wikipedia.org/wiki/Batch_processing)
 : Applying the same processing steps to multiple files or areas. It helps make repetitive spatial workflows more efficient and reproducible.
 
+[Bicubic Interpolation](https://en.wikipedia.org/wiki/Bicubic_interpolation)
+: A resampling method that estimates new pixel values from a smooth function fitted to the surrounding 4 × 4 pixels. It enlarges an image without adding new structure, so it is the fair baseline for judging what {term}`super-resolution <Super-Resolution>` adds.
+
 Binary Segmentation
 : A {term}`semantic segmentation <Semantic Segmentation>` task with two classes, typically a target class and background.
 
@@ -358,6 +361,9 @@ Gitignore File
 
 [Ground Truth](https://en.wikipedia.org/wiki/Ground_truth)
 : Reference information used to train or evaluate a model. Ground truth may come from field data, manual labels, trusted maps or carefully checked {term}`annotations <Annotation>`.
+
+[Hallucination](https://en.wikipedia.org/wiki/Hallucination_%28artificial_intelligence%29)
+: In generative models, a plausible-looking detail in the output that does not correspond to reality, such as a building outline or road edge generated where none exists. It is expected behaviour when a model fills in detail that the input does not determine, as in {term}`super-resolution <Super-Resolution>`.
 
 Hidden Notebook State
 : A situation where a notebook works only because cells were run in a particular previous order. Hidden notebook state makes a workflow difficult to reproduce and can often be detected by restarting the kernel and running all cells from top to bottom.
