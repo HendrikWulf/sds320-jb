@@ -242,11 +242,17 @@ project:
         - file: book/04_lessons/L11/01_when-to-use-pixel-regression.md
         - file: book/04_lessons/L11/02_classification-vs-regression.md
         - file: book/04_lessons/L11/03_regression-architectures-and-losses.md
-        - file: book/04_lessons/L11/04_regression-data-and-tiles.md
-        - file: book/04_lessons/L11/05_training-a-pixel-regressor.md
-        - file: book/04_lessons/L11/06_inference-and-temporal-prediction.md
-        - file: book/04_lessons/L11/07_evaluation-and-residual-analysis.md
-        - file: book/04_lessons/L11/08_project-transfer.md
+        - file: book/04_lessons/L11/04_regression-data-and-tiles.ipynb
+        # - file: book/04_lessons/L11/04_regression-data-and-tiles.md
+        - file: book/04_lessons/L11/05_training-a-pixel-regressor.ipynb
+        # - file: book/04_lessons/L11/05_training-a-pixel-regressor.md
+        - file: book/04_lessons/L11/06_inference-and-temporal-prediction.ipynb
+        # - file: book/04_lessons/L11/06_inference-and-temporal-prediction.md
+        - file: book/04_lessons/L11/07_evaluation-and-residual-analysis.ipynb
+        # - file: book/04_lessons/L11/07_evaluation-and-residual-analysis.md
+        - file: book/04_lessons/L11/08_canopy-height-case-study.ipynb
+        # - file: book/04_lessons/L11/08_canopy-height-case-study.md
+        - file: book/04_lessons/L11/09_project-transfer.md
 
     - title: L12 - Segment Anything
       file: book/04_lessons/12_segment-anything.md

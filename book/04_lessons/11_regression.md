@@ -10,17 +10,17 @@ Predicting a continuous value per pixel instead of a category
 
 ## 1. Context
 
-L07 through L10 all produced categorical or discrete output: a class per pixel, a mask per object, a change or no-change flag. This lesson introduces a different question. {term}`Pixel-level regression <Pixel-Level Regression>` predicts a single continuous value for every pixel, canopy height in meters, an NDVI value between −1 and 1, a biomass density in Mg/ha, rather than choosing among a fixed set of labels.
+L07 through L10 all produced categorical or discrete output: a class per pixel, a mask per object, a change or no-change flag. This lesson introduces a different question. {term}`Pixel-level regression <Pixel-Level Regression>` predicts a single continuous value for every pixel, such as canopy height in metres, an NDVI value between −1 and 1, or a biomass density in Mg/ha, rather than choosing among a fixed set of labels.
 
-The architectures you already know from segmentation carry over almost unchanged. What changes is the output layer, the loss function, and how you evaluate the result, all of which this lesson covers using a Landsat-to-NDVI case study.
+The architectures you already know from segmentation carry over almost unchanged. What changes is the output layer, the loss function, and how you evaluate the result. The lesson works through two case studies: {term}`Sentinel-2` imagery of the Beni river in Bolivia, where a model learns NDVI in 2018 and is tested on 2026, and {term}`SWISSIMAGE` aerial photos of two Swiss forest sites, where a model learns vegetation height at one site and is tested on the other.
 
 ---
 
 ## 2. Motivation
 
-Many of the quantities that matter most in Earth science are not categorical at all. "Dense vegetation" is a far cruder answer than "NDVI of 0.72." Canopy height, biomass, soil moisture, and population density all vary smoothly across a landscape, and forcing them into discrete bins throws away exactly the information a scientific or policy application usually needs.
+Many of the quantities that matter most in Earth science are not categorical at all. "Dense vegetation" is a far cruder answer than "NDVI of 0.72", and "forest" is less useful than "trees 27 m tall". Canopy height, biomass, soil moisture and population density all vary smoothly across a landscape, and forcing them into discrete bins throws away exactly the information a scientific or policy application usually needs.
 
-{term}`Regression` closes this gap. Where classification tells you *what* is present and segmentation tells you *where*, regression tells you *how much* of a measurable quantity exists at each location, output that plugs directly into further calculation, without the information loss of discretizing a continuous variable into categories.
+{term}`Regression` closes this gap. Where classification tells you *what* is present and segmentation tells you *where*, regression tells you *how much* of a measurable quantity exists at each location. Because these numbers feed directly into further calculations, it also matters more than ever to know how large their errors are, and where.
 
 ---
 
@@ -28,27 +28,28 @@ Many of the quantities that matter most in Earth science are not categorical at 
 
 By the end of this lesson, you should be able to:
 
-- Decide when a project question calls for regression rather than classification or segmentation
-- Explain what changes, and what stays the same, when adapting a segmentation architecture for regression
-- Prepare paired image and target rasters for a regression task, and choose an appropriate loss function
-- Train a pixel-level regression model with `geoai` and monitor its training history
-- Run wall-to-wall inference on new imagery, including on a different year than the model was trained on
-- Evaluate a regression model with RMSE, MAE, R-squared, and residual analysis, not aggregate metrics alone
+- Decide when a project question calls for regression rather than classification, segmentation, or a simple calculation
+- Explain what changes, and what stays the same, when adapting a segmentation architecture for regression, and choose a suitable loss function
+- Prepare paired image and target rasters, check their scaling, and split them into training and validation areas without leakage
+- Train a pixel-level regression model with `geoai`, compare settings systematically, and read its training curves
+- Run wall-to-wall inference on new imagery, including a different year and a different site, and handle overlap, clipping and nodata
+- Evaluate a regression model with RMSE, MAE, bias, R², baselines and residual analysis, not aggregate metrics alone
 
 ---
 
 ## 4. Lesson roadmap
 
-1. [When regression fits](L11/01_when-to-use-pixel-regression.md) — typical continuous targets, and when classification or segmentation is the better choice instead.
+1. [When regression fits](L11/01_when-to-use-pixel-regression.md) — typical continuous targets and their reference data, and when classification, segmentation or a formula is the better choice.
 2. [Classification vs. regression](L11/02_classification-vs-regression.md) — the conceptual shift from categorical masks to floating-point target rasters.
-3. [Architectures & losses](L11/03_regression-architectures-and-losses.md) — adapting segmentation architectures for regression, and choosing MSE, MAE, or Huber loss.
-4. [Data & tiles](L11/04_regression-data-and-tiles.md) — preparing paired image and target rasters, using Landsat and NDVI as the running example.
-5. [Training a regressor](L11/05_training-a-pixel-regressor.md) — the main hands-on workflow: training a U-Net regression model with `geoai`.
-6. [Inference & temporal prediction](L11/06_inference-and-temporal-prediction.md) — wall-to-wall prediction, and applying a trained model to a new year's imagery.
-7. [Evaluation & residuals](L11/07_evaluation-and-residual-analysis.md) — RMSE, MAE, R-squared, correlation, and reading residual maps.
-8. [Project transfer](L11/08_project-transfer.md) — deciding whether regression fits your project, and sketching your target, data, and evaluation plan.
+3. [Architectures & losses](L11/03_regression-architectures-and-losses.md) — adapting segmentation architectures for regression, choosing MSE, MAE or Huber loss, and enforcing valid ranges.
+4. [Data & tiles](L11/04_regression-data-and-tiles.ipynb) — Sentinel-2 imagery and NDVI of the Beni river, Bolivia: inspecting, scaling, tiling, and a spatial train/validation split.
+5. [Training a regressor](L11/05_training-a-pixel-regressor.ipynb) — the main hands-on workflow: training a U-Net with `geoai`, with settings you can change and compare.
+6. [Inference & temporal prediction](L11/06_inference-and-temporal-prediction.ipynb) — wall-to-wall prediction for 2018 and 2026, overlap and clipping, and predicted versus real change.
+7. [Evaluation & residuals](L11/07_evaluation-and-residual-analysis.ipynb) — RMSE, MAE, bias, R² and correlation by area, year and surface type, and reading residual maps.
+8. [Canopy height case study](L11/08_canopy-height-case-study.ipynb) — everything together on a real measurement target: vegetation height from SWISSIMAGE at two forest sites in Graubünden, with baselines.
+9. [Project transfer](L11/09_project-transfer.md) — deciding whether regression fits your project, and sketching your target, data, validation and evaluation plan.
 
-Pages 1–2 build the conceptual foundation, pages 3–4 cover architecture and data preparation, page 5 is the main training workflow, and pages 6–7 extend it with inference and evaluation. Page 8 transfers everything to your project.
+Pages 1–3 build the conceptual foundation, pages 4–7 work through one complete workflow step by step, and page 8 applies it to a harder, real-world target. Page 9 transfers everything to your project.
 
 ---
 
@@ -56,17 +57,18 @@ Pages 1–2 build the conceptual foundation, pages 3–4 cover architecture and 
 
 While reading this lesson, keep your own project in mind and consider:
 
-- Is your project's target genuinely continuous, or would a smaller number of meaningful categories actually serve your question just as well?
-- What reference data (field measurements, LiDAR, a derived index) could you pair with imagery to train a regression model?
-- What is the known valid range for your target variable, and how would you enforce it during training and inference?
-- Would a single aggregate metric (like RMSE) be enough to trust a regression result, or would you need to look at spatial error patterns too?
+- Is your project's target genuinely continuous, or would a smaller number of meaningful categories serve your question just as well?
+- What reference data (field measurements, LiDAR, a national product, a derived index) could you pair with imagery to train a regression model, and how accurate is it?
+- What is the valid range of your target, and how would you enforce it during training and inference?
+- Which area, site or date could you hold out to test whether your model works beyond its training data?
+- Would a single aggregate metric (like RMSE) be enough to trust a regression result, or would you need to look at spatial error patterns and specific value ranges too?
 
 ---
 
 ## 6. Before class
 
 - Review the L07 semantic segmentation lesson, since regression architectures build directly on the encoder-decoder pattern from that lesson.
-- Make sure `geoai` is installed and importable in your environment.
+- Make sure `geoai` (version 0.43 or later) is installed and importable in your environment. Pages 4–8 download about 90 MB of data; training on pages 5 and 8 takes a few minutes with a GPU and up to an hour on a CPU.
 - Think of one continuous variable relevant to your own project (a physical quantity, an index, or a measurable rate).
 
 ---
@@ -75,6 +77,6 @@ While reading this lesson, keep your own project in mind and consider:
 
 After working through this lesson, you should have:
 
-- A clear decision on whether pixel-level regression fits your project, or whether classification or segmentation better matches your question
-- A working understanding of the full regression workflow, from paired tiles through training, inference, and residual-aware evaluation
-- A first sketch of your own regression target, reference data source, and evaluation plan, to be developed further on the final page
+- A clear decision on whether pixel-level regression fits your project, or whether classification, segmentation or a direct calculation better matches your question
+- A working understanding of the full regression workflow, from paired tiles and a spatial split through training, inference, and residual-aware evaluation with baselines
+- A first sketch of your own regression target, reference data source, validation design and evaluation plan, to be developed further on the final page

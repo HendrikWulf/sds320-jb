@@ -11,3 +11,8 @@ book/04_lessons/L10/oscd_runs/
 
 # L09 image translation: downloaded and generated rasters (re-created by the notebooks)
 book/04_lessons/L09/data/
+
+# L11 regression: downloaded data, tiles and model runs (checkpoints are about 300 MB each; re-created by the notebooks)
+book/04_lessons/L11/data/
+book/04_lessons/L11/regression_tiles/
+book/04_lessons/L11/regression_runs/

@@ -13,19 +13,19 @@ Encoder-decoder architectures with a regression head, and losses like MSE
 
 ---
 
-The previous page established what changes conceptually between classification and regression. This page gets specific: which architectures actually work for regression, and which loss function to choose, before the next two pages prepare data and train a real model.
+The previous page established what changes conceptually between classification and regression. This page gets specific: which architectures work for regression, which loss function to choose, and how to keep predictions within a valid range, before the next pages prepare data and train a real model.
 
 ---
 
 ## 1. Motivation
 
-You already know U-Net and its relatives from L07. The good news is that this knowledge transfers almost directly; the architectural shift from segmentation to regression is smaller than you might expect, which means most of your existing intuition still applies here.
+You already know U-Net and its relatives from L07. That knowledge transfers almost directly: the architectural shift from segmentation to regression is a single changed layer. The decisions that matter more for a regression result are the loss function and how you handle the valid range of your target, and both have details that are easy to get wrong.
 
 ---
 
 ## 2. Core idea
 
-Encoder-decoder architectures built for segmentation, {term}`U-Net`, UNet++, {term}`DeepLabV3+`, and {term}`Feature Pyramid Network (FPN) <Feature Pyramid Network>`, all work for regression with minimal modification. The encoder still extracts multi-scale features, the decoder still reconstructs spatial detail, and {term}`skip connections <Skip Connection>` still preserve the fine-grained detail needed for precise per-pixel output. The real change is concentrated in the output head and the loss function, not the backbone itself.
+Encoder-decoder architectures built for segmentation, {term}`U-Net`, UNet++, {term}`DeepLabV3+`, and {term}`Feature Pyramid Network (FPN) <Feature Pyramid Network>`, all work for regression. The encoder still extracts multi-scale features, the decoder still reconstructs spatial detail, and {term}`skip connections <Skip Connection>` still preserve the fine-grained detail needed for precise per-pixel output. The change is concentrated in the output head and the loss function.
 
 ---
 
@@ -33,67 +33,88 @@ Encoder-decoder architectures built for segmentation, {term}`U-Net`, UNet++, {te
 
 ### A. Reusing the encoder-decoder pattern
 
-Everything you learned about the {term}`encoder-decoder architecture <Encoder-Decoder Architecture>` pattern in L07 still applies directly: the encoder compresses the input into features, the decoder reconstructs them back to full spatial resolution, and skip connections keep the fine spatial detail that a heavily compressed bottleneck alone would lose. Precise per-pixel regression values need exactly the same spatial precision segmentation boundaries did, which is why skip connections matter just as much here.
+Everything you learned about the {term}`encoder-decoder architecture <Encoder-Decoder Architecture>` in L07 still applies: the encoder compresses the input into features, the decoder reconstructs them back to full spatial resolution, and skip connections keep the fine spatial detail that the compressed bottleneck alone would lose. Precise per-pixel values need the same spatial precision as segmentation boundaries, which is why skip connections matter just as much here.
+
+| Choice | Options in `geoai` | Starting point in this lesson |
+| --- | --- | --- |
+| `architecture` | `"unet"`, `"unetplusplus"`, `"deeplabv3plus"`, `"fpn"`, `"linknet"`, `"manet"`, `"pan"`, … | `"unet"` |
+| `encoder_name` | Any encoder of `segmentation_models_pytorch`, e.g. `"resnet18"`, `"resnet34"`, `"resnet50"`, `"efficientnet-b0"` | `"resnet34"` |
+| `encoder_weights` | `"imagenet"` or `None` | `"imagenet"` |
+| `loss_type` | `"mse"`, `"l1"`, `"huber"` | depends on the target (section C) |
 
 ### B. The output head
 
-A segmentation model ends in N output channels (one per class) followed by softmax. A regression model ends in a single output channel, with no activation function, or a ReLU activation when the target is known to be non-negative, such as height or biomass, where ReLU simply prevents the model from predicting an impossible negative value. `geoai` handles this switch automatically: setting up a regression task configures the underlying architecture with a single output channel rather than requiring you to modify the architecture yourself.
+A segmentation model ends in N output channels (one per class) followed by softmax. A regression model ends in a single output channel without any activation: the number it produces is the prediction. `geoai.train_pixel_regressor()` sets this up for you (internally `classes=1` and no activation).
+
+A consequence: the network itself can output any number, including negative heights or an NDVI of 1.3. Some models add a ReLU at the end to forbid negative values; `geoai` does not. Instead, you enforce the valid range in two places (section D).
 
 ### C. Choosing a loss function
 
 Three loss functions cover most regression use cases:
 
-- **{term}`MSE (Mean Squared Error) <Mean Squared Error>`** averages the squared differences between predicted and actual values. Squaring makes it sensitive to outliers, penalizing large errors heavily, useful when minimizing worst-case error matters most.
-- **{term}`MAE (Mean Absolute Error) <Mean Absolute Error>`** averages the absolute differences instead. It is more robust to outliers than MSE, since it does not amplify large errors through squaring, though its gradient stays constant regardless of error size, which can slow convergence as training approaches the optimum.
-- **{term}`Huber loss <Huber Loss>`** combines both: it behaves like MSE for small errors (smooth gradients near zero) and like MAE for large errors (reduced sensitivity to outliers). It is a reasonable default when your reference data may contain noise or occasional extreme values, which is common with field-measured or LiDAR-derived targets.
+| Loss | `loss_type` | Penalty for an error *e* | Large errors (outliers) | Typical use |
+| --- | --- | --- | --- | --- |
+| {term}`Mean squared error <Mean Squared Error>` (MSE) | `"mse"` | *e*² | Dominate the loss | Clean reference data; large errors are especially bad |
+| {term}`Mean absolute error <Mean Absolute Error>` (MAE, L1) | `"l1"` | \|*e*\| | Count proportionally | Noisy reference data; every error equally important |
+| {term}`Huber loss <Huber Loss>` (Smooth L1) | `"huber"` | ½ *e*² for small errors, \|*e*\| − ½ for large ones | Count proportionally | A compromise: smooth near zero, robust to outliers |
 
-`geoai` exposes all three through a `loss_type` parameter (`"mse"`, `"l1"`, `"huber"`), so switching between them is a one-line change, the same low-cost experimentation pattern you have seen for architecture and encoder choices in earlier lessons.
+What "small" and "large" mean for Huber loss depends on a threshold. `geoai` uses PyTorch's `SmoothL1Loss` with its default threshold of **1, measured in the units of your target**. The figure shows what this means for the two targets of this lesson:
+
+```{figure} images/loss_functions.png
+:alt: Two panels comparing MSE, MAE and Huber loss as a function of prediction error. Left, for errors between −0.6 and 0.6 NDVI, the Huber curve is exactly half the MSE curve. Right, for errors between −8 and 8 metres, the Huber curve runs parallel to the MAE line except within ±1 m.
+:width: 100%
+
+The same three loss functions for errors in NDVI units (left) and in metres of tree height (right). With NDVI, errors are always smaller than 1, so Huber loss is exactly half the MSE. With tree heights, most errors are larger than 1 m, so Huber loss behaves almost like MAE.
+```
+
+So for NDVI, `"huber"` and `"mse"` train towards the same result; only the size of the loss values differs. For tree heights in metres, `"huber"` is close to `"l1"`. This is a good example of why it pays to know what a library does with a parameter, rather than relying on the general description of a method.
 
 ```{tip}
-If you are not sure which loss to start with, Huber is a reasonable default for real-world geospatial reference data, which is rarely perfectly clean. Switch to MSE if worst-case errors matter most for your application, or to MAE if you want every error treated proportionally regardless of size.
+MSE minimises the squared error, which is exactly what RMSE measures, so it is a good default whenever RMSE is the score you will report. Switch to Huber or MAE when your reference data contain gross errors (a wrong lab value, a misregistered plot) that should not dominate training. Measure, do not assume: in this lesson MSE gave the lowest errors both for NDVI (page 5) and for tree heights from stereo matching (page 8).
 ```
 
 ### D. Valid ranges and clipping
 
-Many regression targets have a known physical range: NDVI falls between −1 and 1, heights and biomass cannot be negative. You can enforce this domain knowledge in two places: filtering target values during tile creation, and clipping predicted values during inference. Both are covered in more detail on the data-preparation and inference pages ahead; the important idea here is that combining both, rather than relying on either alone, produces the cleanest results, since the model learns approximate bounds from clean training data while inference-time clipping catches the occasional out-of-range prediction at the edges.
+Many regression targets have a known physical range: NDVI lies between −1 and 1, heights and biomass cannot be negative. `geoai` enforces this in two places:
+
+1. **During tile creation** (page 4): `target_min` and `target_max` in `create_regression_tiles()` clip target values to the range, and skip tiles in which more than 5% of the target values are outside it.
+2. **During prediction** (page 6): `clip_range` in `predict_raster()` clips the predicted values.
+
+The first keeps invalid reference values out of training; the second catches the occasional implausible prediction. Neither changes the model itself.
 
 ---
 
-## 4. Python reactivation
+## 4. Common pitfalls
 
-No new Python syntax here. This page is a decision-making guide for two parameters, `architecture`/`encoder_name` and `loss_type`, you will set directly when calling `geoai.train_pixel_regressor()` two pages from now.
-
----
-
-## 5. Common pitfalls
-
-- **Defaulting to MSE without considering your data's noise level.** If your reference measurements are likely to include occasional outliers or errors, MAE or Huber may serve you better.
-- **Forgetting to set a ReLU (or equivalent) for a non-negative target.** Without it, a model predicting height or biomass could technically output a negative value, which is physically meaningless.
-- **Assuming architecture choice matters more than loss function for a given target.** For many regression problems, the loss function and valid-range handling affect results more than which specific encoder-decoder architecture you pick.
-- **Ignoring valid-range enforcement entirely.** Skipping both tile-time filtering and inference-time clipping leaves your model exposed to noisy training data and implausible predictions alike.
+- **Defaulting to MSE without considering your data's noise level.** If your reference measurements contain occasional large errors, MSE lets those few pixels dominate training; MAE or Huber reduce their influence.
+- **Assuming Huber loss behaves the same for every target.** Its threshold is in target units; for a target with small values such as NDVI it is identical to (half) MSE.
+- **Relying on the network to respect a physical range.** The regression head has no activation; enforce valid ranges with `target_min`/`target_max` and `clip_range`.
+- **Spending most of your time on architecture choices.** For many regression problems, the input bands, the loss function and the quality of the reference data affect results more than the specific encoder-decoder architecture.
 
 ---
 
-## 6. Mini task
+## 5. Mini task
 
-Your project predicts soil organic carbon content, a non-negative quantity, from imagery paired with soil-sample lab measurements that are known to include occasional measurement errors. Which loss function would you start with, and what output activation would you use? Justify both choices.
+Your project predicts soil organic carbon content (in percent, non-negative) from imagery paired with soil-sample lab measurements that are known to include occasional measurement errors. Typical values lie between 1 and 8%. Which `loss_type` would you start with? How would Huber loss behave for this target? How would you prevent negative predictions?
 
 :::{dropdown} Sample solution
 :class: note
 
-Huber loss is a reasonable starting choice, since it behaves like MSE for the (presumably) majority of well-behaved measurements while reducing sensitivity to the occasional labeling error, exactly the noisy-reference-data situation Huber is suited for. For the output activation, a ReLU makes sense, since soil organic carbon content cannot be negative, and ReLU enforces that constraint directly in the model's output rather than relying on post-hoc clipping alone.
+MAE (`"l1"`) or Huber are reasonable starting choices, because the occasional erroneous lab measurement would dominate an MSE loss. With `geoai`'s threshold of 1, Huber loss would be quadratic for errors below 1 percentage point and linear above, a sensible compromise for values between 1 and 8%. If the values were stored as fractions (0.01 to 0.08) instead, every error would be far below 1, and Huber would behave exactly like half the MSE, so the units of the target matter.
+
+`geoai`'s regression head has no activation, so negative predictions are possible. Set `target_min=0` when creating tiles and `clip_range=(0, upper_limit)` when predicting.
 :::
 
 ---
 
-## 7. Key takeaways
+## 6. Key takeaways
 
-- Segmentation architectures (U-Net, UNet++, DeepLabV3+, FPN) transfer to regression with minimal change; skip connections still matter for spatial precision.
-- The output head changes to a single channel, with no activation or a ReLU for non-negative targets.
-- MSE, MAE, and Huber loss trade off outlier sensitivity differently; Huber is a reasonable default for noisy real-world reference data.
-- Combining valid-range filtering at tile creation with output clipping at inference produces cleaner results than relying on either alone.
+- Segmentation architectures (U-Net, UNet++, DeepLabV3+, FPN) transfer to regression; only the output head changes to a single channel without activation.
+- MSE, MAE and Huber loss treat large errors differently; in `geoai`, Huber's threshold is 1 in target units, so its behaviour depends on the scale of your target.
+- Valid ranges are not built into the network; enforce them during tile creation (`target_min`, `target_max`) and prediction (`clip_range`).
 
 ### Further reading
 
-- [timm documentation](https://timm.fast.ai/) — reference for the encoder architectures selectable through `encoder_name`, the same library referenced in the course glossary's `timm` entry.
-- OpenGeoAI, [timm regression module documentation](https://opengeoai.org/timm_regress/) — reference documentation for the underlying regression functions used in this lesson.
+- [segmentation_models_pytorch documentation](https://smp.readthedocs.io/) — the library behind `geoai`'s regression models, with all available architectures and encoders.
+- PyTorch, [`SmoothL1Loss`](https://docs.pytorch.org/docs/stable/generated/torch.nn.SmoothL1Loss.html) — the exact definition of the Huber-type loss used by `loss_type="huber"`.
+- OpenGeoAI, [regression module documentation](https://opengeoai.org/timm_regress/) — reference documentation for the regression functions used in this lesson.
