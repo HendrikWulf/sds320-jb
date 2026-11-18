@@ -7,13 +7,13 @@ site:
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Encoder-decoder architectures with a regression head, and losses like MSE
+Encoder-decoder architectures with a regression head, and losses like mean squared error
 </div>
 <!-- markdownlint-enable MD033 -->
 
 ---
 
-The previous page established what changes conceptually between classification and regression. This page gets specific: which architectures work for regression, which loss function to choose, and how to keep predictions within a valid range, before the next pages prepare data and train a real model.
+The previous page established what changes conceptually between classification and regression. This page gets specific: which architectures work for regression, which {term}`loss function <Loss Function>` to choose, and how to keep predictions within a valid range, before the next pages prepare data and train a real model.
 
 ---
 
@@ -44,9 +44,9 @@ Everything you learned about the {term}`encoder-decoder architecture <Encoder-De
 
 ### B. The output head
 
-A segmentation model ends in N output channels (one per class) followed by softmax. A regression model ends in a single output channel without any activation: the number it produces is the prediction. `geoai.train_pixel_regressor()` sets this up for you (internally `classes=1` and no activation).
+A segmentation model ends in N output channels (one per class) followed by softmax. A regression model ends in a {term}`regression head <Regression Head>` with a single output channel and no activation: the number it produces is the prediction. `geoai.train_pixel_regressor()` sets this up for you (internally `classes=1` and no activation).
 
-A consequence: the network itself can output any number, including negative heights or an NDVI of 1.3. Some models add a ReLU at the end to forbid negative values; `geoai` does not. Instead, you enforce the valid range in two places (section D).
+A consequence: the network itself can output any number, including negative heights or an {term}`NDVI <Normalized Difference Vegetation Index>` of 1.3. Some models add a {abbr}`ReLU (rectified linear unit, an activation that sets negative values to zero)` at the end to forbid negative values; `geoai` does not. Instead, you enforce the valid range in two places (section D).
 
 ### C. Choosing a loss function
 
@@ -70,7 +70,7 @@ The same three loss functions for errors in NDVI units (left) and in metres of t
 So for NDVI, `"huber"` and `"mse"` train towards the same result; only the size of the loss values differs. For tree heights in metres, `"huber"` is close to `"l1"`. This is a good example of why it pays to know what a library does with a parameter, rather than relying on the general description of a method.
 
 ```{tip}
-MSE minimises the squared error, which is exactly what RMSE measures, so it is a good default whenever RMSE is the score you will report. Switch to Huber or MAE when your reference data contain gross errors (a wrong lab value, a misregistered plot) that should not dominate training. Measure, do not assume: in this lesson MSE gave the lowest errors both for NDVI (page 5) and for tree heights from stereo matching (page 8).
+MSE minimises the squared error, which is exactly what {term}`root mean squared error <Root Mean Squared Error>` (RMSE) measures, so it is a good default whenever RMSE is the score you will report. Switch to Huber or MAE when your reference data contain gross errors (a wrong lab value, a misregistered plot) that should not dominate training. Measure, do not assume: in this lesson MSE gave the lowest errors both for NDVI (page 5) and for tree heights from stereo matching (page 8).
 ```
 
 ### D. Valid ranges and clipping

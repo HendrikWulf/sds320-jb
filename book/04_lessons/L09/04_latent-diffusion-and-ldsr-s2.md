@@ -19,13 +19,13 @@ The previous page argued that super-resolution needs a genuinely generative appr
 
 ## 1. Motivation
 
-`geoai`'s super-resolution function takes only a handful of parameters, but what happens inside it is different from anything else in this course so far. Understanding the encode-denoise-decode pattern, even at a conceptual level, is what will make the outputs, their run-to-run variation, and their uncertainty maps two pages from now interpretable rather than mysterious.
+`geoai`'s {term}`super-resolution <Super-Resolution>` function takes only a handful of parameters, but what happens inside it is different from anything else in this course so far. Understanding the encode-denoise-decode pattern, even at a conceptual level, is what will make the outputs, their run-to-run variation, and their {term}`uncertainty maps <Uncertainty Map>` two pages from now interpretable rather than mysterious.
 
 ---
 
 ## 2. Core idea
 
-A {term}`diffusion model <Diffusion Model>` learns to generate images by reversing a noise-corruption process: training gradually destroys real images with added noise, and the model learns to undo that process step by step, starting from noise and ending at a clean image. A {term}`latent diffusion model (LDM) <Latent Diffusion Model>` runs this same process in a compressed representation instead of on full-resolution pixels directly, which makes it far cheaper to run. **LDSR-S2**, the model this lesson uses, applies this idea specifically to Sentinel-2 super-resolution, conditioning its generation on a low-resolution input and correcting the result so it stays consistent with what the sensor actually observed.
+A {term}`diffusion model <Diffusion Model>` learns to generate images by reversing a noise-corruption process: training gradually destroys real images with added noise, and the model learns to undo that process step by step, starting from noise and ending at a clean image. A {term}`latent diffusion model (LDM) <Latent Diffusion Model>` runs this same process in a compressed representation instead of on full-resolution pixels directly, which makes it far cheaper to run. **{term}`LDSR-S2`**, the model this lesson uses, applies this idea specifically to Sentinel-2 super-resolution, conditioning its generation on a low-resolution input and correcting the result so it stays consistent with what the sensor actually observed.
 
 ```mermaid
 flowchart LR
@@ -59,11 +59,11 @@ Running this step-by-step denoising process directly on a full-resolution pixel 
 
 ### C. How many steps?
 
-Each denoising step is one pass through the network. Early diffusion models needed hundreds or a thousand steps; LDSR-S2 was trained with 1,000 noise levels. A **sampler** decides how to jump through these levels with fewer steps. The original sampler (DDIM) used about 100 steps; current versions of the model use DPM-Solver++, which reaches similar quality in a handful of steps. `geoai` still uses `sampling_steps=100` by default. Page 5 measures what more steps actually buy: for this model, very little beyond about 10.
+Each denoising step is one pass through the network. Early diffusion models needed hundreds or a thousand steps; LDSR-S2 was trained with 1,000 noise levels. A **sampler** decides how to jump through these levels with fewer steps. The original sampler ({abbr}`DDIM (Denoising Diffusion Implicit Models)`) used about 100 steps; current versions of the model use {abbr}`DPM-Solver++ (a fast solver for diffusion probabilistic models)`, which reaches similar quality in a handful of steps. `geoai` still uses `sampling_steps=100` by default. Page 5 measures what more steps actually buy: for this model, very little beyond about 10.
 
 ### D. The LDSR-S2 workflow specifically
 
-LDSR-S2 operates on four Sentinel-2 bands (red, green, blue, near-infrared) and performs 4x spatial upsampling. For each input {term}`patch <Patch>`, the pipeline runs in four steps:
+LDSR-S2 operates on four Sentinel-2 bands (red, green, blue, {term}`near-infrared <Near-Infrared>`) and performs 4x spatial upsampling. For each input {term}`patch <Patch>`, the pipeline runs in four steps:
 
 1. **Encode**: the low-resolution patch (128-by-128 pixels, 4 bands, an array of shape `(4, 128, 128)`) is turned into a latent representation that guides the generation.
 2. **Denoise**: starting from random noise, the diffusion process runs for the chosen number of sampling steps in latent space, conditioned on the low-resolution input throughout.
@@ -72,7 +72,7 @@ LDSR-S2 operates on four Sentinel-2 bands (red, green, blue, near-infrared) and 
 
 The array shapes follow the channel-first convention you have used for raster bands throughout this course: bands first, then height and width.
 
-### E. What the correction step guarantees, and what it does not
+### E. What the correction step guarantees
 
 The correction step is a safeguard: whatever detail the diffusion process invents, the result cannot contradict the 10 m measurement. If a 10 m pixel has a red reflectance of 0.20, the sixteen 2.5 m pixels that replace it average to exactly 0.20. You will verify this yourself on the next page.
 

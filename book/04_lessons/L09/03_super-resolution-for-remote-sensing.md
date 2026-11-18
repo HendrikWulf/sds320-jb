@@ -25,7 +25,7 @@ Every project that uses satellite imagery runs into the same underlying constrai
 
 ## 2. Core idea
 
-No single satellite sensor maximizes spatial resolution, revisit frequency, spectral coverage, and affordability simultaneously; every mission trades some of these against the others. {term}`Sentinel-2 <Sentinel-2>` prioritizes global coverage, frequent revisits, and rich spectral information, at the cost of spatial detail. Commercial sensors prioritize spatial detail, at the cost of coverage, revisit frequency, and price. Super-resolution is an attempt to partially move along this trade-off using computation instead of a different satellite.
+No single satellite sensor maximizes {term}`spatial resolution <Spatial Resolution>`, revisit frequency, spectral coverage, and affordability simultaneously; every mission trades some of these against the others. {term}`Sentinel-2 <Sentinel-2>` prioritizes global coverage, frequent revisits, and rich spectral information, at the cost of spatial detail. Commercial sensors prioritize spatial detail, at the cost of coverage, revisit frequency, and price. Super-resolution is an attempt to partially move along this trade-off using computation instead of a different satellite.
 
 ---
 
@@ -33,19 +33,19 @@ No single satellite sensor maximizes spatial resolution, revisit frequency, spec
 
 ### A. Free and frequent, but coarse
 
-Sentinel-2 covers the globe every five days or more often, with 13 spectral bands, entirely free to access, but its finest spatial resolution is 10 meters per pixel. At that resolution, individual buildings, narrow roads, and small agricultural plots are difficult or impossible to make out reliably.
+Sentinel-2 covers the globe every five days or more often, with 13 {term}`spectral bands <Spectral Band>`, entirely free to access, but its finest spatial resolution is 10 meters per pixel. At that resolution, individual buildings, narrow roads, and small agricultural plots are difficult or impossible to make out reliably.
 
-### B. Detailed, but expensive or infrequent
+### B. Detailed, but costly or infrequent
 
 The table compares typical sources. Resolutions are the finest multispectral (and, where available, panchromatic) pixel sizes:
 
 | Source | Pixel size | Revisit | Access |
 | --- | --- | --- | --- |
 | Landsat 8/9 | 30 m (15 m panchromatic) | 8 days with both satellites | Free |
-| **Sentinel-2** | **10 m** (RGB and near-infrared) | 5 days or better | Free |
+| **Sentinel-2** | **10 m** (RGB and {term}`near-infrared <Near-Infrared>`) | 5 days or better | Free |
 | PlanetScope | about 3 m | Near-daily | Commercial (research and education programmes exist) |
 | Pléiades Neo, WorldView-3 | about 1.2 m (0.3 m panchromatic) | On request, up to daily | Commercial |
-| National aerial orthophotos (e.g. Spain's PNOA) | 0.25 m or finer | Every few years | Often free in Europe |
+| National aerial orthophotos (e.g. Spain's {abbr}`PNOA (Plan Nacional de Ortofotografía Aérea, Spain's national aerial orthophoto programme)`) | 0.25 m or finer | Every few years | Often free in Europe |
 
 Commercial sensors such as WorldView-3 achieve sub-meter resolution, fine enough to resolve individual structures clearly, but they cover far less area per acquisition, image a given place only when tasked, and cost significantly more. Aerial orthophotos are very detailed and sometimes free, but they are only flown every few years, so they rarely match the date you need. Page 7 uses a Spanish aerial orthophoto as a reference, and its date turns out to matter.
 
@@ -70,9 +70,9 @@ That is a genuinely difficult problem, because it is **ill-posed**: many differe
 | **Interpolation** (nearest, bilinear, bicubic) | Smooth mathematical fill between existing pixels | Low | None: adds no structure |
 | **{term}`Pansharpening <Pansharpening>`** | Injects detail from a sharper panchromatic band recorded at the same time | High | Low: the detail was observed (not available for Sentinel-2) |
 | **Multi-image super-resolution** | Combines several slightly shifted acquisitions of the same place | Moderate | Low to moderate |
-| **CNN with pixel loss** (e.g. SRCNN, EDSR) | Learns a mapping trained to minimise average error | Moderate | Low to moderate: tends to blur when unsure |
-| **GAN** (e.g. SRGAN, ESRGAN) | Generator trained to fool a discriminator | High | High |
-| **Diffusion** (e.g. SR3, LDSR-S2) | Iteratively generates detail consistent with the input | High | High, but can be *measured* by sampling several times (page 6) |
+| **{term}`CNN <Convolutional Neural Network>` with pixel loss** (e.g. {abbr}`SRCNN (Super-Resolution Convolutional Neural Network)`, {abbr}`EDSR (Enhanced Deep Super-Resolution network)`) | Learns a mapping trained to minimise average error | Moderate | Low to moderate: tends to blur when unsure |
+| **{term}`GAN <Generative Adversarial Network>`** (e.g. {abbr}`SRGAN (Super-Resolution Generative Adversarial Network)`, {abbr}`ESRGAN (Enhanced Super-Resolution Generative Adversarial Network)`) | Generator trained to fool a discriminator | High | High |
+| **{term}`Diffusion <Diffusion Model>`** (e.g. {abbr}`SR3 (Super-Resolution via Repeated Refinement)`, {term}`LDSR-S2`) | Iteratively generates detail consistent with the input | High | High, but can be *measured* by sampling several times (page 6) |
 
 This is the perception–distortion trade-off from the previous page in practice: the further down the table, the sharper the output, and the more of it is generated rather than observed.
 
@@ -117,5 +117,5 @@ Before generating anything, check whether free national aerial orthophotos cover
 
 - Esri, ["Super-Resolution: Image-to-Image Translation Using Deep Learning in ArcGIS Pro"](https://www.esri.com/arcgis-blog/products/arcgis-pro/aec/super-resolution-image-to-image-translation-using-deep-learning-in-arcgis-pro) — a different platform's perspective on the same underlying trade-off and technique.
 - Saharia et al. (2021), ["Image Super-Resolution via Iterative Refinement"](https://arxiv.org/abs/2104.07636) — SR3, the first diffusion model for super-resolution.
-- ESA, ["Sentinel-2 User Guide"](https://sentiwiki.copernicus.eu/web/s2-mission) — bands, resolutions and revisit of Sentinel-2.
-- IGN Spain, ["PNOA – Plan Nacional de Ortofotografía Aérea"](https://pnoa.ign.es/) — the Spanish national orthophoto programme used as a reference on page 7.
+- {abbr}`ESA (European Space Agency)`, ["Sentinel-2 User Guide"](https://sentiwiki.copernicus.eu/web/s2-mission) — bands, resolutions and revisit of Sentinel-2.
+- {abbr}`IGN (Instituto Geográfico Nacional)` Spain, ["PNOA – Plan Nacional de Ortofotografía Aérea"](https://pnoa.ign.es/) — the Spanish national orthophoto programme used as a reference on page 7.

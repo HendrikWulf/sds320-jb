@@ -13,7 +13,7 @@ Visualising and interpreting a change map
 
 ---
 
-You ran ChangeStar on the Osaka image pair on the previous page. This page works through exactly what `result` contains and how to look at it critically, before the next page covers thresholds, model variants and export.
+You ran {term}`ChangeStar` on the Osaka image pair on the previous page. This page works through exactly what `result` contains and how to look at it critically, before the next page covers thresholds, model variants and export.
 
 ---
 

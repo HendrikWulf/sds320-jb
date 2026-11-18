@@ -10,9 +10,9 @@ Predicting a continuous value per pixel instead of a category
 
 ## 1. Context
 
-L07 through L10 all produced categorical or discrete output: a class per pixel, a mask per object, a change or no-change flag. This lesson introduces a different question. {term}`Pixel-level regression <Pixel-Level Regression>` predicts a single continuous value for every pixel, such as canopy height in metres, an NDVI value between −1 and 1, or a biomass density in Mg/ha, rather than choosing among a fixed set of labels.
+L07 through L10 all produced categorical or discrete output: a class per pixel, a mask per object, a change or no-change flag. This lesson introduces a different question. {term}`Pixel-level regression <Pixel-Level Regression>` predicts a single continuous value for every pixel, such as {term}`canopy height <Canopy Height>` in metres, an {term}`NDVI <Normalized Difference Vegetation Index>` value between −1 and 1, or a biomass density in Mg/ha, rather than choosing among a fixed set of labels.
 
-The architectures you already know from segmentation carry over almost unchanged. What changes is the output layer, the loss function, and how you evaluate the result. The lesson works through two case studies: {term}`Sentinel-2` imagery of the Beni river in Bolivia, where a model learns NDVI in 2018 and is tested on 2026, and {term}`SWISSIMAGE` aerial photos of two Swiss forest sites, where a model learns vegetation height at one site and is tested on the other.
+The architectures you already know from segmentation carry over almost unchanged. What changes is the output layer, the {term}`loss function <Loss Function>`, and how you evaluate the result. The lesson works through two case studies: {term}`Sentinel-2` imagery of the Beni river in Bolivia, where a model learns NDVI in 2018 and is tested on 2026, and {term}`SWISSIMAGE` aerial photos of two Swiss forest sites, where a model learns vegetation height at one site and is tested on the other.
 
 ---
 
@@ -33,7 +33,7 @@ By the end of this lesson, you should be able to:
 - Prepare paired image and target rasters, check their scaling, and split them into training and validation areas without leakage
 - Train a pixel-level regression model with `geoai`, compare settings systematically, and read its training curves
 - Run wall-to-wall inference on new imagery, including a different year and a different site, and handle overlap, clipping and nodata
-- Evaluate a regression model with RMSE, MAE, bias, R², baselines and residual analysis, not aggregate metrics alone
+- Evaluate a regression model with error metrics ({term}`RMSE <Root Mean Squared Error>`, {term}`MAE <Mean Absolute Error>`, {term}`bias <Bias>`, {term}`R² <R-squared>`), {term}`baselines <Baseline Model>` and {term}`residual <Residual>` analysis, not aggregate metrics alone
 
 ---
 
@@ -41,9 +41,9 @@ By the end of this lesson, you should be able to:
 
 1. [When regression fits](L11/01_when-to-use-pixel-regression.md) — typical continuous targets and their reference data, and when classification, segmentation or a formula is the better choice.
 2. [Classification vs. regression](L11/02_classification-vs-regression.md) — the conceptual shift from categorical masks to floating-point target rasters.
-3. [Architectures & losses](L11/03_regression-architectures-and-losses.md) — adapting segmentation architectures for regression, choosing MSE, MAE or Huber loss, and enforcing valid ranges.
+3. [Architectures & losses](L11/03_regression-architectures-and-losses.md) — adapting segmentation architectures for regression, choosing {term}`MSE <Mean Squared Error>`, {term}`MAE <Mean Absolute Error>` or {term}`Huber loss <Huber Loss>`, and enforcing valid ranges.
 4. [Data & tiles](L11/04_regression-data-and-tiles.ipynb) — Sentinel-2 imagery and NDVI of the Beni river, Bolivia: inspecting, scaling, tiling, and a spatial train/validation split.
-5. [Training a regressor](L11/05_training-a-pixel-regressor.ipynb) — the main hands-on workflow: training a U-Net with `geoai`, with settings you can change and compare.
+5. [Training a regressor](L11/05_training-a-pixel-regressor.ipynb) — the main hands-on workflow: training a {term}`U-Net` with `geoai`, with settings you can change and compare.
 6. [Inference & temporal prediction](L11/06_inference-and-temporal-prediction.ipynb) — wall-to-wall prediction for 2018 and 2026, overlap and clipping, and predicted versus real change.
 7. [Evaluation & residuals](L11/07_evaluation-and-residual-analysis.ipynb) — RMSE, MAE, bias, R² and correlation by area, year and surface type, and reading residual maps.
 8. [Canopy height case study](L11/08_canopy-height-case-study.ipynb) — everything together on a real measurement target: vegetation height from SWISSIMAGE at two forest sites in Graubünden, with baselines.
@@ -68,7 +68,7 @@ While reading this lesson, keep your own project in mind and consider:
 ## 6. Before class
 
 - Review the L07 semantic segmentation lesson, since regression architectures build directly on the encoder-decoder pattern from that lesson.
-- Make sure `geoai` (version 0.43 or later) is installed and importable in your environment. Pages 4–8 download about 90 MB of data; training on pages 5 and 8 takes a few minutes with a GPU and up to an hour on a CPU.
+- Make sure `geoai` (version 0.43 or later) is installed and importable in your environment. Pages 4–8 download about 90 MB of data; training on pages 5 and 8 takes a few minutes with a {term}`GPU` and up to an hour on a {abbr}`CPU (central processing unit)`.
 - Think of one continuous variable relevant to your own project (a physical quantity, an index, or a measurable rate).
 
 ---

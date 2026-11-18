@@ -130,7 +130,7 @@ with contextlib.redirect_stdout(io.StringIO()):
 print(f"Uncertainty map shape: {uncertainty.shape}, runtime {time.perf_counter() - start:.0f} s")
 ```
 
-`compute_uncertainty=True` enables the repeated-sampling process; `n_variations=5` sets how many additional runs, each with a different random seed, to compare. For every pixel and band, the model computes the standard deviation across these runs, doubles it, and averages over the four bands. The result is in **reflectance units**: the typical width of the range within which the runs fall. The default is `n_variations=25`, and values of 3 or less are rejected, because a standard deviation from so few samples is meaningless. Five is a compromise for teaching: the runtime grows roughly in proportion to `n_variations`.
+`compute_uncertainty=True` enables the repeated-sampling process; `n_variations=5` sets how many additional runs, each with a different {term}`random seed <Random Seed>`, to compare. For every pixel and band, the model computes the standard deviation across these runs, doubles it, and averages over the four bands. The result is in **reflectance units**: the typical width of the range within which the runs fall. The default is `n_variations=25`, and values of 3 or less are rejected, because a standard deviation from so few samples is meaningless. Five is a compromise for teaching: the runtime grows roughly in proportion to `n_variations`.
 
 ### D. Visualize the uncertainty map
 
@@ -168,7 +168,7 @@ To put the numbers in context: the median uncertainty is about a tenth of the lo
 
 ### E. Where uncertainty concentrates
 
-Rather than judging by eye, group the pixels by the kind of surface they show and compare their uncertainty. The groups use the super-resolved image itself: vegetation by NDVI, bright surfaces by brightness, and "edges" by local contrast.
+Rather than judging by eye, group the pixels by the kind of surface they show and compare their uncertainty. The groups use the super-resolved image itself: vegetation by {term}`NDVI <Normalized Difference Vegetation Index>`, bright surfaces by brightness, and "edges" by local contrast.
 
 ```{code-cell} ipython3
 red, green, blue, nir = sr_image

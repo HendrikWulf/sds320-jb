@@ -13,7 +13,7 @@ Running wall-to-wall inference and predicting a year the model has never seen
 
 ---
 
-You trained a model on the previous page. This page applies it to complete scenes: first the 2018 scene it was trained on, then the 2026 scene, eight years later, in which the river has changed its course. Because the true NDVI is available for 2026 as well, you can check directly whether the model transfers to a new year.
+You trained a model on the previous page. This page applies it to complete scenes: first the 2018 scene it was trained on, then the 2026 scene, eight years later, in which the river has changed its course. Because the true {term}`NDVI <Normalized Difference Vegetation Index>` is available for 2026 as well, you can check directly whether the model transfers to a new year.
 
 ---
 
@@ -64,7 +64,7 @@ image = {year: str(DATA_DIR / f"beni_s2_{year}.tif") for year in [2018, 2026]}
 reference = {year: str(DATA_DIR / f"beni_s2_{year}_ndvi.tif") for year in [2018, 2026]}
 ```
 
-The model is loaded from the checkpoint saved on page 5, so you do not need to train again. `geoai.get_device()` picks the fastest available processor: a CUDA GPU, an Apple GPU (`mps`) or the CPU.
+The model is loaded from the checkpoint saved on page 5, so you do not need to train again. `geoai.get_device()` picks the fastest available processor: a {term}`CUDA` {term}`GPU`, an Apple GPU (`mps`) or the {abbr}`CPU (central processing unit)`.
 
 ### B. Predict the training year
 
@@ -119,7 +119,7 @@ for name in ["ndvi_2018_overlap0.tif", "ndvi_2018.tif"]:
 
 Without overlap, the jumps at the window boundaries are clearly larger than between other neighbouring pixels: the network predicts less reliably at the edge of its window, where it lacks context on one side, and two windows disagree there. With overlap and blending, the boundaries are no longer distinguishable from the rest of the map. In a continuous map such seams show up as a faint grid; in a class map they would mostly vanish behind the class boundaries.
 
-**The outermost frame.** The blending weights start at zero at each window edge. At the edge of the *scene*, no other window covers these pixels, so their total weight is zero, and `geoai` writes them as nodata:
+**The outermost frame.** The blending weights start at zero at each window edge. At the edge of the *scene*, no other window covers these pixels, so their total weight is zero, and `geoai` writes them as {term}`nodata <NoData Value>`:
 
 ```{code-cell} ipython3
 with rasterio.open(PRED_DIR / "ndvi_2018.tif") as src:
@@ -182,7 +182,7 @@ geoai.visualize_prediction(
 
 `rgb_bands=[3, 2, 1]` is needed because the bands are stored as blue, green, red: the function's default `[1, 2, 3]` would display blue as red. Visually, the predicted NDVI follows the image closely: river and oxbow lakes are red, the forest dark green, the savanna lighter.
 
-### F. Compare with the real 2026 NDVI, and with 2018
+### F. Compare with the real 2026 NDVI
 
 Because the reference NDVI exists for 2026, you can compare directly. The most demanding test is **change**: does the difference between the 2026 and 2018 predictions match the real difference? This links to L10: a model that reproduces both years well should also reproduce what changed between them.
 
@@ -242,7 +242,7 @@ The `read()` helper converts the nodata value to `np.nan`, so that later calcula
 
 ## 5. Common pitfalls
 
-- **Using different bands, band order or scaling at prediction than at training.** The model does not check; it simply produces wrong values. Keep `input_bands` and the scaling identical, ideally read from the same configuration.
+- **Using different bands, {term}`band order <Band Order>` or scaling at prediction than at training.** The model does not check; it simply produces wrong values. Keep `input_bands` and the scaling identical, ideally read from the same configuration.
 - **Setting `overlap=0`.** Window boundaries then appear as a faint grid in a continuous map.
 - **Forgetting the nodata frame and value.** Statistics computed on the raw array include −9999 values unless you mask them.
 - **Skipping `clip_range`.** Rare, but impossible values otherwise end up in your map.
@@ -260,7 +260,7 @@ The `read()` helper converts the nodata value to `np.nan`, so that later calcula
 
 1. The predictions change slightly: by about 0.01 NDVI on average, and by up to about 0.07 for the 1% of pixels that change most. Smaller windows give the network less context per prediction and create more window boundaries. With a well-trained model and overlap, the effect is small; with 128-pixel windows and no overlap, the seams would be more visible.
 
-2. The largest disagreements lie along the river banks, sand bars and the edges of the oxbow lakes, where land and water meet within a 10 m pixel. These mixed pixels have intermediate NDVI values that change strongly with small shifts of the water line, and the model's errors are largest there in both years (page 7 quantifies this). Errors of both years add up in a difference, so change maps are always noisier than the maps they are computed from, the same lesson as for post-classification comparison in L10.
+2. The largest disagreements lie along the river banks, sand bars and the edges of the oxbow lakes, where land and water meet within a 10 m pixel. These {term}`mixed pixels <Mixed Pixel>` have intermediate NDVI values that change strongly with small shifts of the water line, and the model's errors are largest there in both years (page 7 quantifies this). Errors of both years add up in a difference, so change maps are always noisier than the maps they are computed from, the same lesson as for post-classification comparison in L10.
 :::
 
 ---

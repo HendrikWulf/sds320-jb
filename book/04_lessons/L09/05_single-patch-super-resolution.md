@@ -13,7 +13,7 @@ A practical, end-to-end workflow for super-resolving a single image patch
 
 ---
 
-You now understand what LDSR-S2 does internally. This page runs it, on a real Sentinel-2 scene of Granada, Spain, on a single patch, before later pages add uncertainty estimation and scale up to larger regions.
+You now understand what {term}`LDSR-S2` does internally. This page runs it, on a real Sentinel-2 scene of Granada, Spain, on a single patch, before later pages add uncertainty estimation and scale up to larger regions.
 
 ---
 
@@ -25,7 +25,7 @@ This is the page where the previous three pages' concepts become an actual enhan
 
 ## 2. Core idea
 
-The workflow has a consistent shape: download and inspect the input imagery, locate the patch you want to enhance, run super-resolution, compare the result against both the input and a simple interpolation, check that the output still agrees with the measured 10 m values, and verify its georeferencing before trusting it for anything further.
+The workflow has a consistent shape: download and inspect the input imagery, locate the patch you want to enhance, run {term}`super-resolution <Super-Resolution>`, compare the result against both the input and a simple interpolation, check that the output still agrees with the measured 10 m values, and verify its {term}`georeferencing <Georeferencing>` before trusting it for anything further.
 
 ---
 
@@ -66,9 +66,9 @@ with rio.open(s2_path) as src:
     print(f"Dtype: {src.dtypes[0]}")
 ```
 
-This is a Sentinel-2A Level-2A subset over Granada, Spain, acquired on 2 August 2026, covering the city and the surrounding irrigated farmland of the Vega de Granada. It contains four 10-meter bands (red, green, blue, near-infrared; B4, B3, B2, B8), already in the order LDSR-S2 expects, stored as `uint16` surface reflectance values ranging from 0 to 10,000, where a value of 1,000 corresponds to 10% reflectance. This value range is standard for Sentinel-2 L2A products; do not mistake it for an already-8-bit image.
+This is a Sentinel-2A Level-2A subset over Granada, Spain, acquired on 2 August 2026, covering the city and the surrounding irrigated farmland of the Vega de Granada. It contains four 10-meter bands (red, green, blue, {term}`near-infrared <Near-Infrared>`; B4, B3, B2, B8), already in the order LDSR-S2 expects, stored as `uint16` surface reflectance values ranging from 0 to 10,000, where a value of 1,000 corresponds to 10% reflectance. This value range is standard for Sentinel-2 L2A products; do not mistake it for an already-8-bit image.
 
-### B. Visualize the scene and locate the patch
+### B. Show the scene and locate the patch
 
 LDSR-S2 works on patches of 128 × 128 pixels, which at 10 m is 1.28 × 1.28 km. The rectangle shows the patch used on this page and the next; the dashed square is the larger area page 7 processes.
 
@@ -118,12 +118,12 @@ print(f"Runtime: {time.perf_counter() - start:.0f} s")
 
 ```{admonition} Runs on the CPU, unless you have an NVIDIA GPU
 :class: note
-`geoai.super_resolution()` uses an NVIDIA GPU (CUDA) if one is available and the CPU otherwise; it does not use the Apple Silicon GPU. On a laptop CPU, one patch takes well under a minute with 10 steps. On Google Colab with a GPU, it takes a few seconds.
+`geoai.super_resolution()` uses an NVIDIA {term}`GPU` ({term}`CUDA`) if one is available and the {abbr}`CPU (central processing unit)` otherwise; it does not use the Apple Silicon GPU. On a laptop CPU, one patch takes well under a minute with 10 steps. On Google Colab with a GPU, it takes a few seconds.
 ```
 
 ### D. How many sampling steps?
 
-`geoai`'s default is `sampling_steps=100`, the number the original sampler of this model needed. Current versions of the underlying `opensr-model` package use a faster sampler (DPM-Solver++), which needs far fewer steps. The code below runs the same patch with 3 and 100 steps, to compare against the 10-step result from step C.
+`geoai`'s default is `sampling_steps=100`, the number the original sampler of this model needed. Current versions of the underlying `opensr-model` package use a faster sampler ({abbr}`DPM-Solver++ (a fast solver for diffusion probabilistic models)`), which needs far fewer steps. The code below runs the same patch with 3 and 100 steps, to compare against the 10-step result from step C.
 
 ```{code-cell} ipython3
 def sharpness(img):
@@ -172,7 +172,7 @@ The step count shows diminishing returns: 3 steps give a slightly smoother image
 
 ### E. Compare against interpolation
 
-A super-resolved image always looks sharper than the original 10 m pixels. The fair comparison is against **bicubic interpolation** to the same 2.5 m pixel size, which adds pixels but no new structure.
+A super-resolved image always looks sharper than the original 10 m pixels. The fair comparison is against **{term}`bicubic interpolation <Bicubic Interpolation>`** to the same 2.5 m pixel size, which adds pixels but no new structure.
 
 ```{code-cell} ipython3
 with rio.open(s2_path) as src:
@@ -208,7 +208,7 @@ The bicubic image (centre) is smoother than the 10 m pixels but no more detailed
 
 `geoai` also provides a quick side-by-side plot, `geoai.plot_sr_comparison(s2_path, sr_output)`. It stretches each image separately, so brightness differences between the two panels are partly a display effect; the shared stretch used above avoids that.
 
-### F. Check what the model kept from the input
+### F. Check what the model kept
 
 LDSR-S2 ends with a correction step (page 4): it adjusts its output so that every 4 × 4 block of 2.5 m pixels averages exactly to the original 10 m value. You can verify this by averaging the output back to 10 m:
 
@@ -228,7 +228,7 @@ subpixel_sd = sr_image.reshape(4, SIZE, 4, SIZE, 4).std(axis=(2, 4))
 print(f"Typical variation inside one 10 m pixel (red band): {np.median(subpixel_sd[0]):.4f} reflectance")
 ```
 
-At 10 m, nothing changed: the averages match the input to within rounding, and so does NDVI. The model does not alter what the sensor measured. What it adds is the **distribution inside each 10 m pixel**: which of the sixteen 2.5 m sub-pixels is roof and which is street. The last line shows how large that added variation is: the sixteen sub-pixels of a 10 m pixel typically differ by about 0.017 reflectance (standard deviation, red band), variation the sensor never resolved. That distribution is generated. The NDVI maps below make the difference visible:
+At 10 m, nothing changed: the averages match the input to within rounding, and so does {term}`NDVI <Normalized Difference Vegetation Index>`. The model does not alter what the sensor measured. What it adds is the **distribution inside each 10 m pixel**: which of the sixteen 2.5 m sub-pixels is roof and which is street. The last line shows how large that added variation is: the sixteen sub-pixels of a 10 m pixel typically differ by about 0.017 reflectance (standard deviation, red band), variation the sensor never resolved. That distribution is generated. The NDVI maps below make the difference visible:
 
 ```{code-cell} ipython3
 fig, axes = plt.subplots(1, 2, figsize=(13, 6), layout="constrained")
@@ -306,5 +306,5 @@ A 1 × 1 km area at 10 m is 100 × 100 pixels, for example `window=(700, 1300, 1
 
 ### Further reading
 
-- ESA OpenSR, ["opensr-model"](https://github.com/ESAOpenSR/opensr-model) — documentation of LDSR-S2, its sampler options and the consistency correction.
+- {abbr}`ESA (European Space Agency)` OpenSR, ["opensr-model"](https://github.com/ESAOpenSR/opensr-model) — documentation of LDSR-S2, its sampler options and the consistency correction.
 - Lu et al. (2022), ["DPM-Solver++: Fast Solver for Guided Sampling of Diffusion Probabilistic Models"](https://arxiv.org/abs/2211.01095) — the sampler that makes a handful of steps sufficient.

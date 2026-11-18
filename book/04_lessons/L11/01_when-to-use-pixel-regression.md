@@ -46,8 +46,8 @@ flowchart LR
 | Target | Unit and range | Typical reference data | Typical imagery | In this lesson |
 | --- | --- | --- | --- | --- |
 | {term}`NDVI <Normalized Difference Vegetation Index>` and other indices | none, −1 to 1 | Computed from red and {term}`near-infrared <Near-Infrared>` bands | Multispectral, e.g. {term}`Sentinel-2` | Pages 4–7: the Beni river in Bolivia, 2018 and 2026 |
-| {term}`Canopy height <Canopy Height>` | m, ≥ 0 | Airborne LiDAR, stereo image matching | Aerial RGB, satellite | Page 8: two forest sites in Switzerland |
-| Above-ground biomass | Mg/ha, ≥ 0 | Field plots, LiDAR, spaceborne LiDAR (GEDI) | Multispectral, radar | |
+| {term}`Canopy height <Canopy Height>` | m, ≥ 0 | Airborne {term}`LiDAR`, stereo image matching | Aerial RGB, satellite | Page 8: two forest sites in Switzerland |
+| Above-ground biomass | Mg/ha, ≥ 0 | Field plots, LiDAR, spaceborne LiDAR ({abbr}`GEDI (Global Ecosystem Dynamics Investigation, a lidar instrument on the International Space Station)`) | Multispectral, radar | |
 | Soil moisture | m³/m³, 0 to about 0.6 | In-situ probes, coarse satellite products | Radar, thermal, multispectral | |
 | Building height | m, ≥ 0 | LiDAR, stereo, cadastral 3D models | Aerial, very-high-resolution satellite | |
 | Population density | people/km², ≥ 0 | Census counts per district | Built-up maps, night lights | |
@@ -62,7 +62,7 @@ How much information does binning throw away? A quick measurement on the Beni ND
 
 ### C. When you need no model at all
 
-Sometimes the target is a fixed formula of the input bands. NDVI is exactly (NIR − red) / (NIR + red), so with Sentinel-2 bands at hand you would simply compute it. Pages 4–7 still use NDVI as the target, deliberately: because the correct value is known exactly for every pixel and for both years, it is an ideal test case for learning the workflow, and for asking what the model needs. On page 5 you can remove the near-infrared band from the input; the model then has to *estimate* NDVI from colour and texture, a genuine regression problem. Page 8 then turns to a target that no formula can deliver: tree height from a single aerial photo.
+Sometimes the target is a fixed formula of the input bands. NDVI is exactly ({term}`NIR <Near-Infrared>` − red) / (NIR + red), so with Sentinel-2 bands at hand you would simply compute it. Pages 4–7 still use NDVI as the target, deliberately: because the correct value is known exactly for every pixel and for both years, it is an ideal test case for learning the workflow, and for asking what the model needs. On page 5 you can remove the near-infrared band from the input; the model then has to *estimate* NDVI from colour and texture, a genuine regression problem. Page 8 then turns to a target that no formula can deliver: tree height from a single aerial photo.
 
 ```{admonition} A quick mental test
 :class: tip

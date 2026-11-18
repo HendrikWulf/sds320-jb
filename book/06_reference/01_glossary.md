@@ -77,6 +77,9 @@ Backbone
 Band Order
 : The order in which image {term}`bands <Band>` are stored or passed into a model. Incorrect band order can make an image look wrong and can reduce model performance.
 
+Baseline Model
+: A deliberately simple method used as a yardstick for a more complex model, for example predicting the mean value everywhere, or a {term}`random forest <Random Forest>` that sees each pixel on its own. A model is only worth its complexity if it clearly beats a sensible baseline on held-out data.
+
 Basemap
 : A background map layer used for spatial context. Basemaps help readers understand where results are located, but they should not distract from the main data.
 
@@ -85,6 +88,9 @@ Batch Inference
 
 [Batch Processing](https://en.wikipedia.org/wiki/Batch_processing)
 : Applying the same processing steps to multiple files or areas. It helps make repetitive spatial workflows more efficient and reproducible.
+
+[Bias](https://en.wikipedia.org/wiki/Bias_of_an_estimator)
+: In {term}`regression <Regression>` evaluation, the mean error: the average of prediction minus reference. A positive bias means the model predicts too high on average. A bias close to zero can still hide large errors of opposite sign, for example low values predicted too high and high values too low.
 
 [Bicubic Interpolation](https://en.wikipedia.org/wiki/Bicubic_interpolation)
 : A resampling method that estimates new pixel values from a smooth function fitted to the surrounding 4 × 4 pixels. It enlarges an image without adding new structure, so it is the fair baseline for judging what {term}`super-resolution <Super-Resolution>` adds.
@@ -191,6 +197,9 @@ Confidence Score
 [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity)
 : A measure of how similar two vectors are, based on the angle between them rather than their magnitude. It ranges from -1 to 1, with 1 indicating identical direction (maximum similarity).
 
+[Cross-Entropy Loss](https://en.wikipedia.org/wiki/Cross-entropy)
+: The standard {term}`loss function <Loss Function>` for {term}`classification <Classification>` and segmentation. It compares the predicted class probabilities with the reference class and penalises confident wrong predictions strongly. Binary cross-entropy (BCE) is the two-class form, used for example for change or no-change. Because every pixel counts equally, it is sensitive to {term}`class imbalance <Class Imbalance>`.
+
 [CUDA](https://en.wikipedia.org/wiki/CUDA)
 : NVIDIA's computing platform for running code on compatible GPUs. In {term}`GeoAI`, CUDA can accelerate {term}`deep learning <Deep Learning>` training and {term}`inference <Inference>` when the hardware and software environment are configured correctly.
 
@@ -238,6 +247,9 @@ Downstream Task
 
 [DRY Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 : A programming principle meaning “Don’t Repeat Yourself”. In project code, repeated logic should often be turned into a function or reusable script.
+
+Early Fusion
+: A {term}`change detection <Change Detection>` design in which the images of both dates are stacked into one multi-channel input and processed by a single network. It is simpler than a {term}`siamese network <Siamese Network>`, which passes each date through the same encoder separately, but the network must learn on its own which channels belong to which date.
 
 [Early Stopping](https://en.wikipedia.org/wiki/Early_stopping)
 : A training strategy that halts optimization when a monitored validation metric has not improved for a defined number of epochs, reducing unnecessary training after validation performance has plateaued.
@@ -398,6 +410,9 @@ Image Embedding
 ImageFolder
 : A simple image-{term}`classification <Classification>` dataset layout where each class is represented by one folder, and all images inside that folder receive the folder name as their label.
 
+[ImageNet](https://en.wikipedia.org/wiki/ImageNet)
+: A large dataset of labelled everyday photographs (over a million images in 1,000 classes) on which many image models are pre-trained. ImageNet weights are a common starting point for {term}`transfer learning <Transfer Learning>`, also in remote sensing, but they were learned from three-channel RGB photographs with values normalised in a fixed way, so other bands and value ranges need care.
+
 Import
 : A Python statement that loads a package, module or function so it can be used in the current script or notebook.
 
@@ -447,10 +462,13 @@ Latent Diffusion Model
 : A latent diffusion model (LDM) is a {term}`diffusion model <Diffusion Model>` that runs its denoising process in a compressed latent representation, produced by an encoder, rather than directly on full-resolution pixels, then decodes the result back to pixel space. This substantially reduces computational cost compared with running diffusion on raw pixels.
 
 LDSR-S2
-: A latent-diffusion {term}`super-resolution <Super-Resolution>` model designed for four-{term}`band <Band>` {term}`Sentinel-2` imagery, producing 4× finer output from Red, Green, Blue and {term}`near-infrared <Near-Infrared>` inputs.
+: LDSR-S2 (latent diffusion super-resolution for Sentinel-2) is a {term}`super-resolution <Super-Resolution>` model designed for four-{term}`band <Band>` {term}`Sentinel-2` imagery, producing 4× finer output from Red, Green, Blue and {term}`near-infrared <Near-Infrared>` inputs.
 
 Leafmap
 : A Python package for interactive geospatial mapping in notebooks. It is useful for exploring imagery, vector data, model outputs and map comparisons.
+
+[LiDAR](https://en.wikipedia.org/wiki/Lidar)
+: LiDAR (light detection and ranging) measures distances with laser pulses, from aircraft, drones, satellites or ground instruments. Airborne LiDAR delivers accurate terrain and vegetation height models and is a common source of reference data for {term}`pixel-level regression <Pixel-Level Regression>`, for example of {term}`canopy height <Canopy Height>`.
 
 List
 : A Python data structure that stores multiple values in order. Lists are useful for processing several files, {term}`bands <Band>`, years, classes or {term}`tiles <Tile>`.
@@ -704,6 +722,9 @@ Region Proposal Network
 [Regression](https://en.wikipedia.org/wiki/Regression_analysis)
 : A modelling task that predicts continuous values rather than categories. In spatial analytics, regression can estimate variables such as temperature, elevation, biomass or risk.
 
+Regression Head
+: The final layer of a {term}`regression <Regression>` model, which outputs a continuous value instead of class scores. For {term}`pixel-level regression <Pixel-Level Regression>` it is a single output channel, usually without an activation function, so the network can output any number; valid ranges are enforced by clipping. It replaces the {term}`classification head <Classification Head>` of a segmentation model.
+
 [Relative Path](https://en.wikipedia.org/wiki/Path_%28computing%29)
 : A file path written relative to the current project or {term}`working directory <Working Directory>`. Relative paths usually make projects easier to move, share and reproduce.
 
@@ -809,6 +830,9 @@ Small Reproducible Example
 [Spatial Resolution](https://en.wikipedia.org/wiki/Image_resolution)
 : The ground area represented by one pixel or measurement. Spatial resolution influences which objects can be detected and how results should be interpreted.
 
+Spatial Split
+: Dividing data into training, validation and test sets by location, for example by holding out a separate part of a scene or a different site. Because nearby pixels are similar ({term}`spatial autocorrelation <Spatial Autocorrelation>`) and overlapping tiles share pixels, a random split causes {term}`data leakage <Data Leakage>` and over-optimistic scores.
+
 SpatioTemporal Asset Catalog
 : The SpatioTemporal Asset Catalog (STAC) specification is a {term}`metadata <Metadata>` standard and search interface for discovering geospatial assets such as satellite imagery. STAC helps users search by area, time, collection and cloud cover.
 
@@ -848,6 +872,9 @@ Stride
 SWISSIMAGE
 : A high-resolution {term}`aerial imagery <Aerial Imagery>` product for Switzerland provided by swisstopo. It can be useful for detailed visual inspection and mapping in Swiss study areas.
 
+[Synthetic Aperture Radar](https://en.wikipedia.org/wiki/Synthetic-aperture_radar)
+: Synthetic aperture radar (SAR) is an active {term}`sensor <Sensor>` that sends microwave pulses and records their echoes, so it images the surface day and night and through clouds. SAR images show surface roughness, structure and moisture rather than colour; Sentinel-1 is a widely used SAR mission.
+
 [Terminal](https://en.wikipedia.org/wiki/Terminal_emulator)
 : A {term}`command-line <Command Line>` application used to run shell commands. On macOS and Linux it is commonly called Terminal; on Windows, {term}`PowerShell` or {term}`Anaconda` {term}`Prompt` serve a similar role.
 
@@ -884,6 +911,9 @@ TorchGeo
 [Transformer](https://en.wikipedia.org/wiki/Transformer_%28deep_learning_architecture%29)
 : A neural network architecture based on attention mechanisms. Transformers are used in vision models, language models and many {term}`foundation models <Foundation Model>`.
 
+[True Negative](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)
+: A true negative (TN) is a case where the model correctly predicts that something is absent, for example an unchanged pixel predicted as unchanged. In imbalanced problems, true negatives dominate {term}`accuracy <Accuracy>`, which is why metrics such as the {term}`F1-score` leave them out.
+
 [True Positive](https://en.wikipedia.org/wiki/Sensitivity_and_specificity)
 : A true positive (TP) is a case where the model correctly predicts something that is present in the reference data. In validation, true positives contribute to metrics such as {term}`precision <Precision>`, {term}`recall <Recall>` and {term}`F1-score`, together with {term}`false positives <False Positive>` and {term}`false negatives <False Negative>`.
 
@@ -913,6 +943,9 @@ Vector Data
 
 Vectorization
 : The conversion of raster outputs such as {term}`masks <Mask>` into vector geometries. Vectorization can make model outputs easier to measure, edit or use in GIS workflows.
+
+Vegetation Height Model
+: A raster that gives the height of the vegetation above the ground for each pixel, i.e. a {term}`canopy height <Canopy Height>` map. The Swiss vegetation height model (VHM) of the National Forest Inventory is derived by stereo matching of aerial images and subtracting a terrain model, at 1 m resolution.
 
 [Version Control](https://en.wikipedia.org/wiki/Version_control)
 : The practice of tracking changes to files over time. Version control makes it easier to review project history, recover earlier versions and collaborate.

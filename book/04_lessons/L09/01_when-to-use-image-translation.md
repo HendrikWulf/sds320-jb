@@ -30,9 +30,9 @@ The landing page introduced image translation as a task that produces new images
 | Task | Input → output | Remote sensing example | Main risk |
 | --- | --- | --- | --- |
 | **{term}`Super-resolution <Super-Resolution>`** | Coarse image → finer image of the same scene | {term}`Sentinel-2` at 10 m → 2.5 m (this lesson) | Invented fine detail: edges, roofs, small objects |
-| **Sensor translation** | One modality → another | Radar (SAR) → optical-looking image | Plausible colours and textures that radar never measured |
+| **Sensor translation** | One modality → another | Radar ({term}`SAR <Synthetic Aperture Radar>`) → optical-looking image | Plausible colours and textures that radar never measured |
 | **Temporal gap filling** | Neighbouring dates → missing date | {term}`Cloud removal <Cloud Removal>` in a cloudy scene | Whole areas filled with plausible but unobserved content |
-| **Spectral enhancement** | Few bands → more bands | RGB → estimated near-infrared | Reflectance values that look right but are not measured |
+| **Spectral enhancement** | Few bands → more bands | RGB → estimated {term}`near-infrared <Near-Infrared>` | Reflectance values that look right but are not measured |
 | **Synthetic data generation** | Labels or noise → realistic image | Training images for rare classes or regions | Training on artefacts the model then learns as real |
 
 All five share the same structure: a model learns to map an input image from one domain to an output image in a different domain, changing resolution, spectral content or sensor style while keeping structural features like buildings, roads and fields in their correct locations. And all five share the same risk, shown in the last column: the output contains information that no sensor observed.
@@ -101,5 +101,5 @@ Before generating a cloud-free image, check whether a cloud-free Sentinel-2 acqu
 ### Further reading
 
 - Isola et al. (2017), ["Image-to-Image Translation with Conditional Adversarial Networks"](https://arxiv.org/abs/1611.07004) — the Pix2Pix paper; one of its examples translates between aerial photos and maps.
-- ESA OpenSR, ["opensr-model"](https://github.com/ESAOpenSR/opensr-model) — the open-source project behind the super-resolution model used in this lesson.
+- {abbr}`ESA (European Space Agency)` OpenSR, ["opensr-model"](https://github.com/ESAOpenSR/opensr-model) — the open-source project behind the super-resolution model used in this lesson.
 - Esri, ["Super-Resolution: Image-to-Image Translation Using Deep Learning in ArcGIS Pro"](https://www.esri.com/arcgis-blog/products/arcgis-pro/aec/super-resolution-image-to-image-translation-using-deep-learning-in-arcgis-pro) — a different platform's perspective on the same family of tasks.

@@ -13,7 +13,7 @@ Domains, paired data, and the difference between generated and observed
 
 ---
 
-The previous page scoped what this lesson covers. This page builds the conceptual vocabulary, domains, paired versus unpaired training, training objectives, and generated-versus-observed output, that the rest of the lesson relies on, even though only super-resolution gets a full workflow.
+The previous page scoped what this lesson covers. This page builds the conceptual vocabulary, domains, paired versus unpaired training, training objectives, and generated-versus-observed output, that the rest of the lesson relies on, even though only {term}`super-resolution <Super-Resolution>` gets a full workflow.
 
 ---
 
@@ -25,7 +25,7 @@ The single most important idea in this entire lesson is introduced here: a trans
 
 ## 2. Core idea
 
-Image translation learns a mapping from an input image in one domain to an output image in a different domain. A "domain" here just means a particular kind of image: 10-meter Sentinel-2 imagery is one domain, 2.5-meter imagery is another; SAR imagery is one domain, optical imagery is another. Crucially, the mapping preserves spatial structure: a building in the input stays in the same location in the output, even though its appearance changes.
+{term}`Image translation <Image Translation>` learns a mapping from an input image in one domain to an output image in a different domain. A "domain" here just means a particular kind of image: 10-meter Sentinel-2 imagery is one domain, 2.5-meter imagery is another; {term}`synthetic aperture radar (SAR) <Synthetic Aperture Radar>` imagery is one domain, optical imagery is another. Crucially, the mapping preserves spatial structure: a building in the input stays in the same location in the output, even though its appearance changes.
 
 What the model produces between those fixed locations depends on two things: **what data it was trained on**, and **what it was rewarded for** during training.
 
@@ -63,9 +63,9 @@ During training, a translation model is scored by a **{term}`loss function <Loss
 
 | Training objective | What it rewards | Typical output | Examples |
 | --- | --- | --- | --- |
-| **Pixel loss** (mean absolute or squared error against the true image) | Being close to the truth *on average* | Smooth, slightly blurry: when unsure, the model averages all plausible answers | SRCNN, EDSR |
-| **Adversarial loss** (a discriminator judges realism) | Looking like a real image | Sharp, realistic texture, including invented detail | Pix2Pix, CycleGAN, SRGAN |
-| **Diffusion** (learn to remove noise step by step) | Producing a sample from the distribution of realistic images that match the input | Sharp detail, *different on every run* | SR3, LDSR-S2 (this lesson) |
+| **Pixel loss** (mean absolute or squared error against the true image) | Being close to the truth *on average* | Smooth, slightly blurry: when unsure, the model averages all plausible answers | {abbr}`SRCNN (Super-Resolution Convolutional Neural Network)`, {abbr}`EDSR (Enhanced Deep Super-Resolution network)` |
+| **Adversarial loss** (a discriminator judges realism) | Looking like a real image | Sharp, realistic texture, including invented detail | Pix2Pix, CycleGAN, {abbr}`SRGAN (Super-Resolution Generative Adversarial Network)` |
+| **Diffusion** (learn to remove noise step by step) | Producing a sample from the distribution of realistic images that match the input | Sharp detail, *different on every run* | {abbr}`SR3 (Super-Resolution via Repeated Refinement)`, {term}`LDSR-S2` (this lesson) |
 
 Pix2Pix, CycleGAN and SRGAN are built on **{term}`generative adversarial networks (GANs) <Generative Adversarial Network>`**: a generator network produces candidate output images, and a discriminator network tries to tell generated images apart from real ones. Training pushes the generator to produce increasingly convincing output, since it improves specifically by fooling the discriminator, not by minimizing pixel-by-pixel error alone. The model you will use in this lesson takes the more recent diffusion approach, covered on page 4.
 
@@ -75,7 +75,7 @@ The table hides an uncomfortable fact, known as the **perception–distortion tr
 
 ### D. Generated, not observed
 
-Because a generative translation model is trained to produce *convincing* output rather than to guarantee a physically correct one, its output is fundamentally a statistical prediction: a plausible image consistent with the input, given everything the model learned during training. This matters because the model has no way to verify its output against ground truth at the moment it generates it; it produces its best guess, and that guess can be wrong, confidently and consistently wrong, in ways that are not obvious just by looking at the result.
+Because a generative translation model is trained to produce *convincing* output rather than to guarantee a physically correct one, its output is fundamentally a statistical prediction: a plausible image consistent with the input, given everything the model learned during training. This matters because the model has no way to verify its output against {term}`ground truth <Ground Truth>` at the moment it generates it; it produces its best guess, and that guess can be wrong, confidently and consistently wrong, in ways that are not obvious just by looking at the result.
 
 ```{admonition} Keep this distinction in view for the rest of the lesson
 :class: important
@@ -86,8 +86,8 @@ Every later page in this lesson, including the workflow itself, builds on this o
 
 ## 4. Common pitfalls
 
-- **Treating "paired" and "unpaired" as a choice you make.** It is determined by what training data was available when the model was built, not a setting you control when using a pre-trained model.
-- **Assuming a convincing-looking output is a correct one.** GANs and diffusion models are specifically trained to produce realistic-looking results, which is a different goal from producing measurably accurate ones.
+- **Treating "paired" and "unpaired" as a choice you make.** It is determined by what training data was available when the model was built, not a setting you control when using a {term}`pre-trained model <Pre-Trained Model>`.
+- **Assuming a convincing-looking output is a correct one.** GANs and {term}`diffusion models <Diffusion Model>` are specifically trained to produce realistic-looking results, which is a different goal from producing measurably accurate ones.
 - **Reading blurriness as a flaw and sharpness as quality.** Blur can be the honest answer when the input is ambiguous; crisp detail can be a confident guess.
 - **Forgetting that "generated, not observed" applies to every translation task, not just this lesson's super-resolution example.** The same caution applies to sensor translation, gap filling, and the other applications from the previous page.
 

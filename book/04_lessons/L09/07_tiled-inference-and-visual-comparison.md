@@ -13,7 +13,7 @@ Scaling inference across tiles and comparing results visually
 
 ---
 
-Everything so far has processed one 128-by-128 patch. This page scales the same workflow to a larger region, checks the seams between tiles, and compares the output against real aerial imagery, with an important caveat about what that comparison can and cannot prove.
+Everything so far has processed one 128-by-128 patch. This page scales the same workflow to a larger region, checks the seams between tiles, and compares the output against real {term}`aerial imagery <Aerial Imagery>`, with an important caveat about what that comparison can and cannot prove.
 
 ---
 
@@ -25,7 +25,7 @@ Real projects rarely need just one small patch enhanced. Knowing how tiling work
 
 ## 2. Core idea
 
-For any region larger than LDSR-S2's native 128-by-128 input size, `geoai.super_resolution()` automatically cuts the input into overlapping tiles, runs the encode-denoise-decode pipeline on each independently, and stitches the results back together, blending linearly across the overlaps. This is the same {term}`tiled inference <Tiled Inference>` idea you have seen in detection, segmentation and change detection. What is new here is that each tile is *generated* independently, so neighbouring tiles may draw the same 10 m pixel in slightly different ways, and the blending must hide that.
+For any region larger than {term}`LDSR-S2`'s native 128-by-128 input size, `geoai.super_resolution()` automatically cuts the input into overlapping tiles, runs the encode-denoise-decode pipeline on each independently, and stitches the results back together, blending linearly across the overlaps. This is the same {term}`tiled inference <Tiled Inference>` idea you have seen in detection, segmentation and change detection. What is new here is that each tile is *generated* independently, so neighbouring tiles may draw the same 10 m pixel in slightly different ways, and the blending must hide that.
 
 ---
 
@@ -243,7 +243,7 @@ None of these effects is large, but together they show that tiling is not neutra
 
 ### F. Compare against aerial imagery
 
-Is the generated detail real? The only way to find out is to compare it with imagery that *observed* that detail. Spain's national orthophoto programme, **PNOA**, provides free aerial imagery at 25 cm through a public web map service (WMS) of the Instituto Geográfico Nacional (IGN), under a CC BY 4.0 licence (attribution: PNOA © Instituto Geográfico Nacional de España). The code requests an image covering exactly the footprint of the super-resolved output, and asks the service when the aerial photos were taken:
+Is the generated detail real? The only way to find out is to compare it with imagery that *observed* that detail. Spain's national orthophoto programme, **{abbr}`PNOA (Plan Nacional de Ortofotografía Aérea, Spain's national aerial orthophoto programme)`**, provides free aerial imagery at 25 cm through a public web map service (WMS) of the Instituto Geográfico Nacional (IGN), under a CC BY 4.0 licence (attribution: PNOA © Instituto Geográfico Nacional de España). The code requests an image covering exactly the footprint of the super-resolved output, and asks the service when the aerial photos were taken:
 
 ```{code-cell} ipython3
 PNOA_WMS = "https://www.ign.es/wms-inspire/pnoa-ma"
@@ -303,7 +303,7 @@ Compare the rows column by column:
 
 ### G. An interactive comparison
 
-For your own exploration, `geoai` can also show the output on an interactive {term}`split-panel map <Split-Panel Map>` against a global basemap:
+For your own exploration, `geoai` can also show the output on an interactive {term}`split-panel map <Split-Panel Map>` against a global {term}`basemap <Basemap>`:
 
 ```{code-cell} ipython3
 geoai.create_split_map(
@@ -354,7 +354,7 @@ The PNOA aerial images were flown in September 2022, four years before the Senti
 
 1. The stride is 128 − 16 = 112 pixels, so two tiles cover 112 + 128 = 240 pixels. A window of 240 × 240 pixels, 2.4 × 2.4 km at 10 m, needs exactly four tiles. In general, *n* tiles per axis cover (*n* − 1) × 112 + 128 pixels.
 
-2. One possibility is that the building was demolished between the aerial flight (2022) and the Sentinel-2 acquisition (2026), a genuine temporal difference rather than a model error. Another possibility is that the building is small enough, or has low enough contrast in the original 10-meter input, that the model did not reconstruct it. To distinguish between them, look at the 10 m input itself: if there is no trace of the building there either, check more recent imagery (for example a newer basemap) for the demolition. If the 10 m input does show a distinct bright or dark spot that the super-resolved image smooths away, the model missed it; the uncertainty map from page 6 may be elevated there.
+2. One possibility is that the building was demolished between the aerial flight (2022) and the Sentinel-2 acquisition (2026), a genuine temporal difference rather than a model error. Another possibility is that the building is small enough, or has low enough contrast in the original 10-meter input, that the model did not reconstruct it. To distinguish between them, look at the 10 m input itself: if there is no trace of the building there either, check more recent imagery (for example a newer basemap) for the demolition. If the 10 m input does show a distinct bright or dark spot that the super-resolved image smooths away, the model missed it; the {term}`uncertainty map <Uncertainty Map>` from page 6 may be elevated there.
 :::
 
 ---
@@ -370,4 +370,4 @@ The PNOA aerial images were flown in September 2022, four years before the Senti
 ### Further reading
 
 - IGN Spain, ["PNOA – Plan Nacional de Ortofotografía Aérea"](https://pnoa.ign.es/) — the Spanish national orthophoto programme and its free web services.
-- ESA OpenSR, ["opensr-model"](https://github.com/ESAOpenSR/opensr-model) — the model's own guidance on patch sizes and tiling.
+- {abbr}`ESA (European Space Agency)` OpenSR, ["opensr-model"](https://github.com/ESAOpenSR/opensr-model) — the model's own guidance on patch sizes and tiling.

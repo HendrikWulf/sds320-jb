@@ -13,7 +13,7 @@ Tuning thresholds, comparing model variants and exporting results
 
 ---
 
-You can now read every piece of a ChangeStar result. This page covers the decisions that shape what ends up in `change_map` in the first place, the threshold and the model variant, compares the result with a simple pixel-wise baseline, and finishes by getting the changes into a GIS-ready file.
+You can now read every piece of a {term}`ChangeStar` result. This page covers the decisions that shape what ends up in `change_map` in the first place, the threshold and the model variant, compares the result with a simple pixel-wise baseline, and finishes by getting the changes into a GIS-ready file.
 
 ---
 
@@ -173,7 +173,7 @@ plt.show()
 
 The nine classes follow the OpenEarthMap land-cover scheme used to generate the S9 training data; the legend lists only the classes that occur here. The maps show both the model's strength and its limits. It captures the new streets and rows of buildings and the cleared woodland convincingly. But it labels the bare 2022 construction site almost entirely as "developed space", not as "bareland", so a land-cover class can describe a surface quite differently from how you would. Choose the variant by your question: for counting new buildings, S1; for describing how the land surface as a whole changed, S9. In both cases, compare at least one alternative before committing.
 
-### D. Does deep learning beat a simple baseline?
+### D. Better than a simple baseline?
 
 Page 3 used pixel-wise methods on Sentinel-2. Applying the same idea to this image pair shows directly what ChangeStar adds.
 
@@ -204,7 +204,7 @@ The baseline flags far more area, and the zoom shows why. It reacts to *every* p
 
 ### E. From pixels to GIS-ready polygons
 
-`predict()` already saved GeoTIFFs and a {term}`GeoPackage` on the workflow page:
+`predict()` already saved {term}`GeoTIFFs <GeoTIFF>` and a {term}`GeoPackage` on the workflow page:
 
 ```{code-cell} ipython3
 for f in sorted(OUT_DIR.iterdir()):
@@ -221,7 +221,7 @@ print(changes["area_m2"].describe().round(1))
 print(f"Polygons smaller than 10 m²: {(changes['area_m2'] < 10).sum()}")
 ```
 
-The area comes from the polygons' geometry, which is in metres because the {term}`CRS <Coordinate Reference System>` (EPSG:6674, a Japanese plane rectangular system) is projected. A typical detached house covers roughly 50 to 100 m², so polygons of a few square metres are fragments: edge pieces, vehicles, or noise.
+The area comes from the polygons' geometry, which is in metres because the {term}`CRS <Coordinate Reference System>` ({abbr}`EPSG (European Petroleum Survey Group, the registry that numbers coordinate reference systems)`:6674, a Japanese plane rectangular system) is projected. A typical detached house covers roughly 50 to 100 m², so polygons of a few square metres are fragments: edge pieces, vehicles, or noise.
 
 A more useful product combines the change map with the from–to information from the previous page, and drops the fragments:
 
@@ -284,7 +284,7 @@ For a quick one-off analysis, `geoai.change_detection.changestar_detect(image1, 
 ## 5. Common pitfalls
 
 - **Treating the default threshold of 0.5 as universally correct.** The right value depends on whether false alarms or missed changes are more costly for your application; plot the area-threshold curve to see how sensitive your result is.
-- **Re-running a model just to try a new threshold.** The probability map already contains everything; thresholding it is instantaneous.
+- **Re-running a model just to try a new threshold.** The {term}`probability map <Probability Map>` already contains everything; thresholding it is instantaneous.
 - **Committing to one model variant without comparing at least one alternative.** The S1 and S9 variants answer different questions; their disagreement is informative, not just noise.
 - **Skipping the baseline.** Without it, you cannot tell how much a deep learning model actually adds for your data.
 - **Exporting raw polygons without attributes or a minimum area.** A GeoPackage full of unlabeled fragments is hard to use; add the change type and area, and remove fragments below a documented minimum size.

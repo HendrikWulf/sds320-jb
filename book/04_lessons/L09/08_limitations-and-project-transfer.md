@@ -15,15 +15,15 @@ Understanding the limits of image translation and applying it to your project
 
 ## 1. Motivation
 
-You have now run the full LDSR-S2 workflow, from a single patch through uncertainty estimation, tiled inference and a comparison with aerial imagery. This page consolidates the limitations that have been building throughout the lesson into one clear picture, then turns to the same project-transfer work you completed at the end of earlier lessons: deciding, concretely, whether image translation belongs in your own project.
+You have now run the full {term}`LDSR-S2` workflow, from a single patch through uncertainty estimation, {term}`tiled inference <Tiled Inference>` and a comparison with {term}`aerial imagery <Aerial Imagery>`. This page consolidates the limitations that have been building throughout the lesson into one clear picture, then turns to the same project-transfer work you completed at the end of earlier lessons: deciding, concretely, whether image translation belongs in your own project.
 
 ---
 
 ## 2. Which outputs are safe to use?
 
-### A. What is measured and what is generated
+### A. Measured versus generated
 
-The pages of this lesson add up to a precise answer. LDSR-S2 keeps every **10 m average** exactly as Sentinel-2 measured it (page 5): averaged back to 10 m, the output matches the input, and so does an index such as NDVI. What the model generates is the **arrangement inside each 10 m pixel**: where a roof ends, where a courtyard is, which 2.5 m pixel is a tree. That arrangement changes from run to run (page 6), and compared with aerial imagery it is often plausible texture rather than an accurate copy (page 7).
+The pages of this lesson add up to a precise answer. LDSR-S2 keeps every **10 m average** exactly as Sentinel-2 measured it (page 5): averaged back to 10 m, the output matches the input, and so does an index such as {term}`NDVI <Normalized Difference Vegetation Index>`. What the model generates is the **arrangement inside each 10 m pixel**: where a roof ends, where a courtyard is, which 2.5 m pixel is a tree. That arrangement changes from run to run (page 6), and compared with aerial imagery it is often plausible texture rather than an accurate copy (page 7).
 
 A **{term}`hallucination <Hallucination>`**, in this generative-model sense, is a plausible-looking detail the model produced that does not correspond to reality: a building outline sharper than its true shape, a road edge generated where none exists, a vegetation texture that reflects a learned pattern rather than the actual canopy. None of these are software bugs; they are the expected behavior of a model trained to generate convincing detail from ambiguous input, the ill-posed problem from page 3. On page 7, the model's roundabout turned out to be real, while the courtyards and street trees of the blocks of flats were not reproduced.
 
@@ -40,7 +40,7 @@ The change detection row connects directly to [Lesson 10](../10_change-detection
 
 ### B. Where the model learned
 
-Super-resolution models inherit the characteristics of their training data. LDSR-S2 was trained on **SEN2NAIP**, Sentinel-2 images paired with aerial images of the United States. Its idea of what a roof, a street or a field looks like at 2.5 m therefore comes from American landscapes. Granada's dense blocks of flats with inner courtyards, terracotta roofs and narrow streets differ from most of that training data, which is one plausible reason why the blocks of flats on page 7 look plausible but not accurate. For your own study area, ask how similar it is to the training data, and expect more invented detail the more it differs.
+{term}`Super-resolution <Super-Resolution>` models inherit the characteristics of their training data. LDSR-S2 was trained on **SEN2NAIP**, Sentinel-2 images paired with {term}`NAIP` aerial images of the United States. Its idea of what a roof, a street or a field looks like at 2.5 m therefore comes from American landscapes. Granada's dense blocks of flats with inner courtyards, terracotta roofs and narrow streets differ from most of that training data, which is one plausible reason why the blocks of flats on page 7 look plausible but not accurate. For your own study area, ask how similar it is to the training data, and expect more invented detail the more it differs.
 
 ```{admonition} A practical rule of thumb
 :class: important
@@ -56,7 +56,7 @@ Work through this list for your own project:
 - [ ] I can state specifically what my project would use super-resolved imagery for: visual interpretation, or quantitative measurement.
 - [ ] I have checked observed alternatives first: free aerial orthophotos, pansharpened imagery, or commercial imagery (page 1 and page 3).
 - [ ] If quantitative, I have identified an alternative (genuinely observed high-resolution imagery, or a different method) for anything I should not measure from generated detail.
-- [ ] I have a plan to compute and check uncertainty maps for any super-resolution output I rely on.
+- [ ] I have a plan to compute and check {term}`uncertainty maps <Uncertainty Map>` for any super-resolution output I rely on.
 - [ ] I compare the output against observed reference imagery for at least a sample of locations, and I know the reference's acquisition date.
 - [ ] I do not use super-resolved imagery to detect change between dates.
 - [ ] I have considered whether my study area resembles the landscapes the model was trained on.
@@ -101,7 +101,7 @@ Produce a short image-translation project plan (half a page is enough) that stat
 ## 7. Reflection questions
 
 1. Does your project's need for finer spatial detail call for a visual enhancement tool, or does it actually require genuinely observed high-resolution imagery?
-2. If you used super-resolved imagery and later found it disagreed with ground truth in a specific area, how would you explain that disagreement using the concepts from this lesson (consistency at 10 m, generated detail inside each pixel, uncertainty, training data)?
+2. If you used super-resolved imagery and later found it disagreed with {term}`ground truth <Ground Truth>` in a specific area, how would you explain that disagreement using the concepts from this lesson (consistency at 10 m, generated detail inside each pixel, uncertainty, training data)?
 3. How would you communicate the difference between "observed" and "generated" detail to someone reading your project who is not familiar with how these models work?
 4. Would your study area's landscape type give you more or less confidence in a model trained on images of the United States, and why?
 5. If your project does not currently need image translation, what would need to change about your data or your question for that to become useful?

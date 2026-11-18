@@ -19,7 +19,7 @@ You know which architecture and loss function to reach for. This page prepares t
 
 ## 1. Motivation
 
-Regression tiling looks like the segmentation tiling from L07, but two things deserve more care. The target side holds continuous values instead of class indices, so its value range and data type need checking. And the way you split tiles into training and validation sets decides whether your validation scores mean anything: neighbouring tiles share pixels, and a careless split lets the model be validated on pixels it has already seen.
+Regression tiling looks like the segmentation tiling from L07, but two things deserve more care. The target side holds continuous values instead of class indices, so its value range and data type need checking. And the way you split tiles into {term}`training <Training Set>` and {term}`validation sets <Validation Set>` decides whether your validation scores mean anything: neighbouring tiles share pixels, and a careless split lets the model be validated on pixels it has already seen.
 
 ---
 
@@ -197,7 +197,7 @@ print(f"Random split: {(in_train & in_val).sum() / in_val.sum():.0%} of the vali
 
 More than nine out of ten validation pixels were also training pixels. Validation scores from such a split mostly measure how well the model remembers what it has seen, a form of {term}`data leakage <Data Leakage>`. Even without overlap, neighbouring tiles are similar because of {term}`spatial autocorrelation <Spatial Autocorrelation>`, so randomly drawn validation tiles are easier than genuinely new areas.
 
-A **spatial split** avoids this. We hold out the southern part of the scene: tiles that start at row 1,024 or below form the validation set, tiles that end above row 1,024 form the training set, and the row of tiles crossing the boundary is not used at all.
+A **{term}`spatial split <Spatial Split>`** avoids this. We hold out the southern part of the scene: tiles that start at row 1,024 or below form the validation set, tiles that end above row 1,024 form the training set, and the row of tiles crossing the boundary is not used at all.
 
 ```{code-cell} ipython3
 SPLIT_ROW = 1024

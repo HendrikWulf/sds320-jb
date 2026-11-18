@@ -13,13 +13,13 @@ Bringing it all together: predicting vegetation height from SWISSIMAGE aerial ph
 
 ---
 
-Pages 4–7 used NDVI as the target, a value the model could in principle compute from its input. This page applies the complete workflow to a target that no formula can deliver: the **height of the vegetation**, predicted from a single aerial photograph. You train on one forest site in the canton of Graubünden and test on a second site the model has never seen.
+Pages 4–7 used {term}`NDVI <Normalized Difference Vegetation Index>` as the target, a value the model could in principle compute from its input. This page applies the complete workflow to a target that no formula can deliver: the **height of the vegetation**, predicted from a single aerial photograph. You train on one forest site in the canton of Graubünden and test on a second site the model has never seen.
 
 ---
 
 ## 1. Motivation
 
-{term}`Canopy height <Canopy Height>` is one of the most useful variables in forestry and ecology: it is related to timber volume, biomass and carbon, habitat structure and forest development stage. It is usually measured with airborne LiDAR or by matching stereo aerial images, both of which are expensive and repeated only every few years. Orthophotos, on the other hand, are available for many areas and years, including historical ones. If a model can estimate height from an orthophoto, it can extend height maps to places and dates without 3D data.
+{term}`Canopy height <Canopy Height>` is one of the most useful variables in forestry and ecology: it is related to timber volume, biomass and carbon, habitat structure and forest development stage. It is usually measured with airborne {term}`LiDAR` or by matching stereo aerial images, both of which are expensive and repeated only every few years. Orthophotos, on the other hand, are available for many areas and years, including historical ones. If a model can estimate height from an orthophoto, it can extend height maps to places and dates without 3D data.
 
 The task is genuinely hard. A single orthophoto contains no direct height information; the model has to infer it from indirect clues: crown size and texture, shadows, the type of vegetation, and the surroundings. This page therefore also asks the question every regression project must answer: is the model better than simple alternatives?
 
@@ -32,7 +32,7 @@ The data come from two 1.5 × 1.5 km forest sites in Graubünden, both at 1 m re
 | Data | Content | Source |
 | --- | --- | --- |
 | {term}`SWISSIMAGE` | RGB orthophoto, resampled from 10 cm to 1 m | Federal Office of Topography swisstopo |
-| Vegetation height model (VHM) | Height of the vegetation above ground, in metres | Swiss National Forest Inventory (NFI), WSL and FOEN |
+| {term}`Vegetation height model <Vegetation Height Model>` (VHM) | Height of the vegetation above ground, in metres | Swiss National Forest Inventory (NFI), {abbr}`WSL (Swiss Federal Institute for Forest, Snow and Landscape Research)` and {abbr}`FOEN (Federal Office for the Environment)` |
 
 The VHM is produced by matching swisstopo's stereo aerial images from the leaf-on flights to compute a surface model, then subtracting the terrain height (swissALTI3D); buildings are removed. The reference and the input therefore come from the same flights: the stereo images contain the 3D information, a single orthophoto does not.
 
@@ -47,7 +47,7 @@ The workflow repeats every step of this lesson, in condensed form:
 
 ```{admonition} Training takes a few minutes
 :class: note
-With the default settings, training takes about 2 minutes on an Apple M3 laptop (Apple GPU), and roughly 30–60 minutes on a CPU. The outputs on this page come from one such run; your numbers will differ slightly.
+With the default settings, training takes about 2 minutes on an Apple M3 laptop (Apple {term}`GPU`), and roughly 30–60 minutes on a {abbr}`CPU (central processing unit)`. The outputs on this page come from one such run; your numbers will differ slightly.
 ```
 
 ---
@@ -162,7 +162,7 @@ for name, x in [("divided by 10,000", geoai_scaled), ("divided by 255", raw / 25
     print(f"{name:<18} -> after ImageNet normalization: mean {z.mean():5.2f}, SD {z.std():.3f}")
 ```
 
-Divided by 10,000, the 8-bit values end up between 0 and 0.025. For a three-band model with ImageNet weights, `geoai` then also applies the ImageNet normalization, which expects values between 0 and 1. The result is an input in which every pixel is close to −2 and the differences between pixels are about five times smaller than with correct scaling (SD 0.13 instead of 0.69). Nothing fails and no warning appears, but the pretrained encoder receives images that look nothing like the photographs it was trained on. Dividing by 255 first gives the network what it expects:
+Divided by 10,000, the 8-bit values end up between 0 and 0.025. For a three-band model with {term}`ImageNet` weights, `geoai` then also applies the ImageNet normalization, which expects values between 0 and 1. The result is an input in which every pixel is close to −2 and the differences between pixels are about five times smaller than with correct scaling (standard deviation 0.13 instead of 0.69). Nothing fails and no warning appears, but the pretrained encoder receives images that look nothing like the photographs it was trained on. Dividing by 255 first gives the network what it expects:
 
 ```{code-cell} ipython3
 PREP_DIR = Path("data/prepared")
@@ -238,7 +238,7 @@ print(f"Training took {(time.time() - start) / 60:.1f} minutes, best checkpoint:
 fig, history = geoai.plot_training_history(log_dir=str(RUN_DIR), metrics=["loss", "rmse"])
 ```
 
-The right panel shows the RMSE in metres, easier to interpret than the loss on the left, which is in square metres. The curves show textbook {term}`overfitting <Overfitting>`: after about 20 epochs the training RMSE keeps falling towards 4 m, while the validation RMSE stays at about 8 m. With only 70 training tiles from one site, the network starts to memorise them. Early stopping keeps the checkpoint with the lowest validation loss, here from epoch 33.
+The right panel shows the {term}`root mean squared error <Root Mean Squared Error>` (RMSE) in metres, easier to interpret than the loss on the left, which is in square metres. The curves show textbook {term}`overfitting <Overfitting>`: after about 20 epochs the training RMSE keeps falling towards 4 m, while the validation RMSE stays at about 8 m. With only 70 training tiles from one site, the network starts to memorise them. {term}`Early stopping <Early Stopping>` keeps the checkpoint with the lowest validation loss, here from epoch 33.
 
 ### G. Predict both sites
 
@@ -270,12 +270,12 @@ ref = {site: read(files[(site, "vhm")]) for site in ["a", "b"]}
 
 `clip_range=(0, 65)` prevents negative heights, which the network's output layer would otherwise allow (page 3).
 
-### H. Is the model better than simple alternatives?
+### H. Compare with simple baselines
 
-A good regression evaluation always includes **baselines**: simple methods that any model must beat to be worth its complexity. We use two:
+A good regression evaluation always includes **{term}`baselines <Baseline Model>`**: simple methods that any model must beat to be worth its complexity. We use two:
 
 - **Mean height:** predict the mean height of the training area everywhere. Its RMSE equals the spread of the heights; it is what you get with no information at all.
-- **Random forest on pixel colours:** a random forest (L05) that predicts height from the red, green and blue values of each pixel alone, without any spatial context. Comparing it with the U-Net shows how much the *context* (texture, shadows, crown shapes) contributes.
+- **Random forest on pixel colours:** a {term}`random forest <Random Forest>` (L05) that predicts height from the red, green and blue values of each pixel alone, without any spatial context. Comparing it with the {term}`U-Net` shows how much the *context* (texture, shadows, crown shapes) contributes.
 
 ```{code-cell} ipython3
 north = np.zeros(ref[TRAIN_SITE].shape, bool)
@@ -313,9 +313,9 @@ results = pd.DataFrame([{"method": m, "evaluated on": a, **d} for m, a, d in row
 results.round(2)
 ```
 
-Read the table from top to bottom. On its own training area the U-Net explains 81% of the height variation, but that is fit, not accuracy. On the held-out south of site A and on the new site B, R² drops to 0.34–0.38 and the RMSE to 7–8 m: this is the honest estimate. It is still clearly better than both baselines: the mean height gives 9.3 m, and the random forest on pixel colours gives 9.6 m, *worse* than the mean, with a correlation of only 0.10. The colour of a single pixel says almost nothing about the height of the tree it belongs to. Everything the U-Net achieves comes from spatial context: crown size and texture, shadows, the pattern of gaps. (The correlation *r* of a constant prediction is undefined, hence `NaN`.)
+Read the table from top to bottom. On its own training area the U-Net explains 81% of the height variation, but that is fit, not accuracy. On the held-out south of site A and on the new site B, {term}`R² <R-squared>` drops to 0.34–0.38 and the RMSE to 7–8 m: this is the honest estimate. It is still clearly better than both baselines: the mean height gives 9.3 m, and the random forest on pixel colours gives 9.6 m, *worse* than the mean, with a correlation of only 0.10. The colour of a single pixel says almost nothing about the height of the tree it belongs to. Everything the U-Net achieves comes from spatial context: crown size and texture, shadows, the pattern of gaps. (The correlation *r* of a constant prediction is undefined, hence `NaN`.)
 
-### I. Scatter plot and errors by height class
+### I. Scatter plot and height classes
 
 ```{code-cell} ipython3
 fig, scatter_metrics = geoai.plot_scatter(
@@ -357,7 +357,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-The scene-wide bias of +0.4 m hides two large, opposite errors. Open land and low vegetation (below 10 m, a fifth of the site) are overestimated by about 8.5 m; trees above 30 m are underestimated by about 12 m. Only the classes between 10 and 30 m, close to the mean, are predicted reasonably well. This is the regression to the mean from page 7, much stronger here: when the input does not reveal the answer clearly, a model trained with MSE predicts values close to the average, because that minimises the squared error.
+The scene-wide {term}`bias <Bias>` of +0.4 m hides two large, opposite errors. Open land and low vegetation (below 10 m, a fifth of the site) are overestimated by about 8.5 m; trees above 30 m are underestimated by about 12 m. Only the classes between 10 and 30 m, close to the mean, are predicted reasonably well. This is the regression to the mean from page 7, much stronger here: when the input does not reveal the answer clearly, a model trained with {term}`mean squared error <Mean Squared Error>` (MSE) predicts values close to the average, because that minimises the squared error.
 
 ### J. Where are the errors?
 
@@ -396,7 +396,7 @@ print(f"Forest (≥ 3 m) vs. non-forest at site {TEST_SITE}: {agree:.1%} of pixe
 
 For forest/non-forest, nine out of ten pixels agree and the IoU of forest is 0.90. That sounds far better than an R² of 0.34, but the two numbers answer different questions: at a 3 m threshold, a prediction of 15 m for a 25 m tree is "correct". Deriving classes from a continuous map is easy; the reverse is not, which is one reason to keep the continuous map.
 
-### K. What changing the settings did in our runs
+### K. Effects of changing the settings
 
 ```{admonition} Our runs on an Apple M3 laptop
 :class: tip
@@ -414,8 +414,8 @@ Errors on the test site, i.e. the site the model never saw. For comparison, pred
 | `TRAIN_SITE="b"` (test site A), `LOSS="mse"` | 50 | 10.4 | 0.28 | −3.7 |
 | Random forest on pixel colours (no context) | – | 9.6 | −0.12 | +1.9 |
 
-- **MSE beat Huber and MAE.** For heights in metres, `geoai`'s Huber loss behaves almost like MAE (page 3), and both optimise something other than the squared error that RMSE measures. Two seeds gave nearly the same result, so the difference is real.
-- **A learning rate of 1e-4 was too small.** After 100 epochs the predictions were still about 10 m too low everywhere, even though their correlation with the reference was already 0.57: the model had learned *where* trees are taller, but not *how tall*. The regression head starts near 0 and must reach values around 20 m, which takes many small steps. This is the situation from page 7, where a high correlation hides a large bias.
+- **Mean squared error (MSE) beat Huber loss and mean absolute error (MAE).** For heights in metres, `geoai`'s {term}`Huber loss <Huber Loss>` behaves almost like {term}`MAE <Mean Absolute Error>` (page 3), and both optimise something other than the squared error that RMSE measures. Two seeds gave nearly the same result, so the difference is real.
+- **A learning rate of 1e-4 was too small.** After 100 epochs the predictions were still about 10 m too low everywhere, even though their correlation with the reference was already 0.57: the model had learned *where* trees are taller, but not *how tall*. The {term}`regression head <Regression Head>` starts near 0 and must reach values around 20 m, which takes many small steps. This is the situation from page 7, where a high correlation hides a large bias.
 - **More overlapping tiles helped only a little**, at about three times the training time: more of the same site is not the same as more diverse data.
 - **The wrongly scaled input did not perform clearly worse here.** The batch normalization after the first convolution partly rescales the features, and the network adapted during training. The scaling is still wrong, and the pretrained features are not used as intended; do not rely on the network to compensate.
 - **Transfer depends on direction.** Trained on the lower forest of site B, the model underestimated the taller site A by 3.7 m on average: it rarely saw trees as tall as those in site A.
@@ -450,7 +450,7 @@ Two NumPy patterns from this page are worth knowing:
 :::{dropdown} Sample solution
 :class: note
 
-1. In our run, the model trained on site B reached an RMSE of 10.4 m and R² 0.28 on site A, with a bias of −3.7 m; trained on site A, it reached 7.4 m and 0.34 on site B. The RMSE values are not directly comparable, because site A has more variable heights (SD 12.3 m versus 9.1 m), but the bias tells the story: site B's training data contain few trees above 30 m, so the model rarely predicts such heights and underestimates the taller forest of site A. A model can only reproduce the range of values it has seen; training data should cover the range you want to predict.
+1. In our run, the model trained on site B reached an RMSE of 10.4 m and R² 0.28 on site A, with a bias of −3.7 m; trained on site A, it reached 7.4 m and 0.34 on site B. The RMSE values are not directly comparable, because site A has more variable heights (standard deviation 12.3 m versus 9.1 m), but the bias tells the story: site B's training data contain few trees above 30 m, so the model rarely predicts such heights and underestimates the taller forest of site A. A model can only reproduce the range of values it has seen; training data should cover the range you want to predict.
 
 2. Probably not on its own. Step I shows that the model underestimates tall trees systematically, so the area above 25 m would be underestimated as well, and by an amount that depends on the site. If you used it, report the held-out error *for tall trees* (not the scene-wide RMSE), the bias in that class, and the area estimate with that uncertainty. Better: check whether LiDAR or the national VHM itself covers the valley, since the model is only useful where no 3D data exist.
 :::

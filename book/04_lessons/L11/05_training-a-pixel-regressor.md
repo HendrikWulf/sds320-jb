@@ -27,11 +27,11 @@ This is the page where the architecture and loss-function decisions from page 3 
 
 `geoai.train_pixel_regressor()` builds the model, the data loaders and the training loop in a single call. It uses the AdamW optimizer, halves the learning rate when the validation loss has not improved for 5 epochs, stops early when it has not improved for `patience` epochs, and returns the {term}`checkpoint <Checkpoint>` with the lowest validation loss.
 
-The most interesting setting on this page is `BANDS`. With all six bands, the model has red and NIR available and "only" needs to learn the NDVI formula. Without NIR, the formula is impossible, and the model has to estimate NDVI from what visible colours and spatial patterns reveal about vegetation.
+The most interesting setting on this page is `BANDS`. With all six bands, the model has red and {term}`NIR <Near-Infrared>` available and "only" needs to learn the {term}`NDVI <Normalized Difference Vegetation Index>` formula. Without NIR, the formula is impossible, and the model has to estimate NDVI from what visible colours and spatial patterns reveal about vegetation.
 
 ```{admonition} Training takes a few minutes
 :class: note
-With the default settings, training takes 3–7 minutes on an Apple M3 laptop (Apple GPU) and should be faster on a {term}`CUDA` {term}`GPU`. On a CPU-only machine, expect 30–60 minutes; reduce `MAX_EPOCHS` to 30 for a first try. The outputs on this page come from one such run; your numbers will differ slightly.
+With the default settings, training takes 3–7 minutes on an Apple M3 laptop (Apple GPU) and should be faster on a {term}`CUDA` {term}`GPU`. On a {abbr}`CPU (central processing unit)`-only machine, expect 30–60 minutes; reduce `MAX_EPOCHS` to 30 for a first try. The outputs on this page come from one such run; your numbers will differ slightly.
 ```
 
 ---
@@ -135,7 +135,7 @@ print(f"Training took {fit_minutes:.1f} minutes")
 print("Best checkpoint:", Path(model.best_model_path).name)
 ```
 
-`encoder_weights="imagenet"` starts the encoder from weights learned on ImageNet photographs, the same {term}`transfer learning <Transfer Learning>` idea as in L05 and L07. ImageNet images have three channels, so what happens with six? The first layer of the encoder is rebuilt for six inputs, and the pretrained RGB filters are reused in turn (band 1 gets the filters of the red channel, band 2 those of green, band 3 those of blue, band 4 those of red again, and so on), scaled down so that the total input strength stays the same. That is a reasonable starting point, not a meaningful one for NIR or SWIR; training adapts these filters to the actual bands.
+`encoder_weights="imagenet"` starts the encoder from weights learned on {term}`ImageNet` photographs, the same {term}`transfer learning <Transfer Learning>` idea as in L05 and L07. ImageNet images have three channels, so what happens with six? The first layer of the encoder is rebuilt for six inputs, and the pretrained RGB filters are reused in turn (band 1 gets the filters of the red channel, band 2 those of green, band 3 those of blue, band 4 those of red again, and so on), scaled down so that the total input strength stays the same. That is a reasonable starting point, not a meaningful one for NIR or {term}`SWIR <Shortwave Infrared>`; training adapts these filters to the actual bands.
 
 `verbose=False` keeps the output short: a single progress bar summarises each epoch. The checkpoint file name contains the epoch and validation loss of the best model, which is the one returned and used below.
 
@@ -145,7 +145,7 @@ print("Best checkpoint:", Path(model.best_model_path).name)
 fig, history = geoai.plot_training_history(log_dir=str(RUN_DIR), metrics=["loss", "r2"])
 ```
 
-The left panel shows the loss ({term}`mean squared error <Mean Squared Error>` here), the right panel {term}`R² <R-squared>`, both for training and validation. Three things to look for:
+The left panel shows the loss ({term}`mean squared error <Mean Squared Error>`, MSE, here), the right panel {term}`R² <R-squared>`, the share of the variation in NDVI that the model explains, both for training and validation. Three things to look for:
 
 - **Both curves fall (loss) or rise (R²) together.** This is a healthy run. If training loss kept falling while validation loss rose, the model would be {term}`overfitting <Overfitting>`: learning the training tiles rather than the relationship.
 - **The validation curve is jumpy.** With only 20 validation tiles, a few difficult tiles (river edges, sand bars) move the average. Look at the trend, not at single epochs.
@@ -153,7 +153,7 @@ The left panel shows the loss ({term}`mean squared error <Mean Squared Error>` h
 
 `plot_training_history()` zooms in automatically when the first epochs are far off the scale (here the first validation loss is above 8, because the untrained model outputs arbitrary values).
 
-### E. The best epoch, and how the result compares
+### E. Best epoch and results table
 
 ```{code-cell} ipython3
 best_epoch = int(history["val_loss"].idxmin())
@@ -178,7 +178,7 @@ row
 
 The table in `results.csv` grows by one row for every experiment you run (a repeated experiment replaces its old row). It is your lab notebook: after a few runs it shows which settings actually changed the validation scores, and by how much.
 
-Validation {term}`RMSE <Root Mean Squared Error>` and {term}`MAE <Mean Absolute Error>` are in NDVI units: the model's predictions for the held-out southern area are typically off by a few hundredths. Page 7 looks at where these errors occur.
+Validation {term}`root mean squared error <Root Mean Squared Error>` (RMSE) and {term}`mean absolute error <Mean Absolute Error>` (MAE) are in NDVI units: the model's predictions for the held-out southern area are typically off by a few hundredths. Page 7 looks at where these errors occur.
 
 ```{admonition} What changing the settings did in our runs
 :class: tip
@@ -244,7 +244,7 @@ The next page loads the model from this checkpoint, so it can run without traini
 
 1. In our runs, the validation RMSE rose from 0.046 to 0.088 and R² fell from 0.989 to 0.960 (a second seed gave 0.122 and 0.924). The exact values vary between runs, but the loss is far larger than the variation between seeds of the all-band model. The effect is even stronger in the new year (page 7): 0.146 instead of 0.059 for the southern area in 2026.
 
-2. NDVI is high for dense green vegetation and low for water, sand and bare soil. These surfaces also differ in visible colour and texture: forest is dark green and rough, water is dark and smooth or turquoise and sediment-laden, sand bars are bright, savanna is lighter and greener-brown. A CNN also sees spatial context: a pixel in the middle of a river is water, a pixel inside a forest canopy is vegetation. What it cannot see without NIR is how *vigorous* the vegetation is: two canopies of similar colour can have quite different NIR reflectance. Expect the largest errors where vegetation types of similar colour have different NDVI (savanna versus degraded forest), and at mixed pixels along river banks and sand bars.
+2. NDVI is high for dense green vegetation and low for water, sand and bare soil. These surfaces also differ in visible colour and texture: forest is dark green and rough, water is dark and smooth or turquoise and sediment-laden, sand bars are bright, savanna is lighter and greener-brown. A {term}`CNN <Convolutional Neural Network>` also sees spatial context: a pixel in the middle of a river is water, a pixel inside a forest canopy is vegetation. What it cannot see without NIR is how *vigorous* the vegetation is: two canopies of similar colour can have quite different NIR reflectance. Expect the largest errors where vegetation types of similar colour have different NDVI (savanna versus degraded forest), and at mixed pixels along river banks and sand bars.
 :::
 
 ---

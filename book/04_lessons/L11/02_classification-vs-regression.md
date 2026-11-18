@@ -47,10 +47,10 @@ flowchart LR
 | Output layer | N channels, one score per class | 1 channel |
 | Activation | Softmax (or sigmoid for one class) | None; the value can be any number |
 | Label raster | Integer class index, `uint8` | Measured value, `float32` |
-| Loss | Cross-entropy, {term}`Dice <Dice Loss>` | {term}`MSE <Mean Squared Error>`, {term}`MAE <Mean Absolute Error>`, {term}`Huber <Huber Loss>` |
-| Evaluation | {term}`IoU <Intersection over Union>`, F1, accuracy | {term}`RMSE <Root Mean Squared Error>`, MAE, {term}`R² <R-squared>`, bias |
+| Loss | {term}`Cross-entropy <Cross-Entropy Loss>`, {term}`Dice <Dice Loss>` | {term}`Mean squared error <Mean Squared Error>` (MSE), {term}`mean absolute error <Mean Absolute Error>` (MAE), {term}`Huber loss <Huber Loss>` |
+| Evaluation | {term}`IoU <Intersection over Union>`, {term}`F1 <F1-score>`, accuracy | {term}`Root mean squared error <Root Mean Squared Error>` (RMSE), MAE, {term}`R² <R-squared>`, {term}`bias <Bias>` |
 | A "nearly right" prediction | Still wrong if the class is wrong | Gets a small error, and a small penalty |
-| Example | Water or not water | NDVI 0.72, tree height 23.4 m |
+| Example | Water or not water | {term}`NDVI <Normalized Difference Vegetation Index>` 0.72, tree height 23.4 m |
 
 ### A. Output layer
 

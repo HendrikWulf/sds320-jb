@@ -30,8 +30,8 @@ By the end of this lesson, you should be able to:
 
 - Decide when change detection is the right tool, and what form of output (binary, categorical, or continuous) your project actually needs
 - Explain what makes two images genuinely comparable, and identify the main obstacles when they are not
-- Apply traditional, interpretable baseline methods: image differencing and change vector analysis
-- Explain why deep learning models, particularly siamese networks, can outperform pixel-wise comparison
+- Apply traditional, interpretable baseline methods: {term}`image differencing <Image Differencing>` and {term}`change vector analysis <Change Vector Analysis>`
+- Explain why deep learning models, particularly {term}`siamese networks <Siamese Network>`, can outperform pixel-wise comparison
 - Run a deep learning change detection workflow with `geoai`, and interpret its full set of outputs
 - Adjust detection thresholds deliberately and export results as GIS-ready files
 - Train and evaluate your own siamese change detection model on labeled Sentinel-2 image pairs, and judge which training choices actually matter
@@ -44,10 +44,10 @@ By the end of this lesson, you should be able to:
 2. [Change types and challenges](L10/02_change-types-and-challenges.md) — what kinds of change exist, and what makes two images actually comparable.
 3. [Traditional methods](L10/03_traditional-change-detection.ipynb) — image differencing, index differencing and change vector analysis on Sentinel-2 imagery of Egypt's New Administrative Capital near Cairo, as interpretable baselines.
 4. [Deep learning approaches](L10/04_deep-learning-for-change-detection.md) — why spatial context helps, how siamese networks compare image pairs, which data they learn from, and how change maps are evaluated.
-5. [The ChangeStar workflow](L10/05_changestar-workflow.ipynb) — the main hands-on workflow: detecting new buildings in VEXCEL aerial imagery of a housing estate in northern Osaka, Japan.
-6. [Reading the results](L10/06_visualising-and-interpreting-results.ipynb) — interpreting ChangeStar's full output: change maps, probabilities, per-date building masks, and a from–to map of new and removed buildings.
+5. [The ChangeStar workflow](L10/05_changestar-workflow.ipynb) — the main hands-on workflow: detecting new buildings in {term}`VEXCEL` aerial imagery of a housing estate in northern Osaka, Japan.
+6. [Reading the results](L10/06_visualising-and-interpreting-results.ipynb) — interpreting {term}`ChangeStar`'s full output: change maps, probabilities, per-date building masks, and a from–to map of new and removed buildings.
 7. [Thresholds and exports](L10/07_thresholds-model-variants-and-exports.ipynb) — tuning sensitivity, comparing model variants and a pixel-wise baseline, and exporting attributed GIS-ready polygons.
-8. [Training your own model](L10/08_training-a-change-detector.ipynb) — training and evaluating an FC-Siam-diff network on labeled Sentinel-2 pairs, with settings you can change and compare.
+8. [Training your own model](L10/08_training-a-change-detector.ipynb) — training and evaluating an {abbr}`FC-Siam-diff (Fully Convolutional Siamese network, difference variant)` network on labeled Sentinel-2 pairs, with settings you can change and compare.
 9. [Project transfer](L10/09_project-transfer.md) — designing a change-detection workflow for your own project.
 
 Pages 1–2 build the conceptual foundation, pages 3–4 cover two different approaches (traditional and deep learning), page 5 is the main hands-on workflow, and pages 6–7 extend it with interpretation, tuning, and export. Page 8 shows what to do when no pretrained model fits your change type: training your own. Page 9 transfers everything to your project.
@@ -60,7 +60,7 @@ While reading this lesson, keep your own project in mind and consider:
 
 - Does your project need to know *that* something changed, *what kind* of change occurred, or *how much* change happened?
 - What two (or more) dates would you realistically compare, and are they close enough in season to be genuinely comparable?
-- Would a simple, interpretable baseline (image differencing or CVA) already answer your question, or does your project need the spatial context a deep learning model provides?
+- Would a simple, interpretable baseline (image differencing or {term}`CVA <Change Vector Analysis>`) already answer your question, or does your project need the spatial context a deep learning model provides?
 - If you need deep learning, does a pretrained model exist for your type of change, or would you need labeled image pairs to train your own?
 - How would you validate a change detection result without exhaustive ground-truth data?
 

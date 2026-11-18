@@ -25,7 +25,7 @@ This is the page where the previous page's architecture concepts become an actua
 
 ## 2. Core idea
 
-**{term}`ChangeStar`** (Zheng et al., 2021) jointly performs change detection and {term}`semantic segmentation <Semantic Segmentation>`. Instead of only producing a binary change mask, it also outputs a building segmentation for each of the two input dates. Both dates pass through the same encoder, as in the siamese networks from the previous page; a small extra module (called *ChangeMixin*) then compares the two feature maps to predict change. Knowing what exists at each time step helps the model decide what has changed between them.
+**{term}`ChangeStar`** (Zheng et al., 2021) jointly performs change detection and {term}`semantic segmentation <Semantic Segmentation>`. Instead of only producing a binary change mask, it also outputs a building segmentation for each of the two input dates. Both dates pass through the same encoder, as in the {term}`siamese networks <Siamese Network>` from the previous page; a small extra module (called *ChangeMixin*) then compares the two feature maps to predict change. Knowing what exists at each time step helps the model decide what has changed between them.
 
 The weights used here come from **{term}`Changen2`** (Zheng et al., 2024), a generative model that *simulates* change: it produces large numbers of synthetic, perfectly labeled image pairs ("this building appeared here"). Pretraining on millions of such synthetic pairs is what lets ChangeStar work on new regions without any local labels, a {term}`zero-shot <Zero-Shot Segmentation>` use of the model. The model therefore knows "building change" well, because that is what most of its training data showed, but it has never seen your study area.
 
@@ -94,7 +94,7 @@ for year, path in raw_paths.items():
         print(f"      collection: {src.tags().get('COLLECTION')}")
 ```
 
-Both images cover the same 600 × 300 m area on the same 20 cm grid, so they are directly comparable pixel by pixel. Two details matter for what follows. First, at 20 cm a single house covers thousands of pixels, roughly 50 times finer than the 10 m Sentinel-2 pixels on page 3: this imagery is suited to *object-level* change such as individual buildings. Second, the bands are stored as **blue, green, red, NIR**, the same {term}`band order <Band Order>` you met with VEXCEL imagery in L07.
+Both images cover the same 600 × 300 m area on the same 20 cm grid, so they are directly comparable pixel by pixel. Two details matter for what follows. First, at 20 cm a single house covers thousands of pixels, roughly 50 times finer than the 10 m Sentinel-2 pixels on page 3: this imagery is suited to *object-level* change such as individual buildings. Second, the bands are stored as **blue, green, red, {term}`NIR <Near-Infrared>`**, the same {term}`band order <Band Order>` you met with VEXCEL imagery in L07.
 
 ### D. Look at the pair
 
@@ -130,7 +130,7 @@ geoai.create_split_map(
 )
 ```
 
-### E. Match the band order the model expects
+### E. Match the expected band order
 
 ChangeStar was trained on RGB images. `geoai`'s ChangeStar wrapper simply takes the **first three bands** of each file and treats them as red, green and blue. For our files, those are blue, green and red, so without a correction the model would see every image with red and blue swapped. We therefore write RGB copies of both images before running the model.
 
@@ -176,7 +176,7 @@ For building change, `s1_s1c1_vitb` is the natural starting point: pretrained on
 detector = ChangeStarDetection(model_name="s1_s1c1_vitb", device=device)
 ```
 
-The weights download automatically the first time you use a variant, and the log line printed while loading confirms what you got: the modeling type (`s1c1`) and the pretraining data (`Changen2-S1-15k`), the same parts as in the short name. We pass `device=device` explicitly: if you leave it out, the wrapper falls back to the CPU even when a GPU is available.
+The weights download automatically the first time you use a variant, and the log line printed while loading confirms what you got: the modeling type (`s1c1`) and the pretraining data (`Changen2-S1-15k`), the same parts as in the short name. We pass `device=device` explicitly: if you leave it out, the wrapper falls back to the {abbr}`CPU (central processing unit)` even when a GPU is available.
 
 ### G. Run change detection
 
@@ -198,7 +198,7 @@ print(f"Prediction took {time.time() - start:.0f} s on {device}")
 | Argument | Default | Explanation |
 | --- | --- | --- |
 | `image1_path`, `image2_path` | | The earlier (T1) and later (T2) image. Their order matters: swapping them turns "new building" into "demolished building". |
-| `output_change` | `None` | Saves the binary change map as a GeoTIFF. |
+| `output_change` | `None` | Saves the binary change map as a {term}`GeoTIFF`. |
 | `output_t1_semantic`, `output_t2_semantic` | `None` | Save the building masks for each date as GeoTIFFs. |
 | `output_vector` | `None` | Converts the change map to polygons and saves them, here as a {term}`GeoPackage`. |
 | `tile_size` | `1024` | Large images are processed in tiles of this size (in pixels) and stitched back together: {term}`tiled inference <Tiled Inference>`, as in earlier lessons. |

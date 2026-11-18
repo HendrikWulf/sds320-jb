@@ -7,7 +7,7 @@ site:
 
 <!-- markdownlint-disable MD033-->
 <div class="page-subtitle">
-Evaluating regression models with RMSE, MAE, R², bias and residual maps
+Evaluating regression models with error metrics, scatter plots and residual maps
 </div>
 <!-- markdownlint-enable MD033 -->
 
@@ -29,15 +29,15 @@ Regression evaluation combines a small set of numbers with two kinds of plots:
 
 | Tool | Question it answers |
 | --- | --- |
-| {term}`RMSE <Root Mean Squared Error>` | How large is a typical error, with large errors weighted more? (target units) |
-| {term}`MAE <Mean Absolute Error>` | How large is the average error? (target units) |
-| Bias (mean error) | Are predictions systematically too high or too low? (target units) |
-| {term}`R² <R-squared>` | Which share of the variation in the target does the model explain? (0–1) |
+| {term}`Root mean squared error <Root Mean Squared Error>` (RMSE) | How large is a typical error, with large errors weighted more? (target units) |
+| {term}`Mean absolute error <Mean Absolute Error>` (MAE) | How large is the average error? (target units) |
+| {term}`Bias <Bias>` (mean error) | Are predictions systematically too high or too low? (target units) |
+| {term}`R² <R-squared>` (coefficient of determination) | Which share of the variation in the target does the model explain? (0–1) |
 | {term}`Pearson correlation <Pearson Correlation>` *r* | Do predictions rise and fall with the target, even if shifted? (−1 to 1) |
 | Scatter plot | Does the error depend on the value (e.g. high values underestimated)? |
 | Residual map | Where are the errors, and do they cluster? |
 
-Here the **residual** is prediction minus reference: positive means the model predicted too high.
+Here the **{term}`residual <Residual>`** is prediction minus reference: positive means the model predicted too high.
 
 ---
 
@@ -102,7 +102,7 @@ fig, metrics_2026 = geoai.plot_regression_comparison(
 
 The function shows reference, prediction and their difference side by side, and returns the metrics for the whole scene. The colour scale of the difference panel is set automatically to the 5th and 95th percentiles of the differences, so even a very good model shows strong colours there; read the colour bar. Most of the scene is pale, and the strongest differences trace the river banks, sand bars and lake shores.
 
-`valid_range=(-1, 1)` excludes pixels outside the valid NDVI range from the metrics. With `clip_range` applied during prediction there are none here, but for unclipped predictions or noisy reference data this keeps a few impossible values from distorting the result.
+`valid_range=(-1, 1)` excludes pixels outside the valid {term}`NDVI <Normalized Difference Vegetation Index>` range from the metrics. With `clip_range` applied during prediction there are none here, but for unclipped predictions or noisy reference data this keeps a few impossible values from distorting the result.
 
 ### C. Metrics by area and year
 
@@ -130,7 +130,7 @@ table = pd.DataFrame(
 table.round(4)
 ```
 
-Four numbers per row, four rows. In 2018, the model is about as accurate in the held-out south (RMSE 0.044) as in the north it was trained on (0.042): the spatial split shows that it transfers to a new area of the same scene. In 2026 the error in the south rises to 0.059, the largest of the four: new year *and* new area, and the south, a third of the scene, contains more than half of the pixels whose NDVI changed by more than 0.3. Bias is close to zero everywhere (less than 0.01), so the errors are random rather than systematic. R² is highest in the south because the south contains more water and therefore more variation for the model to explain, a reminder that R² depends on the data as much as on the model.
+Four numbers per row, four rows. In 2018, the model is about as accurate in the held-out south (RMSE 0.044) as in the north it was trained on (0.042): the {term}`spatial split <Spatial Split>` shows that it transfers to a new area of the same scene. In 2026 the error in the south rises to 0.059, the largest of the four: new year *and* new area, and the south, a third of the scene, contains more than half of the pixels whose NDVI changed by more than 0.3. Bias is close to zero everywhere (less than 0.01), so the errors are random rather than systematic. R² is highest in the south because the south contains more water and therefore more variation for the model to explain, a reminder that R² depends on the data as much as on the model.
 
 ```{admonition} Which of these numbers would you report?
 :class: important
@@ -156,7 +156,7 @@ print(f"Fitted line with float32 values: prediction = {slope32:.3f} × reference
 print(f"Fitted line with float64 values: prediction = {slope:.3f} × reference + {intercept:.3f}")
 ```
 
-In a perfect model all points lie on the red 1:1 line. A line fitted through the points tells you whether the model compresses the range: a slope below 1 means high values are predicted too low and low values too high, the typical "regression to the mean" of a model that is unsure. Here the fitted slope is close to 1 and the intercept close to 0: no measurable compression. The spread is largest at intermediate values (0 to 0.5), the mixed pixels of sand bars and river banks.
+In a perfect model all points lie on the red 1:1 line. A line fitted through the points tells you whether the model compresses the range: a slope below 1 means high values are predicted too low and low values too high, the typical "regression to the mean" of a model that is unsure. Here the fitted slope is close to 1 and the intercept close to 0: no measurable compression. The spread is largest at intermediate values (0 to 0.5), the {term}`mixed pixels <Mixed Pixel>` of sand bars and river banks.
 
 ```{admonition} Why we fit the line ourselves
 :class: warning
@@ -260,13 +260,13 @@ pd.DataFrame([{"name": name, **regression_metrics(t, p, mask)} for name, mask in
 - **Trusting a single aggregate metric without checking the residual map.** A good scene-wide RMSE can coexist with poor performance exactly where your project needs it.
 - **Confusing R² with correlation.** A systematic offset leaves *r* unchanged but lowers R²; report both, plus the bias.
 - **Comparing R² between subsets with different variability.** Within a narrow range of values, R² drops even when errors are small; compare RMSE or MAE instead.
-- **Including nodata values in your own statistics.** Convert them to `np.nan` first, as `read()` does.
+- **Including {term}`nodata values <NoData Value>` in your own statistics.** Convert them to `np.nan` first, as `read()` does.
 
 ---
 
 ## 6. Mini task
 
-1. Re-run this page after training with `BANDS = "rgb"` on page 5 (and predicting on page 6). Which surface type in step E suffers most from the missing NIR band?
+1. Re-run this page after training with `BANDS = "rgb"` on page 5 (and predicting on page 6). Which surface type in step E suffers most from the missing {term}`NIR <Near-Infrared>` band?
 2. Your model reports RMSE 0.06 and R² 0.82 for a held-out area. The residual map shows small, scattered errors almost everywhere, except a coherent strip of large positive residuals along a reservoir shoreline. What would you investigate first, and why?
 
 :::{dropdown} Sample solution

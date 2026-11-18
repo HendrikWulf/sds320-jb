@@ -30,9 +30,9 @@ By the end of this lesson, you should be able to:
 
 - Decide when image translation, and super-resolution specifically, is an appropriate tool for a project
 - Explain paired and unpaired image translation at a conceptual level, and why translated outputs are generated rather than observed
-- Describe how a latent diffusion model performs super-resolution through encoding, denoising, and decoding
+- Describe how a {term}`latent diffusion model <Latent Diffusion Model>` performs super-resolution through encoding, denoising, and decoding
 - Run single-patch and tiled super-resolution on Sentinel-2 imagery with `geoai`, compare it against interpolation, and verify the output's georeferencing and its consistency with the 10 m input
-- Compute and interpret per-pixel uncertainty maps, and explain why low uncertainty does not guarantee correctness
+- Compute and interpret per-pixel {term}`uncertainty maps <Uncertainty Map>`, and explain why low uncertainty does not guarantee correctness
 - Check generated detail against observed aerial imagery, taking acquisition dates into account
 - Identify what super-resolved imagery is, and is not, safe to use for in a project
 
@@ -43,7 +43,7 @@ By the end of this lesson, you should be able to:
 1. [When translation fits](L09/01_when-to-use-image-translation.md) — the range of image translation tasks, their observed alternatives, and why this lesson focuses specifically on super-resolution.
 2. [Translation concepts](L09/02_image-to-image-translation-concepts.md) — domains, paired versus unpaired translation, how the training objective shapes the output, and why outputs are generated images.
 3. [Why super-resolution matters](L09/03_super-resolution-for-remote-sensing.md) — the resolution-revisit-cost trade-off in satellite imagery, interpolation versus super-resolution, and the main method families.
-4. [Latent diffusion and LDSR-S2](L09/04_latent-diffusion-and-ldsr-s2.md) — how diffusion models generate detail, and how LDSR-S2 keeps it consistent with the 10 m input.
+4. [Latent diffusion and LDSR-S2](L09/04_latent-diffusion-and-ldsr-s2.md) — how {term}`diffusion models <Diffusion Model>` generate detail, and how {term}`LDSR-S2` keeps it consistent with the 10 m input.
 5. [Single-patch super-resolution](L09/05_single-patch-super-resolution.ipynb) — the main hands-on workflow on a Sentinel-2 scene of Granada, Spain: enhancing one patch, choosing the number of sampling steps, comparing against interpolation and checking consistency with the input.
 6. [Uncertainty and interpretation](L09/06_uncertainty-and-interpretation.ipynb) — two runs of the same input, per-pixel uncertainty maps, and where uncertainty concentrates.
 7. [Tiled inference and comparison](L09/07_tiled-inference-and-visual-comparison.ipynb) — scaling to larger regions, checking seams and side effects of blending, and comparing against Spanish aerial orthophotos.

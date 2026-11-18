@@ -29,7 +29,7 @@ All methods on this page treat every pixel independently: they compare the spect
 
 | Method | Compares | Output | Answers |
 | --- | --- | --- | --- |
-| {term}`Image differencing <Image Differencing>` | One band (here NIR) | Signed difference | Did this pixel get brighter or darker? |
+| {term}`Image differencing <Image Differencing>` | One band (here {term}`NIR <Near-Infrared>`) | Signed difference | Did this pixel get brighter or darker? |
 | Index differencing | A {term}`spectral index <Spectral Index>` (here {term}`NDVI <Normalized Difference Vegetation Index>`) | Signed difference | Did vegetation increase or decrease? |
 | {term}`Change Vector Analysis <Change Vector Analysis>` (CVA) | Several measurements at once (here brightness and greenness) | Magnitude and direction | How much did the pixel change, and what kind of change was it? |
 
@@ -156,7 +156,7 @@ plt.show()
 
 In the difference map, red pixels became darker in NIR and blue pixels brighter. New buildings, asphalt roads and parks appear red: all of them are darker in NIR than the bright sand they replaced. Most of the histogram is one peak: the unchanged desert. Notice that this peak does not sit at zero but slightly to the right, and that the undeveloped southeast has a broad blue tint. The open desert as a whole is a little brighter in 2026, a smooth, large-area shift that comes from surface or atmospheric conditions, not from construction. Changed pixels sit in the tails of the histogram, and the threshold decides where the tails begin.
 
-### D. Index differencing: asking a narrower question
+### D. Index differencing
 
 A single band mixes many kinds of change. A {term}`spectral index <Spectral Index>` designed for one surface property lets you ask a narrower question. The {term}`NDVI <Normalized Difference Vegetation Index>` responds to green vegetation, so its difference highlights where vegetation appeared or disappeared.
 
@@ -357,7 +357,7 @@ Zoomed in, the mask looks speckled: a "salt-and-pepper" pattern of isolated pixe
 - **Mixing up 1-based band numbers and 0-based array positions.** Rasterio's `src.read(4)` is the NIR band, but in the NumPy array that band is `img[3]`. Named constants such as `NIR = 3` prevent this mistake.
 - **Stretching each date separately for display.** Separate stretches hide whole-scene brightness and colour shifts, and make the two images look more comparable than they are.
 - **Forgetting these methods are pixel-independent.** Neither technique uses spatial context, so isolated noisy pixels are flagged just like real change (step G).
-- **Skipping the comparability checks from the previous page.** Traditional methods are especially sensitive to co-registration, illumination and phenological mismatches, since they have no learned context to fall back on.
+- **Skipping the comparability checks from the previous page.** Traditional methods are especially sensitive to {term}`co-registration <Co-registration>`, illumination and phenological mismatches, since they have no learned context to fall back on.
 
 ---
 
@@ -393,4 +393,4 @@ With these data, the changed share roughly quadruples, from about 6% to about 24
 
 - OpenGeoAI, ["Change Detection"](https://opengeoai.org/examples/change_detection/) — a related worked example of change detection with `geoai`.
 - scikit-image, ["Thresholding"](https://scikit-image.org/docs/stable/auto_examples/segmentation/plot_thresholding.html) — a visual comparison of Otsu and other automatic thresholding methods.
-- ESA, ["Sentinel-2 User Guide"](https://sentiwiki.copernicus.eu/web/s2-mission) — band definitions, resolutions and processing levels of the Sentinel-2 imagery used on this page.
+- {abbr}`ESA (European Space Agency)`, ["Sentinel-2 User Guide"](https://sentiwiki.copernicus.eu/web/s2-mission) — band definitions, resolutions and processing levels of the Sentinel-2 imagery used on this page.

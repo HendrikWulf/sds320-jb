@@ -41,8 +41,8 @@ Matching your project's question to the right output type from the start avoids 
 
 | Output | Typical question | Examples | Where in this lesson |
 | --- | --- | --- | --- |
-| Binary | Did this place change? | New construction, demolition, flood extent, wildfire scars | ChangeStar change map (pages 5–7), trained model (page 8) |
-| Categorical | What changed into what? | Land-use transitions, new vs. demolished buildings, damage levels | CVA directions (page 3), from–to building map (page 6) |
+| Binary | Did this place change? | New construction, demolition, flood extent, wildfire scars | {term}`ChangeStar` change map (pages 5–7), trained model (page 8) |
+| Categorical | What changed into what? | Land-use transitions, new vs. demolished buildings, damage levels | {term}`CVA <Change Vector Analysis>` directions (page 3), from–to building map (page 6) |
 | Continuous | How much did it change? | Vegetation degradation, glacier retreat, coastline erosion | Difference images and CVA magnitude (page 3), change probability (page 6) |
 
 **Binary** questions are the most common starting point and the focus of this lesson's main workflow. **Categorical** questions need information about both dates, not just their difference: "changed" alone does not tell a planner whether a building appeared or disappeared. **Continuous** outputs keep the information about the degree and spatial pattern of change, and leave the yes/no decision for later. Many binary maps are in fact a continuous output plus a threshold: a difference image or a change probability becomes binary only when you decide where "changed" begins.
@@ -92,7 +92,7 @@ Your project tracks informal settlement growth in a peri-urban area over five ye
 
 A continuous output, or at minimum a binary mask aggregated into area and density measures, fits best, since the question is about the magnitude and spatial concentration of growth, not about a multi-category classification of change type. A binary mask can answer it if you separately compute the total changed area and its spatial distribution (for example per grid cell or district).
 
-For the method, informal settlements are small, dense and irregular, so pixel-wise direct comparison at medium resolution would struggle with mixed pixels and noise. If very high-resolution imagery and a suitable model exist, a deep-learning approach that detects building change is the stronger choice. Post-classification comparison is an option if reliable settlement maps already exist for both dates, but you would need to check that their classification errors are small compared with the growth you want to measure.
+For the method, informal settlements are small, dense and irregular, so pixel-wise direct comparison at medium resolution would struggle with {term}`mixed pixels <Mixed Pixel>` and noise. If very high-resolution imagery and a suitable model exist, a deep-learning approach that detects building change is the stronger choice. Post-classification comparison is an option if reliable settlement maps already exist for both dates, but you would need to check that their classification errors are small compared with the growth you want to measure.
 :::
 
 ---

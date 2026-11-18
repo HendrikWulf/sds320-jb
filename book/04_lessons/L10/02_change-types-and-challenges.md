@@ -73,7 +73,7 @@ A **{term}`mixed pixel <Mixed Pixel>`** contains more than one land-cover type w
 :width: 100%
 :align: center
 
-*The same new houses at three pixel sizes. At 20 cm (VEXCEL aerial imagery, used on page 5), each house covers thousands of pixels. At 10 m, the resolution of Sentinel-2, a house is smaller than one pixel and every pixel mixes roofs, gardens and streets.*
+*The same new houses at three pixel sizes. At 20 cm ({term}`VEXCEL` aerial imagery, used on page 5), each house covers thousands of pixels. At 10 m, the resolution of Sentinel-2, a house is smaller than one pixel and every pixel mixes roofs, gardens and streets.*
 :::
 
 Higher-resolution imagery resolves finer changes, but at the cost of larger data volumes, greater sensitivity to the co-registration and view-geometry problems from step A, and more "irrelevant" change such as moved cars and different shadows. Match the resolution to the size of the change you need to detect: whole districts are visible at 10 m (next page), individual houses need sub-metre imagery (page 5).
@@ -120,4 +120,4 @@ Second, at 10 m resolution an individual house is about the size of one pixel or
 ### Further reading
 
 - Esri, ["How Change Detection Works"](https://developers.arcgis.com/python/latest/guide/how-change-detection-works/) — how a deep learning change detector expects its before/after image pairs to be prepared.
-- ESA, ["Sentinel-2 User Guide"](https://sentiwiki.copernicus.eu/web/s2-mission) — acquisition, resolution and processing levels of Sentinel-2, useful when planning which dates to compare.
+- {abbr}`ESA (European Space Agency)`, ["Sentinel-2 User Guide"](https://sentiwiki.copernicus.eu/web/s2-mission) — acquisition, resolution and processing levels of Sentinel-2, useful when planning which dates to compare.
