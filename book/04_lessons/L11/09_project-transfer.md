@@ -92,3 +92,11 @@ Produce a short regression project plan (half a page is enough) that states:
 3. If your project needs predictions beyond the area or period of your reference data, how will you test whether that transfer actually works?
 4. Which value range or area matters most for your question, and how large would the error there have to be before your conclusion changed?
 5. How would you explain the difference between your model's overall accuracy and its accuracy where your project cares most, to someone who only reads the summary?
+
+---
+
+## 8. Companion notebook
+
+Use the [pixel regression learning recap notebook](https://data.source.coop/giuz/sds320/L11/notebooks/SDS320_L11_learning_pixel_regression_recap.ipynb) to revisit the Beni river workflow from paired rasters and spatial validation to training, temporal prediction and residual analysis. It combines the practical examples into one sequence with interpretation checkpoints and a project-planning template.
+
+Run it first with the lesson data, then use the final section to plan the target, reference data, split and evaluation for your own SDS320 project.
